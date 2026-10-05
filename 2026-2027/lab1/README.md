@@ -10,7 +10,7 @@ Po zajęciach każdy zespół powinien:
 - mieć wybrany konkretny, użyteczny problem;
 - wypełnić kartę projektu w Wordzie.
 
-## Ważna zasada
+## Zasada wyboru problemu
 
 Nie projektujemy aplikacji tylko dlatego, że da się ją zaprogramować. Najpierw identyfikujemy problem, potrzebę lub proces, który można usprawnić. Dopiero później wybieramy technologię i sposób realizacji.
 
@@ -22,8 +22,9 @@ Projekt powinien:
 - kończyć się działającym prototypem, modelem, modułem analitycznym albo narzędziem wspierającym konkretną decyzję;
 - rozwiązywać rzeczywisty, jasno opisany problem.
 
-> [!WARNING]
-> **Projekt nie powinien być kolejnym ogólnym sklepem internetowym, blogiem ani prostą aplikacją CRUD bez uzasadnionego zastosowania.**
+> **Uwaga**
+>
+> Projekt nie powinien być kolejnym ogólnym sklepem internetowym, blogiem ani prostą aplikacją CRUD bez uzasadnionego zastosowania.
 
 ## Czym jest dobry problem projektowy?
 
@@ -49,6 +50,8 @@ Dobry problem:
 
 ## Przykładowe obszary
 
+Traktować poniższe propozycje jako inspirację, a nie zamkniętą listę tematów.
+
 - analiza i prognozowanie zużycia energii;
 - analiza obłożenia sal lub zasobów uczelni;
 - analiza transportu, ruchu lub dostępności miejsc parkingowych;
@@ -62,11 +65,11 @@ Dobry problem:
 
 ## Karta projektu
 
-Wypełnijcie gotowy szablon w Wordzie: [Karta projektu](./Karta%20projektu.docx).
+Wypełnić gotowy szablon w Wordzie: [Karta projektu](./Karta%20projektu.docx).
 
 ## Zasady pracy zespołowej
 
-- **Decyzje projektowe zapisujemy, a nie ustalamy wyłącznie ustnie.**
-- Problemy i zadania dzielimy na małe elementy.
-- Każdy członek zespołu powinien znać ogólną ideę całego projektu, nie tylko własny fragment.
-- W kolejnych tygodniach będziemy pokazywać rzeczywisty postęp, a nie tylko opowiadać o planach.
+- **Zapisywać decyzje projektowe zamiast ustalać je wyłącznie ustnie.**
+- Dzielić problemy i zadania na małe elementy.
+- Znać ogólną ideę całego projektu, nie tylko własny fragment.
+- Pokazywać rzeczywisty postęp, a nie tylko opowiadać o planach.
