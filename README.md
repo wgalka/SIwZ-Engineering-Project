@@ -20,7 +20,7 @@ Projekt zespołowy lub indywidualny obejmujący analizę problemu, dane, dobór 
 | Lab | Temat | Status |
 |---|---|---|
 | [Lab 1](./2026-2027/lab1/README.md) | Wybór problemu i zespołów | Dostępne |
-| [Lab 2](./2026-2027/lab2/README.md) | Doprecyzowanie problemu, użytkownicy i wymagania | W przygotowaniu |
+| [Lab 2](./2026-2027/lab2/README.md) | Doprecyzowanie problemu, użytkowników i wymagań | W przygotowaniu |
 | [Lab 3](./2026-2027/lab3/README.md) | Literatura, podobne rozwiązania i metody | W przygotowaniu |
 | [Lab 4](./2026-2027/lab4/README.md) | Źródła i przygotowanie danych | W przygotowaniu |
 | [Lab 5](./2026-2027/lab5/README.md) | Architektura, UML/ERD i technologie | W przygotowaniu |

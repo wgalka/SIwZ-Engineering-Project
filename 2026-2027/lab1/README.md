@@ -2,21 +2,28 @@
 
 ## Cel zajęć
 
-Na tych zajęciach utworzymy zespoły projektowe i wybierzemy problem, który będziecie rozwiązywać w dalszej części przedmiotu.
+Na tych zajęciach utworzone zostaną zespoły projektowe i wybierany zostanie problem, który będzie rozwiązywany w dalszej części przedmiotu.
 
 Po zajęciach każdy zespół powinien:
 
-- znać skład zespołu i podział podstawowych ról;
+- znać skład zespołu i wstępny podział odpowiedzialności;
 - mieć wybrany konkretny, użyteczny problem;
-- umieć wskazać użytkownika lub grupę odbiorców rozwiązania;
-- określić wstępny rezultat projektu;
-- przygotować krótką kartę projektu do dalszego dopracowania.
+- wypełnić kartę projektu w Wordzie.
 
 ## Ważna zasada
 
 Nie projektujemy aplikacji tylko dlatego, że da się ją zaprogramować. Najpierw identyfikujemy problem, potrzebę lub proces, który można usprawnić. Dopiero później wybieramy technologię i sposób realizacji.
 
-Projekt nie powinien być kolejnym ogólnym sklepem internetowym, blogiem ani prostą aplikacją CRUD bez uzasadnionego zastosowania.
+Projekt powinien:
+
+- mieć jasno określony problem i wymagane rezultaty;
+- mieć charakter analityczny lub ekonometryczny;
+- wykorzystywać dane publiczne, instytucjonalne albo zebrane samodzielnie;
+- kończyć się działającym prototypem, modelem, modułem analitycznym albo narzędziem wspierającym konkretną decyzję;
+- rozwiązywać rzeczywisty, jasno opisany problem.
+
+> [!WARNING]
+> **Projekt nie powinien być kolejnym ogólnym sklepem internetowym, blogiem ani prostą aplikacją CRUD bez uzasadnionego zastosowania.**
 
 ## Czym jest dobry problem projektowy?
 
@@ -55,83 +62,11 @@ Dobry problem:
 
 ## Karta projektu
 
-### 1. Nazwa robocza projektu
-
-`...`
-
-### 2. Problem
-
-Jaki konkretny problem chcemy rozwiązać?
-
-`...`
-
-### 3. Odbiorca rozwiązania
-
-Kto będzie korzystał z rozwiązania albo kto skorzysta z jego wyników?
-
-`...`
-
-### 4. Użyteczność
-
-Co poprawi się dzięki rozwiązaniu? Jaką decyzję, czynność lub proces będzie można wykonać lepiej?
-
-`...`
-
-### 5. Wstępne dane
-
-Jakich danych potrzebujemy? Gdzie mogą się znajdować?
-
-`...`
-
-### 6. Wstępny rezultat
-
-Co pokażemy na końcu? Przykładowo: aplikację, raport interaktywny, model predykcyjny, moduł analityczny, symulację lub narzędzie wspierające decyzję.
-
-`...`
-
-### 7. Kryterium sukcesu
-
-Po czym poznamy, że rozwiązanie działa poprawnie i jest użyteczne?
-
-`...`
-
-### 8. Członkowie zespołu
-
-| Osoba | Wstępna odpowiedzialność |
-|---|---|
-|  |  |
-|  |  |
-|  |  |
-|  |  |
-
-Role mogą się zmieniać. Ostateczny podział zadań ustalimy po doprecyzowaniu zakresu projektu.
+Wypełnijcie gotowy szablon w Wordzie: [Karta projektu](./Karta%20projektu.docx).
 
 ## Zasady pracy zespołowej
 
-- Każda osoba musi mieć własny, możliwy do sprawdzenia zakres odpowiedzialności.
-- Decyzje projektowe zapisujemy, a nie ustalamy wyłącznie ustnie.
+- **Decyzje projektowe zapisujemy, a nie ustalamy wyłącznie ustnie.**
 - Problemy i zadania dzielimy na małe elementy.
 - Każdy członek zespołu powinien znać ogólną ideę całego projektu, nie tylko własny fragment.
 - W kolejnych tygodniach będziemy pokazywać rzeczywisty postęp, a nie tylko opowiadać o planach.
-
-## Wykorzystanie narzędzi AI
-
-AI może pomóc w generowaniu pomysłów, doprecyzowaniu problemu, wskazaniu źródeł danych i porównaniu propozycji. Nie przyjmujcie odpowiedzi AI bez sprawdzenia.
-
-Na tym etapie zapiszcie:
-
-- z jakiego narzędzia korzystaliście;
-- do czego go użyliście;
-- które informacje wymagały dodatkowej weryfikacji.
-
-Ostateczny wybór problemu należy do zespołu.
-
-## Zadanie przed kolejnymi zajęciami
-
-Przygotujcie krótką, maksymalnie jednostronicową wersję karty projektu i odpowiedzcie na pytania:
-
-1. Czy problem jest wystarczająco konkretny?
-2. Czy wiadomo, kto jest odbiorcą rozwiązania?
-3. Jakie dane możemy realnie pozyskać?
-4. Jaki jest minimalny zakres pierwszej działającej wersji?
-5. Jakie są trzy największe ryzyka projektu?

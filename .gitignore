@@ -2,6 +2,7 @@
 private/
 *.doc
 *.docx
+!2026-2027/lab1/Karta projektu.docx
 *.pdf
 *.odt
 *.rtf
