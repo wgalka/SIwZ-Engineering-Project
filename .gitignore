@@ -1,0 +1,40 @@
+# Dokumenty źródłowe i materiały prywatne
+*.doc
+*.docx
+*.pdf
+*.odt
+*.rtf
+
+# Dane lokalne, eksporty i pliki tymczasowe
+tmp/
+temp/
+output/
+*.log
+*.bak
+*.swp
+
+# Sekrety i konfiguracja lokalna
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# Środowiska i zależności
+.venv/
+venv/
+env/
+node_modules/
+__pycache__/
+*.py[cod]
+
+# Pliki systemowe i edytorów
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Lokalny katalog roboczy na materiały niepublikowane
+qa_syllabus/
