@@ -1,4 +1,5 @@
 # Dokumenty źródłowe i materiały prywatne
+private/
 *.doc
 *.docx
 *.pdf

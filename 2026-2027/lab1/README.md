@@ -32,8 +32,6 @@ Dobry problem:
 
 ### Pytania pomocnicze
 
-Przed wyborem tematu odpowiedzcie na pytania:
-
 1. Kto ma problem?
 2. Na czym dokładnie polega problem?
 3. Jak obecnie jest rozwiązywany?
@@ -43,8 +41,6 @@ Przed wyborem tematu odpowiedzcie na pytania:
 7. Czy możemy wykonać wersję podstawową w czasie przeznaczonym na przedmiot?
 
 ## Przykładowe obszary
-
-Poniższe propozycje są punktami wyjścia, a nie gotowymi tematami:
 
 - analiza i prognozowanie zużycia energii;
 - analiza obłożenia sal lub zasobów uczelni;
@@ -58,8 +54,6 @@ Poniższe propozycje są punktami wyjścia, a nie gotowymi tematami:
 - porównanie metod klasyfikacji, regresji albo grupowania dla rzeczywistego problemu.
 
 ## Karta projektu
-
-Uzupełnijcie poniższą kartę. Na pierwszych zajęciach wystarczy wersja wstępna. Na kolejnych zajęciach temat zostanie doprecyzowany.
 
 ### 1. Nazwa robocza projektu
 
@@ -120,25 +114,17 @@ Role mogą się zmieniać. Ostateczny podział zadań ustalimy po doprecyzowaniu
 - Każdy członek zespołu powinien znać ogólną ideę całego projektu, nie tylko własny fragment.
 - W kolejnych tygodniach będziemy pokazywać rzeczywisty postęp, a nie tylko opowiadać o planach.
 
-Na tym etapie możecie użyć dowolnego narzędzia do zapisania karty projektu. Repozytorium GitHub założymy lub uporządkujemy na kolejnych zajęciach.
-
 ## Wykorzystanie narzędzi AI
 
-Możecie użyć AI do:
+AI może pomóc w generowaniu pomysłów, doprecyzowaniu problemu, wskazaniu źródeł danych i porównaniu propozycji. Nie przyjmujcie odpowiedzi AI bez sprawdzenia.
 
-- wygenerowania propozycji problemów w wybranym obszarze;
-- doprecyzowania opisu problemu;
-- wskazania możliwych źródeł danych;
-- porównania kilku pomysłów;
-- znalezienia słów kluczowych do dalszego wyszukiwania literatury.
-
-Nie przyjmujcie odpowiedzi AI bez sprawdzenia. Na tym etapie zapiszcie:
+Na tym etapie zapiszcie:
 
 - z jakiego narzędzia korzystaliście;
 - do czego go użyliście;
 - które informacje wymagały dodatkowej weryfikacji.
 
-AI może pomóc w generowaniu pomysłów, ale ostateczny wybór problemu należy do zespołu.
+Ostateczny wybór problemu należy do zespołu.
 
 ## Zadanie przed kolejnymi zajęciami
 
@@ -149,5 +135,3 @@ Przygotujcie krótką, maksymalnie jednostronicową wersję karty projektu i odp
 3. Jakie dane możemy realnie pozyskać?
 4. Jaki jest minimalny zakres pierwszej działającej wersji?
 5. Jakie są trzy największe ryzyka projektu?
-
-Na następnych zajęciach doprecyzujemy wymagania, zakres projektu i sposób oceny jego rezultatów.
