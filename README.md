@@ -17,19 +17,12 @@ Projekt zespołowy lub indywidualny obejmujący analizę problemu, dane, dobór 
 
 ## Laboratoria według specjalności
 
-### Wspólne materiały
-
-Karta projektu i przewodnik po narzędziach są wspólne dla obu specjalności:
-
-- [Lab 1: Wybór problemu i utworzenie zespołu](./2026-2027/lab1/README.md)
-- [Przewodnik po przydatnych narzędziach](./2026-2027/narzedzia/README.md)
-
 ### Specjalność: Systemy informatyczne w zarządzaniu (SIwZ)
 
 | Lab | Temat | Status |
 |---|---|---|
 | [Lab 1](./2026-2027/lab1/README.md) | Wybór problemu i zespołów | Dostępne |
-| [Lab 2](./2026-2027/lab2/README.md) | Doprecyzowanie problemu, użytkowników i wymagań | Dostępne |
+| [Lab 2](./2026-2027/lab2/README.md) | Analiza problemu i pozyskiwanie informacji | Dostępne |
 | [Lab 3](./2026-2027/lab3/README.md) | Literatura, podobne rozwiązania i metody | Dostępne |
 | [Lab 4](./2026-2027/lab4/README.md) | Źródła i przygotowanie danych | Dostępne |
 | [Lab 5](./2026-2027/lab5/README.md) | Architektura, UML/ERD i technologie | Dostępne |
@@ -44,7 +37,7 @@ Karta projektu i przewodnik po narzędziach są wspólne dla obu specjalności:
 | Lab | Temat | Status |
 |---|---|---|
 | [Lab 1](./2026-2027/lab1/README.md) | Wybór problemu i utworzenie zespołu | Wspólny |
-| [Lab 2](./2026-2027/adsg/lab2/README.md) | Doprecyzowanie problemu, danych i wymagań | Dostępne |
+| [Lab 2](./2026-2027/adsg/lab2/README.md) | Analiza problemu i pozyskiwanie informacji | Dostępne |
 
 Wersja Lab 2 dla ADSG kładzie nacisk na zjawisko społeczno-gospodarcze, jednostkę analizy, źródła i jakość danych, interpretację wyników oraz odpowiedzialne wykorzystanie metod analitycznych. Kolejne laboratoria można rozwijać w tej samej ścieżce specjalnościowej.
 

@@ -28,8 +28,15 @@ from urllib.request import Request, urlopen
 
 LAB_RULES: dict[str, dict[str, Any]] = {
     "lab2": {
-        "paths": ["README.md", "docs/problem.md", "docs/agent-log.md"],
-        "issue_min": 1,
+        "paths": [
+            "README.md",
+            "docs/problem.md",
+            "docs/data.md",
+            "data",
+        ],
+        "sample_required": True,
+        "commit_required": True,
+        "public_required": True,
     },
     "lab3": {
         "paths": ["docs/sources.md"],
@@ -142,10 +149,25 @@ def main() -> int:
     checks: list[Check] = []
     checks.append(Check("repozytorium", "PASS", f"{metadata.get('full_name', owner + '/' + repo)} jest dostępne"))
 
-    required_paths = [".course/members.json", *rules.get("paths", [])]
+    if rules.get("public_required"):
+        status = "PASS" if not metadata.get("private", True) else "FAIL"
+        details = "repozytorium publiczne" if status == "PASS" else "repozytorium jest prywatne"
+        checks.append(Check("widoczność repozytorium", status, details))
+
+    required_paths = rules.get("paths", [])
     for path in dict.fromkeys(required_paths):
         status = "PASS" if api.exists(owner, repo, path) else "FAIL"
-        checks.append(Check(f"plik: {path}", status, "znaleziono" if status == "PASS" else "brak wymaganego elementu"))
+        checks.append(Check(f"element: {path}", status, "znaleziono" if status == "PASS" else "brak wymaganego elementu"))
+
+    if rules.get("sample_required"):
+        contents = safe_get(api, f"/repos/{owner}/{repo}/contents/data", [])
+        sample_files = [
+            item for item in contents
+            if item.get("type") == "file" and item.get("name", "").lower().startswith("sample.")
+        ] if isinstance(contents, list) else []
+        status = "PASS" if sample_files else "FAIL"
+        details = "znaleziono próbkę sample.*" if status == "PASS" else "brak pliku sample.* w katalogu data"
+        checks.append(Check("próbka danych", status, details))
 
     issues = safe_get(api, f"/repos/{owner}/{repo}/issues?state=all&per_page=100", [])
     issues = [item for item in issues if "pull_request" not in item]
@@ -167,17 +189,11 @@ def main() -> int:
     commits = safe_get(api, f"/repos/{owner}/{repo}/commits?per_page=100", [])
     students = [value.strip() for value in args.students.split(",") if value.strip()]
     if not students:
-        members_text = api.read_text(owner, repo, ".course/members.json")
-        if members_text:
-            try:
-                members = json.loads(members_text).get("members", [])
-                students = [member.get("github", "").strip() for member in members if member.get("github")]
-            except json.JSONDecodeError:
-                checks.append(Check(".course/members.json", "FAIL", "plik nie zawiera poprawnego JSON"))
+        checks.append(Check("loginy członków", "WARN", "nie podano loginów parametrem --students; pominięto kontrolę wkładu osób"))
     for student in students:
         authored = [item for item in commits if (item.get("author") or {}).get("login", "").lower() == student.lower()]
         student_prs = [item for item in pulls if (item.get("user") or {}).get("login", "").lower() == student.lower()]
-        status = "PASS" if authored or student_prs else "FAIL"
+        status = "PASS" if authored else ("PASS" if student_prs and not rules.get("commit_required") else "FAIL")
         details = f"{len(authored)} commitów, {len(student_prs)} Pull Requestów"
         checks.append(Check(f"wkład: {student}", status, details))
 

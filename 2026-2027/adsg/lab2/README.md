@@ -1,237 +1,182 @@
-# Laboratorium 2: Doprecyzowanie problemu, danych i wymagań
+# Laboratorium 2: Analiza problemu i pozyskiwanie informacji
 
 **Specjalność: Analiza danych społeczno-gospodarczych**
 
 ## Cel zajęć
 
-Na tych zajęciach należy przejść od ogólnego pomysłu z Lab 1 do konkretnej specyfikacji pierwszej wersji rozwiązania. Zespół powinien opisać zjawisko lub problem językiem użytkownika, określić jednostkę analizy, dobrać wstępne źródła danych, zapisać pytania badawcze i wymagania oraz rozpocząć budowanie małego, działającego fragmentu rozwiązania.
+W ramach 90 minut należy określić, jakich danych wymaga projekt, skąd można je pozyskać oraz czy znalezione źródło rzeczywiście nadaje się do wykorzystania. Repozytorium ma dokumentować potrzeby informacyjne, ocenę źródła, sprawdzoną próbkę oraz wstępny pomysł realizacji.
 
-Po zajęciach każdy zespół powinien:
+## Zakres laboratorium
 
-- umieć opisać problem bez rozpoczynania od nazwy technologii;
-- znać użytkownika, interesariuszy, zjawisko i decyzję, którą ma wspierać rozwiązanie;
-- mieć określoną populację, jednostkę analizy, zakres czasu i przestrzeni;
-- mieć wstępnie ocenione źródła danych, ich jakość, dostępność i ograniczenia;
-- mieć zapisane pytania badawcze, wymagania oraz kryteria akceptacji;
-- mieć określony zakres pierwszej wersji rozwiązania;
-- mieć repozytorium i pierwszy działający fragment analizy, modelu albo interfejsu.
+Na zajęciach należy:
 
-## Od pomysłu do problemu badawczo-projektowego
+- sformułować problem i wskazać użytkownika oraz decyzję, którą ma wspierać analiza;
+- określić, jakie dane są potrzebne, w jakim zakresie i dla jakiej jednostki analizy;
+- zidentyfikować 4–6 wymagań i określić sposób ich sprawdzenia;
+- znaleźć źródło danych lub metadanych oraz wykonać próbę jego wykorzystania;
+- ocenić, czy definicje, okres i poziom agregacji odpowiadają potrzebom projektu;
+- zapisać braki, ograniczenia i wstępny pomysł realizacji.
 
-W Lab 1 zespół wybrał obszar i problem, który chce rozwiązać. Teraz należy sprawdzić, czy opis nie jest zbyt ogólny. Dobry opis problemu wskazuje, jakie zjawisko jest analizowane, kogo dotyczy, w jakiej sytuacji występuje oraz jaka decyzja lub działanie może zostać wsparte wynikiem analizy. Nie należy zaczynać od nazwy algorytmu, języka programowania ani listy ekranów.
+Nie należy w tym laboratorium budować dashboardu, modelu analitycznego ani workflow GitHub Actions. Należy skupić się na problemie, definicjach wskaźników, źródłach, jakości danych i możliwości ich powtórnego pobrania.
 
-„Zbudować dashboard danych społecznych” jest zadaniem technicznym, a nie problemem. Problemem może być na przykład trudność w porównaniu dostępności usług publicznych między gminami albo brak wiarygodnego sposobu wskazania obszarów wymagających dalszej analizy. Dopiero później można ustalić, czy najlepszym rozwiązaniem będzie raport, dashboard, mapa, notebook, model prognostyczny, API czy inne narzędzie.
+## Punkt wyjścia
 
-### Pytania pomocnicze
+Przed zajęciami zespół powinien mieć kartę projektu z Lab 1 oraz loginy GitHub wszystkich członków. Repozytorium należy utworzyć na początku zajęć.
 
-1. Jakie zjawisko społeczne lub gospodarcze jest analizowane?
-2. Kogo dotyczy zjawisko i kto będzie korzystał z wyniku?
-3. Jaka jest jednostka analizy: osoba, gospodarstwo domowe, przedsiębiorstwo, gmina, powiat, województwo, miesiąc czy rok?
-4. Jaka decyzja lub działanie może zostać wsparte wynikiem?
-5. Jak obecnie przygotowuje się taką informację?
-6. Jakie dane są rzeczywiście potrzebne i skąd można je pozyskać?
-7. Po czym można poznać, że analiza jest użyteczna i powtarzalna?
+## Rezultat pracy
 
-## Weryfikacja zgodności ze specjalnością
+W repozytorium powinny znajdować się:
 
-Przed zatwierdzeniem problemu należy sprawdzić, czy projekt wpisuje się w profil specjalności **Analiza danych społeczno-gospodarczych**. Projekt może dotyczyć rynku pracy, edukacji, zdrowia publicznego, demografii, przedsiębiorczości, transportu, mieszkalnictwa, ubóstwa, usług publicznych, konsumpcji lub innego obszaru, jeżeli analizuje rzeczywiste zjawisko przy użyciu odpowiednich danych.
+```text
+projekt-zespolu/
+├── data/
+│   └── sample.csv lub sample.json
+├── docs/
+│   ├── problem.md
+│   └── data.md
+└── README.md
+```
 
-Problem można uznać za zgodny ze specjalnością, jeżeli:
+Próbka powinna pochodzić z rzeczywistego źródła. Jeżeli źródło zawiera dane chronione, należy zapisać najmniejszy dozwolony fragment, dane zanonimizowane albo odpowiedź API bez danych osobowych oraz opisać ograniczenie w `docs/data.md`. Nie należy umieszczać w publicznym repozytorium karty projektu, danych osobowych, haseł ani kluczy API.
 
-- wskazano konkretne zjawisko społeczne lub gospodarcze oraz grupę, obszar albo organizację, których ono dotyczy;
-- określono jednostkę analizy, zakres czasu i zakres przestrzenny;
-- sformułowano pytanie badawcze albo decyzję, którą ma wspierać wynik;
-- wskazano mierzalne zmienne lub wskaźniki oraz ich źródła;
-- dobrano metodę odpowiednią do pytania, danych i dostępnego czasu;
-- można ocenić jakość, kompletność, porównywalność i możliwe obciążenia danych;
-- określono mierzalne kryteria oceny wyniku oraz ograniczenia interpretacji.
+## Gdzie szukać danych?
 
-Samo „zbudowanie dashboardu”, „zastosowanie sztucznej inteligencji” albo „wyświetlanie danych GUS” nie wystarcza. Należy wyjaśnić, jakie pytanie zostanie dzięki temu rozstrzygnięte, dla kogo wynik będzie użyteczny i jakie decyzje można podejmować na jego podstawie. Nie należy utożsamiać korelacji z przyczynowością ani przedstawiać rankingu jako obiektywnej oceny osób lub obszarów bez omówienia przyjętych wskaźników.
+| Kategoria danych | Przykładowe źródła | Przykład zastosowania | Co należy sprawdzić |
+|---|---|---|---|
+| Urządzenia, czujniki i usługi | liczniki, aplikacje usług, eksport CSV, API | zużycie energii, mobilność, aktywność użytkowników | czy dane można pobrać, jakie są uprawnienia, jednostki i częstotliwość pomiarów |
+| Dane meteorologiczne | [Open-Meteo](https://open-meteo.com/en/docs), [OpenWeather](https://openweathermap.org/api), [IMGW](https://danepubliczne.imgw.pl/) | pogoda jako czynnik wpływający na zachowania lub wyniki gospodarcze | lokalizację pomiaru, okres, jednostki, dokładność i ewentualny klucz API |
+| Mapy, adresy i geolokalizacja | [OpenStreetMap](https://www.openstreetmap.org/), [Overpass Turbo](https://overpass-turbo.eu/), [Geoportal](https://www.geoportal.gov.pl/), Nominatim | rozmieszczenie usług, odległości, dostępność przestrzenna i podział administracyjny | kompletność obiektów, układ współrzędnych, aktualność, limity i licencję |
+| Transport publiczny i mobilność | miejskie portale danych, pliki GTFS/GTFS-RT, [Mobility Database](https://mobilitydatabase.org/), OpenStreetMap | przystanki, trasy, rozkłady, przejazdy i dostępność transportu | obszar miasta, wersję rozkładu, zakres danych, format i możliwość regularnego pobierania |
+| Ludność i statystyki publiczne | [GUS — Bank Danych Lokalnych](https://bdl.stat.gov.pl/bdl/start), [dane.gov.pl](https://dane.gov.pl/), BIP, portale miejskie | liczba mieszkańców, migracje, bezrobocie, gospodarstwa domowe i usługi publiczne | definicję wskaźnika, jednostkę, poziom agregacji, okres i metodologię |
+| Gospodarka, finanse i kursy walut | [API NBP](https://api.nbp.pl/), [ECB Data Portal](https://data.ecb.europa.eu/), GUS | kursy walut, inflacja, stopy procentowe, ceny i wskaźniki gospodarcze | walutę, datę obowiązywania, jednostkę, sposób obliczenia i aktualność |
+| Statystyki międzynarodowe | [Eurostat](https://ec.europa.eu/eurostat/web/main/data/database), [OECD Data Explorer](https://data-explorer.oecd.org/), [World Bank Open Data](https://data.worldbank.org/), [UN Data](https://data.un.org/) | porównanie państw, regionów i okresów | definicje wskaźników, jednostki, okresy, poziom agregacji i porównywalność |
+| Środowisko i jakość powietrza | [GIOŚ](https://powietrze.gios.gov.pl/), [OpenAQ](https://openaq.org/), dane IMGW | jakość powietrza, temperatura i wpływ środowiska na zjawiska społeczne | stację pomiarową, metodę pomiaru, braki, częstotliwość i aktualność |
+| Obserwacja Ziemi | [Copernicus Data Space](https://dataspace.copernicus.eu/), dane satelitarne | pokrycie terenu, susza, zmiany przestrzenne i rozwój obszarów | rozdzielczość, zachmurzenie, zasięg, datę pozyskania i licencję |
+| Otwarte katalogi danych | [Otwarte Dane](https://dane.gov.pl/), [Europejski Portal Danych](https://data.europa.eu/en) | wyszukanie zbioru administracji publicznej lub samorządu | pierwotnego wydawcę, format, licencję, datę aktualizacji i sposób pobrania |
+| Publiczne zbiory do analizy | [Kaggle Datasets](https://www.kaggle.com/datasets), [UCI Machine Learning Repository](https://archive.ics.uci.edu/), [Hugging Face Datasets](https://huggingface.co/datasets), [Our World in Data](https://ourworldindata.org/) | dane do ćwiczeń, porównań, klasyfikacji lub prototypu | źródło pierwotne, sposób przetworzenia, jakość, aktualność, licencję i wersję zbioru |
+| Rejestry, raporty i dane instytucji | raporty roczne, rejestry publiczne, sprawozdania, dane samorządów | opis zjawiska, porównanie jednostek i odtworzenie trendu | właściciela danych, definicje, kompletność, zmiany metodologii i możliwość powtórzenia pobrania |
+| Dokumentacja źródła i metadane | opis zmiennych, słownik pojęć, metodologia, dokumentacja API | poprawna interpretacja zmiennych i porównanie okresów | czy dokument wyjaśnia znaczenie pól, jednostki, agregację i sposób obliczeń |
+| Badanie własne | ankieta, wywiad, obserwacja, pomiar | uzupełnienie brakującej informacji lub sprawdzenie założenia | dobór próby, zgodę, anonimizację, koszt, powtarzalność i możliwe błędy |
 
-## Myślenie krytyczne i kreatywne
+Należy wybrać źródło dostępne dla zespołu. Sam link do strony nie jest dowodem, że dane można wykorzystać. Nie należy tworzyć własnej ankiety ani zbierać danych jednostkowych, jeżeli odpowiedź można uzyskać z wiarygodnych danych zagregowanych.
 
-Nie należy rozpoczynać pracy od pytania „jaki model albo dashboard zbudować?”. Najpierw trzeba sprawdzić, czy problem można rozwiązać prościej, taniej i w sposób bardziej wiarygodny. W wielu projektach wystarczy dobrze opisany zbiór danych, powtarzalny notebook, raport, mapa albo prosty model bazowy. Mocny komputer, płatna usługa lub skomplikowany model nie są celem samym w sobie.
+## Jak wykorzystać wybrane dane?
 
-### Pytania, które należy zadać przed wyborem metody i technologii
+Po sprawdzeniu źródeł danych dla swojego projektu należy zapisać, jak można je wykorzystać. Zespół powinien wskazać jeden wybrany wariant — analizę pliku, pobieranie danych z API, mapę, raport, notebook lub prosty skrypt — oraz uzasadnić wybór dostępnością i ograniczeniami danych. Nie należy na tym etapie budować rozwiązania.
 
-| Obszar | Pytania krytyczne | Możliwe kierunki rozwiązania |
+Każdy członek zespołu powinien przeanalizować co najmniej jedno źródło, jeden aspekt danych albo jeden etap samodzielnego pozyskiwania danych i zapisać wynik swojej pracy w repozytorium. Jeżeli dane są zbierane przez zespół, pracę można podzielić według miejsca, terminu, rodzaju pomiaru, grupy obserwacji, przygotowania formularza, anonimizacji albo kontroli jakości. Nie trzeba przygotowywać osobnych wariantów realizacji dla każdej osoby — zespół wspólnie wybiera jeden wariant.
+
+Jeżeli projekt wymaga zebrania danych własnych, w `docs/data.md` należy umieścić tabelę:
+
+| Osoba | Co zbiera lub przygotowuje? | Zakres: miejsce, okres lub zmienna | Metoda | Liczba obserwacji lub rezultat | Ograniczenia |
+|---|---|---|---|---|---|
+| login | ... | ... | ... | ... | ... |
+
+Nie należy wpisywać do publicznego repozytorium danych osobowych. Należy zapisać dane zagregowane lub zanonimizowane oraz opisać sposób ich pozyskania.
+
+| Wariant | Kiedy można go zastosować? | Co należy sprawdzić? |
 |---|---|---|
-| Pytanie badawcze | Czy chcemy opisać zjawisko, porównać obszary, prognozować wartość, wykryć anomalię czy wyjaśnić zależność? | Statystyki opisowe, porównanie wskaźników, prognoza, klasyfikacja, grupowanie albo analiza przestrzenna. |
-| Jednostka analizy | Czy porównujemy osoby, gospodarstwa, przedsiębiorstwa, gminy, powiaty czy okresy? Czy jednostki są porównywalne? | Normalizacja na mieszkańca, pracownika lub przedsiębiorstwo; podział na grupy; jawne określenie poziomu agregacji. |
-| Dane | Jakie dane są rzeczywiście potrzebne? Kto je posiada? Jak często są aktualizowane? Czy można odtworzyć pobranie danych? | GUS/BDL, Eurostat, dane.gov.pl, dane samorządowe, otwarte API, eksport instytucjonalny, ankieta albo dane syntetyczne. |
-| Jakość | Ile jest braków? Czy zmieniała się definicja wskaźnika? Czy dane są obciążone doborem próby albo zmianą metodologii? | Profil jakości, tabela braków, dokumentacja metadanych, analiza wrażliwości i porównanie z drugim źródłem. |
-| Koszt i sprzęt | Czy potrzebny jest mocny komputer, GPU, chmura lub płatne API? Czy obliczenia można wykonać na laptopie? | Notebook, skrypt uruchamiany okresowo, model bazowy, obliczenia lokalne albo mały serwis zamiast rozbudowanej infrastruktury. |
-| Metoda | Czy bardziej złożony model wnosi wartość względem średniej, trendu, regresji lub prostego rankingu? | Najpierw baseline, następnie jedna metoda porównawcza i dopiero później rozszerzenia. |
-| Interpretacja | Czy wynik opisuje współwystępowanie, czy pozwala wnioskować o przyczynie? Jakie czynniki mogą zniekształcać wynik? | Ostrożny język, przedziały niepewności, kontrola zmiennych, analiza ograniczeń i unikanie nieuzasadnionych wniosków przyczynowych. |
-| Prywatność i etyka | Czy dane mogą ujawniać informacje o osobach lub małych grupach? Czy wynik może prowadzić do stygmatyzacji? | Agregacja, anonimizacja, minimalizacja danych, ograniczenie dostępu i opis ryzyka niewłaściwej interpretacji. |
-| Rezultat | Czy użytkownik otrzymuje informację, na podstawie której może wykonać konkretne działanie? | Raport, mapa, ranking, prognoza z przedziałem, alert, rekomendacja albo narzędzie wspomagania decyzji. |
+| Analiza pliku CSV lub XLSX | gdy instytucja publikuje gotowy zbiór | możliwość pobrania, format, definicje zmiennych i powtarzalność |
+| Pobieranie danych z API | gdy źródło udostępnia API | uwierzytelnianie, limity, zakres odpowiedzi i stabilność API |
+| Powtarzalny notebook | gdy wystarczy cyklicznie uruchamiać analizę | czy dane wejściowe i kroki czyszczenia są zapisane |
+| Prosty skrypt aktualizujący dane | gdy źródło publikuje nowe wersje pliku | sposób wykrywania zmian i zapis daty pobrania |
+| Połączenie dwóch źródeł | gdy jedno źródło nie odpowiada na całe pytanie | wspólną jednostkę, okres, klucze i porównywalność |
+| Dane testowe lub symulowane | gdy rzeczywisty dostęp wymaga zgody | które elementy są rzeczywiste, a które pozostają założeniem |
 
-Przed zebraniem własnej ankiety należy sprawdzić, czy potrzebne informacje nie są już dostępne w publicznym rejestrze, raporcie, API albo systemie instytucji. Jeżeli ankieta jest konieczna, należy uzasadnić dobór próby, określić sposób ograniczenia stronniczości i nie zbierać danych osobowych, które nie są potrzebne do realizacji celu. Jeżeli wystarczą dane zagregowane, nie należy pozyskiwać danych jednostkowych.
+Należy zapisać w `docs/data.md` jeden wybrany pomysł oraz co najmniej jedną odrzuconą możliwość. Odrzucenie powinno wynikać z jakości danych, braku porównywalności, kosztu, ograniczeń dostępu albo niewystarczającej wartości dla użytkownika.
 
-Nie należy zakładać, że najbardziej rozbudowany model da najlepszy rezultat. Trzeba porównać co najmniej trzy warianty, na przykład: **analizę publicznych danych gotowych do użycia**, **wykorzystanie istniejącego eksportu lub rejestru instytucji** oraz **samodzielne zebranie danych w ankiecie albo pomiarze**. Następnie należy wskazać, który wariant zostaje w MVP i dlaczego.
+## Przebieg zajęć — 90 minut
 
-## Wykorzystywanie agentów AI
+### 1. Repozytorium i podział pracy — 0–15 min
 
-Agent AI może wspierać analizę problemu, wyszukiwanie słów kluczowych, przygotowanie wariantów pytań, planowanie eksperymentu, tworzenie prototypu, pisanie testów i przegląd rozwiązania. Nie powinien jednak samodzielnie potwierdzać prawdziwości źródeł, jakości danych, poprawności wniosków ani zgodności projektu z zasadami ochrony prywatności.
+Należy:
 
-Pracę z agentem należy prowadzić w następujących krokach:
+1. utworzyć publiczne wspólne repozytorium GitHub i dodać członków jako współpracowników;
+2. utworzyć `README.md` z nazwą projektu, specjalnością, krótkim opisem problemu, zespołem i linkami do `docs/problem.md` oraz `docs/data.md`;
+3. utworzyć katalog `data/`;
+4. wykonać pierwszy commit.
 
-1. Opisać zjawisko, użytkownika, jednostkę analizy, zakres danych, ograniczenia i oczekiwany rezultat.
-2. Poprosić agenta o co najmniej trzy warianty rozwiązania, w tym wariant oparty na prostym modelu bazowym i wariant niewymagający zakupu sprzętu ani płatnej usługi.
-3. Poprosić o wskazanie założeń, możliwych obciążeń, braków danych, kosztów i sytuacji, w których każdy wariant zawiedzie.
-4. Samodzielnie sprawdzić oryginalne źródła, definicje wskaźników, licencje i daty aktualizacji.
-5. Wybrać wariant oraz zapisać uzasadnienie, a następnie poprosić agenta o przygotowanie małego prototypu lub testu.
-6. Sprawdzić kod, dane i wynik, wykonać zmianę na branchu, uruchomić testy i poddać Pull Request przeglądowi drugiej osoby.
+Pracę należy podzielić według zadań merytorycznych, a nie przypisywać jeden plik jednej osobie. Każdy członek zespołu powinien sprawdzić inne źródło, aspekt danych albo etap ich samodzielnego pozyskania. Jedna osoba może przygotować początkowy `README.md`, a inna szkic `docs/problem.md`; pozostali analizują źródła i przygotowują próbkę w `data/`. Wyniki tych prac należy wpisywać do wspólnego `docs/data.md` kolejno: przed edycją trzeba pobrać najnowszą wersję repozytorium, dodać własny wiersz lub sekcję, wykonać commit i udostępnić zmiany pozostałym osobom. Nie należy jednocześnie edytować tego samego pliku.
 
-Przykładowe polecenie dla agenta:
+### 2. Problem i potrzeby informacyjne — 15–35 min
 
-> Rozważ analizę różnic w dostępie do usług publicznych między powiatami. Zaproponuj trzy warianty: opisowy ranking oparty na publicznych danych, prosty model prognostyczny oraz wariant wykorzystujący dane z ankiety. Dla każdego określ jednostkę analizy, źródła danych, koszty, ryzyka obciążenia, sposób walidacji i minimalny prototyp. Nie zakładaj przyczynowości i nie wybieraj rozwiązania za zespół.
+Należy utworzyć `docs/problem.md` i uzupełnić:
 
-W `docs/agent-log.md` należy zapisać datę, wykorzystane narzędzie, cel rozmowy, najważniejsze propozycje agenta, sprawdzone źródła, decyzję zespołu oraz sposób weryfikacji. Nie należy kopiować bezkrytycznie kodu ani umieszczać w rozmowie danych osobowych, poufnych danych instytucji, haseł i kluczy dostępu.
+```markdown
+# Problem projektu
+## Zjawisko, populacja i jednostka analizy
+## Użytkownik i pytanie analityczne
+## Zakres czasu i obszaru
+## Potrzebne dane
+## Założenia i pytania otwarte
+## Wymagania
+```
 
-## Przykład analizy problemu
+W sekcji „Wymagania” należy umieścić tabelę:
 
-Poniższy przykład jest anonimowym przykładem dydaktycznym. Zawiera wszystkie informacje potrzebne do wykonania ćwiczenia, dlatego nie wymaga dostępu do karty żadnego zespołu.
+| ID | Wymaganie | Kryterium sprawdzenia | Źródło lub uzasadnienie | Status | Osoba |
+|---|---|---|---|---|---|
+| R1 | Użytkownik powinien ... | Można sprawdzić, czy ... | karta / rozmowa / źródło | potwierdzone / założenie / pytanie | login |
 
-### Proponowany problem
+Należy zapisać od 4 do 6 wymagań. Każde wymaganie powinno opisywać potrzebę użytkownika, zakres analizy albo ograniczenie danych, a nie nazwę technologii. W `docs/problem.md` należy dodatkowo umieścić tabelę potrzeb informacyjnych:
 
-Rozważany przykład dotyczy narzędzia wspomagającego wskazanie powiatów, w których warto przeanalizować dostęp do usług aktywizacji zawodowej. Narzędzie wykorzystuje publiczne dane o bezrobociu, liczbie ofert pracy, strukturze ludności i dostępności usług. Ma umożliwiać porównanie powiatów w kilku latach, pokazanie zmian wskaźników oraz przygotowanie listy obszarów wymagających dalszej analizy. Wynik nie ma samodzielnie rozstrzygać, że dany powiat jest „gorszy”, ani dowodzić, że jedna obserwowana zmienna powoduje inną.
+| Informacja | Do czego jest potrzebna? | Minimalny zakres | Jednostka i okres | Czy jest dostępna? |
+|---|---|---|---|---|
+| ... | ... | ... | ... | tak / częściowo / nie |
 
-### Ocena zgodności ze specjalnością
+Co najmniej jedna pozycja powinna mieć status `częściowo` albo `nie`, aby wskazać rzeczywisty problem do rozwiązania.
 
-Problem dobrze wpisuje się w specjalność **Analiza danych społeczno-gospodarczych**, ponieważ:
+### 3. Pozyskanie, ocena i pomysł realizacji — 35–80 min
 
-- dotyczy rynku pracy i dostępu do usług publicznych;
-- wskazuje jednostkę analizy — powiat — oraz możliwość porównania jej w czasie;
-- wykorzystuje mierzalne wskaźniki pochodzące z publicznych źródeł;
-- prowadzi do konkretnego rezultatu: wskazania obszarów wymagających dalszego rozpoznania;
-- wymaga oceny braków, porównywalności, skali i jakości danych;
-- pozwala porównać prosty wskaźnik bazowy z inną metodą oraz omówić ograniczenia interpretacji.
+Należy:
 
-To jest dobry kierunek. Należy jednak wyraźnie zaznaczyć, że wynik jest narzędziem do wstępnego ustalania priorytetów analitycznych, a nie automatyczną decyzją o przyznaniu środków ani oceną mieszkańców powiatu.
+1. wskazać co najmniej dwa możliwe źródła danych lub metadanych;
+2. wybrać jedno źródło podstawowe i wykonać próbę pobrania danych;
+3. pobrać rzeczywistą próbkę do `data/sample.csv`, `data/sample.json` albo innego jasno nazwanego pliku;
+4. otworzyć próbkę w VS Code i sprawdzić nazwy pól, liczbę rekordów, kodowanie, format dat, jednostki, poziom agregacji oraz brakujące wartości;
+5. ocenić, czy źródło wystarcza do realizacji wymagań;
+6. zapisać w `docs/data.md` wybrany pomysł realizacji, braki i plan awaryjny.
 
-### Przykłady elementów sformułowanych poprawnie
+W `docs/data.md` należy umieścić tabelę źródeł:
 
-Poniższe przykłady pokazują, jakie informacje warto uznać za wystarczająco konkretne:
+| Źródło | Co można pobrać? | Czy odpowiada potrzebom? | Dowód sprawdzenia | Braki lub ryzyko |
+|---|---|---|---|---|
+| ... | ... | tak / częściowo / nie | link, plik lub wynik próby | ... |
 
-- **Zjawisko i użytkownik:** „Jednostka samorządowa porównuje dostęp do usług aktywizacji zawodowej w powiatach”. Wskazano obszar i odbiorcę wyniku.
-- **Jednostka analizy:** „Podstawową jednostką jest powiat, a obserwacje obejmują lata 2019–2025”. Można określić zakres i porównywalność danych.
-- **Dane:** „Dla każdego powiatu zapisuje się stopę bezrobocia, liczbę ofert pracy na 1000 mieszkańców, liczbę osób bezrobotnych oraz liczbę punktów obsługi”. Można sprawdzić definicje i przygotować tabelę danych.
-- **Rezultat:** „Raport pokazuje wartości wskaźników, zmianę rok do roku, ranking według jawnej reguły i ostrzeżenia o brakach danych”. Wynik można zademonstrować i zweryfikować.
-- **Wkład osoby:** „Przygotować skrypt, który pobiera jeden wskazany zestaw danych, zapisuje źródło i datę pobrania oraz zgłasza brakujące powiaty”. Zadanie kończy się konkretnym artefaktem.
+Następnie należy opisać wybrane źródło:
 
-### Przykłady elementów wymagających poprawy
-
-| Sformułowanie wymagające poprawy | Dlaczego jest niewystarczające | Jak poprawić |
-|---|---|---|
-| „Zrobić dashboard społeczeństwa” | Nie wiadomo, jakie zjawisko, dla kogo i w jakiej decyzji ma znaczenie. | Wskazać zjawisko, jednostkę analizy, użytkownika i rezultat, na przykład porównanie dostępu do usług między powiatami. |
-| „Wykorzystać dane GUS” | GUS udostępnia wiele zbiorów o różnych definicjach, zakresach i częstotliwości. | Podać konkretną tabelę lub API, zmienne, lata, jednostkę, licencję i sposób zapisania metadanych. |
-| „Znaleźć przyczyny bezrobocia” | Sam opis korelacji nie dowodzi przyczynowości, a zakres problemu jest zbyt szeroki. | Ograniczyć pytanie do związku między wybranymi zmiennymi albo zaprojektować metodę, która uzasadnia ostrożny wniosek przyczynowy. |
-| „Wytrenować model AI przewidujący ubóstwo” | Brak jednostki, zmiennej celu, danych, metody bazowej i kryterium oceny. | Określić populację, zmienną celu, horyzont prognozy, baseline, metryki i ograniczenia etyczne. |
-| „Przeprowadzić ankietę wśród studentów i wnioskować o całym społeczeństwie” | Próba może nie reprezentować badanej populacji. | Ograniczyć wniosek do badanej grupy albo uzasadnić dobór próby i wskazać ograniczenia generalizacji. |
-| „Stworzyć ranking najgorszych gmin” | Etykieta może stygmatyzować, a wynik zależy od arbitralnie wybranych wskaźników. | Nazwać wynik neutralnie, ujawnić regułę agregacji, pokazać niepewność i opisać, że ranking służy do dalszej analizy. |
-
-### Jak poprawić opis krok po kroku?
-
-1. Zastąpić ogólną nazwę dashboardu opisem zjawiska, użytkownika i decyzji.
-2. Określić jednostkę analizy, populację, okres i obszar.
-3. Przygotować najmniejszy zestaw danych pozwalający wykonać powtarzalną demonstrację offline.
-4. Sprawdzić definicje zmiennych, braki, zmianę metodologii, licencję i datę pobrania.
-5. Zdefiniować metodę bazową, główny rezultat i sposób oceny wyniku.
-6. Zapisać ograniczenia interpretacji, w szczególności ryzyko błędnej generalizacji i utożsamiania korelacji z przyczynowością.
-7. Przenieść dodatkowe źródła danych, metody i funkcje do listy rozszerzeń.
-
-### Przykład poprawionej specyfikacji
-
-| Pole | Wersja doprecyzowana |
+| Element | Wynik sprawdzenia |
 |---|---|
-| Nazwa robocza | Analiza zmian dostępu do usług aktywizacji zawodowej w powiatach |
-| Problem | Osoba planująca działania publiczne potrzebuje porównać powiaty pod względem wybranych wskaźników rynku pracy i dostępu do usług. Aktualne zestawienia nie pokazują jednocześnie zmian w czasie, braków danych i różnic między wskaźnikami. |
-| Użytkownik | Pracownik jednostki publicznej lub organizacji analizującej potrzeby lokalnych usług rynku pracy. |
-| Pytanie analityczne | Które powiaty wymagają dalszego rozpoznania ze względu na niekorzystny poziom lub trend wybranych wskaźników? |
-| Jednostka i zakres | Powiat, lata 2019–2025, dane roczne; w MVP analizowane są trzy wybrane wskaźniki. |
-| Dane MVP | Publiczne dane o stopie bezrobocia, ofertach pracy i liczbie osób bezrobotnych, wraz z metadanymi, datą pobrania i informacją o brakach. |
-| Rezultat MVP | Powtarzalna tabela lub dashboard pokazujący wskaźniki, zmianę w czasie, jawny wynik metody bazowej i ostrzeżenia o ograniczeniach. |
-| Poza zakresem | Automatyczne decyzje o przyznaniu środków, dane osobowe, ustalanie przyczyn bezrobocia na podstawie samej korelacji, prognoza dla wszystkich regionów i integracja z systemem urzędu. |
-| Kryterium sukcesu | Dla ustalonego zestawu powiatów i lat system odtwarza wynik z pliku źródłowego, pokazuje definicje wskaźników, oznacza braki danych oraz umożliwia sprawdzenie reguły porównania z metodą bazową. |
+| Źródło i właściciel | ... |
+| Link lub sposób dostępu | ... |
+| Data pobrania | ... |
+| Format i kodowanie | ... |
+| Liczba rekordów w próbce | ... |
+| Nazwy pól i ich znaczenie | ... |
+| Format dat, jednostki i poziom agregacji | ... |
+| Brakujące wartości lub rekordy | ... |
+| Zmiany metodologii lub definicji | ... |
+| Ograniczenia dostępu/licencji | ... |
+| Brakujące dane | ... |
+| Plan awaryjny | ... |
 
-Tak sformułowany problem pokazuje związek między zjawiskiem społeczno-gospodarczym, danymi, metodą, systemem informatycznym i użytkownikiem wyniku. Rozszerzenie o dane miesięczne, dodatkową metodę, mapę lub analizę wrażliwości można zapisać jako zadanie opcjonalne, ale nie powinno ono zagrażać ukończeniu MVP.
+| Wybrany pomysł realizacji | ... |
+| Odrzucony pomysł i powód | ... |
 
-## Zadanie analizy przykładowej karty
+Jeżeli pobranie danych nie jest możliwe, należy zapisać w `docs/data.md` dokładny powód, wynik próby dostępu, wymagane uprawnienia oraz najmniejszy dostępny dowód, na przykład metadane, schemat albo odpowiedź błędu. Nie należy deklarować, że źródło jest dostępne, bez wykonania próby pobrania.
 
-1. Przeczytać opis przykładowego problemu i zaznaczyć elementy dotyczące zjawiska, użytkownika, jednostki analizy, danych, metody i rezultatu.
-2. Wskazać trzy elementy, które świadczą o zgodności ze specjalnością Analiza danych społeczno-gospodarczych.
-3. Wskazać co najmniej trzy ryzyka albo niejasności dotyczące jakości danych, reprezentatywności, prywatności lub interpretacji.
-4. Przepisać pytanie analityczne w jednym zdaniu, uwzględniając jednostkę analizy, zakres czasu i mierzalny rezultat.
-5. Podzielić zakres na trzy grupy: **MVP**, **rozszerzenie** i **poza zakresem**.
-6. Zaproponować co najmniej trzy kryteria akceptacji, które można sprawdzić na danych testowych.
-7. Zapisać wynik analizy w `docs/problem.md`, utworzyć Issue przypisane do osoby wykonującej zadanie i dodać link do `docs/evidence.md`.
+### 4. Integracja i sprawdzenie rezultatów — 80–90 min
 
-## Użytkownik, populacja i zakres pierwszej wersji
+Należy:
 
-Należy opisać jednego głównego użytkownika oraz jedną najważniejszą sytuację użycia. Jeżeli rozwiązanie ma kilku odbiorców, pozostałe role należy zapisać jako drugorzędne. Należy także określić, czy wniosek dotyczy całej populacji, określonej próby, grupy jednostek czy wyłącznie analizowanego zbioru.
+1. pobrać najnowszą wersję repozytorium przed zapisaniem zmian;
+2. sprawdzić, czy README prowadzi do obu dokumentów;
+3. sprawdzić, czy próbka znajduje się w katalogu `data/` i można ją otworzyć;
+4. wykonać commit własnej części pracy;
+5. sprawdzić historię commitów i obecność wkładu każdego członka zespołu.
 
-Ustalić także, co wchodzi do pierwszej wersji, a co pozostaje poza zakresem. Poza zakresem nie znaczy „nigdy tego nie zrobimy”. Oznacza tylko, że zespół nie będzie tego realizował w pierwszym działającym przyroście.
-
-## Dane, wymagania i kryteria akceptacji
-
-Wymaganie opisuje potrzebę lub zachowanie rozwiązania. Zadanie opisuje pracę, którą trzeba wykonać. Kryterium akceptacji pozwala sprawdzić, czy wymaganie zostało spełnione.
-
-Przykład:
-
-- wymaganie: użytkownik może wyświetlić wartość wskaźnika dla wybranego powiatu i roku;
-- zadanie: przygotować tabelę danych, filtr oraz widok wyniku;
-- kryterium akceptacji: dla wskazanego powiatu i roku system pokazuje wartość ze źródłowego pliku, jednostkę, definicję wskaźnika i informację o braku danych, jeżeli wartość jest niedostępna.
-
-Każde najważniejsze wymaganie należy zapisać tak, aby można było je później przetestować. Należy unikać sformułowań typu „analiza ma być profesjonalna”, „model ma być inteligentny” albo „dane mają być dobre”, jeżeli nie wiadomo, jak sprawdzić ich spełnienie.
+Każdy członek zespołu powinien mieć własny, możliwy do wskazania rezultat: opis problemu, wymaganie, analizę źródła, weryfikację próbki albo opis brakujących danych.
 
 ## Przydatne narzędzia
 
-Zrzuty demonstracyjne i opis pełnego przepływu znajdują się w [przewodniku po narzędziach](../../narzedzia/README.md#zrzuty-demonstracyjne). Podczas zajęć należy pokazać narzędzie, wykonać przykład na repozytorium prowadzącego, a następnie pozostawić studentom czas na wykonanie analogicznego zadania.
-
-1. **GitHub Issues** — utworzyć zgłoszenie, opisać pytanie analityczne, kryteria akceptacji, przypisać osobę i dodać etykietę.
-2. **GitHub Projects** — utworzyć prosty widok tablicy, dodać statusy i połączyć zadania z repozytorium.
-3. **VS Code** — pokazać pracę z plikami Markdown, notebookiem, terminalem i strukturą repozytorium.
-4. **Jupyter, Google Colab lub Kaggle** — przygotować małą tabelę, wykonać kontrolę braków i pokazać jeden wynik analizy.
-5. **GUS/BDL, Eurostat, dane.gov.pl lub API instytucji** — pokazać, jak sprawdzić definicję wskaźnika, metadane, zakres dat i sposób pobrania danych.
-6. **diagrams.net lub Mermaid** — narysować przepływ od źródła danych przez przygotowanie i analizę do wyniku dla użytkownika.
-7. **Agent AI** — wygenerować warianty pytań i metod, poprosić o krytykę założeń oraz przygotować mały prototyp lub test; decyzję i wynik weryfikacji zapisać w repozytorium.
-
-Podczas pokazu należy przedstawić nie tylko miejsce, w którym znajduje się funkcja, lecz także moment, w którym warto jej użyć. Na przykład pytanie analityczne można najpierw zapisać w karcie projektu, następnie zamienić na Issue, powiązać ze źródłem danych, wykonać w notebooku i poddać przeglądowi w Pull Requeście.
-
-## Pierwszy działający fragment
-
-Nie należy czekać z analizą do końca semestru. Należy zbudować cienki przepływ obejmujący źródło lub mały plik danych, jedną kontrolę jakości, jedną istotną operację oraz widoczny wynik. Może to być tabela wskaźników, wykres trendu, mapa, notebook, komenda w terminalu, endpoint API albo prosty ekran aplikacji.
-
-Pierwszy fragment nie musi obsługiwać wszystkich przypadków. Powinien jednak dać zespołowi odpowiedź, czy dane są dostępne, czy wybrana metoda jest wykonalna i czy rezultat odpowiada na pytanie użytkownika.
-
-## Zadania samodzielne
-
-1. Sformułować problem w jednym zdaniu, bez opisywania technologii.
-2. Opisać głównego użytkownika, analizowane zjawisko, jednostkę analizy, populację oraz zakres czasu i przestrzeni.
-3. Zapisać pytanie analityczne, 3–5 wymagań i 2–3 kryteria akceptacji.
-4. Określić zakres pierwszej wersji oraz elementy pozostające poza zakresem.
-5. Przygotować tabelę źródeł danych zawierającą właściciela, zakres, definicje, licencję, datę pobrania, braki i ryzyka.
-6. Porównać trzy warianty pozyskania danych: publiczne dane gotowe, istniejący eksport lub rejestr oraz samodzielną ankietę albo pomiar.
-7. Wskazać metodę bazową i uzasadnić, dlaczego bardziej złożony model jest albo nie jest potrzebny.
-8. Przygotować pierwszy cienki przepływ: dane wejściowe, jedna kontrola jakości, jedna operacja i widoczny wynik.
-9. W repozytorium utworzyć `docs/problem.md`, `docs/data-sources.md` oraz `docs/user-flow.md`, a następnie podlinkować je w `README.md`.
-10. Utworzyć Issue dla każdego wymagania i dodać do niego kryterium akceptacji.
-11. Umieścić linki do Issue, brancha, Pull Requesta i commita w `docs/evidence.md`.
-12. Wykorzystać agenta AI do zakwestionowania założeń projektu, a następnie zapisać propozycje, decyzję zespołu, sprawdzone źródła i sposób weryfikacji w `docs/agent-log.md`.
-13. Określić, czy dane można pozyskać z istniejących publicznych źródeł lub usług. Jeżeli nie, przygotować uzasadnienie użycia danych syntetycznych albo zebrania własnych danych.
-
-Każdy członek zespołu powinien mieć przypisane zadanie kończące się własnym, możliwym do pokazania rezultatem. Rezultatem może być na przykład przygotowany zbiór danych, opis metadanych, kontrola jakości, wykres, model bazowy, diagram, test, opis decyzji albo konfiguracja narzędzia.
-
-## Rezultat do zapisania
-
-- zaktualizowana karta projektu z opisem zjawiska, użytkownika, pytania i zakresu pierwszej wersji;
-- opis jednostki analizy oraz źródeł danych z ograniczeniami;
-- backlog z wymaganiami, kryteriami akceptacji i przypisanymi osobami;
-- diagram przepływu danych od źródła do wyniku;
-- działający pierwszy fragment analizy, modelu albo notebooka;
-- commit opisujący wykonany krok.
-
-## Zasady pracy zespołowej
-
-Na koniec zajęć należy krótko sprawdzić, czy każdy członek zespołu zna swój rezultat, źródła danych, sposób weryfikacji oraz ograniczenia interpretacji. Jeżeli zadanie nie ma właściciela albo nie da się ocenić jego wyniku, trzeba je doprecyzować przed rozpoczęciem pracy.
+Należy wykorzystać GitHub Repository, Markdown i VS Code. Rzeczywiste zrzuty interfejsów oraz podstawowe czynności opisano w [przewodniku po narzędziach](../../narzedzia/README.md#zrzuty-demonstracyjne).
