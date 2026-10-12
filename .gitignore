@@ -1,4 +1,6 @@
 # Dokumenty źródłowe i materiały prywatne
+.agents/
+agents.md
 private/
 *.doc
 *.odt
