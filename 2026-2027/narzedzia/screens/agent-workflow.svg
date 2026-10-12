@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
+  <title id="title">Praca z agentem AI</title>
+  <desc id="desc">Poglądowy przebieg pracy: problem, warianty, krytyka, prototyp, testy i decyzja zespołu.</desc>
+  <rect width="1200" height="650" fill="#f6f8fa"/><rect width="1200" height="58" fill="#24292f"/>
+  <circle cx="32" cy="29" r="15" fill="#ffffff"/><text x="62" y="36" font-family="Arial" font-size="22" fill="#ffffff" font-weight="700">Agent AI · praca projektowa</text>
+  <g font-family="Arial">
+    <rect x="48" y="118" width="250" height="152" rx="12" fill="#ffffff" stroke="#d0d7de"/><text x="74" y="160" font-size="19" fill="#24292f" font-weight="700">1. Problem</text><text x="74" y="198" font-size="16" fill="#57606a">użytkownik, dane,</text><text x="74" y="224" font-size="16" fill="#57606a">ograniczenia, rezultat</text>
+    <rect x="340" y="118" width="250" height="152" rx="12" fill="#ffffff" stroke="#d0d7de"/><text x="366" y="160" font-size="19" fill="#24292f" font-weight="700">2. Warianty</text><text x="366" y="198" font-size="16" fill="#57606a">prosty, smart,</text><text x="366" y="224" font-size="16" fill="#57606a">bez zakupu sprzętu</text>
+    <rect x="632" y="118" width="250" height="152" rx="12" fill="#ffffff" stroke="#d0d7de"/><text x="658" y="160" font-size="19" fill="#24292f" font-weight="700">3. Krytyka</text><text x="658" y="198" font-size="16" fill="#57606a">koszt, dane, ryzyko,</text><text x="658" y="224" font-size="16" fill="#57606a">bezpieczeństwo</text>
+    <rect x="924" y="118" width="228" height="152" rx="12" fill="#ddf4ff" stroke="#54aeff"/><text x="950" y="160" font-size="19" fill="#0969da" font-weight="700">4. Decyzja</text><text x="950" y="198" font-size="16" fill="#0969da">wybór zespołu</text><text x="950" y="224" font-size="16" fill="#0969da">i uzasadnienie</text>
+    <path d="M300 194 L332 194 M592 194 L624 194 M884 194 L916 194" stroke="#0969da" stroke-width="5"/><path d="M332 194 L314 182 M332 194 L314 206 M624 194 L606 182 M624 194 L606 206 M916 194 L898 182 M916 194 L898 206" fill="none" stroke="#0969da" stroke-width="5"/>
+    <rect x="194" y="372" width="250" height="152" rx="12" fill="#ffffff" stroke="#d0d7de"/><text x="220" y="414" font-size="19" fill="#24292f" font-weight="700">5. Prototyp</text><text x="220" y="452" font-size="16" fill="#57606a">branch, mała zmiana,</text><text x="220" y="478" font-size="16" fill="#57606a">konkretny rezultat</text>
+    <rect x="756" y="372" width="250" height="152" rx="12" fill="#ffffff" stroke="#d0d7de"/><text x="782" y="414" font-size="19" fill="#24292f" font-weight="700">6. Weryfikacja</text><text x="782" y="452" font-size="16" fill="#57606a">testy, review,</text><text x="782" y="478" font-size="16" fill="#57606a">poprawki, evidence</text>
+    <path d="M1050 270 C1050 330 915 340 882 362" fill="none" stroke="#0969da" stroke-width="5"/><path d="M882 362 L884 338 M882 362 L906 354" fill="none" stroke="#0969da" stroke-width="5"/><path d="M756 448 L464 448" stroke="#0969da" stroke-width="5"/><path d="M464 448 L486 430 M464 448 L486 466" fill="none" stroke="#0969da" stroke-width="5"/>
+    <rect x="300" y="572" width="600" height="44" rx="8" fill="#fff8c5" stroke="#d4a72c"/><text x="326" y="600" font-size="17" fill="#7d4e00">Agent proponuje. Zespół sprawdza, wybiera i odpowiada za rezultat.</text>
+  </g>
+</svg>

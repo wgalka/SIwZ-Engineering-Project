@@ -1,0 +1,9 @@
+{
+  "team": "Zespół 01",
+  "members": [
+    {
+      "name": "Imię i nazwisko",
+      "github": "login-github"
+    }
+  ]
+}

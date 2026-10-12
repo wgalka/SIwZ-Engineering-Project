@@ -15,7 +15,16 @@ Projekt zespołowy lub indywidualny obejmujący analizę problemu, dane, dobór 
 | Punkty ECTS | 4 |
 | Forma zaliczenia | Zaliczenie z oceną |
 
-## Laboratoria
+## Laboratoria według specjalności
+
+### Wspólne materiały
+
+Karta projektu i przewodnik po narzędziach są wspólne dla obu specjalności:
+
+- [Lab 1: Wybór problemu i utworzenie zespołu](./2026-2027/lab1/README.md)
+- [Przewodnik po przydatnych narzędziach](./2026-2027/narzedzia/README.md)
+
+### Specjalność: Systemy informatyczne w zarządzaniu (SIwZ)
 
 | Lab | Temat | Status |
 |---|---|---|
@@ -30,9 +39,22 @@ Projekt zespołowy lub indywidualny obejmujący analizę problemu, dane, dobór 
 | [Lab 9](./2026-2027/lab9/README.md) | Integracja, dokumentacja i próba prezentacji | Dostępne |
 | [Lab 10](./2026-2027/lab10/README.md) | Prezentacje końcowe i obrona | Dostępne |
 
+### Specjalność: Analiza danych społeczno-gospodarczych (ADSG)
+
+| Lab | Temat | Status |
+|---|---|---|
+| [Lab 1](./2026-2027/lab1/README.md) | Wybór problemu i utworzenie zespołu | Wspólny |
+| [Lab 2](./2026-2027/adsg/lab2/README.md) | Doprecyzowanie problemu, danych i wymagań | Dostępne |
+
+Wersja Lab 2 dla ADSG kładzie nacisk na zjawisko społeczno-gospodarcze, jednostkę analizy, źródła i jakość danych, interpretację wyników oraz odpowiedzialne wykorzystanie metod analitycznych. Kolejne laboratoria można rozwijać w tej samej ścieżce specjalnościowej.
+
 ## Kryteria oceny
 
 - **Realizacja projektu — 50%**
 - **Dokumentacja projektu — 20%**
 - **Prezentacja końcowa i obrona — 20%**
 - **Aktywność i postępy — 10%**
+
+## Przydatne narzędzia
+
+Wspólny zestaw narzędzi, zrzuty demonstracyjne, zadania repozytoryjne i zasady późniejszej weryfikacji znajdują się w [przewodniku po narzędziach](./2026-2027/narzedzia/README.md).

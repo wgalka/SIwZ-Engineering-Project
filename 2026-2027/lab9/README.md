@@ -27,7 +27,9 @@ Sprawdzić spójność między kartą projektu, diagramami, README, kodem i prez
 5. Czy demonstracja pokazuje najważniejszy problem użytkownika?
 6. Co zespół zrobi, jeśli podczas pokazu główny scenariusz nie zadziała?
 
-## Narzędzia do pokazania
+## Przydatne narzędzia
+
+Zrzuty demonstracyjne i opis pełnego przepływu znajdują się w [przewodniku po narzędziach](../narzedzia/README.md#zrzuty-demonstracyjne). Należy pokazać integrację zmian, rozwiązanie konfliktu, utworzenie release oraz sprawdzenie projektu według instrukcji z README.
 
 1. **Git** - scalić branche, rozwiązać prosty konflikt, uruchomić testy po integracji i oznaczyć wersję tagiem.
 2. **GitHub Release** - przygotować wersję do demonstracji, dodać opis zmian i wskazać wymagane pliki.
@@ -48,6 +50,7 @@ Podczas pokazu przejść przez checklistę odbioru: klonowanie repozytorium, ins
 6. Utworzyć wersję demonstracyjną oznaczoną tagiem lub release.
 7. Przygotować prezentację obejmującą problem, użytkownika, rozwiązanie, działanie, wyniki, ograniczenia i indywidualny wkład.
 8. Przeprowadzić próbę z limitem czasu, zebrać pytania od innych zespołów i poprawić najsłabszy fragment.
+9. Umieścić w `docs/evidence.md` link do finalnego taga lub release oraz listę rezultatów poszczególnych osób.
 
 Każdy członek zespołu powinien mieć przypisany element integracji albo dokumentacji oraz fragment prezentacji. Wkład powinien być widoczny w plikach, Issue, Pull Requestach lub materiałach końcowych.
 

@@ -33,7 +33,9 @@ Wykonać krótki przegląd danych przed rozpoczęciem właściwej implementacji.
 
 Każdy krok czyszczenia zapisać w skrypcie albo notebooku. Ręczna edycja pliku może być dopuszczalna jako jednorazowa analiza, ale nie powinna być jedynym sposobem przygotowania danych używanych przez system.
 
-## Narzędzia do pokazania
+## Przydatne narzędzia
+
+Zrzuty demonstracyjne i opis pełnego przepływu znajdują się w [przewodniku po narzędziach](../narzedzia/README.md#zrzuty-demonstracyjne). Należy pokazać pobranie próbki, rozpoznanie struktury danych, wykonanie czyszczenia i ponowne uruchomienie tego samego skryptu.
 
 1. **Przeglądarka i narzędzia pobierania danych** - znaleźć źródło publiczne, odczytać metadane, sprawdzić licencję i pobrać małą próbkę.
 2. **Python z pandas lub narzędzie wybrane przez zespół** - wczytać CSV albo JSON, sprawdzić strukturę i wykonać proste przekształcenia.
@@ -51,6 +53,8 @@ Podczas pokazu przejść od surowego pliku do przygotowanego wyniku, a następni
 4. Przygotować skrypt lub notebook wykonujący co najmniej trzy kroki czyszczenia.
 5. Opisać, które problemy rozwiązano automatycznie, a które pozostawiono i dlaczego.
 6. Zapisać wynik przetwarzania oraz sprawdzić, czy można odtworzyć całą procedurę na kopii próbki.
+7. Umieścić opis źródła i jakości danych w `docs/data.md`, a skrypt lub notebook przygotowania danych w repozytorium.
+8. Utworzyć Issue przypisane do osoby odpowiedzialnej za kontrolę jakości oraz podlinkować wynik w `docs/evidence.md`.
 
 Każdy członek zespołu powinien odpowiadać za konkretny fragment kontroli danych albo przygotowania przetwarzania. Rezultatem może być na przykład opis źródła, słownik pól, analiza jakości, funkcja czyszcząca lub test sprawdzający wynik.
 

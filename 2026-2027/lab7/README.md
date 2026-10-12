@@ -27,7 +27,9 @@ Podczas implementacji dokumentować decyzje, które mogą utrudnić późniejsz�
 5. Czy inny członek zespołu potrafi uruchomić projekt według README?
 6. Który fragment implementacji jest rezultatem pracy każdej osoby?
 
-## Narzędzia do pokazania
+## Przydatne narzędzia
+
+Zrzuty demonstracyjne i opis pełnego przepływu znajdują się w [przewodniku po narzędziach](../narzedzia/README.md#zrzuty-demonstracyjne). Należy pokazać implementację jednej funkcji od Issue przez branch i Pull Request aż do uruchomienia działającej wersji MVP.
 
 1. **VS Code** - przejść przez strukturę projektu, uruchomić komendę w terminalu, ustawić punkt przerwania i odczytać log.
 2. **Menedżer zależności wybranej technologii** - dodać bibliotekę, zapisać wersję i odtworzyć środowisko na czystym katalogu.
@@ -46,6 +48,7 @@ Podczas pokazu zrealizować jedno zadanie od Issue do działającego Pull Reques
 5. Wykonać pracę w branchach i zamknąć zadania przez Pull Requesty.
 6. Dodać logowanie albo komunikaty diagnostyczne pozwalające znaleźć podstawowy błąd.
 7. Pokazać indywidualny wkład każdej osoby w postaci kodu, testu, danych, dokumentacji, automatyzacji albo innego artefaktu.
+8. Zapisać w `docs/evidence.md` link do Pull Requesta oraz krótko opisać własny rezultat.
 
 Każdy członek zespołu powinien mieć rezultat, który można uruchomić, przeczytać albo zademonstrować. Wkład zapisać w Issue, commitach, Pull Requestach lub plikach repozytorium.
 

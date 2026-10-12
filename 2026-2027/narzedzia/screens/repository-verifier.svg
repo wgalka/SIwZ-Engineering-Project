@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
+  <title id="title">Raport bota weryfikującego repozytorium</title>
+  <desc id="desc">Poglądowy raport pokazujący sprawdzenie repozytorium i indywidualnego wkładu studentów.</desc>
+  <rect width="1200" height="650" fill="#0d1117"/><rect x="46" y="38" width="1108" height="574" rx="12" fill="#161b22" stroke="#30363d"/>
+  <text x="82" y="92" font-family="Consolas, monospace" font-size="24" fill="#58a6ff">repo-check</text><text x="82" y="128" font-family="Consolas, monospace" font-size="18" fill="#c9d1d9">Repozytorium: github.com/zespol/projekt</text><text x="82" y="164" font-family="Consolas, monospace" font-size="18" fill="#c9d1d9">Sprawdzono: lab2, lab6, lab7</text>
+  <line x1="82" y1="190" x2="1118" y2="190" stroke="#30363d"/>
+  <g font-family="Consolas, monospace" font-size="18"><text x="82" y="232" fill="#3fb950">PASS</text><text x="182" y="232" fill="#c9d1d9">README.md i opis problemu</text><text x="82" y="274" fill="#3fb950">PASS</text><text x="182" y="274" fill="#c9d1d9">Issue z kryteriami akceptacji</text><text x="82" y="316" fill="#3fb950">PASS</text><text x="182" y="316" fill="#c9d1d9">Pull Request i review</text><text x="82" y="358" fill="#f85149">FAIL</text><text x="182" y="358" fill="#c9d1d9">brak workflow GitHub Actions</text><text x="82" y="400" fill="#3fb950">PASS</text><text x="182" y="400" fill="#c9d1d9">Anna: 2 commity, 1 PR</text><text x="82" y="442" fill="#f85149">FAIL</text><text x="182" y="442" fill="#c9d1d9">Jan: brak przypisanego zadania</text></g>
+  <rect x="82" y="488" width="1036" height="72" rx="8" fill="#21262d"/><text x="108" y="532" font-family="Consolas, monospace" font-size="19" fill="#d29922">Wynik: 5/7 kontroli spełnionych · wymagane poprawki</text>
+</svg>

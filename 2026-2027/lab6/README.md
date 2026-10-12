@@ -27,7 +27,9 @@ Podzielić duże epiki na zadania, które można wykonać w jednym etapie pracy 
 5. Jak sprawdzić, że zadanie jest ukończone?
 6. Czy zadania są rozdzielone tak, aby każdy członek zespołu miał własny wkład?
 
-## Narzędzia do pokazania
+## Przydatne narzędzia
+
+Zrzuty demonstracyjne i opis pełnego przepływu znajdują się w [przewodniku po narzędziach](../narzedzia/README.md#zrzuty-demonstracyjne). Należy pokazać cały cykl: Issue, branch, commit, Pull Request, review, merge oraz wynik GitHub Actions.
 
 1. **GitHub Projects** - utworzyć tablicę z kolumnami backlog, do zrobienia, w trakcie, do przeglądu i zakończone; dodać etykiety, osoby i milestone.
 2. **GitHub Issues** - opisać zadanie, dodać kryteria akceptacji, zależności, właściciela i link do powiązanego wymagania.
@@ -46,6 +48,8 @@ Podczas pokazu przejść cały cykl na jednym małym zadaniu: utworzyć Issue, p
 5. Wykonać zmianę na osobnym branchu i przeprowadzić ją przez Pull Request z krótkim review.
 6. Dodać do repozytorium prostą automatyczną kontrolę, na przykład uruchomienie testów lub sprawdzenie formatowania.
 7. Zaktualizować tablicę po zakończeniu pracy i dopisać, co pozostało do wykonania.
+8. Zapisać w `docs/evidence.md` link do własnego Issue, brancha, Pull Requesta i commita.
+9. Umieścić w repozytorium workflow `.github/workflows/check.yml` i doprowadzić do jego pomyślnego wykonania.
 
 Indywidualny wkład nie musi oznaczać wyłącznie dużego fragmentu kodu. Może nim być test, moduł danych, diagram techniczny, automatyzacja, dokumentacja albo analiza wyników, ale rezultat powinien być zapisany w repozytorium i możliwy do wskazania podczas podsumowania.
 

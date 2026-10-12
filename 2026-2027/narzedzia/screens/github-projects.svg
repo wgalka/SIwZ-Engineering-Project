@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
+  <title id="title">GitHub Projects - tablica zadań</title>
+  <desc id="desc">Poglądowy zrzut tablicy GitHub Projects z kolumnami i przypisanymi zadaniami.</desc>
+  <rect width="1200" height="650" fill="#f6f8fa"/>
+  <rect width="1200" height="58" fill="#24292f"/>
+  <circle cx="32" cy="29" r="15" fill="#ffffff"/>
+  <text x="62" y="36" font-family="Arial" font-size="22" fill="#ffffff" font-weight="700">Projekt informatyczny / Tablica projektu</text>
+  <rect x="24" y="84" width="1152" height="54" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="48" y="118" font-family="Arial" font-size="22" fill="#24292f" font-weight="700">MVP - pierwsza wersja rozwiązania</text>
+  <text x="1000" y="118" font-family="Arial" font-size="16" fill="#57606a">Widok: Board</text>
+  <g font-family="Arial">
+    <rect x="24" y="164" width="270" height="430" rx="8" fill="#eaeef2"/>
+    <rect x="312" y="164" width="270" height="430" rx="8" fill="#eaeef2"/>
+    <rect x="600" y="164" width="270" height="430" rx="8" fill="#eaeef2"/>
+    <rect x="888" y="164" width="288" height="430" rx="8" fill="#eaeef2"/>
+    <text x="46" y="198" font-size="19" font-weight="700" fill="#24292f">Backlog</text>
+    <text x="334" y="198" font-size="19" font-weight="700" fill="#24292f">Do zrobienia</text>
+    <text x="622" y="198" font-size="19" font-weight="700" fill="#24292f">W trakcie</text>
+    <text x="910" y="198" font-size="19" font-weight="700" fill="#24292f">Gotowe</text>
+    <g fill="#ffffff" stroke="#d0d7de">
+      <rect x="42" y="220" width="234" height="84" rx="7"/><rect x="42" y="318" width="234" height="84" rx="7"/>
+      <rect x="330" y="220" width="234" height="84" rx="7"/><rect x="330" y="318" width="234" height="84" rx="7"/>
+      <rect x="618" y="220" width="234" height="84" rx="7"/>
+      <rect x="906" y="220" width="252" height="84" rx="7"/><rect x="906" y="318" width="252" height="84" rx="7"/>
+    </g>
+    <g font-size="15" fill="#24292f">
+      <text x="56" y="248">Pomysły poza MVP</text><text x="56" y="274" fill="#57606a">#1 · analiza zakresu</text>
+      <text x="56" y="346">Dodatkowe źródło danych</text><text x="56" y="372" fill="#57606a">#2 · do decyzji</text>
+      <text x="344" y="248">Opis głównego użytkownika</text><text x="344" y="274" fill="#57606a">przypisano: Anna</text>
+      <text x="344" y="346">Diagram przepływu</text><text x="344" y="372" fill="#57606a">przypisano: Michał</text>
+      <text x="632" y="248">Pierwszy cienki przepływ</text><text x="632" y="274" fill="#57606a">PR #7 · do przeglądu</text>
+      <text x="920" y="248">Karta projektu</text><text x="920" y="274" fill="#57606a">zaakceptowano</text>
+      <text x="920" y="346">README i instrukcja</text><text x="920" y="372" fill="#57606a">zaakceptowano</text>
+    </g>
+  </g>
+</svg>

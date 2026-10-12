@@ -38,7 +38,9 @@ Demonstrację przygotować wcześniej na znanych danych i w znanym środowisku. 
 6. Który element przygotowała każda osoba?
 7. Co byłoby najważniejszym kierunkiem rozwoju następnej wersji?
 
-## Narzędzia do pokazania
+## Przydatne narzędzia
+
+Zrzuty demonstracyjne i opis pełnego przepływu znajdują się w [przewodniku po narzędziach](../narzedzia/README.md#zrzuty-demonstracyjne). Należy pokazać sposób wskazania finalnego release, otwarcia dokumentacji i odtworzenia głównego przepływu z repozytorium.
 
 1. **PowerPoint, Google Slides lub LibreOffice Impress** - przygotować czytelne slajdy, użyć wykresów i diagramów zamiast dużych bloków tekstu.
 2. **Tryb prezentera i timer** - kontrolować czas, kolejność wystąpienia i moment przekazania głosu.
@@ -57,6 +59,7 @@ Przed prezentacjami pokazać, jak rozpocząć wystąpienie od problemu, przejś�
 5. Wskazać jedną rzecz, którą zespół rozwinąłby w następnej wersji, oraz uzasadnić wybór.
 6. Przed prezentacją sprawdzić finalny tag lub release, dokumentację i działanie środowiska.
 7. Po prezentacji uzupełnić repozytorium o uzgodnione poprawki i materiały końcowe.
+8. Przekazać prowadzącemu link do repozytorium oraz sprawdzić, czy `docs/evidence.md` zawiera dowody indywidualnego wkładu.
 
 ## Rezultat do zapisania
 

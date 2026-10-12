@@ -33,7 +33,9 @@ Przygotować co najmniej diagram kontekstowy, opis przypadków użycia, model da
 
 Każdą ważną decyzję technologiczną zapisać razem z rozważanymi alternatywami i powodem wyboru. Taka notatka może być krótkim plikiem ADR w repozytorium albo dobrze opisanym Issue.
 
-## Narzędzia do pokazania
+## Przydatne narzędzia
+
+Zrzuty demonstracyjne i opis pełnego przepływu znajdują się w [przewodniku po narzędziach](../narzedzia/README.md#zrzuty-demonstracyjne). Należy pokazać utworzenie diagramu, zapisanie go w repozytorium i powiązanie z wymaganiem oraz elementem implementacji.
 
 1. **diagrams.net** - przygotować diagram kontekstowy, przypadki użycia i ERD, a następnie eksportować je do pliku używanego w dokumentacji.
 2. **Mermaid lub PlantUML** - zapisać diagram jako tekst, aby można było go przeglądać i zmieniać razem z kodem.
@@ -51,6 +53,8 @@ Podczas pokazu wybrać jedno wymaganie z Lab 2 i prześledzić jego drogę przez
 4. Narysować przepływ danych od źródła do wyniku pokazywanego użytkownikowi.
 5. Zapisać trzy najważniejsze decyzje technologiczne wraz z alternatywami i uzasadnieniem.
 6. Porównać projekt techniczny z pierwszym prototypem i wskazać jedną rzecz do poprawy przed implementacją MVP.
+7. Zapisać opis architektury w `docs/architecture.md` oraz przechować diagram w formacie Mermaid, PlantUML, Draw.io lub równoważnym.
+8. Utworzyć Issue dla jednej decyzji technologicznej i zamknąć je po dodaniu notatki ADR do repozytorium.
 
 Każdy członek zespołu powinien przygotować lub poprawić konkretny element projektu technicznego. Rezultatem może być diagram, model danych, decyzja ADR, opis błędnego scenariusza albo powiązanie wymagania z elementami implementacji.
 

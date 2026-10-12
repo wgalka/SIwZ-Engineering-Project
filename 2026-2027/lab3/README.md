@@ -33,7 +33,9 @@ Wybrać wspólne kryteria porównania. W zależności od projektu mogą to być:
 
 Porównanie nie musi prowadzić do wyboru najbardziej zaawansowanej metody. Na początku często lepiej uruchomić prostą metodę bazową, aby mieć punkt odniesienia i wiedzieć, czy bardziej złożone rozwiązanie rzeczywiście coś poprawia.
 
-## Narzędzia do pokazania
+## Przydatne narzędzia
+
+Zrzuty demonstracyjne i opis pełnego przepływu znajdują się w [przewodniku po narzędziach](../narzedzia/README.md#zrzuty-demonstracyjne). Należy pokazać wyszukanie źródła, zapisanie go w menedżerze bibliografii oraz zapisanie wniosku w repozytorium.
 
 1. **Google Scholar lub biblioteka cyfrowa** - wyszukać publikację po słowach kluczowych, sprawdzić metadane i przejść od abstraktu do pełnego tekstu.
 2. **Zotero** - zapisać źródło, dodać tagi i notatkę opisującą jego przydatność, a następnie wygenerować bibliografię.
@@ -51,6 +53,8 @@ Podczas pokazu pokazać pełny przepływ: wyszukanie źródła, zapisanie go, wy
 4. Porównać co najmniej dwie możliwe metody według wcześniej ustalonych kryteriów.
 5. Uruchomić metodę bazową na przykładowych danych i zapisać parametry oraz wynik.
 6. Przygotować decyzję: którą metodę wybrać na dalszym etapie, jakie są alternatywy i jakie ryzyko pozostaje.
+7. Zapisać wynik pracy w `docs/sources.md`, dodać link do źródła, krótkie uzasadnienie jego przydatności oraz informację o autorze.
+8. Utworzyć Issue przypisane do osoby opracowującej źródło i zamknąć je po dodaniu notatki do repozytorium.
 
 Każdy członek zespołu powinien opracować przynajmniej jedno źródło albo jedno porównanie, a wynik tej pracy zapisać w tabeli lub notatce. Dzięki temu wkład nie ograniczy się do samego wyszukania linku.
 

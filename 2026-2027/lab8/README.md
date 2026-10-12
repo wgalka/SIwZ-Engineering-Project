@@ -27,7 +27,9 @@ Oddzielić test od eksperymentu. Test odpowiada na pytanie, czy określone zacho
 5. Czy wynik można powtórzyć po ponownym uruchomieniu?
 6. Jakie ograniczenia mogą zmienić interpretację wyniku?
 
-## Narzędzia do pokazania
+## Przydatne narzędzia
+
+Zrzuty demonstracyjne i opis pełnego przepływu znajdują się w [przewodniku po narzędziach](../narzedzia/README.md#zrzuty-demonstracyjne). Należy pokazać test poprawnego i błędnego przypadku, uruchomienie workflow oraz zapisanie problemu w Issue.
 
 1. **pytest, JUnit lub narzędzie wybrane przez zespół** - przygotować test poprawnego przypadku, test błędu i test danych granicznych.
 2. **GitHub Actions** - uruchamiać testy po każdym Pull Requeście i pokazać, jak awaria blokuje połączenie zmiany.
@@ -46,6 +48,7 @@ Podczas pokazu przygotować jeden test, celowo doprowadzić do jego niepowodzeni
 5. Zapisać dane, parametry, wynik i sposób jego interpretacji.
 6. Opisać ograniczenia eksperymentu i możliwe źródła błędów.
 7. Zarejestrować co najmniej jeden problem w GitHub Issues i zamknąć go po poprawce oraz ponownym teście.
+8. Zapisać plan testów i wyniki w `docs/tests.md`, a link do Issue, Pull Requesta i workflow umieścić w `docs/evidence.md`.
 
 Każdy członek zespołu powinien odpowiadać za konkretny element walidacji: test, dane testowe, eksperyment, wykres, analizę ograniczeń albo poprawkę. Rezultat powinien być widoczny w repozytorium lub w historii pracy.
 
