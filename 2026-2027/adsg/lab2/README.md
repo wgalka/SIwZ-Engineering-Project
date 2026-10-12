@@ -128,14 +128,18 @@ Co najmniej jedna pozycja powinna mieć status `częściowo` albo `nie`, aby wsk
 
 ### 3. Pozyskanie, ocena i pomysł realizacji — 35–80 min
 
+Źródeł należy szukać w przewodniku, w internecie oraz w rozmowie z czatem. Czat może podpowiedzieć nazwę serwisu lub sposób wyszukania danych, ale każdą informację trzeba sprawdzić w dokumentacji właściciela źródła i zapisać wynik tej weryfikacji.
+
 Należy:
 
 1. wskazać co najmniej dwa możliwe źródła danych lub metadanych;
-2. wybrać jedno źródło podstawowe i wykonać próbę pobrania danych;
-3. pobrać rzeczywistą próbkę do `data/sample.csv`, `data/sample.json` albo innego jasno nazwanego pliku;
-4. otworzyć próbkę w VS Code i sprawdzić nazwy pól, liczbę rekordów, kodowanie, format dat, jednostki, poziom agregacji oraz brakujące wartości;
-5. ocenić, czy źródło wystarcza do realizacji wymagań;
-6. zapisać w `docs/data.md` wybrany pomysł realizacji, braki i plan awaryjny.
+2. dla każdego źródła zapisać, kto je publikuje, co oznaczają pola i do którego wymagania jest potrzebne;
+3. wybrać jedno źródło podstawowe i wykonać próbę pobrania danych;
+4. pobrać rzeczywistą próbkę do `data/sample.csv`, `data/sample.json` albo innego jasno nazwanego pliku;
+5. otworzyć próbkę w VS Code i sprawdzić nazwy pól, liczbę rekordów, kodowanie, format dat, jednostki, poziom agregacji oraz brakujące wartości;
+6. sprawdzić limity pobierania, wymagany klucz, koszt, licencję oraz możliwość ponownego pobrania danych;
+7. ocenić, czy źródło wystarcza do realizacji wymagań;
+8. zapisać w `docs/data.md` wybrany pomysł realizacji, braki i plan awaryjny.
 
 W `docs/data.md` należy umieścić tabelę źródeł:
 
@@ -143,12 +147,24 @@ W `docs/data.md` należy umieścić tabelę źródeł:
 |---|---|---|---|---|
 | ... | ... | tak / częściowo / nie | link, plik lub wynik próby | ... |
 
+Przy każdym źródle należy odpowiedzieć na pytania:
+
+| Obszar | Pytanie kontrolne | Przykład wyniku |
+|---|---|---|
+| Dopasowanie do problemu | Czy źródło zawiera dane potrzebne do realizacji konkretnego wymagania? | Potrzebne są dane roczne dla powiatów, a źródło udostępnia tylko dane krajowe — źródło odpowiada częściowo. |
+| Właściciel i znaczenie danych | Kto publikuje dane? Co oznaczają pola, jednostki, daty i poziom agregacji? | Wskaźnik dotyczy osób bezrobotnych zarejestrowanych, a nie całej populacji bez pracy. |
+| Jakość | Czy występują braki, duplikaty, błędne jednostki, niepełne okresy albo nieaktualne rekordy? | Brakuje danych dla dwóch lat, a definicja wskaźnika zmieniła się w połowie szeregu. |
+| Dostęp i koszt | Ile zapytań można wykonać? Czy wymagany jest klucz, logowanie albo opłata? | Dokumentacja podaje limit zapytań na minutę; klucza nie zapisano w repozytorium. |
+| Licencja i prywatność | Czy można użyć danych w projekcie i czy nie zawierają danych osobowych? | Zbiór ma licencję pozwalającą na ponowne wykorzystanie i zawiera dane zagregowane. |
+| Powtarzalność | Czy inna osoba może ponownie pobrać podobne dane, korzystając z zapisanego adresu, parametrów i daty? | Kolega wykonał to samo zapytanie i otrzymał plik o tej samej strukturze. |
+
 Następnie należy opisać wybrane źródło:
 
 | Element | Wynik sprawdzenia |
 |---|---|
 | Źródło i właściciel | ... |
 | Link lub sposób dostępu | ... |
+| Wymaganie, które źródło obsługuje | ... |
 | Data pobrania | ... |
 | Format i kodowanie | ... |
 | Liczba rekordów w próbce | ... |
@@ -156,7 +172,9 @@ Następnie należy opisać wybrane źródło:
 | Format dat, jednostki i poziom agregacji | ... |
 | Brakujące wartości lub rekordy | ... |
 | Zmiany metodologii lub definicji | ... |
-| Ograniczenia dostępu/licencji | ... |
+| Limit zapytań, klucz i koszt | ... |
+| Licencja i ograniczenia wykorzystania | ... |
+| Próba ponownego pobrania | wykonano / nie wykonano; wynik ... |
 | Brakujące dane | ... |
 | Plan awaryjny | ... |
 

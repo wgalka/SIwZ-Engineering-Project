@@ -15,23 +15,14 @@ Projekt zespołowy lub indywidualny obejmujący analizę problemu, dane, dobór 
 | Punkty ECTS | 4 |
 | Forma zaliczenia | Zaliczenie z oceną |
 
-## Laboratoria według specjalności
+## Laboratoria
 
-### Specjalność: Systemy informatyczne w zarządzaniu (SIwZ)
+**Specjalność: Systemy informatyczne w zarządzaniu (SIwZ)**
 
 | Lab | Temat |
 |---|---|
 | [Lab 1](./2026-2027/lab1/README.md) | Wybór problemu i zespołów |
 | [Lab 2](./2026-2027/lab2/README.md) | Analiza problemu i pozyskiwanie informacji |
-
-### Specjalność: Analiza danych społeczno-gospodarczych (ADSG)
-
-| Lab | Temat |
-|---|---|
-| [Lab 1](./2026-2027/lab1/README.md) | Wybór problemu i utworzenie zespołu |
-| [Lab 2](./2026-2027/adsg/lab2/README.md) | Analiza problemu i pozyskiwanie informacji |
-
-Wersja Lab 2 dla ADSG kładzie nacisk na zjawisko społeczno-gospodarcze, jednostkę analizy, źródła i jakość danych, interpretację wyników oraz odpowiedzialne wykorzystanie metod analitycznych. Kolejne laboratoria można rozwijać w tej samej ścieżce specjalnościowej.
 
 ## Kryteria oceny
 
