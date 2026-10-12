@@ -19,25 +19,17 @@ Projekt zespołowy lub indywidualny obejmujący analizę problemu, dane, dobór 
 
 ### Specjalność: Systemy informatyczne w zarządzaniu (SIwZ)
 
-| Lab | Temat | Status |
-|---|---|---|
-| [Lab 1](./2026-2027/lab1/README.md) | Wybór problemu i zespołów | Dostępne |
-| [Lab 2](./2026-2027/lab2/README.md) | Analiza problemu i pozyskiwanie informacji | Dostępne |
-| [Lab 3](./2026-2027/lab3/README.md) | Literatura, podobne rozwiązania i metody | Dostępne |
-| [Lab 4](./2026-2027/lab4/README.md) | Źródła i przygotowanie danych | Dostępne |
-| [Lab 5](./2026-2027/lab5/README.md) | Architektura, UML/ERD i technologie | Dostępne |
-| [Lab 6](./2026-2027/lab6/README.md) | Plan realizacji, GitHub i podział zadań | Dostępne |
-| [Lab 7](./2026-2027/lab7/README.md) | Implementacja i pierwsza wersja | Dostępne |
-| [Lab 8](./2026-2027/lab8/README.md) | Eksperymenty, testowanie i ocena wyników | Dostępne |
-| [Lab 9](./2026-2027/lab9/README.md) | Integracja, dokumentacja i próba prezentacji | Dostępne |
-| [Lab 10](./2026-2027/lab10/README.md) | Prezentacje końcowe i obrona | Dostępne |
+| Lab | Temat |
+|---|---|
+| [Lab 1](./2026-2027/lab1/README.md) | Wybór problemu i zespołów |
+| [Lab 2](./2026-2027/lab2/README.md) | Analiza problemu i pozyskiwanie informacji |
 
 ### Specjalność: Analiza danych społeczno-gospodarczych (ADSG)
 
-| Lab | Temat | Status |
-|---|---|---|
-| [Lab 1](./2026-2027/lab1/README.md) | Wybór problemu i utworzenie zespołu | Wspólny |
-| [Lab 2](./2026-2027/adsg/lab2/README.md) | Analiza problemu i pozyskiwanie informacji | Dostępne |
+| Lab | Temat |
+|---|---|
+| [Lab 1](./2026-2027/lab1/README.md) | Wybór problemu i utworzenie zespołu |
+| [Lab 2](./2026-2027/adsg/lab2/README.md) | Analiza problemu i pozyskiwanie informacji |
 
 Wersja Lab 2 dla ADSG kładzie nacisk na zjawisko społeczno-gospodarcze, jednostkę analizy, źródła i jakość danych, interpretację wyników oraz odpowiedzialne wykorzystanie metod analitycznych. Kolejne laboratoria można rozwijać w tej samej ścieżce specjalnościowej.
 
