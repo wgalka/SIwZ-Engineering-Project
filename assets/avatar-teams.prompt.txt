@@ -1,0 +1,12 @@
+Generator: built-in image_gen
+Source: private/Projekt informatyczny - sylabus uzupełniony.docx
+
+Use case: logo-brand
+Asset type: square avatar for a Microsoft Teams university course group.
+Primary request: Create one polished avatar based on the syllabus for the Polish course "Projekt informatyczny", degree Informatyka i ekonometria. The syllabus emphasizes software project design and implementation, data analysis and econometric modeling, and teamwork.
+Subject: One bold, unified emblem: two thick code angle brackets enclosing a simple rising data line with three substantial circular nodes, subtly suggesting connected collaborators. Integrate these elements into a single memorable symbol, not a collage.
+Style: refined contemporary geometric visual identity, crisp flat shapes with very restrained depth, professional academic technology aesthetic.
+Composition: square 1024x1024, emblem large and centrally balanced, all important elements within central 70 percent so circular cropping is safe. Strong silhouette readable at 48 pixels. Full bleed opaque background, ample breathing room.
+Colors: cohesive high-contrast technology palette with a dark backdrop and bright emblem.
+Text: no text, no lettering, no numbers.
+Avoid: mockups, multiple variants, tiny details, stock clip-art collage, robots, brains, graduation caps, watermarks, Microsoft or university logos. Deliver only the finished avatar image.

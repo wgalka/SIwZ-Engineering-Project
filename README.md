@@ -23,6 +23,7 @@ Projekt zespołowy lub indywidualny obejmujący analizę problemu, dane, dobór 
 |---|---|
 | [Lab 1](./2026-2027/lab1/README.md) | Wybór problemu i zespołów |
 | [Lab 2](./2026-2027/lab2/README.md) | Analiza problemu i pozyskiwanie informacji |
+| [Lab 3](./2026-2027/lab3/README.md) | Akwizycja i przetwarzanie danych |
 
 ## Kryteria oceny
 

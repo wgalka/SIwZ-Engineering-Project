@@ -1,5 +1,7 @@
 # Laboratorium 1: Wybór problemu i utworzenie zespołu
 
+**Specjalność: Systemy informatyczne w zarządzaniu**
+
 ## Cel zajęć
 
 Na tych zajęciach utworzone zostaną zespoły projektowe i wybierany zostanie problem, który będzie rozwiązywany w dalszej części przedmiotu.
