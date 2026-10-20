@@ -26,27 +26,33 @@ projekt-zespolu/
 │   ├── data-dictionary.md
 │   └── processing.md
 ├── scripts/
-│   ├── prepare_data.py lub prepare_data.ipynb  # jeden wariant
+│   ├── prepare_data.py / prepare_data.ipynb / prepare_data.sql  # jeden wariant
 │   └── kontrola.sql               # opcjonalnie: zapytania dla projektu
 └── examples/
-    └── lab3/                      # opcjonalnie: data/, sql/ i docs/ z demonstracji
+    └── lab3/                      # opcjonalnie: pliki demonstracyjne, w tym kod i baza
 ```
 
 Własną próbkę i wyniki należy przechowywać w `data/`. Pliki z demonstracji opisanej w tym przewodniku należy umieszczać w `examples/lab3/`, aby nie mieszać ich z danymi projektu. Katalog `api/` jest potrzebny tylko przy źródle API, a `requirements.txt` — gdy wybrana ścieżka wymaga dodatkowych pakietów Pythona.
 
+Należy zapisać procedurę przetwarzania jako skrypt, notebook albo skrypt SQL oraz opisać jej uruchomienie od próbki wejściowej do wyniku. Przy wyborze SQL instrukcja musi obejmować również import danych do bazy i eksport wyniku. Samo przeglądanie tabeli nie zastępuje procedury przetwarzania.
+
 Jeżeli pełny zbiór jest duży, ale może być publikowany, należy umieścić w repozytorium małą próbkę, słownik danych i instrukcję ponownego pobrania. Jeżeli dane są prywatne, chronione albo nie mogą być publikowane, nie wolno umieszczać ich rzeczywistej próbki. Należy wtedy wykorzystać dane syntetyczne zachowujące strukturę zbioru albo zanonimizowaną lub zagregowaną próbkę, jeżeli jej publikacja jest dozwolona. W repozytorium można umieścić schemat, słownik pól, metadane oraz ogólny opis sposobu pozyskania danych, o ile opis nie ujawnia informacji poufnych, danych osobowych, adresów systemów wewnętrznych ani danych dostępowych. Jeżeli nawet opis nie może być opublikowany, należy zapisać ogólną informację o ograniczeniu i jego wpływie na projekt. Nie należy zapisywać haseł ani kluczy API.
 
-## Co należy przygotować?
+## Przygotowanie przed zajęciami
+
+Przed zajęciami należy przejrzeć opisy i zrzuty w [przewodniku po narzędziach](#przewodnik-po-narzędziach-do-pracy-z-danymi), wybrać narzędzia do projektu i przygotować ich instalację lub dostęp. Nie trzeba instalować wszystkich programów. Należy sprawdzić, czy wybrane narzędzie uruchamia się i otwiera próbkę. Harmonogram 90 minut obejmuje pracę nad danymi projektu; ćwiczenia demonstracyjne służą przygotowaniu i można do nich wracać w razie potrzeby.
+
+## Zakres pracy na zajęciach
 
 Należy:
 
 1. ustalić, jakie dane zostaną pobrane lub zebrane oraz jaki zakres jest potrzebny do projektu;
 2. zapisać sposób pozyskania danych: adres źródła, parametry zapytania lub opis pomiaru;
 3. zachować surową próbkę w katalogu `data/raw/` bez zmieniania jej ręcznie;
-4. przygotować słownik najważniejszych pól w `docs/data-dictionary.md`;
-5. wykonać czyszczenie i transformacje w skrypcie albo notebooku;
+4. opisać wszystkie pola wykorzystywane w przetwarzaniu i interpretacji wyniku w `docs/data-dictionary.md`, w tym pola utworzone podczas transformacji;
+5. wykonać czyszczenie i transformacje w skrypcie, notebooku albo skrypcie SQL;
 6. zapisać wynik przetwarzania w `data/processed/`;
-7. sprawdzić, czy wynik można odtworzyć po ponownym uruchomieniu skryptu;
+7. sprawdzić jakość wyniku automatycznymi kontrolami oraz odtworzyć go przez ponowne wykonanie procedury na tej samej próbce;
 8. zapisać w `docs/processing.md` wykonane kroki, problemy i decyzje.
 
 ## Plan pozyskania danych
@@ -60,6 +66,7 @@ W `docs/data.md` należy uzupełnić albo zaktualizować tabelę:
 | Zakres danych | ... |
 | Okres i częstotliwość | ... |
 | Jednostka obserwacji | ... |
+| Dobór obserwacji i liczebność próby | ... |
 | Sposób pobrania lub zebrania | ... |
 | Limit, koszt lub wymagane uprawnienia | ... |
 | Licencja i zasady publikacji | ... |
@@ -68,28 +75,30 @@ W `docs/data.md` należy uzupełnić albo zaktualizować tabelę:
 
 Jeżeli dane są zbierane samodzielnie, należy dodatkowo zapisać dla każdej osoby zakres pracy, metodę, liczbę obserwacji i ograniczenia. Zakresy powinny się uzupełniać, na przykład przez podział na miejsca, terminy, zmienne albo etapy pomiaru.
 
+Przykład: „Pomiar temperatury co 10 minut przez 3 dni w dwóch pomieszczeniach; należy zapisać model czujnika i miejsce pomiaru”. W przypadku ankiety należy określić sposób wyboru respondentów i planowaną liczbę odpowiedzi. Na zajęciach wystarczy dostępny fragment pomiaru; należy opisać, czego jeszcze brakuje i kiedy dane zostaną zebrane.
+
 ## Słownik danych
 
 Słownik danych (ang. *data dictionary*) to zestawienie definicji wszystkich kolumn (pól) występujących w zbiorze. Jego celem jest jednoznaczne określenie, co reprezentuje dana zmienna, jakiego jest typu i w jakich jednostkach została wyrażona. Pozwala to uniknąć błędnych założeń (np. pomylenia sekund z minutami, kwoty netto z brutto czy błędnej interpretacji skrótów instytucjonalnych).
 
-W `docs/data-dictionary.md` należy umieścić tabelę opisującą kluczowe pola zbioru:
+W `docs/data-dictionary.md` należy opisać wszystkie pola wykorzystywane w przetwarzaniu i interpretacji wyniku, w tym pola utworzone podczas transformacji. Nad tabelą trzeba wskazać plik, którego dotyczy słownik. Jeżeli wynik ma inne nazwy pól, typy lub znaczenie niż dane wejściowe, należy opisać te różnice w osobnej tabeli wyniku; dla nowych wskaźników trzeba podać sposób obliczenia.
 
 | Kolumna w tabeli słownika | Co należy wpisać? |
 |---|---|
-| **Pole** | Dokładna, oryginalna nazwa kolumny ze zbioru danych (np. `czas_min`, `WYS_ST`). |
+| **Pole** | Dokładna nazwa kolumny w opisywanym zbiorze wejściowym lub wynikowym (np. `czas_min`, `WYS_ST`). |
 | **Znaczenie** | Krótki, jednoznaczny opis biznesowy lub techniczny: co ta zmienna oznacza w rzeczywistości. |
 | **Typ** | Oczekiwany typ danych w kodzie i bazie (np. `INTEGER`, `REAL` / `FLOAT`, `TEXT`, `DATE`, `BOOLEAN`). |
-| **Jednostka** | Jednostka miary (np. `minuty`, `PLN`, `sztuki`, `kWh`). Jeżeli pole nie ma jednostki (tekst, kategoria, identyfikator), należy wpisać `brak` lub `—`. |
+| **Jednostka / format** | Jednostka miary (np. `minuty`, `PLN`, `sztuki`, `kWh`), a dla dat format i ewentualna strefa czasowa. Dla tekstu, kategorii lub identyfikatora bez jednostki należy wpisać `brak` lub `—`. |
 | **Przykładowa wartość** | Reprezentatywna wartość z pobranej próbki danych (np. `45.0`, `siec`, `2026-10-01`). |
 | **Czy może być puste?** | `tak` — jeśli brak wartości jest dopuszczalny biznesowo (np. zgłoszenie w toku nie ma jeszcze daty zamknięcia); `nie` — jeśli brak jest błędem danych (np. identyfikator, klucz główny). |
 
 ### Wzór tabeli do umieszczenia w pliku
 
 ```markdown
-| Pole | Znaczenie | Typ | Jednostka | Przykładowa wartość | Czy może być puste? |
+| Pole | Znaczenie | Typ | Jednostka / format | Przykładowa wartość | Czy może być puste? |
 |---|---|---|---|---|---|
 | id | Unikalny identyfikator zgłoszenia | INTEGER | brak | 10 | nie |
-| data | Data rejestracji zgłoszenia | DATE | dzień | 2026-10-01 | nie |
+| data | Data rejestracji zgłoszenia | DATE | YYYY-MM-DD | 2026-10-01 | nie |
 | kategoria | Kategoria problemu technicznego | TEXT | brak | siec | nie |
 | czas_min | Rzeczywisty czas obsługi zgłoszenia | REAL | minuty | 45.0 | tak |
 ```
@@ -98,7 +107,7 @@ Nie należy zakładać znaczenia pola na podstawie samej nazwy. Znaczenie, jedno
 
 ## Czyszczenie i transformacje
 
-W skrypcie albo notebooku należy wykonać co najmniej trzy uzasadnione operacje, na przykład:
+W skrypcie, notebooku albo skrypcie SQL należy wykonać co najmniej trzy uzasadnione operacje, na przykład:
 
 - usunięcie lub oznaczenie duplikatów;
 - uzupełnienie, odrzucenie albo pozostawienie brakujących wartości z opisem decyzji;
@@ -127,6 +136,8 @@ Przed zapisaniem wyniku należy sprawdzić:
 - zgodność kluczy przy łączeniu źródeł;
 - czy wynik można otworzyć i wykorzystać w następnym etapie projektu.
 
+Należy zapisać co najmniej dwie automatyczne kontrole jakości wyniku, np. asercje Pythona albo zapytania SQL zwracające liczbę naruszeń reguły. Dla każdej kontroli trzeba określić warunek poprawności, np. brak pustych identyfikatorów lub zero powtórzeń klucza. Działanie co najmniej jednej kontroli należy sprawdzić na celowo błędnej kopii w `data/test/` i zapisać oczekiwany oraz uzyskany wynik. Testy odpowiedzi API mogą uzupełniać te kontrole, ale nie zastępują sprawdzenia danych po transformacji.
+
 W `docs/processing.md` należy zapisać krótkie podsumowanie:
 
 | Kontrola | Wynik | Działanie lub ograniczenie |
@@ -145,15 +156,24 @@ Należy:
 
 1. otworzyć `docs/data.md` z Lab 2;
 2. wybrać źródło podstawowe albo zatwierdzić plan własnego pomiaru;
-3. jeśli próbka z Lab 2 znajduje się w `data/sample.csv`, utworzyć katalog `data/raw/` i przenieść ją bez zmiany zawartości poleceniem `git mv data/sample.csv data/raw/sample.csv`; dla innej nazwy lub formatu zachować nazwę pliku i zastosować analogiczne przeniesienie;
+3. jeśli próbka z Lab 2 znajduje się w `data/sample.csv`, utworzyć katalog `data/raw/` i przenieść ją bez zmiany zawartości poleceniem `git mv data/sample.csv data/raw/sample.csv`; dla innej nazwy lub formatu zachować nazwę pliku i zastosować analogiczne przeniesienie; zaktualizować odnośniki w `README.md` i `docs/data.md`;
 4. wskazać osobę odpowiedzialną za każdy etap pozyskania danych;
 5. ustalić zakres próbki, format i sposób zapisania danych surowych.
+
+Przed rozpoczęciem pracy należy podzielić zadania i ustalić osoby odpowiedzialne za pliki. Nie należy równocześnie edytować tego samego pliku. Przykładowy podział dla zespołu 3–4-osobowego:
+
+- jedna osoba przygotowuje procedurę czyszczenia i transformacji;
+- druga przygotowuje kontrole jakości w osobnym pliku;
+- trzecia uzupełnia słownik danych oraz opis źródła;
+- czwarta opisuje operacje w `docs/processing.md` i sprawdza powtarzalność.
+
+Jeśli kilka osób ma pracować nad kodem, należy rozdzielić go na osobne pliki lub moduły i wcześniej uzgodnić dane wejściowe, wynik oraz sposób uruchomienia całości.
 
 ### 2. Pobranie lub zebranie próbki — 15–35 min
 
 Należy:
 
-1. jeśli próbka z Lab 2 nie została jeszcze zapisana w repozytorium, pobrać dane z pliku, API, rejestru albo istniejącego urządzenia;
+1. sprawdzić, czy próbka z Lab 2 wystarcza do zaplanowanego przetwarzania; jeśli jej brakuje, pobrać dozwolone dane z pliku, API, rejestru albo urządzenia; jeśli wymaga rozszerzenia, zapisać rozszerzoną próbkę pod nową nazwą, zachowując poprzednią wersję;
 2. w przypadku własnego pomiaru zebrać uzgodniony fragment danych i zapisać metodę pomiaru;
 3. sprawdzić limit, koszt, uprawnienia i licencję, jeżeli dotyczą wybranego źródła;
 4. sprawdzić, czy surowa próbka znajduje się w `data/raw/`, a jeśli dane pobrano podczas tych zajęć — zapisać ją w tym katalogu;
@@ -172,36 +192,21 @@ Należy:
 
 Należy:
 
-1. utworzyć skrypt lub notebook przygotowania danych;
+1. utworzyć skrypt, notebook albo skrypt SQL przygotowania danych;
 2. wykonać co najmniej trzy uzasadnione operacje;
-3. zapisać przetworzony wynik w `data/processed/`;
+3. dodać co najmniej dwie automatyczne kontrole jakości wyniku i sprawdzić jedną z nich na błędnej kopii danych; poprawny wynik zapisać w `data/processed/`;
 4. uzupełnić tabelę kroków w `docs/processing.md`;
-5. uruchomić przetwarzanie ponownie i sprawdzić, czy wynik ma oczekiwaną strukturę.
-
-Przed rozpoczęciem pracy należy podzielić zadania i ustalić osoby odpowiedzialne za pliki. Nie należy równocześnie edytować tego samego pliku — w szczególności `scripts/prepare_data.py` — ponieważ zwiększa to ryzyko konfliktów przy scalaniu zmian w Git. Przykładowy podział dla zespołu 3–4-osobowego:
-
-- jedna osoba przygotowuje skrypt czyszczenia i transformacji;
-- druga tworzy osobny skrypt lub testy sprawdzające jakość wyniku, np. liczbę rekordów, kolumny i brakujące wartości;
-- trzecia uzupełnia słownik danych oraz opis źródła;
-- czwarta opisuje operacje w `docs/processing.md` i sprawdza, czy przygotowanie danych można powtórzyć.
-
-Jeśli kilka osób ma pracować nad kodem, należy rozdzielić go na osobne pliki lub moduły i wcześniej uzgodnić sposób ich połączenia. Zmiany należy zintegrować, a następnie ponownie uruchomić skrypt i kontrole jakości.
+5. przygotować do integracji procedurę, wynik i kontrole jakości.
 
 ### 5. Integracja i zapis rezultatów — 75–90 min
 
 Należy:
 
-1. sprawdzić, czy w repozytorium znajdują się próbka surowa, wynik przetwarzania, słownik i opis kroków;
+1. zintegrować zmiany i wykonać test powtarzalności opisany w zadaniu samodzielnym 7; sprawdzić obecność próbki surowej, wyniku, słownika i opisu kroków;
 2. dopisać ograniczenia oraz czynności, których nie udało się wykonać;
-3. zaktualizować główny `README.md` repozytorium projektu o wymagane środowisko i pakiety, polecenia ich instalacji oraz sposób uruchomienia skryptu lub notebooka, np. `python -m pip install pandas` i `python scripts/prepare_data.py data/raw/sample.csv data/processed/sample-clean.csv`;
+3. zaktualizować główny `README.md` repozytorium projektu o wymagane środowisko, zależności i ich instalację oraz sposób uruchomienia procedury i kontroli; dla Pythona podać np. `python -m pip install -r requirements.txt` i `python scripts/prepare_data.py data/raw/sample.csv data/processed/sample-clean.csv`, a dla SQL — silnik bazy, import, kolejność skryptów i eksport;
 4. wykonać commit własnego rezultatu;
 5. sprawdzić historię commitów i wkład każdego członka zespołu.
-
-## Przydatne narzędzia
-
-Szczegółowy przewodnik, opisy, zrzuty interfejsów i ćwiczenia znajdują się w dalszej części tego pliku, w rozdziale **Przewodnik po narzędziach do pracy z danymi**. Należy zapoznać się z opisami wszystkich narzędzi, obejrzeć zrzuty, a następnie wybrać ścieżkę pasującą do źródła danych i zadania projektu. Nie trzeba instalować ani wykonywać ćwiczeń ze wszystkich programów.
-
-W `docs/processing.md` należy zapisać wybrane narzędzie główne, ewentualne narzędzie pomocnicze oraz powód ich dopasowania do danych i zadania.
 
 ## Przewodnik po narzędziach do pracy z danymi
 
@@ -209,7 +214,7 @@ W `docs/processing.md` należy zapisać wybrane narzędzie główne, ewentualne 
 
 ### Jak korzystać z przewodnika
 
-Przewodnik przedstawia kilka narzędzi do pracy z danymi. **Należy przeczytać ich opisy, obejrzeć zrzuty interfejsów i dobrać narzędzie do źródła danych oraz zadania. Nie trzeba instalować ani wykonywać ćwiczeń we wszystkich programach.** Wspólne dla zespołu jest zapoznanie się z możliwościami narzędzi; praktyczne ćwiczenie należy wykonać tylko na wybranej ścieżce. Można dobrać narzędzie pomocnicze, jeśli jest potrzebne do kolejnego etapu.
+Przewodnik służy do przygotowania przed zajęciami i jako pomoc podczas pracy. Należy przejrzeć możliwości narzędzi w poniższej tabeli oraz ich zrzuty, a ćwiczenia wykonać dla wybranej ścieżki. Uzasadnienie doboru należy zapisać według [szablonu](#6-dobór-narzędzia-do-własnego-projektu).
 
 | Potrzeba lub źródło | Narzędzie do rozważenia | Kiedy wybrać? | Możliwy rezultat |
 |---|---|---|---|
@@ -219,9 +224,9 @@ Przewodnik przedstawia kilka narzędzi do pracy z danymi. **Należy przeczytać 
 | Powtarzalne przetwarzanie danych | Python z pandas albo Jupyter | gdy operacje mają być zapisane jako skrypt lub notebook i uruchamiane ponownie | skrypt lub notebook oraz wynik przetwarzania |
 | Szybkie porównanie rozkładów bez pisania kodu | Orange (opcjonalnie) | gdy wizualny przepływ pomaga obejrzeć dane | przepływ i wykres |
 
-Data Wrangler i DataGrip służą do przeglądania i wstępnej analizy danych, ale pracują głównie z różnymi źródłami: pierwszy z plikami tabelarycznymi, drugi z bazami i SQL. Orange jest dodatkowym sposobem wizualnej eksploracji. Klient API pomaga sprawdzić endpoint, ale sama zapisana kolekcja żądań nie zastępuje próbki ani skryptu przetwarzania.
+Data Wrangler i DataGrip służą do przeglądania i wstępnej analizy danych, ale pracują głównie z różnymi źródłami: pierwszy z plikami tabelarycznymi, drugi z bazami i SQL. Orange jest dodatkowym sposobem wizualnej eksploracji. Klient API pomaga sprawdzić endpoint, ale sama zapisana kolekcja żądań nie zastępuje próbki ani procedury przetwarzania.
 
-Zrzuty poniżej pochodzą z oficjalnej dokumentacji i przedstawiają rzeczywiste interfejsy narzędzi na danych demonstracyjnych. Należy obejrzeć zrzuty także tych narzędzi, których zespół nie wybierze, a następnie zapisać uzasadnienie wyboru. Układ przycisków może różnić się między wersjami. Obrazy są ładowane ze stron źródłowych i wymagają internetu; można je otworzyć w nowej karcie, aby powiększyć szczegóły.
+Zrzuty poniżej pochodzą z oficjalnej dokumentacji i przedstawiają rzeczywiste interfejsy narzędzi na danych demonstracyjnych. Układ przycisków może różnić się między wersjami. Obrazy są ładowane ze stron źródłowych i wymagają internetu; można je otworzyć w nowej karcie, aby powiększyć szczegóły.
 
 ### 0. Przykład demonstracyjny: zgłoszenia serwisowe
 
@@ -268,7 +273,7 @@ W panelu Explorer należy kliknąć `examples/lab3/data/raw/zgloszenia.csv` praw
 
 ![Otwarcie pliku przez Open in Data Wrangler](https://code.visualstudio.com/assets/docs/datascience/data-wrangler/open-from-file.png)
 
-*Screen: Microsoft, [otwieranie i obsługa Data Wrangler](https://code.visualstudio.com/docs/datascience/data-wrangler). Należy wskazać własny plik CSV.*
+*Zrzut ekranu: Microsoft, [otwieranie i obsługa Data Wrangler](https://code.visualstudio.com/docs/datascience/data-wrangler). Należy wskazać własny plik CSV.*
 
 **Oczekiwany wynik:** cztery kolumny i 13 rekordów. Jeżeli cały wiersz znajduje się w jednej kolumnie, należy poprawić separator.
 
@@ -278,7 +283,7 @@ W trybie **Viewing** należy kolejno zaznaczyć `kategoria` i `czas_min`. W pods
 
 ![Profil kolumn i podsumowanie danych w Data Wrangler](https://code.visualstudio.com/assets/docs/datascience/data-wrangler/view-mode-ui.png)
 
-*Screen: Microsoft, [tryb podglądu](https://code.visualstudio.com/docs/datascience/data-wrangler#viewing-mode-interface). Należy zwrócić uwagę na Data Summary i Quick Insights.*
+*Zrzut ekranu: Microsoft, [tryb podglądu](https://code.visualstudio.com/docs/datascience/data-wrangler#viewing-mode-interface). Należy zwrócić uwagę na Data Summary i Quick Insights.*
 
 Należy zapisać odpowiedzi:
 
@@ -300,17 +305,17 @@ Po każdej operacji należy obejrzeć podgląd zmian i zatwierdzić krok. Kod op
 
 ![Panel operacji, historia i wygenerowany kod w Data Wrangler](https://code.visualstudio.com/assets/docs/datascience/data-wrangler/edit-mode-ui.png)
 
-*Screen: Microsoft, [tryb edycji](https://code.visualstudio.com/docs/datascience/data-wrangler#editing-mode-interface). Operacja uzupełniania braków pokazana na screenie jest przykładem producenta; w naszym ćwiczeniu należy pozostawić braki.*
+*Zrzut ekranu: Microsoft, [tryb edycji](https://code.visualstudio.com/docs/datascience/data-wrangler#editing-mode-interface). Operacja uzupełniania braków pokazana na zrzucie jest przykładem producenta; w naszym ćwiczeniu należy pozostawić braki.*
 
 #### Eksport danych i skrypt w Pythonie
 
-Z menu eksportu należy zapisać dane jako nowy CSV. Wygenerowany kod należy przenieść do pliku `scripts/prepare_data.py`; przy pracy z notebookiem można użyć **Export code back to Notebook**.
+Z menu eksportu należy zapisać wynik pośredni jako `examples/lab3/data/processed/zgloszenia-wrangler.csv`. Wygenerowany kod należy przenieść do pliku `examples/lab3/scripts/prepare_data.py`; przy pracy z notebookiem można użyć **Export code back to Notebook** i zapisać go w tym samym katalogu demonstracji. Ten eksport nie uwzględnia jeszcze reguły dla ujemnego czasu.
 
 ![Eksport danych i kodu z Data Wrangler](https://code.visualstudio.com/assets/docs/datascience/data-wrangler/export-menu.png)
 
-*Screen: Microsoft, [eksport kodu i danych](https://code.visualstudio.com/docs/datascience/data-wrangler#edit-and-export-code).*
+*Zrzut ekranu: Microsoft, [eksport kodu i danych](https://code.visualstudio.com/docs/datascience/data-wrangler#edit-and-export-code).*
 
-Poniższy kompletny skrypt stanowi wzorzec dla naszego przykładu. Należy porównać go z wygenerowanymi operacjami. Skrypt zachowuje surowy plik, oznacza błędne czasy i sprawdza wynik.
+Poniższy kompletny skrypt stanowi wzorzec dla naszego przykładu. Należy porównać go z wygenerowanymi operacjami i zapisać jako `examples/lab3/scripts/prepare_data.py`. Skrypt zachowuje surowy plik, oznacza błędne czasy i sprawdza wynik. Należy go uruchomić na surowej próbce, nie na eksporcie pośrednim.
 
 ```python
 import argparse
@@ -321,6 +326,11 @@ parser = argparse.ArgumentParser()
 parser.add_argument("input", type=Path, help="ścieżka do surowego pliku CSV")
 parser.add_argument("output", type=Path, help="ścieżka zapisu oczyszczonego pliku CSV")
 args = parser.parse_args()
+
+if args.input.resolve() == args.output.resolve() or (
+    args.output.exists() and args.input.samefile(args.output)
+):
+    parser.error("Plik wynikowy musi być inny niż plik wejściowy")
 
 raw = pd.read_csv(args.input)
 
@@ -333,6 +343,7 @@ clean.loc[clean["czas_min"] < 0, "czas_min"] = float("nan")
 
 assert clean["id"].notna().all(), "Puste identyfikatory"
 assert clean["id"].is_unique, "Powtórzone identyfikatory wymagają analizy"
+assert clean["data"].notna().all(), "Puste daty rejestracji"
 assert clean["kategoria"].isin(["siec", "sprzet", "konto"]).all()
 assert clean["czas_min"].dropna().ge(0).all(), "Ujemne czasy"
 
@@ -348,7 +359,7 @@ W terminalu repozytorium należy wykonać:
 
 ```powershell
 python -m pip install pandas
-python scripts/prepare_data.py examples/lab3/data/raw/zgloszenia.csv examples/lab3/data/processed/zgloszenia-clean.csv
+python examples/lab3/scripts/prepare_data.py examples/lab3/data/raw/zgloszenia.csv examples/lab3/data/processed/zgloszenia-clean.csv
 ```
 
 Jeżeli na Windows polecenie `python` jest niedostępne, można sprawdzić `py`. Należy używać tego samego środowiska, w którym zainstalowano pandas.
@@ -362,15 +373,17 @@ Jeżeli na Windows polecenie `python` jest niedostępne, można sprawdzić `py`.
 | Średnia / mediana | 51 / 32,5 min |
 | Minimum / maksimum | 10 / 240 min |
 
-Należy ponownie wykonać to samo polecenie z tymi samymi ścieżkami wejściową i wyjściową. Wyniki powinny pozostać takie same. W `docs/processing.md` należy opisać, że drugi brak czasu powstał w wyniku oznaczenia błędnej wartości, a nie awarii importu.
+Należy ponownie wykonać to samo polecenie z tymi samymi ścieżkami wejściową i wyjściową. Wyniki powinny pozostać takie same. W `examples/lab3/docs/processing.md` należy opisać, że drugi brak czasu powstał w wyniku oznaczenia błędnej wartości, a nie awarii importu. Dla własnego projektu analogiczne decyzje należy zapisywać w głównym `docs/processing.md`.
 
 **Zadanie:** należy utworzyć katalog `examples/lab3/data/test/`, skopiować do niego `examples/lab3/data/raw/zgloszenia.csv` jako `zgloszenia-invalid.csv`, dodać w kopii nowe zgłoszenie z nowym identyfikatorem i ujemnym czasem, a następnie przewidzieć wynik kontroli i uruchomić skrypt na kopii:
 
 ```powershell
-python scripts/prepare_data.py examples/lab3/data/test/zgloszenia-invalid.csv examples/lab3/data/test/zgloszenia-invalid-clean.csv
+python examples/lab3/scripts/prepare_data.py examples/lab3/data/test/zgloszenia-invalid.csv examples/lab3/data/test/zgloszenia-invalid-clean.csv
 ```
 
-Nie należy edytować pliku w `examples/lab3/data/raw/`.
+Przy poprawnej dacie i kategorii nowego rekordu oczekiwany wynik to 13 rekordów, trzy braki czasu i średnia nadal równa 51 minut. Skrypt powinien zakończyć się poprawnie, ponieważ ujemny czas zostaje zastąpiony brakiem przed kontrolą wyniku.
+
+Aby sprawdzić odrzucenie błędnych danych, należy przygotować drugą kopię surowej próbki i dopisać w niej rekord `1,2026-10-05,siec,12`. Po uruchomieniu skryptu z tą kopią i nową ścieżką wyniku oczekiwany jest błąd „Powtórzone identyfikatory wymagają analizy” oraz brak nowego pliku wynikowego. Nie należy edytować pliku w `examples/lab3/data/raw/`.
 
 ### 2. Wizualna analiza rozkładów (Orange)
 
@@ -378,7 +391,7 @@ Nie należy edytować pliku w `examples/lab3/data/raw/`.
 
 ![Histogram zmiennej liczbowej w Orange](https://orange3.readthedocs.io/projects/orange-visual-programming/en/latest/_images/Distributions-Continuous.png)
 
-*Screen z dokumentacji Orange: [Distributions](https://orange3.readthedocs.io/projects/orange-visual-programming/en/latest/widgets/visualize/distributions.html). W razie użycia Orange należy wczytać przygotowany CSV blokiem File, sprawdzić typ `czas_min`, a następnie połączyć go z Distributions. Oczekiwany jest histogram 10 niepustych czasów.*
+*Zrzut ekranu z dokumentacji Orange: [Distributions](https://orange3.readthedocs.io/projects/orange-visual-programming/en/latest/widgets/visualize/distributions.html). W razie użycia Orange należy wczytać `zgloszenia-clean.csv` blokiem File, sprawdzić typ `czas_min`, a następnie połączyć go z Distributions. Oczekiwany jest histogram 10 niepustych czasów. Gotowa treść tego CSV znajduje się w sekcji „Przygotowanie pliku do importu” poniżej.*
 
 ### 3. Praca z bazą danych i SQL (DataGrip)
 
@@ -388,11 +401,11 @@ W pokazie lokalną bazą będzie SQLite. Jeżeli wybrano tę ścieżkę, należy
 
 #### Połączenie z lokalną bazą
 
-W **Database Explorer** należy wybrać **+ → Data Source → SQLite**. W polu **File** trzeba wskazać pełną ścieżkę nowego pliku `lab3.sqlite` w katalogu roboczym. W razie komunikatu **Download missing driver files** należy pobrać sterownik, a następnie wykonać **Test Connection**, wybrać schemat `main` i zatwierdzić.
+W **Database Explorer** należy wybrać **+ → Data Source → SQLite**. W polu **File** trzeba wskazać pełną ścieżkę nowego pliku `examples/lab3/lab3.sqlite` w repozytorium; brakujący katalog należy wcześniej utworzyć. W razie komunikatu **Download missing driver files** należy pobrać sterownik, a następnie wykonać **Test Connection**, wybrać schemat `main` i zatwierdzić.
 
 ![Konfiguracja źródła SQLite w DataGrip](https://resources.jetbrains.com/help/img/idea/2026.2/db_qsg_create_data_source_sqlite.png)
 
-*Screen: JetBrains, [uruchomienie DataGrip z SQLite](https://www.jetbrains.com/help/datagrip/quick-start-guide.html). Należy wskazać własną ścieżkę pliku bazy.*
+*Zrzut ekranu: JetBrains, [uruchomienie DataGrip z SQLite](https://www.jetbrains.com/help/datagrip/quick-start-guide.html). Należy wskazać własną ścieżkę pliku bazy.*
 
 #### Połączenie z innymi silnikami baz danych
 
@@ -400,17 +413,29 @@ DataGrip może przechowywać kilka źródeł danych w panelu **Database Explorer
 
 ![Ustawienia połączenia PostgreSQL w DataGrip](https://resources.jetbrains.com/help/img/idea/2026.2/db_connection_details_postgresql_default.png)
 
-*Screen: JetBrains, [konfiguracja źródła danych](https://www.jetbrains.com/help/datagrip/managing-data-sources.html). Prawdziwe połączenie wymaga działającego serwera i uprawnionego konta; w ćwiczeniu należy wykonać połączenie z lokalnym SQLite. Ustawień dostępowych nie wolno umieszczać w publicznym repozytorium.*
+*Zrzut ekranu: JetBrains, [konfiguracja źródła danych](https://www.jetbrains.com/help/datagrip/managing-data-sources.html). Prawdziwe połączenie wymaga działającego serwera i uprawnionego konta; w ćwiczeniu należy wykonać połączenie z lokalnym SQLite. Ustawień dostępowych nie wolno umieszczać w publicznym repozytorium.*
 
 DataGrip obsługuje różne silniki baz; zakres funkcji zależy od rodzaju połączenia. Aktualną listę podaje [dokumentacja JetBrains](https://www.jetbrains.com/help/datagrip/managing-data-sources.html#supported-databases). Na zajęciach należy korzystać wyłącznie z lokalnej bazy demonstracyjnej albo serwera udostępnionego przez prowadzącego.
 
-#### Przeglądanie i filtrowanie tabeli
+#### Przygotowanie pliku do importu
 
-Po połączeniu należy rozwinąć schemat `main` i dwukrotnie kliknąć tabelę `zgloszenia`. W edytorze tabeli trzeba sprawdzić nagłówki, typy i przykładowe rekordy, posortować kolumnę `czas_min`, a następnie użyć pola filtra, aby wyświetlić rekordy z brakującym czasem. Zmian w tabeli demonstracyjnej nie należy zatwierdzać.
+Jeżeli plik `examples/lab3/data/processed/zgloszenia-clean.csv` powstał już w ćwiczeniu Pythona, należy go wykorzystać. W przeciwnym razie należy utworzyć ten plik w UTF-8 z poniższą gotową treścią. Jest to wejście do demonstracji DataGrip i Orange; przepisanie gotowego CSV nie zastępuje procedury przetwarzania własnych danych projektu.
 
-![Edytor tabeli i wyniki w DataGrip](https://resources.jetbrains.com/help/img/idea/2026.2/db_data_editor_db_object_data_intro.png)
-
-*Screen: JetBrains, [edytor danych](https://www.jetbrains.com/help/datagrip/data-editor-and-viewer.html). Dwuklik otwiera tabelę; nagłówki umożliwiają sortowanie i filtrowanie.*
+```csv
+id,data,kategoria,czas_min
+1,2026-10-01,siec,10.0
+2,2026-10-01,siec,15.0
+3,2026-10-01,sprzet,20.0
+4,2026-10-02,sprzet,25.0
+5,2026-10-02,konto,30.0
+6,2026-10-02,konto,35.0
+7,2026-10-03,siec,
+8,2026-10-03,sprzet,
+9,2026-10-03,konto,240.0
+10,2026-10-04,siec,40.0
+11,2026-10-04,sprzet,45.0
+12,2026-10-04,konto,50.0
+```
 
 #### Import CSV
 
@@ -418,15 +443,23 @@ Na schemacie `main` należy wybrać **Import/Export → Import Data from File(s)
 
 ![Ustawienia separatora i nagłówka importowanego CSV](https://resources.jetbrains.com/help/img/idea/2026.2/db_import_csv_source.png)
 
-*Screen: JetBrains, [import CSV](https://www.jetbrains.com/help/datagrip/import-data.html). Podgląd powinien przedstawiać cztery osobne kolumny.*
+*Zrzut ekranu: JetBrains, [import CSV](https://www.jetbrains.com/help/datagrip/import-data.html). Podgląd powinien przedstawiać cztery osobne kolumny.*
 
 W mapowaniu należy ustawić nową tabelę `zgloszenia`. Typy powinny odpowiadać danym: `id` — INTEGER, `data` — TEXT, `kategoria` — TEXT, `czas_min` — REAL. Puste czasy powinny zostać zaimportowane jako NULL.
 
 ![Mapowanie kolumn i tabeli docelowej w DataGrip](https://resources.jetbrains.com/help/img/idea/2026.2/db_import_csv_mapping.png)
 
-*Screen: JetBrains, [mapowanie importu](https://www.jetbrains.com/help/datagrip/import-data.html). W ćwiczeniu nazwą tabeli jest zgloszenia.*
+*Zrzut ekranu: JetBrains, [mapowanie importu](https://www.jetbrains.com/help/datagrip/import-data.html). W ćwiczeniu nazwą tabeli jest zgloszenia.*
 
 Po imporcie należy otworzyć tabelę dwuklikiem i sprawdzić 12 rekordów. Ponowny import do tej samej tabeli może dopisać dane; przed kolejną próbą należy sprawdzić jej zawartość.
+
+#### Przeglądanie i filtrowanie tabeli
+
+Po imporcie należy rozwinąć schemat `main` i dwukrotnie kliknąć tabelę `zgloszenia`. W edytorze tabeli trzeba sprawdzić nagłówki, typy i przykładowe rekordy, posortować kolumnę `czas_min`, a następnie użyć filtra `czas_min IS NULL`, aby wyświetlić rekordy z brakującym czasem. Zmian w tabeli demonstracyjnej nie należy zatwierdzać.
+
+![Edytor tabeli i wyniki w DataGrip](https://resources.jetbrains.com/help/img/idea/2026.2/db_data_editor_db_object_data_intro.png)
+
+*Zrzut ekranu: JetBrains, [edytor danych](https://www.jetbrains.com/help/datagrip/data-editor-and-viewer.html). Dwuklik otwiera tabelę; nagłówki umożliwiają sortowanie i filtrowanie.*
 
 #### Wykres i histogram z tabeli lub wyniku zapytania
 
@@ -434,7 +467,7 @@ W edytorze danych należy wybrać **Show Chart**, a następnie w ustawieniach se
 
 ![Wizualizacja danych jako wykres w DataGrip](https://resources.jetbrains.com/help/img/idea/2026.2/db_visualize_data_as_a_chart.png)
 
-*Screen: JetBrains, [wykresy w edytorze danych](https://www.jetbrains.com/help/datagrip/tables-view-data.html). W ćwiczeniu należy wybrać `czas_min` i Histogram; puste wartości nie tworzą słupka.*
+*Zrzut ekranu: JetBrains, [wykresy w edytorze danych](https://www.jetbrains.com/help/datagrip/tables-view-data.html). W ćwiczeniu należy wybrać `czas_min` i Histogram; puste wartości nie tworzą słupka.*
 
 Należy sprawdzić, jak rekord 240 minut zmienia obraz rozkładu. Histogram pokazuje rozkład obserwacji z próbki, ale sam nie potwierdza, że próba reprezentuje całą populację.
 
@@ -486,7 +519,7 @@ Po wykonaniu zapytania należy kliknąć **Export Data** w pasku wyników, wybra
 
 ![Eksport wyniku tabeli w DataGrip](https://resources.jetbrains.com/help/img/idea/2026.2/db_export_data_from_data_editor.png)
 
-*Screen: JetBrains, [eksport danych](https://www.jetbrains.com/help/datagrip/export-data.html). Format wybiera się w polu Extractor, a docelową ścieżkę w Output file.*
+*Zrzut ekranu: JetBrains, [eksport danych](https://www.jetbrains.com/help/datagrip/export-data.html). Format wybiera się w polu Extractor, a docelową ścieżkę w Output file.*
 
 Aby zapisać definicję demonstracyjnej tabeli, w **Database Explorer** należy kliknąć tabelę prawym przyciskiem i wybrać **SQL Scripts → Generate DDL to Query Console**. Następnie należy zapisać wygenerowany kod jako `examples/lab3/sql/schema-demo.sql`. DDL opisuje strukturę tabeli, a CSV/JSON/XLSX zawiera jej dane.
 
@@ -680,14 +713,20 @@ test("Każdy kurs jest dodatnią liczbą", function () {
 
 *Zrzut z oficjalnego samouczka Bruno: [testowanie odpowiedzi](https://docs.usebruno.com/introduction/quick-start). Kolekcję Bruno można zapisać w repozytorium jako pliki; w Postmanie należy wyeksportować kolekcję do pliku JSON. Przed publikacją należy sprawdzić, czy w kolekcji nie zapisano tokenów ani innych sekretów.*
 
-#### Zadanie dla zespołów wybierających źródło API
+#### Ćwiczenie na API NBP
 
-1. Należy uruchomić żądanie do wybranego API i zapisać kolekcję w repozytorium, np. w katalogu `api/`. Próbkę odpowiedzi należy zapisać osobno w `data/raw/`, jeśli pozwalają na to warunki publikacji.
-2. W demonstracji NBP należy zmienić walutę `EUR` na `USD`, a następnie liczbę notowań `last/5` na `last/10`. Trzeba sprawdzić, które pola odpowiedzi pozostają takie same, a które wartości się zmieniają.
-3. W demonstracji NBP należy zmienić jeden warunek testu tak, aby nie był spełniony, np. sprawdzić, czy `code` równa się `USD`, gdy w żądaniu nadal wskazano `EUR`. Po zaobserwowaniu niepowodzenia należy przywrócić prawidłowy warunek.
-4. Dla źródła danych wybranego do projektu należy przygotować własne żądanie i sprawdzić: status odpowiedzi, format, obecność wymaganych pól, braki danych oraz aktualność wyników. W dokumentacji źródła trzeba odszukać zasady dostępu, limity zapytań, ograniczenia zakresu danych i warunki ponownego wykorzystania.
+1. Należy zapisać kolekcję demonstracyjną w `examples/lab3/api/`, a próbkę odpowiedzi osobno w `examples/lab3/data/raw/nbp-eur.json`.
+2. Należy zmienić walutę `EUR` na `USD` i odpowiednio zmienić oczekiwaną walutę w testach, a następnie zmienić liczbę notowań `last/5` na `last/10`. Trzeba sprawdzić, które pola odpowiedzi pozostają takie same, a które wartości się zmieniają.
+3. Następnie należy celowo ustawić w teście inną walutę niż w żądaniu. Po zaobserwowaniu niepowodzenia trzeba przywrócić prawidłowy warunek i ponownie uruchomić testy.
 
 Wyniki NBP zmieniają się wraz z publikacją nowych notowań, dlatego testy powinny sprawdzać strukturę i sens wartości, a nie konkretny kurs lub datę. Postman i Bruno służą tu do ręcznego wysyłania żądań oraz testów odpowiedzi; nie są narzędziami do pomiaru obciążenia API.
+
+#### Zadanie dla zespołów wybierających źródło API
+
+1. Dla źródła projektu należy przygotować własne żądanie i sprawdzić status odpowiedzi, format, obecność wymaganych pól, braki danych oraz aktualność wyników.
+2. W dokumentacji źródła należy odszukać zasady dostępu, limity zapytań, ograniczenia zakresu danych i warunki ponownego wykorzystania; wyniki trzeba zapisać w `docs/data.md`.
+3. Kolekcję projektu należy zapisać w `api/`, a dozwoloną próbkę odpowiedzi osobno w `data/raw/`, wraz z datą pobrania i parametrami żądania w `docs/data.md`.
+4. Do sprawdzania powtarzalności przetwarzania należy używać tej samej zapisanej próbki odpowiedzi. Ponowne żądanie do aktualizowanego API może zwrócić inne dane.
 
 ### 5. Najczęstsze problemy
 
@@ -705,12 +744,11 @@ Wyniki NBP zmieniają się wraz z publikacją nowych notowań, dlatego testy pow
 
 ### 6. Dobór narzędzia do własnego projektu
 
-Po przejrzeniu opisów i zrzutów należy wybrać narzędzie główne odpowiednie dla źródła danych. Można dodać narzędzie pomocnicze, jeśli jest potrzebne do pozyskania, przetworzenia lub sprawdzenia danych. Nie należy instalować i wykonywać ćwiczeń ze wszystkich programów.
-
-W `docs/processing.md` należy dodać krótką sekcję:
+W `docs/processing.md` należy uzasadnić wybór narzędzia głównego i ewentualnego narzędzia pomocniczego, korzystając z szablonu:
 
 ```markdown
 ### Dobór narzędzi
+
 - Źródło i format danych: ...
 - Narzędzie główne: ...
 - Dlaczego pasuje do tego źródła i zadania: ...
@@ -727,8 +765,6 @@ Następnie należy, korzystając z wybranego narzędzia lub zestawu narzędzi:
 5. zapisać w `docs/processing.md` co najmniej jedną decyzję wynikającą z analizy.
 
 Pod wykresem należy podać źródło danych, nazwę zmiennej i jednostkę, liczbę wykorzystanych obserwacji, liczbę braków oraz krótki wniosek. Dla danych syntetycznych trzeba zaznaczyć, że wynik demonstruje działanie procedury, a nie opisuje rzeczywistej populacji.
-
-Każda osoba powinna odpowiadać za konkretny rezultat, np. pozyskanie próbki, kontrolę jakości, regułę czyszczenia, interpretację wykresu albo zapytanie SQL. Nie trzeba dzielić zespołu według programów — wkład należy przypisać do zadania i zapisać w historii repozytorium.
 
 W publicznym repozytorium należy zachować kod, dozwoloną próbkę i opis analizy. Zrzuty oraz pliki Orange także mogą zawierać dane — przed publikacją trzeba sprawdzić ich zawartość.
 
@@ -775,8 +811,6 @@ macOS/Linux: ~/.agents/skills/analyze-data-quality/
 
 W razie potrzeby należy utworzyć brakujące foldery `skills` i `analyze-data-quality`. Po uruchomieniu Codexa w katalogu projektu skill należy wywołać przez wpisanie `$` i wybranie `analyze-data-quality` z listy albo przez wpisanie `$analyze-data-quality`. Jeśli skill nie pojawia się na liście, należy ponownie uruchomić Codex.
 
-Wtyczkę **Data** instaluje się osobno: w katalogu wtyczek należy znaleźć **Data** i wybrać instalację. W zadaniu Codexa należy następnie otworzyć **Sources → Use plugins** i wybrać **Data**. Do samej analizy pliku CSV wystarczy lokalny skill; wtyczka Data przydaje się do szerszych pytań analitycznych i pracy z podłączonymi źródłami.
-
 ##### Google Antigravity — instalacja skilla
 
 Antigravity IDE wczytuje skille z katalogu osobistego albo z katalogu bieżącego projektu. Zalecana instalacja osobista wygląda tak:
@@ -812,24 +846,24 @@ Agenta można też wykorzystać do wyjaśnienia kodu; jego sugestie należy samo
 ## Zadania samodzielne
 
 1. Umieścić surowe dane w katalogu `data/raw/` jako niezmienioną próbkę wyjściową oraz zaktualizować w `docs/data.md` dokładne parametry ich pozyskania lub procedurę pomiaru.
-2. Uzupełnić słownik co najmniej pięciu najważniejszych pól.
+2. Opisać w słowniku wszystkie pola wykorzystywane w przetwarzaniu i interpretacji wyniku, w tym pola utworzone podczas transformacji; wskazać, którego zbioru dotyczy opis.
 3. Wybrać narzędzie główne i — jeśli jest potrzebne — pomocnicze, uzasadnić ich dobór do źródła i zadania oraz zapisać go w sekcji „Dobór narzędzi” pliku `docs/processing.md`, korzystając z szablonu w przewodniku.
 4. Wykryć co najmniej trzy problemy jakościowe albo udokumentować trzy wykonane kontrole.
-5. Przygotować skrypt lub notebook wykonujący co najmniej trzy transformacje.
-6. Porównać liczbę rekordów i strukturę danych przed oraz po przetworzeniu.
-7. Przetestować powtarzalność procedury: usunąć poprzedni plik wynikowy z `data/processed/`, uruchomić skrypt ponownie z terminala albo wykonać wszystkie komórki notebooka w nowej sesji, a następnie sprawdzić, czy wynik został odtworzony bez błędów i ma oczekiwaną strukturę.
+5. Przygotować skrypt, notebook albo skrypt SQL wykonujący co najmniej trzy uzasadnione operacje czyszczenia lub transformacji.
+6. Porównać liczbę rekordów i strukturę danych przed oraz po przetworzeniu. Zapisać co najmniej dwie automatyczne kontrole jakości wyniku i wykazać na celowo błędnej kopii danych, że co najmniej jedna z nich wykrywa naruszenie reguły.
+7. Przetestować powtarzalność na tej samej, niezmienionej próbce wejściowej: zachować kopię wyniku do porównania w `data/test/`, usunąć wyłącznie wygenerowany plik z `data/processed/` i odtworzyć go od początku według instrukcji w `README.md`. Należy uruchomić skrypt z terminala, wykonać wszystkie komórki notebooka w nowej sesji albo odtworzyć roboczą bazę z próbki i wykonać skrypty SQL oraz eksport. Trzeba porównać liczbę rekordów, strukturę, wartości i wyniki kontroli z pierwszym uruchomieniem oraz zapisać wynik porównania w `docs/processing.md`. Jeśli kolejność wierszy nie ma znaczenia, przed porównaniem należy uporządkować je według ustalonego klucza; dla obliczeń przybliżonych należy określić tolerancję.
 8. Opisać decyzję, której nie można jeszcze podjąć z powodu brakujących lub niewystarczających danych, i zapisać ją w sekcji „Ograniczenia” pliku `docs/processing.md`.
 
 Każdy członek zespołu powinien mieć własny rezultat: pozyskaną część danych, wpis w słowniku, kontrolę jakości, fragment skryptu, transformację, opis ograniczenia albo sprawdzenie powtarzalności.
 
 ## Rezultat do zapisania
 
-- surowa próbka danych albo instrukcja jej ponownego pobrania;
+- dozwolona surowa próbka albo jawnie oznaczony zamiennik syntetyczny zgodny z zasadami publikacji opisanymi na początku instrukcji, wraz z opisem pozyskania lub wytworzenia;
 - przetworzona próbka w ustalonym formacie;
-- słownik najważniejszych pól;
-- skrypt lub notebook przygotowania danych;
+- słownik pól wykorzystywanych w przetwarzaniu i interpretacji wyniku, w tym nowych pól;
+- skrypt, notebook albo skrypt SQL przygotowania danych;
 - instrukcja w głównym `README.md` projektu: wymagane środowisko i pakiety oraz sposób uruchomienia przetwarzania;
-- opis czyszczenia, transformacji i kontroli jakości;
+- opis czyszczenia i transformacji oraz co najmniej dwie automatyczne kontrole jakości z wynikiem próby na błędnej kopii danych;
 - uzasadnienie doboru narzędzi w `docs/processing.md`;
-- informacja o ograniczeniach i powtarzalności;
+- informacja o ograniczeniach i wynik porównania dwóch uruchomień na tej samej próbce;
 - commit wskazujący indywidualny wkład każdego członka zespołu.
