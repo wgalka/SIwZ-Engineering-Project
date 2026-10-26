@@ -10,6 +10,10 @@ private/
 tmp/
 temp/
 output/
+_site/
+.jekyll-cache/
+.sass-cache/
+.jekyll-metadata
 *.log
 *.bak
 *.swp

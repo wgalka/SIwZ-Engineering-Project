@@ -1,3 +1,8 @@
+---
+title: "Laboratorium 2: Analiza problemu i pozyskiwanie informacji — ADSG"
+permalink: /2026-2027/adsg/lab2/
+---
+
 # Laboratorium 2: Analiza problemu i pozyskiwanie informacji
 
 **Specjalność: Analiza danych społeczno-gospodarczych**
@@ -197,4 +202,4 @@ Każdy członek zespołu powinien mieć własny, możliwy do wskazania rezultat:
 
 ## Przydatne narzędzia
 
-Należy wykorzystać GitHub Repository, Markdown i VS Code. Rzeczywiste zrzuty interfejsów oraz podstawowe czynności opisano w [przewodniku po narzędziach](../../narzedzia/README.md#zrzuty-demonstracyjne).
+Należy wykorzystać GitHub Repository, Markdown i VS Code. Rzeczywiste zrzuty interfejsów oraz podstawowe czynności opisano w [przewodniku po narzędziach](../../narzedzia/#zrzuty-demonstracyjne).

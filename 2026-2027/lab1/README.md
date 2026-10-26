@@ -1,3 +1,8 @@
+---
+title: "Laboratorium 1: Wybór problemu i utworzenie zespołu"
+permalink: /2026-2027/lab1/
+---
+
 # Laboratorium 1: Wybór problemu i utworzenie zespołu
 
 **Specjalność: Systemy informatyczne w zarządzaniu**

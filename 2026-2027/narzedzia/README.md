@@ -1,3 +1,8 @@
+---
+title: "Przydatne narzędzia do realizacji projektu"
+permalink: /2026-2027/narzedzia/
+---
+
 # Przydatne narzędzia do realizacji projektu
 
 ## Po co korzystać z tych narzędzi?

@@ -1,3 +1,8 @@
+---
+title: "Laboratorium 10: Prezentacje końcowe i obrona"
+permalink: /2026-2027/lab10/
+---
+
 # Laboratorium 10: Prezentacje końcowe i obrona
 
 ## Cel zajęć
@@ -40,7 +45,7 @@ Demonstrację przygotować wcześniej na znanych danych i w znanym środowisku. 
 
 ## Przydatne narzędzia
 
-Zrzuty demonstracyjne i opis pełnego przepływu znajdują się w [przewodniku po narzędziach](../narzedzia/README.md#zrzuty-demonstracyjne). Należy pokazać sposób wskazania finalnego release, otwarcia dokumentacji i odtworzenia głównego przepływu z repozytorium.
+Zrzuty demonstracyjne i opis pełnego przepływu znajdują się w [przewodniku po narzędziach](../narzedzia/#zrzuty-demonstracyjne). Należy pokazać sposób wskazania finalnego release, otwarcia dokumentacji i odtworzenia głównego przepływu z repozytorium.
 
 1. **PowerPoint, Google Slides lub LibreOffice Impress** - przygotować czytelne slajdy, użyć wykresów i diagramów zamiast dużych bloków tekstu.
 2. **Tryb prezentera i timer** - kontrolować czas, kolejność wystąpienia i moment przekazania głosu.

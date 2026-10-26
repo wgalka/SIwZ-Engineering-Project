@@ -1,3 +1,8 @@
+---
+title: "Laboratorium 6: Plan realizacji, GitHub i podział zadań"
+permalink: /2026-2027/lab6/
+---
+
 # Laboratorium 6: Plan realizacji, GitHub i podział zadań
 
 ## Cel zajęć
@@ -29,7 +34,7 @@ Podzielić duże epiki na zadania, które można wykonać w jednym etapie pracy 
 
 ## Przydatne narzędzia
 
-Zrzuty demonstracyjne i opis pełnego przepływu znajdują się w [przewodniku po narzędziach](../narzedzia/README.md#zrzuty-demonstracyjne). Należy pokazać cały cykl: Issue, branch, commit, Pull Request, review, merge oraz wynik GitHub Actions.
+Zrzuty demonstracyjne i opis pełnego przepływu znajdują się w [przewodniku po narzędziach](../narzedzia/#zrzuty-demonstracyjne). Należy pokazać cały cykl: Issue, branch, commit, Pull Request, review, merge oraz wynik GitHub Actions.
 
 1. **GitHub Projects** - utworzyć tablicę z kolumnami backlog, do zrobienia, w trakcie, do przeglądu i zakończone; dodać etykiety, osoby i milestone.
 2. **GitHub Issues** - opisać zadanie, dodać kryteria akceptacji, zależności, właściciela i link do powiązanego wymagania.

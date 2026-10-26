@@ -1,3 +1,8 @@
+---
+title: "Laboratorium 2: Analiza problemu i pozyskiwanie informacji"
+permalink: /2026-2027/lab2/
+---
+
 # Laboratorium 2: Analiza problemu i pozyskiwanie informacji
 
 **Specjalność: Systemy informatyczne w zarządzaniu**

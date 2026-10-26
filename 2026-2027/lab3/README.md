@@ -1,3 +1,8 @@
+---
+title: "Laboratorium 3: Akwizycja i przetwarzanie danych"
+permalink: /2026-2027/lab3/
+---
+
 # Laboratorium 3: Akwizycja i przetwarzanie danych
 
 **Specjalność: Systemy informatyczne w zarządzaniu**

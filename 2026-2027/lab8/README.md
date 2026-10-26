@@ -1,3 +1,8 @@
+---
+title: "Laboratorium 8: Eksperymenty, testowanie i ocena wyników"
+permalink: /2026-2027/lab8/
+---
+
 # Laboratorium 8: Eksperymenty, testowanie i ocena wyników
 
 ## Cel zajęć
@@ -29,7 +34,7 @@ Oddzielić test od eksperymentu. Test odpowiada na pytanie, czy określone zacho
 
 ## Przydatne narzędzia
 
-Zrzuty demonstracyjne i opis pełnego przepływu znajdują się w [przewodniku po narzędziach](../narzedzia/README.md#zrzuty-demonstracyjne). Należy pokazać test poprawnego i błędnego przypadku, uruchomienie workflow oraz zapisanie problemu w Issue.
+Zrzuty demonstracyjne i opis pełnego przepływu znajdują się w [przewodniku po narzędziach](../narzedzia/#zrzuty-demonstracyjne). Należy pokazać test poprawnego i błędnego przypadku, uruchomienie workflow oraz zapisanie problemu w Issue.
 
 1. **pytest, JUnit lub narzędzie wybrane przez zespół** - przygotować test poprawnego przypadku, test błędu i test danych granicznych.
 2. **GitHub Actions** - uruchamiać testy po każdym Pull Requeście i pokazać, jak awaria blokuje połączenie zmiany.

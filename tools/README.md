@@ -1,3 +1,8 @@
+---
+title: "Weryfikator repozytorium"
+permalink: /tools/
+---
+
 # Weryfikator repozytorium
 
 ## Cel

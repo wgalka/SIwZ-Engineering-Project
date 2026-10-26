@@ -1,0 +1,29 @@
+title: Projekt informatyczny
+description: Instrukcje laboratoryjne dla kierunku Informatyka i ekonometria
+lang: pl-PL
+url: https://pi-spec.lazysolutions.pl
+baseurl: ""
+
+remote_theme: wgalka/instructions-jekyll-theme
+
+plugins:
+  - jekyll-remote-theme
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - private
+  - tmp
+  - qa_syllabus

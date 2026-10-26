@@ -1,3 +1,8 @@
+---
+title: "Laboratorium 9: Integracja, dokumentacja i próba prezentacji"
+permalink: /2026-2027/lab9/
+---
+
 # Laboratorium 9: Integracja, dokumentacja i próba prezentacji
 
 ## Cel zajęć
@@ -29,7 +34,7 @@ Sprawdzić spójność między kartą projektu, diagramami, README, kodem i prez
 
 ## Przydatne narzędzia
 
-Zrzuty demonstracyjne i opis pełnego przepływu znajdują się w [przewodniku po narzędziach](../narzedzia/README.md#zrzuty-demonstracyjne). Należy pokazać integrację zmian, rozwiązanie konfliktu, utworzenie release oraz sprawdzenie projektu według instrukcji z README.
+Zrzuty demonstracyjne i opis pełnego przepływu znajdują się w [przewodniku po narzędziach](../narzedzia/#zrzuty-demonstracyjne). Należy pokazać integrację zmian, rozwiązanie konfliktu, utworzenie release oraz sprawdzenie projektu według instrukcji z README.
 
 1. **Git** - scalić branche, rozwiązać prosty konflikt, uruchomić testy po integracji i oznaczyć wersję tagiem.
 2. **GitHub Release** - przygotować wersję do demonstracji, dodać opis zmian i wskazać wymagane pliki.

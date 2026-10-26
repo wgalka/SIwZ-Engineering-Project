@@ -1,3 +1,8 @@
+---
+title: "Laboratorium 5: Architektura, UML/ERD i technologie"
+permalink: /2026-2027/lab5/
+---
+
 # Laboratorium 5: Architektura, UML/ERD i technologie
 
 ## Cel zajęć
@@ -35,7 +40,7 @@ Każdą ważną decyzję technologiczną zapisać razem z rozważanymi alternaty
 
 ## Przydatne narzędzia
 
-Zrzuty demonstracyjne i opis pełnego przepływu znajdują się w [przewodniku po narzędziach](../narzedzia/README.md#zrzuty-demonstracyjne). Należy pokazać utworzenie diagramu, zapisanie go w repozytorium i powiązanie z wymaganiem oraz elementem implementacji.
+Zrzuty demonstracyjne i opis pełnego przepływu znajdują się w [przewodniku po narzędziach](../narzedzia/#zrzuty-demonstracyjne). Należy pokazać utworzenie diagramu, zapisanie go w repozytorium i powiązanie z wymaganiem oraz elementem implementacji.
 
 1. **diagrams.net** - przygotować diagram kontekstowy, przypadki użycia i ERD, a następnie eksportować je do pliku używanego w dokumentacji.
 2. **Mermaid lub PlantUML** - zapisać diagram jako tekst, aby można było go przeglądać i zmieniać razem z kodem.

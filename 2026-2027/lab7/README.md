@@ -1,3 +1,8 @@
+---
+title: "Laboratorium 7: Implementacja i pierwsza wersja MVP"
+permalink: /2026-2027/lab7/
+---
+
 # Laboratorium 7: Implementacja i pierwsza wersja MVP
 
 ## Cel zajęć
@@ -29,7 +34,7 @@ Podczas implementacji dokumentować decyzje, które mogą utrudnić późniejsz�
 
 ## Przydatne narzędzia
 
-Zrzuty demonstracyjne i opis pełnego przepływu znajdują się w [przewodniku po narzędziach](../narzedzia/README.md#zrzuty-demonstracyjne). Należy pokazać implementację jednej funkcji od Issue przez branch i Pull Request aż do uruchomienia działającej wersji MVP.
+Zrzuty demonstracyjne i opis pełnego przepływu znajdują się w [przewodniku po narzędziach](../narzedzia/#zrzuty-demonstracyjne). Należy pokazać implementację jednej funkcji od Issue przez branch i Pull Request aż do uruchomienia działającej wersji MVP.
 
 1. **VS Code** - przejść przez strukturę projektu, uruchomić komendę w terminalu, ustawić punkt przerwania i odczytać log.
 2. **Menedżer zależności wybranej technologii** - dodać bibliotekę, zapisać wersję i odtworzyć środowisko na czystym katalogu.
