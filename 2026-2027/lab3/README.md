@@ -15,27 +15,22 @@ Na tych zajęciach należy przejść od wybranego w Lab 2 źródła lub planu w�
 
 Po zajęciach repozytorium powinno zawierać:
 
-```text
-projekt-zespolu/
-├── README.md                     # wymagany: środowisko i uruchomienie przetwarzania
-├── requirements.txt              # gdy używane są dodatkowe pakiety Pythona
-├── api/                          # opcjonalnie: kolekcja żądań do API
-├── data/
-│   ├── raw/
-│   │   └── sample-source.ext
-│   ├── processed/
-│   │   └── sample-clean.ext
-│   └── test/                      # opcjonalnie: kopie do testów
-├── docs/
-│   ├── data.md
-│   ├── data-dictionary.md
-│   └── processing.md
-├── scripts/
-│   ├── prepare_data.py / prepare_data.ipynb / prepare_data.sql  # jeden wariant
-│   └── kontrola.sql               # opcjonalnie: zapytania dla projektu
-└── examples/
-    └── lab3/                      # opcjonalnie: pliki demonstracyjne, w tym kod i baza
-```
+![Struktura repozytorium z katalogami data, docs, scripts oraz opcjonalnymi api i examples.](../../assets/diagrams/lab3-files.svg)
+
+[Źródło diagramu (PlantUML)](../../assets/diagrams/lab3-files.puml).
+
+| Ścieżka | Zawartość i wymaganie |
+|---|---|
+| `README.md` | Wymagana instrukcja przygotowania środowiska i uruchomienia przetwarzania |
+| `requirements.txt` | Zależności, gdy używane są dodatkowe pakiety Pythona |
+| `api/` | Opcjonalna kolekcja żądań do API |
+| `data/raw/sample-source.ext` | Surowa próbka wyjściowa; rozszerzenie zgodne z formatem danych |
+| `data/processed/sample-clean.ext` | Wynik przetwarzania |
+| `data/test/` | Opcjonalne kopie do testów |
+| `docs/data.md`, `docs/data-dictionary.md`, `docs/processing.md` | Opis danych, słownik i procedura przetwarzania |
+| `scripts/prepare_data.py` | Jeden wariant procedury: `.py`, `.ipynb` albo `.sql` |
+| `scripts/kontrola.sql` | Opcjonalne zapytania kontrolne dla projektu |
+| `examples/lab3/` | Opcjonalne pliki demonstracyjne, w tym kod i baza |
 
 Własną próbkę i wyniki należy przechowywać w `data/`. Pliki z demonstracji opisanej w tym przewodniku należy umieszczać w `examples/lab3/`, aby nie mieszać ich z danymi projektu. Katalog `api/` jest potrzebny tylko przy źródle API, a `requirements.txt` — gdy wybrana ścieżka wymaga dodatkowych pakietów Pythona.
 

@@ -19,15 +19,17 @@ Należy uzgodnić z prowadzącym limit wystąpienia i sposób przekazania materi
 
 ## Rezultat pracy
 
-```text
-docs/
-├── report.md             # raport końcowy z odnośnikami do istniejących dowodów
-└── presentation.md       # scenariusz demonstracji, pytania i wynik próby
-presentation/
-├── slides.pdf            # czytelny eksport prezentacji
-└── slides.pptx           # lub inny edytowalny format; jeśli używane są slajdy
-README.md                 # punkt wejścia do uruchomienia i dokumentacji
-```
+![Struktura materiałów końcowych: raport i scenariusz w docs, slajdy w presentation oraz główny README.md.](../../assets/diagrams/lab8-files.svg)
+
+[Źródło diagramu (PlantUML)](../../assets/diagrams/lab8-files.puml).
+
+| Ścieżka | Zawartość |
+|---|---|
+| `docs/report.md` | Raport końcowy z odnośnikami do istniejących dowodów |
+| `docs/presentation.md` | Scenariusz demonstracji, pytania i wynik próby |
+| `presentation/slides.pdf` | Czytelny eksport prezentacji, jeśli używane są slajdy |
+| `presentation/slides.pptx` | Źródło slajdów; dopuszczalny inny edytowalny format, np. `slides.md` |
+| `README.md` | Punkt wejścia do uruchomienia i dokumentacji |
 
 Należy zachować format odpowiedni do narzędzia. Jeśli prezentacja jest przygotowana w usłudze internetowej, trzeba sprawdzić uprawnienia odbiorcy i zapisać eksport, który można otworzyć bez konta autora. Nie należy publikować karty projektu, prywatnych danych ani sekretów. Do raportu wystarczą bezpieczne przykłady i odnośniki do publicznych rezultatów pracy.
 

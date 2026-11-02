@@ -19,14 +19,16 @@ Należy otworzyć `docs/problem.md`, słownik danych, `docs/processing.md` i `do
 
 ## Rezultat pracy
 
-```text
-docs/
-├── architecture.md       # przypadek użycia, odpowiedzialności, interfejsy i model danych
-├── diagrams/             # edytowalne diagramy i eksport PNG/SVG, jeśli potrzebny
-└── decisions/
-    └── 001-storage.md    # jedna istotna decyzja i rozważana alternatywa
-examples/lab5/            # wyłącznie demonstracje, jeśli wykonywane
-```
+![Struktura dokumentacji: architecture.md, diagrams i decisions/001-storage.md w docs oraz opcjonalne examples/lab5.](../../assets/diagrams/lab5-files.svg)
+
+[Źródło diagramu (PlantUML)](../../assets/diagrams/lab5-files.puml).
+
+| Ścieżka | Zawartość |
+|---|---|
+| `docs/architecture.md` | Przypadek użycia, odpowiedzialności, interfejsy i model danych |
+| `docs/diagrams/` | Edytowalne diagramy i eksport PNG/SVG, jeśli potrzebny |
+| `docs/decisions/001-storage.md` | Jedna istotna decyzja i rozważana alternatywa |
+| `examples/lab5/` | Wyłącznie demonstracje, jeśli wykonywane |
 
 Diagramy Mermaid można umieścić bezpośrednio w `docs/architecture.md`. Dla diagramów graficznych należy zachować plik źródłowy, np. `.drawio`, oraz czytelny eksport. Sam obraz nie wystarcza do wygodnej aktualizacji projektu.
 

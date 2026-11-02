@@ -1,0 +1,9 @@
+@startfiles
+/projekt-zespolu/data/sample.csv
+<note>
+lub sample.json — format zgodny ze źródłem
+</note>
+/projekt-zespolu/docs/problem.md
+/projekt-zespolu/docs/data.md
+/projekt-zespolu/README.md
+@endfiles

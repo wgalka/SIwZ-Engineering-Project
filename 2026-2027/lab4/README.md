@@ -44,21 +44,19 @@ Jeżeli rzeczywiste dane są jeszcze niedostępne, można wykonać porównanie n
 
 Należy rozszerzyć istniejące repozytorium o:
 
-```text
-projekt-zespolu/
-├── README.md                  # instrukcja uruchomienia porównania
-├── data/processed/            # istniejąca, niezmieniana próbka z Lab 3
-├── docs/
-│   └── experiment.md          # pytanie, źródła, metoda, warunki, wyniki i ograniczenia
-├── scripts/
-│   └── compare_methods.py     # albo notebook, skrypt SQL lub zapis analizy w użytym narzędziu
-├── results/
-│   └── lab4/
-│       ├── comparison.csv     # porównanie wariantu bazowego i metody
-│       └── observations.csv   # prognozy, wyniki powtórzeń albo pomiary jednostkowe
-└── examples/
-    └── lab4/                  # tylko jeśli wykonywana jest demonstracja z instrukcji
-```
+![Struktura repozytorium z opisem eksperymentu, procedurą porównania i wynikami w results/lab4.](../../assets/diagrams/lab4-files.svg)
+
+[Źródło diagramu (PlantUML)](../../assets/diagrams/lab4-files.puml).
+
+| Ścieżka | Zawartość |
+|---|---|
+| `README.md` | Instrukcja uruchomienia porównania |
+| `data/processed/` | Istniejąca, niezmieniana próbka z Lab 3 |
+| `docs/experiment.md` | Pytanie, źródła, metoda, warunki, wyniki i ograniczenia |
+| `scripts/compare_methods.py` | Procedura porównania; alternatywnie notebook, skrypt SQL lub zapis analizy w użytym narzędziu |
+| `results/lab4/comparison.csv` | Porównanie wariantu bazowego i metody |
+| `results/lab4/observations.csv` | Prognozy, wyniki powtórzeń albo pomiary jednostkowe |
+| `examples/lab4/` | Opcjonalnie: demonstracja z instrukcji |
 
 Jeżeli wymagane są dodatkowe pakiety, należy zaktualizować plik zależności. W przypadku notebooka, SQL lub aplikacji statystycznej należy zapisać plik pozwalający odtworzyć analizę oraz dokładny sposób jej uruchomienia. Sam zrzut ekranu nie zastępuje obliczeń ani wyników liczbowych. W repozytorium wolno publikować wyłącznie dozwolone dane i wyniki, bez danych osobowych, haseł i kluczy API.
 

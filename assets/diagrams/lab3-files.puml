@@ -1,0 +1,23 @@
+@startfiles
+/projekt-zespolu/README.md
+/projekt-zespolu/requirements.txt
+<note>
+gdy używane są dodatkowe pakiety Pythona
+</note>
+/projekt-zespolu/api/
+/projekt-zespolu/data/raw/sample-source.ext
+/projekt-zespolu/data/processed/sample-clean.ext
+/projekt-zespolu/data/test/
+/projekt-zespolu/docs/data.md
+/projekt-zespolu/docs/data-dictionary.md
+/projekt-zespolu/docs/processing.md
+/projekt-zespolu/scripts/prepare_data.py
+<note>
+jeden wariant: .py, .ipynb albo .sql
+</note>
+/projekt-zespolu/scripts/kontrola.sql
+<note>
+opcjonalnie: zapytania dla projektu
+</note>
+/projekt-zespolu/examples/lab3/
+@endfiles

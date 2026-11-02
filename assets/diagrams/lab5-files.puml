@@ -1,0 +1,6 @@
+@startfiles
+/docs/architecture.md
+/docs/diagrams/
+/docs/decisions/001-storage.md
+/examples/lab5/
+@endfiles

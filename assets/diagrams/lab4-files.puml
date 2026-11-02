@@ -1,0 +1,12 @@
+@startfiles
+/projekt-zespolu/README.md
+/projekt-zespolu/data/processed/
+/projekt-zespolu/docs/experiment.md
+/projekt-zespolu/scripts/compare_methods.py
+<note>
+albo notebook, skrypt SQL lub zapis analizy
+</note>
+/projekt-zespolu/results/lab4/comparison.csv
+/projekt-zespolu/results/lab4/observations.csv
+/projekt-zespolu/examples/lab4/
+@endfiles
