@@ -21,8 +21,6 @@ Należy otworzyć `docs/problem.md`, słownik danych, `docs/processing.md` i `do
 
 ![Struktura dokumentacji: architecture.md, diagrams i decisions/001-storage.md w docs oraz opcjonalne examples/lab5.](../../assets/diagrams/lab5-files.svg)
 
-[Źródło diagramu (PlantUML)](../../assets/diagrams/lab5-files.puml).
-
 | Ścieżka | Zawartość |
 |---|---|
 | `docs/architecture.md` | Przypadek użycia, odpowiedzialności, interfejsy i model danych |

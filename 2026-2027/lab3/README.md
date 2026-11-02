@@ -17,8 +17,6 @@ Po zajęciach repozytorium powinno zawierać:
 
 ![Struktura repozytorium z katalogami data, docs, scripts oraz opcjonalnymi api i examples.](../../assets/diagrams/lab3-files.svg)
 
-[Źródło diagramu (PlantUML)](../../assets/diagrams/lab3-files.puml).
-
 | Ścieżka | Zawartość i wymaganie |
 |---|---|
 | `README.md` | Wymagana instrukcja przygotowania środowiska i uruchomienia przetwarzania |

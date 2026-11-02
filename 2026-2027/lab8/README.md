@@ -21,8 +21,6 @@ Należy uzgodnić z prowadzącym limit wystąpienia i sposób przekazania materi
 
 ![Struktura materiałów końcowych: raport i scenariusz w docs, slajdy w presentation oraz główny README.md.](../../assets/diagrams/lab8-files.svg)
 
-[Źródło diagramu (PlantUML)](../../assets/diagrams/lab8-files.puml).
-
 | Ścieżka | Zawartość |
 |---|---|
 | `docs/report.md` | Raport końcowy z odnośnikami do istniejących dowodów |

@@ -46,8 +46,6 @@ Należy rozszerzyć istniejące repozytorium o:
 
 ![Struktura repozytorium z opisem eksperymentu, procedurą porównania i wynikami w results/lab4.](../../assets/diagrams/lab4-files.svg)
 
-[Źródło diagramu (PlantUML)](../../assets/diagrams/lab4-files.puml).
-
 | Ścieżka | Zawartość |
 |---|---|
 | `README.md` | Instrukcja uruchomienia porównania |

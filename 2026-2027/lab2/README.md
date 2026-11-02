@@ -32,7 +32,7 @@ W repozytorium powinny znajdować się:
 
 ![Struktura repozytorium: próbka w data, opis problemu i danych w docs oraz README.md.](../../assets/diagrams/lab2-files.svg)
 
-[Źródło diagramu (PlantUML)](../../assets/diagrams/lab2-files.puml). Próbkę należy zapisać jako `data/sample.csv` lub `data/sample.json`, zgodnie z formatem źródła.
+Próbkę należy zapisać jako `data/sample.csv` lub `data/sample.json`, zgodnie z formatem źródła.
 
 Próbka powinna pochodzić z rzeczywistego źródła. Jeżeli źródło zawiera dane chronione, należy zapisać najmniejszy dozwolony fragment, dane zanonimizowane albo odpowiedź API bez danych osobowych oraz opisać ograniczenie w `docs/data.md`. Nie należy umieszczać w publicznym repozytorium karty projektu, danych osobowych, haseł ani kluczy API.
 
