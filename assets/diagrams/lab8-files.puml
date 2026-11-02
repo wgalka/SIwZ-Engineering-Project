@@ -1,11 +1,11 @@
 @startfiles
-/docs/report.md
-/docs/presentation.md
-/presentation/slides.pdf
-/presentation/slides.pptx
+/projekt-zespolu/docs/report.md
+/projekt-zespolu/docs/presentation.md
+/projekt-zespolu/presentation/slides.pdf
+/projekt-zespolu/presentation/slides.pptx
 <note>
 lub inny edytowalny format, np. slides.md;
 pliki slajdów — jeśli używane są slajdy
 </note>
-/README.md
+/projekt-zespolu/README.md
 @endfiles

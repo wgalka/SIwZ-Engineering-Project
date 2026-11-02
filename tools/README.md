@@ -1,13 +1,8 @@
----
-title: "Weryfikator repozytorium"
-permalink: /tools/
----
-
-# Weryfikator repozytorium
+# Weryfikator repozytorium (narzędzie prowadzącego)
 
 ## Cel
 
-Skrypt `verify_repository.py` służy do wstępnego sprawdzenia, czy repozytorium zespołu zawiera wymagane artefakty oraz czy każdy członek zespołu ma widoczny wkład w historię pracy.
+Skrypt `verify_repository.py` służy do sprawdzenia, czy publiczne repozytorium zespołu zawiera wymagane artefakty dla danego etapu (`lab2`–`lab8`) oraz czy każdy członek zespołu ma widoczny wkład w historię pracy.
 
 ## Uruchomienie
 
@@ -17,29 +12,21 @@ Wystarczy podać link do repozytorium i etap, który ma zostać sprawdzony:
 python tools/verify_repository.py --repo https://github.com/zespol/projekt --lab lab6
 ```
 
-Loginy członków zespołu należy przekazać weryfikatorowi osobno. Nie trzeba dodawać do publicznego repozytorium plików technicznych przeznaczonych dla bota. Listę można podać parametrem:
+Loginy członków zespołu należy przekazać parametrem `--students`:
 
 ```powershell
 python tools/verify_repository.py --repo https://github.com/zespol/projekt --students anna123,jan456 --lab lab6
 ```
 
-Dla repozytoriów prywatnych należy ustawić zmienną `GITHUB_TOKEN` albo przekazać token parametrem. Token nie powinien być zapisywany w repozytorium ani w dokumentacji projektu.
+Dla wyższego limitu zapytań GitHub API można ustawić zmienną środowiskową `GITHUB_TOKEN` albo przekazać token parametrem `--token`.
 
 ## Co sprawdza skrypt?
 
-W zależności od wybranego laboratorium skrypt sprawdza:
+W zależności od wybranego laboratorium (`lab2`–`lab8`) skrypt sprawdza:
 
-- dostępność repozytorium;
-- `README.md` i wymagane pliki dokumentacji;
-- Issues i Pull Requesty;
-- obecność workflow GitHub Actions;
-- commity i Pull Requesty przypisane do członków zespołu;
-- wynik w formacie tekstowym albo JSON.
-
-Skrypt jest pierwszą wersją weryfikatora. Sprawdza przede wszystkim pliki, historię commitów i podstawowe elementy repozytorium dostępne przez GitHub API.
-
-Dla Lab 2 skrypt sprawdza, czy repozytorium jest publiczne oraz czy zawiera `README.md`, `docs/problem.md`, `docs/data.md` i katalog `data/` z plikiem `sample.*`. Po przekazaniu loginów parametrem `--students` skrypt sprawdza również, czy każdy członek zespołu ma co najmniej jeden commit.
-
-## Zasady oceniania wkładu
-
-Weryfikator nie powinien uznawać liczby linii kodu za miarę wkładu. Za rezultat można uznać również test, przygotowanie danych, diagram, dokumentację, workflow, analizę wyników albo decyzję projektową. Każdy rezultat powinien mieć właściciela i ślad w historii repozytorium. W laboratoriach, w których wymagane są Issues lub Pull Requesty, należy powiązać z nimi odpowiedni rezultat.
+- dostępność i publiczną widoczność repozytorium;
+- `README.md` oraz wymagane pliki i katalogi dokumentacji (`docs/problem.md`, `docs/data.md`, `docs/data-dictionary.md`, `docs/processing.md`, `docs/methods.md`, `docs/architecture.md`, `docs/implementation.md`, `docs/tests.md`, `docs/user-guide.md`, `docs/report.md`, `docs/presentation.md`);
+- obecność próbki danych (`data/sample.*`) w Lab 2;
+- obecność Issues i Pull Requestów na etapach projektowania, realizacji i testowania;
+- commity przypisane do przekazanych loginów członków zespołu;
+- wynik w formacie tekstowym albo JSON (`--json`).

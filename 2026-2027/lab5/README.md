@@ -85,7 +85,7 @@ Trzeba zapisać jedną decyzję architektoniczną z alternatywą według wzoru p
 
 ### 5. Przegląd projektu — 70–90 min
 
-Inna osoba powinna prześledzić UC-01 od wejścia do wyniku, korzystając tylko z dokumentacji. Należy sprawdzić zgodność nazw pól z Lab 3, metody z Lab 4 i elementów diagramu z planowaną implementacją. Trzeba wskazać właściciela każdej potrzebnej zmiany w Issue oraz poprawić znalezioną niespójność.
+Inna osoba powinna prześledzić UC-01 od wejścia do wyniku, korzystając tylko z dokumentacji. Należy sprawdzić zgodność nazw pól z Lab 3, metody z Lab 4 i elementów diagramu z planowaną implementacją. Trzeba wskazać właściciela każdej potrzebnej zmiany w zgłoszeniu GitHub Issue (zawierającym krótki cel, kryterium odbioru i przypisaną osobę odpowiedzialną — zob. [przewodnik po narzędziach](../narzedzia/#github-issue-branch-i-pull-request)) oraz poprawić znalezioną niespójność.
 
 ## Przydatne narzędzia
 

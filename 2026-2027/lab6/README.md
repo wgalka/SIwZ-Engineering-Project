@@ -23,17 +23,43 @@ Należy ustalić główną gałąź repozytorium: `main` albo `master`. Przykła
 
 Należy rozszerzać istniejącą strukturę, bez zmiany nazw katalogów tylko po to, aby dopasować je do przykładu:
 
-```text
-README.md                 # instalacja, uruchomienie, dane, oczekiwany wynik
-src/ lub scripts/         # zintegrowany kod własnego projektu
-tests/                    # istniejące i nowe kontrole
-docs/implementation.md    # stan przepływu, ograniczenia i wyniki integracji
-requirements.txt          # dla Pythona; odpowiednik w innej technologii
-.env.example              # tylko jeśli projekt używa zmiennych środowiskowych
-examples/lab6/            # demonstracja, nie kod własnego rozwiązania
-```
+![Struktura repozytorium po Laboratorium 6](../../assets/diagrams/lab6-files.svg)
+
+| Ścieżka | Zawartość |
+|---|---|
+| `README.md` | instrukcja instalacji, uruchomienia głównego przepływu, wymaganych danych i oczekiwanego wyniku |
+| `src/` lub `scripts/` | zintegrowany kod głównego przepływu własnego projektu |
+| `tests/` | istniejące i nowe kontrole poprawności wejścia, obliczeń i wyjścia |
+| `docs/implementation.md` | opis stanu przepływu, wynik integracji i znane ograniczenia |
+| `requirements.txt` | lista zależności dla Pythona (lub odpowiednik w innej technologii) |
+| `.env.example` | wzorzec zmiennych środowiskowych bez tajnych wartości (tylko gdy projekt z nich korzysta) |
+| `examples/lab6/` | opcjonalne ćwiczenia demonstracyjne, oddzielone od kodu własnego rozwiązania |
 
 W `docs/implementation.md` należy zapisać polecenie głównego przepływu, sprawdzoną wersję kodu, wynik uruchomienia oraz znane ograniczenia. Istniejące opisy wymagań i danych należy linkować, nie kopiować.
+
+Minimalny układ `docs/implementation.md`:
+
+```markdown
+# Realizacja głównego przepływu (MVP)
+
+## 1. Zakres i powiązane artefakty
+- Przypadek użycia: [link do docs/architecture.md]
+- Dane wejściowe i słownik: [link do docs/data.md oraz docs/data-dictionary.md]
+- Wybrana metoda: [link do docs/methods.md]
+
+## 2. Uruchomienie głównego przepływu
+- Polecenie uruchomienia:
+- Wymagane wejście (ścieżka / parametry):
+- Oczekiwane wyjście (plik / tabela / odpowiedź API):
+
+## 3. Wynik integracji i podział prac
+- Sprawdzona wersja (commit / PR) i osoba weryfikująca:
+- Zrealizowane moduły i przypisane zadania (Issues / PR):
+
+## 4. Znane ograniczenia i otwarte zadania
+- Czego obecna wersja jeszcze nie obsługuje:
+- Zadania do sprawdzenia w testach (Lab 7):
+```
 
 ## Przebieg zajęć — 90 minut
 
@@ -328,7 +354,7 @@ from datetime import date
 import json
 from pathlib import Path
 import sqlite3
-from forecast import forecast
+from examples.lab6.forecast import forecast
 
 def save_forecast(db_path, history, window, target_date, data_version):
     value = forecast(history, window)
@@ -358,7 +384,7 @@ if __name__ == "__main__":
     print(f"Zapisano uruchomienie {run_id}")
 ```
 
-Należy wykonać `python examples/lab6/save_forecast.py` z katalogu repozytorium, a w DataGrip uruchomić:
+Należy wykonać `python -m examples.lab6.save_forecast` z katalogu repozytorium, a w DataGrip uruchomić:
 
 ```sql
 SELECT r.id, r.data_version, r.method, f.target_date, f.value

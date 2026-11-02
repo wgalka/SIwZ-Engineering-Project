@@ -21,9 +21,11 @@ Projekt zespołowy lub indywidualny obejmujący analizę problemu, dane, dobór 
 
 | Lab | Temat |
 |---|---|
-| [Lab 1](./2026-2027/lab1/README.md) | Wybór problemu i zespołów |
+| [Lab 1](./2026-2027/lab1/README.md) | Wybór problemu i utworzenie zespołu |
 | [Lab 2](./2026-2027/lab2/README.md) | Analiza problemu i pozyskiwanie informacji |
 | [Lab 3](./2026-2027/lab3/README.md) | Akwizycja i przetwarzanie danych |
+| [Lab 4](./2026-2027/lab4/README.md) | Metody analityczne, symulacyjne i eksperymentalne |
+| [Lab 5](./2026-2027/lab5/README.md) | Projektowanie obiektów informatycznych |
 
 ## Kryteria oceny
 
@@ -34,4 +36,4 @@ Projekt zespołowy lub indywidualny obejmujący analizę problemu, dane, dobór 
 
 ## Przydatne narzędzia
 
-Wspólny zestaw narzędzi, zrzuty demonstracyjne, zadania repozytoryjne i zasady późniejszej weryfikacji znajdują się w [przewodniku po narzędziach](./2026-2027/narzedzia/README.md).
+Opis narzędzi wykorzystywanych w projekcie, podstawowe polecenia Git oraz instrukcja pracy z GitHub Issues i Pull Requestami znajdują się w [przewodniku po narzędziach](./2026-2027/narzedzia/README.md).

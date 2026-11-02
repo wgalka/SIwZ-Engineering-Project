@@ -1,6 +1,9 @@
 @startfiles
-/docs/architecture.md
-/docs/diagrams/
-/docs/decisions/001-storage.md
-/examples/lab5/
+/projekt-zespolu/docs/architecture.md
+/projekt-zespolu/docs/diagrams/
+/projekt-zespolu/docs/decisions/001-storage.md
+/projekt-zespolu/examples/lab5/
+<note>
+opcjonalnie: demonstracje
+</note>
 @endfiles

@@ -9,17 +9,17 @@ permalink: /2026-2027/lab1/
 
 ## Cel zajęć
 
-Na tych zajęciach utworzone zostaną zespoły projektowe i wybierany zostanie problem, który będzie rozwiązywany w dalszej części przedmiotu.
+Na tych zajęciach należy utworzyć zespoły projektowe, wybrać problem do rozwiązania w dalszej części przedmiotu oraz wypełnić kartę projektu.
 
 Po zajęciach każdy zespół powinien:
 
 - znać skład zespołu i wstępny podział odpowiedzialności;
 - mieć wybrany konkretny, użyteczny problem;
-- wypełnić kartę projektu w Wordzie.
+- mieć przygotowaną kartę projektu oraz loginy GitHub wszystkich członków zespołu.
 
 ## Zasada wyboru problemu
 
-Nie projektujemy aplikacji tylko dlatego, że da się ją zaprogramować. Najpierw identyfikujemy problem, potrzebę lub proces, który można usprawnić. Dopiero później wybieramy technologię i sposób realizacji.
+Nie należy projektować aplikacji tylko dlatego, że da się ją zaprogramować. Najpierw trzeba zidentyfikować problem, potrzebę lub proces, który można usprawnić. Dopiero później należy dobrać technologię i sposób realizacji.
 
 Projekt powinien:
 
@@ -47,17 +47,17 @@ Dobry problem:
 
 ### Pytania pomocnicze
 
-1. Kto ma problem?
+1. Kto ma problem i jaką decyzję musi podjąć?
 2. Na czym dokładnie polega problem?
 3. Jak obecnie jest rozwiązywany?
-4. Jakie dane mogą być potrzebne?
+4. Jakie dane mogą być potrzebne i skąd można je pozyskać?
 5. Co będzie wynikiem projektu?
-6. Po czym poznamy, że rozwiązanie działa?
-7. Czy możemy wykonać wersję podstawową w czasie przeznaczonym na przedmiot?
+6. Po czym będzie można poznać, że rozwiązanie działa?
+7. Czy zespół jest w stanie wykonać wersję podstawową w czasie przeznaczonym na przedmiot?
 
 ## Przykładowe obszary
 
-Traktować poniższe propozycje jako inspirację, a nie zamkniętą listę tematów.
+Poniższe propozycje należy traktować jako inspirację, a nie zamkniętą listę tematów:
 
 - analiza i prognozowanie zużycia energii;
 - analiza obłożenia sal lub zasobów uczelni;
@@ -70,9 +70,31 @@ Traktować poniższe propozycje jako inspirację, a nie zamkniętą listę temat
 - system wspierający pracę konkretnej organizacji lub jednostki;
 - porównanie metod klasyfikacji, regresji albo grupowania dla rzeczywistego problemu.
 
+## Przebieg zajęć — 90 minut
+
+### 1. Utworzenie zespołów i przegląd obszarów — 0–20 min
+
+Należy utworzyć zespół projektowy (zgodnie z liczebnością ustaloną przez prowadzącego), omówić zainteresowania oraz doświadczenie członków zespołu i wskazać 2–3 potencjalne problemy warte rozważenia.
+
+### 2. Analiza i wybór problemu — 20–50 min
+
+Dla rozważanych propozycji należy odpowiedzieć na pytania pomocnicze, sprawdzić wstępnie, czy istnieją do nich dane, oraz wybrać jeden problem główny.
+
+### 3. Wypełnienie karty projektu i podział ról — 50–80 min
+
+Należy wypełnić szablon [Karta projektu](./Karta%20projektu.docx): opisać problem, głównego użytkownika, oczekiwany rezultat, potencjalne źródła danych oraz wstępny podział odpowiedzialności w zespole.
+
+### 4. Zatwierdzenie tematu i przygotowanie do pracy z repozytorium — 80–90 min
+
+Należy skonsultować wypełnioną kartę z prowadzącym i przekazać ją w uzgodniony sposób. Przed kolejnymi zajęciami każdy członek zespołu powinien posiadać aktywne konto na [GitHubie](https://github.com/) oraz znać swój login — będzie on potrzebny do utworzenia wspólnego repozytorium.
+
+> **Ważne**
+>
+> Wypełnionej karty projektu ani danych osobowych nie należy umieszczać w publicznym repozytorium GitHub tworzonym na kolejnych zajęciach.
+
 ## Karta projektu
 
-Wypełnić gotowy szablon w Wordzie: [Karta projektu](./Karta%20projektu.docx).
+Szablon dokumentu: [Karta projektu](./Karta%20projektu.docx).
 
 ## Zasady pracy zespołowej
 

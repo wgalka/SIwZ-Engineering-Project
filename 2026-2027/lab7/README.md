@@ -23,14 +23,16 @@ Testy należy wykonywać na kopiach danych lub w katalogach tymczasowych, nie na
 
 ## Rezultat pracy
 
-```text
-tests/                       # automatyczne testy własnego projektu
-docs/tests.md                # plan, warunki, wyniki i ograniczenia
-docs/user-guide.md           # użycie głównego przepływu i komunikaty błędów
-README.md                    # aktualna instalacja i polecenia
-results/lab7/                # dozwolone wyniki pomiarów i raport testów
-.github/workflows/check.yml  # automatyczne sprawdzenie, jeśli używany GitHub Actions
-```
+![Struktura repozytorium po Laboratorium 7](../../assets/diagrams/lab7-files.svg)
+
+| Ścieżka | Zawartość |
+|---|---|
+| `README.md` | aktualna instrukcja instalacji, uruchomienia kodu oraz wykonania testów |
+| `tests/` | automatyczne testy logiki i integracji własnego projektu |
+| `docs/tests.md` | plan testów, warunki wykonania, wyniki, statusy wymagań i ograniczenia |
+| `docs/user-guide.md` | instrukcja użycia głównego przepływu, interpretacja wyniku i opis komunikatów błędów |
+| `results/lab7/` | dozwolone wyniki pomiarów niefunkcjonalnych i raporty testów |
+| `.github/workflows/check.yml` | konfiguracja automatycznego sprawdzenia (jeśli w projekcie używany jest GitHub Actions) |
 
 Nie należy publikować logów z kluczami, danymi osobowymi ani prywatnymi ścieżkami. W raporcie trzeba wskazać commit sprawdzanej implementacji i wersję próbki.
 
@@ -95,7 +97,7 @@ Należy wybrać narzędzia pasujące do projektu, nie wykonywać wszystkich demo
 
 Demonstracja wykorzystuje `examples/lab6/forecast.py` z [Lab 6](../lab6/). Jeśli wcześniej jej nie wykonywano, należy najpierw zapisać tamten kod. W aktywnym środowisku wirtualnym należy zainstalować `pytest` poleceniem `python -m pip install pytest` i zapisać wersję w zależnościach testowych projektu.
 
-Poniższy kod należy umieścić w `examples/lab6/test_forecast.py`. Import zakłada uruchomienie z katalogu głównego repozytorium; nie trzeba dodawać `examples/` do kodu własnej aplikacji.
+Poniższy kod należy umieścić w `examples/lab6/test_forecast.py` obok kodu demonstracyjnego utworzonego w Lab 6 (testy własnego rozwiązania umieszcza się natomiast w katalogu `tests/`). Import zakłada uruchomienie z katalogu głównego repozytorium; nie trzeba dodawać `examples/` do kodu własnej aplikacji.
 
 ```python
 import json
@@ -364,6 +366,24 @@ Należy oddzielić dwa opisy:
 | `docs/user-guide.md` | Wykonać operację użytkownika, odczytać wynik i zareagować na znany błąd |
 
 Przykład instrukcji użytkowej: „Należy wskazać plik dziennych liczebności i okno 3. Wynik podaje prognozę na następny dzień w zgłoszeniach/dzień. Komunikat o zbyt krótkiej historii wymaga uzupełnienia danych; nie należy interpretować go jako zerowego zapotrzebowania”.
+
+Minimalny układ `docs/user-guide.md`:
+
+```markdown
+# Instrukcja użytkownika
+
+## 1. Wymagane dane wejściowe
+- Format, wymagane kolumny/pola i dopuszczalne zakresy wartości:
+
+## 2. Wykonanie operacji krok po kroku
+- Polecenie uruchomienia lub kroki w interfejsie:
+
+## 3. Interpretacja wyniku
+- Co oznaczają zwracane wartości, jednostki i ograniczenia wnioskowania:
+
+## 4. Komunikaty błędów i sposób postępowania
+- Najczęstsze błędy wejścia lub wykonania i zalecana reakcja użytkownika:
+```
 
 Inna osoba powinna wykonać opisane kroki bez ustnych podpowiedzi autora i zanotować pierwszy brakujący krok. Trzeba także sprawdzić: jednostki, pochodzenie próbki, brak sekretów, powtarzalność, czytelność funkcji i zgodność dokumentacji z implementacją. Wynik analityczny należy porównać z miarą z Lab 4; testy kodu nie zastępują oceny reprezentatywności danych.
 

@@ -1,0 +1,15 @@
+@startfiles
+/projekt-zespolu/README.md
+/projekt-zespolu/requirements.txt
+/projekt-zespolu/.env.example
+<note>
+gdy projekt używa zmiennych środowiskowych
+</note>
+/projekt-zespolu/src/
+<note>
+lub scripts/ — zintegrowany kod głównego przepływu
+</note>
+/projekt-zespolu/tests/
+/projekt-zespolu/docs/implementation.md
+/projekt-zespolu/examples/lab6/
+@endfiles

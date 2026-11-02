@@ -15,7 +15,7 @@ Na tym etapie należy przygotować raport końcowy i przedstawić działanie pro
 
 Należy przygotować zintegrowaną wersję z Lab 6, wyniki testów z Lab 7, dokumentację i dozwoloną próbkę demonstracyjną. Przed wystąpieniem trzeba sprawdzić pełny scenariusz na komputerze używanym do pokazu oraz przygotować lokalny wariant awaryjny.
 
-Należy uzgodnić z prowadzącym limit wystąpienia i sposób przekazania materiałów. Poniższy podział 90 minut dotyczy przygotowania i prób; kolejność oraz czas prezentacji końcowych zależą od harmonogramu grupy. Osiem instrukcji odpowiada blokom tematycznym sylabusa, nie oznacza ośmiu jednakowych spotkań wyczerpujących cały wymiar 20 godzin zajęć projektowych.
+Należy uzgodnić z prowadzącym limit wystąpienia i sposób przekazania materiałów. Poniższy podział 90 minut dotyczy przygotowania i prób; kolejność oraz czas prezentacji końcowych zależą od harmonogramu grupy.
 
 ## Rezultat pracy
 

@@ -27,3 +27,7 @@ Materiały do przedmiotu **Projekt informatyczny** dla kierunku Informatyka i ek
 | Forma zaliczenia | Zaliczenie z oceną |
 
 Kolejne laboratoria zostaną udostępnione po ich przygotowaniu.
+
+## Przydatne narzędzia
+
+Opis narzędzi wykorzystywanych w projekcie, podstawowe polecenia Git oraz instrukcja pracy z GitHub Issues i Pull Requestami znajdują się w [przewodniku po narzędziach]({{ '/2026-2027/narzedzia/' | relative_url }}).

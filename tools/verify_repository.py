@@ -1,4 +1,4 @@
-"""Wstępny weryfikator repozytorium projektu.
+"""Weryfikator repozytorium projektu.
 
 Skrypt korzysta z publicznego GitHub REST API i nie wymaga dodatkowych bibliotek.
 Przykład:
@@ -39,34 +39,73 @@ LAB_RULES: dict[str, dict[str, Any]] = {
         "public_required": True,
     },
     "lab3": {
-        "paths": ["docs/sources.md"],
+        "paths": [
+            "README.md",
+            "docs/data.md",
+            "docs/data-dictionary.md",
+            "docs/processing.md",
+            "data/raw",
+            "data/processed",
+            "scripts",
+        ],
+        "commit_required": True,
+        "public_required": True,
     },
     "lab4": {
-        "paths": ["docs/data.md"],
+        "paths": [
+            "README.md",
+            "docs/methods.md",
+            "scripts",
+            "results/lab4",
+        ],
+        "commit_required": True,
+        "public_required": True,
     },
     "lab5": {
-        "paths": ["docs/architecture.md"],
+        "paths": [
+            "docs/architecture.md",
+            "docs/diagrams",
+            "docs/decisions",
+        ],
+        "issue_min": 1,
+        "commit_required": True,
+        "public_required": True,
     },
     "lab6": {
-        "paths": [".github/workflows/check.yml", "docs/evidence.md"],
+        "paths": [
+            "README.md",
+            "docs/implementation.md",
+            "tests",
+        ],
+        "any_paths": [
+            ("src", "scripts"),
+        ],
         "issue_min": 1,
         "pr_min": 1,
-        "workflow_required": True,
+        "commit_required": True,
+        "public_required": True,
     },
     "lab7": {
-        "paths": ["README.md", "src", "tests"],
+        "paths": [
+            "README.md",
+            "tests",
+            "docs/tests.md",
+            "docs/user-guide.md",
+            "results/lab7",
+        ],
+        "issue_min": 1,
         "pr_min": 1,
+        "commit_required": True,
+        "public_required": True,
     },
     "lab8": {
-        "paths": ["tests"],
-        "workflow_required": True,
-    },
-    "lab9": {
-        "paths": ["README.md", "docs"],
-        "release_or_tag": True,
-    },
-    "lab10": {
-        "paths": ["README.md", "docs/evidence.md"],
+        "paths": [
+            "README.md",
+            "docs/report.md",
+            "docs/presentation.md",
+        ],
+        "commit_required": True,
+        "public_required": True,
     },
 }
 
@@ -158,6 +197,13 @@ def main() -> int:
     for path in dict.fromkeys(required_paths):
         status = "PASS" if api.exists(owner, repo, path) else "FAIL"
         checks.append(Check(f"element: {path}", status, "znaleziono" if status == "PASS" else "brak wymaganego elementu"))
+
+    for group in rules.get("any_paths", []):
+        found = [path for path in group if api.exists(owner, repo, path)]
+        label = " lub ".join(group)
+        status = "PASS" if found else "FAIL"
+        details = f"znaleziono: {', '.join(found)}" if found else f"brak wymaganego elementu ({label})"
+        checks.append(Check(f"element: {label}", status, details))
 
     if rules.get("sample_required"):
         contents = safe_get(api, f"/repos/{owner}/{repo}/contents/data", [])

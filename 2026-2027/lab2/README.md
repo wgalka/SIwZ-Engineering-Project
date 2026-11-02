@@ -92,7 +92,7 @@ Należy:
 3. utworzyć katalog `data/`;
 4. wykonać pierwszy commit.
 
-Pracę należy podzielić według zadań merytorycznych, a nie przypisywać jeden plik jednej osobie. Każdy członek zespołu powinien sprawdzić inne źródło, aspekt danych albo etap ich samodzielnego pozyskania. Jedna osoba może przygotować początkowy `README.md`, a inna szkic `docs/problem.md`; pozostali analizują źródła i przygotowują próbkę w `data/`. Wyniki tych prac należy wpisywać do wspólnego `docs/data.md` kolejno: przed edycją trzeba pobrać najnowszą wersję repozytorium, dodać własny wiersz lub sekcję, wykonać commit i udostępnić zmiany pozostałym osobom. Nie należy jednocześnie edytować tego samego pliku.
+Pracę należy podzielić według zadań merytorycznych, a nie przypisywać jeden plik jednej osobie. Każdy członek zespołu powinien sprawdzić inne źródło, aspekt danych albo etap ich samodzielnego pozyskania. Jedna osoba może przygotować początkowy `README.md`, a inna szkic `docs/problem.md`; pozostali analizują źródła i przygotowują próbkę w `data/`. Wyniki tych prac należy wpisywać do wspólnego `docs/data.md` kolejno: przed edycją trzeba pobrać najnowszą wersję repozytorium (`git pull`), dodać własny wiersz lub sekcję, wykonać commit (`git add`, `git commit`) i udostępnić zmiany pozostałym osobom (`git push`). Nie należy jednocześnie edytować tego samego pliku. Podstawowe polecenia opisano w [przewodniku po narzędziach](../narzedzia/#vs-code-i-git).
 
 ### 2. Problem i potrzeby informacyjne — 15–35 min
 
@@ -124,7 +124,7 @@ Co najmniej jedna pozycja powinna mieć status `częściowo` albo `nie`, aby wsk
 
 ### 3. Pozyskanie, ocena i pomysł realizacji — 35–80 min
 
-Źródeł należy szukać w przewodniku, w internecie oraz w rozmowie z czatem. Czat może podpowiedzieć nazwę serwisu lub sposób wyszukania danych, ale każdą informację trzeba sprawdzić w dokumentacji właściciela źródła i zapisać wynik tej weryfikacji.
+Źródeł należy szukać w [powyższej tabeli](#gdzie-szukać-danych), w internecie oraz w rozmowie z czatem. Czat może podpowiedzieć nazwę serwisu lub sposób wyszukania danych, ale każdą informację trzeba sprawdzić w dokumentacji właściciela źródła i zapisać wynik tej weryfikacji.
 
 Należy:
 
@@ -188,4 +188,8 @@ Należy:
 5. sprawdzić historię commitów i obecność wkładu każdego członka zespołu.
 
 Każdy członek zespołu powinien mieć własny, możliwy do wskazania rezultat: opis problemu, wymaganie, analizę źródła, weryfikację próbki albo opis brakujących danych.
+
+## Przydatne narzędzia
+
+Należy wykorzystać GitHub Repository, Markdown i VS Code. Rzeczywiste zrzuty interfejsów oraz podstawowe czynności opisano w [przewodniku po narzędziach](../narzedzia/#zrzuty-demonstracyjne).
 

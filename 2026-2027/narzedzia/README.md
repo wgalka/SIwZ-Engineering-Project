@@ -9,14 +9,12 @@ permalink: /2026-2027/narzedzia/
 
 W projekcie należy używać narzędzi, które ułatwiają planowanie pracy, zapisywanie decyzji, współpracę i sprawdzanie rezultatów. Samo użycie narzędzia nie jest jednak celem zajęć. Każde narzędzie powinno zostawić w repozytorium ślad, który można później odtworzyć i zweryfikować.
 
-Na zajęciach należy najpierw pokazać narzędzie na przykładzie prowadzącego. Po pokazie należy wykonać analogiczne zadanie we własnym repozytorium.
-
 ## Zestaw narzędzi
 
 | Narzędzie | Do czego służy | Dowód zapisany w repozytorium lub GitHubie |
 |---|---|---|
 | GitHub Repository | przechowywanie kodu, dokumentacji i historii zmian | pliki, commity, branche |
-| GitHub Issues | opisywanie wymagań, zadań i błędów | Issue z opisem, właścicielem i kryteriami akceptacji |
+| GitHub Issues | opisywanie wymagań, zadań i błędów | Issue z opisem, właścicielem i kryteriami odbioru |
 | GitHub Projects | planowanie pracy zespołu | tablica, statusy, przypisane zadania i milestone |
 | Branch i Pull Request | praca nad zmianą oraz jej przegląd | branch, PR, review i merge |
 | GitHub Actions | automatyczne sprawdzanie projektu | workflow zakończony statusem `success` |
@@ -24,26 +22,26 @@ Na zajęciach należy najpierw pokazać narzędzie na przykładzie prowadzącego
 | Markdown | dokumentowanie problemu, decyzji i wyników | pliki `.md` w katalogu `docs/` |
 | Mermaid lub diagrams.net | tworzenie diagramów | plik `.mmd`, `.drawio` albo eksportowany obraz |
 | Jupyter lub skrypt analityczny | analiza danych i eksperymenty | notebook lub skrypt z powtarzalnym wynikiem |
-| Agent AI | generowanie wariantów, planowanie, prototypowanie, testy i krytyka założeń | `docs/agent-log.md`, zweryfikowany commit i Pull Request |
+| Agent AI | generowanie wariantów, planowanie, prototypowanie, testy i krytyka założeń | opis weryfikacji w dokumentacji etapu (lub `docs/agent-log.md`), zweryfikowany commit i Pull Request |
 
-## Jak uczyć się pracy z agentem?
+## Praca z asystentem AI
 
-Agent powinien pomagać w myśleniu, a nie zastępować myślenie. Należy wymagać od niego kilku wariantów rozwiązania, jawnych założeń, wskazania ryzyk i propozycji testów. Następnie zespół powinien samodzielnie wybrać wariant, sprawdzić źródła i zweryfikować działanie prototypu.
+Agent powinien pomagać w analizie i implementacji, a nie zastępować weryfikację inżynierską. Należy wymagać od niego kilku wariantów rozwiązania, jawnych założeń, wskazania ryzyk i propozycji testów. Następnie zespół powinien samodzielnie wybrać wariant, sprawdzić źródła i zweryfikować działanie kodu.
 
-Przykładowy przebieg pokazu:
+Zalecany przebieg pracy z agentem:
 
-1. Opisać agentowi problem i ograniczenia bez podawania gotowej technologii.
-2. Poprosić o trzy warianty rozwiązania, w tym wariant wykorzystujący istniejące urządzenia i wariant bez dodatkowego sprzętu.
-3. Poprosić o krytykę każdego wariantu: koszty, dane, bezpieczeństwo, ryzyko i sposób testowania.
-4. Wybrać jeden wariant i zapisać decyzję w Issue albo pliku ADR.
-5. Poprosić agenta o mały prototyp lub test na branchu.
-6. Sprawdzić kod, uruchomić testy, wykonać review i dopiero wtedy scalić zmianę.
+1. Opisać problem i ograniczenia bez narzucania z góry gotowej technologii.
+2. Poprosić o kilka wariantów rozwiązania, w tym wariant prosty (bazowy) i niewymagający dodatkowej infrastruktury.
+3. Poprosić o krytykę każdego wariantu: koszty, wymagane dane, bezpieczeństwo, ryzyko i sposób testowania.
+4. Wybrać jeden wariant i zapisać decyzję w dokumentacji projektu, Issue albo pliku ADR.
+5. Przy generowaniu kodu pracować małymi krokami na osobnej gałęzi.
+6. Samodzielnie sprawdzić kod, uruchomić testy, wykonać przegląd (review) i dopiero wtedy scalić zmianę.
 
-Nie należy przekazywać agentowi haseł, kluczy API, danych osobowych ani niezweryfikowanych danych wrażliwych. W `docs/agent-log.md` należy zapisać nie pełną rozmowę, lecz cel, najważniejsze propozycje, decyzję zespołu i sposób sprawdzenia rezultatu.
+Nie należy przekazywać agentowi haseł, kluczy API, danych osobowych ani niezweryfikowanych danych wrażliwych. W dokumentacji odpowiedniego etapu (lub w pomocniczym pliku wg wzoru [`agent-log.example.md`](./agent-log.example.md)) należy zapisać cel użycia agenta, decyzję zespołu i sposób sprawdzenia rezultatu, a nie pełny zapis rozmowy.
 
 ## Zrzuty demonstracyjne
 
-Poniżej zamieszczono rzeczywiste zrzuty ekranu z dokumentacji GitHub i Visual Studio Code. Pokazują one elementy interfejsu, które należy wykorzystać podczas zajęć. Układ może nieznacznie różnić się od aktualnej wersji aplikacji. Po każdym pokazie należy wykonać analogiczne zadanie we własnym repozytorium.
+Poniżej zamieszczono rzeczywiste zrzuty ekranu z dokumentacji GitHub i Visual Studio Code. Pokazują one elementy interfejsu wykorzystywane na kolejnych etapach projektu. Układ może nieznacznie różnić się między wersjami aplikacji.
 
 ### GitHub Projects
 
@@ -51,7 +49,7 @@ Poniżej zamieszczono rzeczywiste zrzuty ekranu z dokumentacji GitHub i Visual S
 
 Źródło: [GitHub Docs — Quickstart for Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/quickstart-for-projects).
 
-Należy pokazać utworzenie tablicy, dodanie zadania, przypisanie osoby, zmianę statusu i powiązanie zadania z Issue.
+W tablicy projektu należy dodawać zadania, przypisywać osobę odpowiedzialną, aktualizować statusy wraz z postępem prac i wiązać wpisy z odpowiednimi Issues.
 
 ### GitHub Issue, branch i Pull Request
 
@@ -61,7 +59,7 @@ Należy pokazać utworzenie tablicy, dodanie zadania, przypisanie osoby, zmianę
 
 Źródła: [GitHub Docs — Creating an issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue) oraz [GitHub Docs — Creating a pull request](https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request).
 
-Należy pokazać przejście od opisu potrzeby do małej zmiany w branchu, Pull Requesta, review i scalenia.
+Każdą większą zmianę należy prowadzić od opisu zadania w Issue, przez implementację na osobnej gałęzi i utworzenie Pull Requesta, aż do przeglądu przez inną osobę z zespołu i scalenia.
 
 ### VS Code i Git
 
@@ -71,7 +69,25 @@ Należy pokazać przejście od opisu potrzeby do małej zmiany w branchu, Pull R
 
 Źródła: [VS Code — Quickstart: use source control](https://code.visualstudio.com/docs/sourcecontrol/quickstart) oraz [VS Code — Work with GitHub](https://code.visualstudio.com/docs/sourcecontrol/github).
 
-Należy pokazać otwarcie repozytorium, edycję pliku, sprawdzenie różnicy, commit i przesłanie zmiany do GitHuba.
+W codziennej pracy z repozytorium należy przed edycją pobrać aktualne zmiany, a po wykonaniu swojej części zapisać i przesłać commit:
+
+```bash
+# jednorazowe pobranie repozytorium na komputer
+git clone https://github.com/zespol/projekt.git
+cd projekt
+
+# przed rozpoczęciem edycji wspólnych plików
+git pull
+
+# sprawdzenie zmienionych plików i różnic
+git status
+git diff
+
+# dodanie wskazanych plików, zapisanie commita i wysłanie na GitHub
+git add docs/problem.md
+git commit -m "Opis wprowadzonej zmiany"
+git push
+```
 
 ### GitHub Actions
 
@@ -79,33 +95,8 @@ Należy pokazać otwarcie repozytorium, edycję pliku, sprawdzenie różnicy, co
 
 Źródło: [GitHub Docs — Quickstart for GitHub Actions](https://docs.github.com/en/actions/get-started/quickstart).
 
-Należy pokazać uruchomienie testów po Pull Requeście, odczytanie wyniku i poprawienie błędu wykrytego przez workflow.
+Zakładka **Actions** pozwala sprawdzić wynik automatycznego uruchomienia testów po każdym pushu lub Pull Requeście, odczytać log błędów i zweryfikować poprawkę w kolejnym commicie.
 
-### Bot weryfikujący repozytorium
+## Zasady dokumentowania indywidualnego wkładu
 
-Bot powinien sprawdzać dowody zapisane w repozytorium i w publicznej historii GitHuba, a następnie wygenerować raport `PASS`, `WARN` albo `FAIL` dla zespołu i poszczególnych osób.
-
-Nie jest to gotowa usługa GitHuba, dlatego nie zamieszczono zrzutu ekranu. Przykładowy wynik działania może wyglądać następująco:
-
-```text
-PASS  README.md i wymagane pliki dokumentacji są dostępne
-PASS  Każda osoba ma przypisane Issue i Pull Request
-WARN  Brak zakończonego workflow GitHub Actions
-```
-
-## Zadanie wspólne dla studentów
-
-Każdy student powinien wykonać poniższe czynności we własnym repozytorium zespołu:
-
-1. Utworzyć repozytorium na GitHubie i dodać plik `README.md` z nazwą projektu, problemem oraz instrukcją uruchomienia.
-2. Utworzyć katalog `docs/` i zapisać w nim opis problemu, głównego użytkownika oraz zakresu MVP.
-3. Utworzyć Issue opisujące własne zadanie. Issue powinno zawierać rezultat, kryteria akceptacji i osobę odpowiedzialną.
-4. Utworzyć branch o nazwie związanej z zadaniem, wykonać zmianę i przygotować Pull Request.
-5. Poprosić inną osobę z zespołu o review oraz odpowiedzieć na komentarz w Pull Requeście.
-6. Utworzyć lub zaktualizować tablicę GitHub Projects, przypisać zadanie i zmienić jego status.
-7. Dodać prosty workflow GitHub Actions uruchamiający test albo sprawdzenie formatowania.
-8. Zapisać w `docs/evidence.md` linki do własnego Issue, Pull Requesta i commita.
-
-Nie należy traktować samego dopisania nazwiska do pliku jako dowodu pracy. Każda osoba powinna mieć własny rezultat, własny Issue oraz zmianę widoczną w historii repozytorium.
-
-
+Nie należy traktować samego dopisania nazwiska do pliku jako dowodu pracy. Na każdym etapie projektu każdy członek zespołu powinien mieć własny, możliwy do wskazania rezultat (np. analizę źródła danych, słownik pól, skrypt czyszczący, wariant metody, diagram, test lub opis w raporcie) potwierdzony w historii commitów, Issues lub Pull Requestach.

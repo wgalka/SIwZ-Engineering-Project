@@ -1,0 +1,11 @@
+@startfiles
+/projekt-zespolu/README.md
+/projekt-zespolu/tests/
+/projekt-zespolu/docs/tests.md
+/projekt-zespolu/docs/user-guide.md
+/projekt-zespolu/results/lab7/
+/projekt-zespolu/.github/workflows/check.yml
+<note>
+gdy używany jest GitHub Actions
+</note>
+@endfiles
