@@ -14,6 +14,7 @@ Materiały do przedmiotu **Projekt informatyczny** dla kierunku Informatyka i ek
 | [Lab 2]({{ '/2026-2027/lab2/' | relative_url }}) | Analiza problemu i pozyskiwanie informacji |
 | [Lab 3]({{ '/2026-2027/lab3/' | relative_url }}) | Akwizycja i przetwarzanie danych |
 | [Lab 4]({{ '/2026-2027/lab4/' | relative_url }}) | Metody analityczne, symulacyjne i eksperymentalne |
+| [Lab 5]({{ '/2026-2027/lab5/' | relative_url }}) | Projektowanie obiektów informatycznych |
 
 ## Informacje o przedmiocie
 
