@@ -65,7 +65,7 @@ Minimalny układ `docs/implementation.md`:
 
 ### 1. Zakres i zadania — 0–15 min
 
-Należy wybrać UC-01 lub inny główny przypadek z Lab 5. Trzeba ustalić jeden widoczny wynik oraz podzielić pracę na zadania z właścicielem i kryterium odbioru.
+Należy wybrać UC-01 lub inny główny przypadek z Lab 5. Trzeba ustalić jeden widoczny wynik oraz podzielić pracę na zadania z właścicielem i kryterium odbioru (ang. *acceptance criterion*), czyli warunkiem uznania zadania za wykonane. Przykład: dla historii `[12, 14, 13, 15]` i okna 3 funkcja zwraca prognozę 14.
 
 | Zadanie | Mierzalny rezultat | Sposób sprawdzenia |
 |---|---|---|
@@ -216,7 +216,7 @@ Checklista nie zastępuje sprawdzenia kodu i nie oznacza obowiązku dopisywania 
 
 ### Przygotowanie interfejsu wiersza poleceń do prognozowania (Python)
 
-Przykład udostępnia obliczanie średniej z Lab 4 jako polecenie odczytujące dane z pliku JSON. Należy zapisać kod jako `examples/lab6/forecast.py`. Wystarcza standardowa biblioteka Pythona.
+Przykład udostępnia obliczanie średniej z Lab 4 przez interfejs wiersza poleceń (ang. *command-line interface*, CLI), odczytujący dane z pliku JSON. Należy zapisać kod jako `examples/lab6/forecast.py`. Wystarcza standardowa biblioteka Pythona.
 
 ```python
 import argparse
@@ -313,7 +313,7 @@ python -m uvicorn examples.lab6.server:app --host 127.0.0.1 --port 8000
 
 W przeglądarce należy otworzyć `http://127.0.0.1:8000/docs`, rozwinąć **POST /api/forecast**, wybrać **Try it out**, wpisać `{"history":[12,14,13,15],"window":3}` i nacisnąć **Execute**. Oczekiwany kod to 200, a prognoza wynosi 14,0. Swagger UI pokazuje schemat i pozwala wysyłać żądania; nie zastępuje automatycznych testów ani interfejsu dla odbiorcy biznesowego.
 
-**Ćwiczenie:** należy wysłać za krótką historię i oczekiwać 422 z `invalid_history`. W Postmanie trzeba wysłać niepoprawny JSON `{"history":` i sprawdzić 400 z `invalid_json`. Własna funkcja obsługi błędów walidacji jest potrzebna, ponieważ domyślna odpowiedź walidacyjna FastAPI ma inny format; mechanizm opisuje [dokumentacja obsługi błędów](https://fastapi.tiangolo.com/tutorial/handling-errors/).
+**Ćwiczenie:** należy wysłać za krótką historię i oczekiwać 422 z `invalid_history`. W Postmanie trzeba wysłać niepoprawny JSON `{"history":` i sprawdzić 400 z `invalid_json`. Własna funkcja obsługi błędów walidacji (ang. *exception handler*) jest potrzebna, ponieważ domyślna odpowiedź walidacyjna FastAPI ma inny format; mechanizm opisuje [dokumentacja obsługi błędów](https://fastapi.tiangolo.com/tutorial/handling-errors/).
 
 Usługa nie zapisuje danych, nie ma uwierzytelniania ani limitów ruchu. Należy używać jej lokalnie na dozwolonych próbkach; nie publikować tego przykładu jako gotowej usługi produkcyjnej. Serwer należy zatrzymać przez `Ctrl+C`.
 

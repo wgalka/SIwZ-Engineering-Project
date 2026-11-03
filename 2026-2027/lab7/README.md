@@ -19,7 +19,7 @@ Nie należy od nowa wykonywać całego doboru metod z Lab 4. Trzeba wykorzystać
 
 Należy przygotować działającą wersję z Lab 6, instrukcję uruchomienia i dozwolone dane testowe. Trzeba wybrać wymaganie oraz wcześniej ustalone kryterium jakości lub czasu. Jeśli kryterium nie jest jeszcze określone, należy ustalić je przed pomiarem i uzasadnić potrzebą użytkownika.
 
-Testy należy wykonywać na kopiach danych lub w katalogach tymczasowych, nie na `data/raw/` ani na bazie produkcyjnej. Nie należy wykonywać testów obciążeniowych cudzych API; do tego służy lokalna aplikacja lub usługa, do której testowania zespół ma uprawnienia.
+Testy należy wykonywać na kopiach danych lub w katalogach tymczasowych, nie na `data/raw/` ani na bazie produkcyjnej. Nie należy wykonywać testów obciążeniowych (ang. *load tests*) cudzych API; do tego służy lokalna aplikacja lub usługa, do której testowania zespół ma uprawnienia.
 
 ## Rezultat pracy
 
@@ -216,9 +216,9 @@ python -m pytest examples/lab6/test_forecast.py --cov=examples.lab6.forecast --c
 python -m ruff check examples/lab6
 ```
 
-W projekcie trzeba zastąpić ścieżki własnym pakietem i testami. **Pokrycie** wskazuje wykonane przez testy linie i gałęzie programu. W kolumnie brakujących fragmentów należy wybrać jeden ważny, niepokryty przypadek i dopisać test sprawdzający jego zachowanie. Kod uruchamiany w osobnym procesie wymaga dodatkowej konfiguracji pomiaru; samo wykonanie testu CLI nie oznacza, że jego wnętrze uwzględniono w tym raporcie. Opcje raportowania opisuje [dokumentacja pytest-cov](https://pytest-cov.readthedocs.io/en/latest/reporting.html).
+W projekcie trzeba zastąpić ścieżki własnym pakietem i testami. **Pokrycie kodu testami** (ang. *code coverage*) wskazuje wykonane przez testy linie i gałęzie programu. W kolumnie brakujących fragmentów należy wybrać jeden ważny, niepokryty przypadek i dopisać test sprawdzający jego zachowanie. Kod uruchamiany w osobnym procesie wymaga dodatkowej konfiguracji pomiaru; samo wykonanie testu CLI nie oznacza, że jego wnętrze uwzględniono w tym raporcie. Opcje raportowania opisuje [dokumentacja pytest-cov](https://pytest-cov.readthedocs.io/en/latest/reporting.html).
 
-Ruff wykrywa m.in. nieużywane importy, niezdefiniowane nazwy i problemy składniowe. Należy przeczytać wskazaną regułę i poprawić przyczynę; nie wyłączać kontroli tylko dla uzyskania zielonego wyniku. Na początek trzeba używać `check` bez automatycznego `--fix` i przejrzeć każdą zmianę. Zakres reguł opisuje [samouczek Ruff](https://docs.astral.sh/ruff/tutorial/).
+Ruff wykonuje analizę statyczną (ang. *static analysis*), czyli sprawdza kod bez uruchamiania badanego programu. Wykrywa m.in. nieużywane importy, niezdefiniowane nazwy i problemy składniowe. Należy przeczytać wskazaną regułę i poprawić przyczynę; nie wyłączać kontroli tylko dla uzyskania zielonego wyniku. Na początek trzeba używać `check` bez automatycznego `--fix` i przejrzeć każdą zmianę. Zakres reguł opisuje [samouczek Ruff](https://docs.astral.sh/ruff/tutorial/).
 
 Wysokie pokrycie i brak uwag lintera nie dowodzą poprawności biznesowej ani skuteczności modelu. Nie trzeba dążyć do arbitralnego 100% kosztem sensownych asercji. Po lokalnym sprawdzeniu można dodać te polecenia do istniejącego workflow wraz z instalacją potrzebnych pakietów.
 

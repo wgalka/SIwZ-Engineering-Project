@@ -69,9 +69,9 @@ Dla własnego projektu należy zastąpić wszystkie przykłady. Nie należy doda
 
 ### 3. Diagram sekwencji i kontrakt między modułami — 25–45 min
 
-Należy przygotować diagram sekwencji UML dla wybranego przypadku, z co najmniej jedną ścieżką błędną. **Diagram sekwencji** pokazuje kolejność komunikatów pomiędzy uczestnikami operacji. Trzeba odróżnić użytkownika, interfejs, przetwarzanie i zapis; nie muszą to być osobne serwery.
+Należy przygotować diagram sekwencji UML dla wybranego przypadku, z co najmniej jedną ścieżką błędną. **Diagram sekwencji** (ang. *sequence diagram*) pokazuje kolejność komunikatów pomiędzy uczestnikami operacji. Trzeba odróżnić użytkownika, interfejs, przetwarzanie i zapis; nie muszą to być osobne serwery.
 
-Do diagramu należy dopisać zasady komunikacji między dwoma modułami: nazwy i typy wejść, jednostki, wynik i sposób sygnalizowania błędu. Przykład: `forecast(history: list[float], window: int) -> float`, wejście w zgłoszeniach na dzień, wynik na następny dzień, `ValueError` przy zbyt krótkiej historii. Nie należy przekazywać informacji o błędzie jako liczby 0, jeśli 0 jest poprawną prognozą.
+Do diagramu należy dopisać zasady komunikacji między dwoma modułami: nazwy i typy wejść, jednostki, wynik i sposób sygnalizowania błędu. Zasady te tworzą **kontrakt interfejsu** (ang. *interface contract*). Przykład: `forecast(history: list[float], window: int) -> float`, wejście w zgłoszeniach na dzień, wynik na następny dzień, `ValueError` przy zbyt krótkiej historii. Nie należy przekazywać informacji o błędzie jako liczby 0, jeśli 0 jest poprawną prognozą.
 
 Należy również zaznaczyć przepływ danych według wzoru poniżej. Można umieścić go obok diagramu sekwencji w tym samym pliku. Kontrakt trzeba dobrać do rzeczywistej granicy: funkcji, API albo zapisu w bazie — nie trzeba przygotowywać wszystkich trzech.
 
@@ -215,7 +215,7 @@ Nie należy traktować samego DDL jako pełnego kontraktu: nie opisuje on np. re
 
 ### Przygotowanie diagramu ERD i definicji tabel SQL (Mermaid / DataGrip)
 
-W projekcie przechowującym wiele prognoz można zastosować następujący model. **PK** oznacza klucz główny identyfikujący rekord, a **FK** — klucz obcy wskazujący rekord innej tabeli. Aby edytować przykład, należy rozwinąć sekcję **Kod diagramu do skopiowania** i wkleić jej zawartość od wiersza `erDiagram` do pola kodu w Mermaid Live Editor.
+W projekcie przechowującym wiele prognoz można zastosować następujący model. **PK** (ang. *primary key*) oznacza klucz główny identyfikujący rekord, a **FK** (ang. *foreign key*) — klucz obcy wskazujący rekord innej tabeli. Aby edytować przykład, należy rozwinąć sekcję **Kod diagramu do skopiowania** i wkleić jej zawartość od wiersza `erDiagram` do pola kodu w Mermaid Live Editor.
 
 ```mermaid
 erDiagram
@@ -298,7 +298,7 @@ Wynikiem jest schemat granic systemu i jego modułów. Diagram kontekstowy przed
 
 ### Zapisanie decyzji architektonicznej ADR (Markdown)
 
-**ADR** to krótki zapis decyzji architektonicznej: problemu, wyboru, alternatyw i konsekwencji. Należy zapisać go w `docs/decisions/`, dobierając nazwę do tematu, np. `001-storage.md` dla przechowywania wyników albo `001-api.md` dla wydzielenia usługi. Nazwa na diagramie katalogów jest przykładowa. Dla decyzji o zapisie wyników można wykorzystać strukturę:
+**ADR** (ang. *Architecture Decision Record*) to krótki zapis decyzji architektonicznej: problemu, wyboru, alternatyw i konsekwencji. Należy zapisać go w `docs/decisions/`, dobierając nazwę do tematu, np. `001-storage.md` dla przechowywania wyników albo `001-api.md` dla wydzielenia usługi. Nazwa na diagramie katalogów jest przykładowa. Dla decyzji o zapisie wyników można wykorzystać strukturę:
 
 ```markdown
 # ADR-001: Zapis wyników analizy
