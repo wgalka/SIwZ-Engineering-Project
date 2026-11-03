@@ -719,7 +719,7 @@ test("Każdy kurs jest dodatnią liczbą", function () {
 
 Wyniki NBP zmieniają się wraz z publikacją nowych notowań, dlatego testy powinny sprawdzać strukturę i sens wartości, a nie konkretny kurs lub datę. Postman i Bruno służą tu do ręcznego wysyłania żądań oraz testów odpowiedzi; nie są narzędziami do pomiaru obciążenia API.
 
-#### Zadanie dla zespołów wybierających źródło API
+#### Zadanie dla zespołów pobierających dane przez API
 
 1. Dla źródła projektu należy przygotować własne żądanie i sprawdzić status odpowiedzi, format, obecność wymaganych pól, braki danych oraz aktualność wyników.
 2. W dokumentacji źródła należy odszukać zasady dostępu, limity zapytań, ograniczenia zakresu danych i warunki ponownego wykorzystania; wyniki trzeba zapisać w `docs/data.md`.

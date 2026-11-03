@@ -35,7 +35,7 @@ Należy rozszerzać istniejącą strukturę, bez zmiany nazw katalogów tylko po
 | `.env.example` | wzorzec zmiennych środowiskowych bez tajnych wartości (tylko gdy projekt z nich korzysta) |
 | `examples/lab6/` | opcjonalne ćwiczenia demonstracyjne, oddzielone od kodu własnego rozwiązania |
 
-W `docs/implementation.md` należy zapisać polecenie głównego przepływu, sprawdzoną wersję kodu, wynik uruchomienia oraz znane ograniczenia. Istniejące opisy wymagań i danych należy linkować, nie kopiować.
+W `docs/implementation.md` należy zapisać polecenie uruchamiające główną operację projektu, sprawdzoną wersję kodu, wynik uruchomienia oraz znane ograniczenia. Istniejące opisy wymagań i danych należy linkować, nie kopiować.
 
 Minimalny układ `docs/implementation.md`:
 
@@ -185,7 +185,7 @@ Jeśli repozytorium używa `master`, trzeba zmienić nazwę gałęzi. Przy konfl
     >>>>>>> origin/main
 ```
 
-`HEAD` oznacza tutaj własną gałąź zadania, a druga część — dołączaną wersję z `origin/main`. Należy odczytać obie intencje i uzgodnić wynik, np. „Przy niepoprawnej historii należy wyświetlić komunikat błędu i nie tworzyć pliku wynikowego”. Trzeba usunąć znaczniki konfliktu i zachować poprawną składnię pliku. W kodzie samo użycie **Accept Both Changes** może utworzyć niedziałający program.
+`HEAD` oznacza tutaj własną gałąź zadania, a druga część — dołączaną wersję z `origin/main`. Należy ustalić, jakie zachowanie miała wprowadzić każda z dwóch zmian, i uzgodnić wynik, np. „Przy niepoprawnej historii należy wyświetlić komunikat błędu i nie tworzyć pliku wynikowego”. Trzeba usunąć znaczniki konfliktu i zachować poprawną składnię pliku. W kodzie samo użycie **Accept Both Changes** może utworzyć niedziałający program.
 
 Po edycji wszystkich konfliktów należy sprawdzić różnice, wykonać testy, a następnie wskazać konkretne rozwiązane pliki:
 
@@ -208,7 +208,7 @@ git merge --continue
 | Zadanie i zakres | powiązane Issue, wskazane kryteria odbioru |
 | Poprawne i błędne wejście | polecenie/test i oczekiwany wynik |
 | Integracja | zgodność z kontraktem, kontrola głównego przepływu |
-| Bezpieczny diff | brak kluczy, prywatnych danych, `.venv`, `__pycache__` i przypadkowych plików |
+| Brak danych poufnych i zbędnych plików w zmianach | brak kluczy, prywatnych danych, `.venv`, `__pycache__` i przypadkowych plików |
 | Odtwarzalność | aktualne zależności, konfiguracja i README |
 | Przegląd | osoba przeglądająca i opis ograniczeń; przed scaleniem rozwiązane uwagi |
 
@@ -216,7 +216,7 @@ Checklista nie zastępuje sprawdzenia kodu i nie oznacza obowiązku dopisywania 
 
 ### Przygotowanie interfejsu wiersza poleceń do prognozowania (Python)
 
-Demonstracja rozwija średnią z Lab 4 do polecenia przyjmującego JSON. Należy zapisać kod jako `examples/lab6/forecast.py`. Wystarcza standardowa biblioteka Pythona.
+Przykład udostępnia obliczanie średniej z Lab 4 jako polecenie odczytujące dane z pliku JSON. Należy zapisać kod jako `examples/lab6/forecast.py`. Wystarcza standardowa biblioteka Pythona.
 
 ```python
 import argparse
@@ -313,7 +313,7 @@ python -m uvicorn examples.lab6.server:app --host 127.0.0.1 --port 8000
 
 W przeglądarce należy otworzyć `http://127.0.0.1:8000/docs`, rozwinąć **POST /api/forecast**, wybrać **Try it out**, wpisać `{"history":[12,14,13,15],"window":3}` i nacisnąć **Execute**. Oczekiwany kod to 200, a prognoza wynosi 14,0. Swagger UI pokazuje schemat i pozwala wysyłać żądania; nie zastępuje automatycznych testów ani interfejsu dla odbiorcy biznesowego.
 
-**Ćwiczenie:** należy wysłać za krótką historię i oczekiwać 422 z `invalid_history`. W Postmanie trzeba wysłać niepoprawny JSON `{"history":` i sprawdzić 400 z `invalid_json`. Własny handler jest potrzebny, ponieważ domyślna odpowiedź walidacyjna FastAPI ma inny format; mechanizm opisuje [dokumentacja obsługi błędów](https://fastapi.tiangolo.com/tutorial/handling-errors/).
+**Ćwiczenie:** należy wysłać za krótką historię i oczekiwać 422 z `invalid_history`. W Postmanie trzeba wysłać niepoprawny JSON `{"history":` i sprawdzić 400 z `invalid_json`. Własna funkcja obsługi błędów walidacji jest potrzebna, ponieważ domyślna odpowiedź walidacyjna FastAPI ma inny format; mechanizm opisuje [dokumentacja obsługi błędów](https://fastapi.tiangolo.com/tutorial/handling-errors/).
 
 Usługa nie zapisuje danych, nie ma uwierzytelniania ani limitów ruchu. Należy używać jej lokalnie na dozwolonych próbkach; nie publikować tego przykładu jako gotowej usługi produkcyjnej. Serwer należy zatrzymać przez `Ctrl+C`.
 

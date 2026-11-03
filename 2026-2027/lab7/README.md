@@ -278,7 +278,7 @@ Dla drugiego przypadku należy zachować `Content-Type: application/json`, mimo 
 Należy sprawdzić nie tylko funkcję analityczną, lecz wynik uzyskany przez rzeczywisty interfejs projektu: CLI, API, odczyt z bazy lub eksport dashboardu.
 
 1. Odtworzyć wersję próbki, podział na historię i okres oceny, parametry oraz miarę zapisane w Lab 4.
-2. Przepuścić oceniane przypadki przez cały system, bez używania przyszłych danych w prognozie. Zapisać wyniki jednostkowe w `results/lab7/analytical-observations.csv`.
+2. Dla każdego przypadku testowego wykonać pełną operację za pomocą interfejsu projektu, bez używania przyszłych danych w prognozie. Zapisać wyniki jednostkowe w `results/lab7/analytical-observations.csv`.
 3. Dopasować prognozy do wartości rzeczywistych po identyfikatorze lub dacie, nie tylko po pozycji wiersza. Sprawdzić brakujące, nadmiarowe i powtórzone wyniki.
 4. Obliczyć tę samą miarę i porównać z Lab 4 oraz ustalonym kryterium. Zapisać wynik i tolerancję numeryczną w `docs/tests.md`.
 
@@ -393,7 +393,7 @@ Inna osoba powinna wykonać opisane kroki bez ustnych podpowiedzi autora i zanot
 2. Dodać co najmniej trzy automatyczne testy logiki i jeden test integracyjny własnego rozwiązania.
 3. Potwierdzić, że test wykrywa rzeczywisty błąd lub kontrolowaną zmianę warunku; nie pozostawiać celowej usterki w wersji głównej.
 4. Wykonać jeden pomiar niefunkcjonalny w opisanych warunkach i porównać go z kryterium.
-5. Sprawdzić miarę analityczną na pełnym przepływie względem eksperymentu z Lab 4; zapisać dowody oceny danych, wyników i kodu oraz ograniczenia.
+5. Obliczyć miarę jakości dla wyników całego systemu i porównać ją z wynikiem eksperymentu z Lab 4; zapisać dowody oceny danych, wyników i kodu oraz ograniczenia.
 6. Uruchomić automatyczną kontrolę lub udokumentować przeszkodę i równoważne sprawdzenie lokalne.
 7. Uzupełnić dokumentację techniczną i użytkową; sprawdzić ją przez uruchomienie przez inną osobę.
 8. Przypisać statusy wymaganiom i pozostawić niespełnione jako jawne zadania.

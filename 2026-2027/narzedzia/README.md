@@ -7,7 +7,7 @@ permalink: /2026-2027/narzedzia/
 
 ## Po co korzystać z tych narzędzi?
 
-W projekcie należy używać narzędzi, które ułatwiają planowanie pracy, zapisywanie decyzji, współpracę i sprawdzanie rezultatów. Samo użycie narzędzia nie jest jednak celem zajęć. Każde narzędzie powinno zostawić w repozytorium ślad, który można później odtworzyć i zweryfikować.
+W projekcie należy używać narzędzi, które ułatwiają planowanie pracy, zapisywanie decyzji, współpracę i sprawdzanie rezultatów. Samo użycie narzędzia nie jest jednak celem zajęć. Rezultat pracy w narzędziu należy zapisać w repozytorium, np. jako kod, konfigurację, diagram lub opis zadania.
 
 ## Zestaw narzędzi
 

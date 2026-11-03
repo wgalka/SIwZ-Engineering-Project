@@ -107,7 +107,7 @@ Nie trzeba używać wszystkich narzędzi. Wykres powinien pochodzić z zapisanyc
 
 ### Oznaczenie sprawdzonej wersji (Git / GitHub Releases)
 
-**Tag** nadaje nazwę konkretnemu stanowi repozytorium. **Release** pozwala dodatkowo dołączyć opis wydania i pliki. Przed oznaczeniem należy zakończyć integrację i sprawdzić czysty stan pracy:
+**Tag** nadaje nazwę konkretnemu stanowi repozytorium. **Release** pozwala dodatkowo dołączyć opis wydania i pliki. Przed oznaczeniem należy zakończyć integrację i sprawdzić, czy wszystkie zmiany przeznaczone do wydania zapisano w commitach:
 
 ```bash
 git status

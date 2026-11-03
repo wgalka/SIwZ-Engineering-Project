@@ -32,7 +32,7 @@ Diagramy Mermaid można umieścić bezpośrednio w `docs/architecture.md`. Dla d
 
 ## Dobór architektury do projektu
 
-Należy wybrać wariant odpowiadający wymaganiom. Tabela przedstawia możliwości, nie cztery obowiązkowe implementacje. Można łączyć warianty, jeśli zespół potrafi uzasadnić każdą dodatkową granicę systemu.
+Należy wybrać wariant odpowiadający wymaganiom. Tabela przedstawia możliwości, nie cztery obowiązkowe implementacje. Można łączyć warianty, jeśli zespół potrafi uzasadnić wydzielenie każdego dodatkowego modułu lub osobnej usługi.
 
 | Wariant | Główny przepływ | Granice i diagramy | Co trzeba rozstrzygnąć? |
 |---|---|---|---|
@@ -71,7 +71,7 @@ Dla własnego projektu należy zastąpić wszystkie przykłady. Nie należy doda
 
 Należy przygotować diagram sekwencji UML dla wybranego przypadku, z co najmniej jedną ścieżką błędną. **Diagram sekwencji** pokazuje kolejność komunikatów pomiędzy uczestnikami operacji. Trzeba odróżnić użytkownika, interfejs, przetwarzanie i zapis; nie muszą to być osobne serwery.
 
-Do diagramu należy dopisać kontrakt jednej granicy między modułami: nazwy i typy wejść, jednostki, wynik i sposób sygnalizowania błędu. Przykład: `forecast(history: list[float], window: int) -> float`, wejście w zgłoszeniach na dzień, wynik na następny dzień, `ValueError` przy zbyt krótkiej historii. Nie należy przekazywać informacji o błędzie jako liczby 0, jeśli 0 jest poprawną prognozą.
+Do diagramu należy dopisać zasady komunikacji między dwoma modułami: nazwy i typy wejść, jednostki, wynik i sposób sygnalizowania błędu. Przykład: `forecast(history: list[float], window: int) -> float`, wejście w zgłoszeniach na dzień, wynik na następny dzień, `ValueError` przy zbyt krótkiej historii. Nie należy przekazywać informacji o błędzie jako liczby 0, jeśli 0 jest poprawną prognozą.
 
 Należy również zaznaczyć przepływ danych według wzoru poniżej. Można umieścić go obok diagramu sekwencji w tym samym pliku. Kontrakt trzeba dobrać do rzeczywistej granicy: funkcji, API albo zapisu w bazie — nie trzeba przygotowywać wszystkich trzech.
 
