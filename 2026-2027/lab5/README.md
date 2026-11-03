@@ -36,10 +36,10 @@ Należy wybrać wariant odpowiadający wymaganiom. Tabela przedstawia możliwoś
 
 | Wariant | Główny przepływ | Granice i diagramy | Co trzeba rozstrzygnąć? |
 |---|---|---|---|
-| Moduł analityczny / CLI wsadowe | pliki → walidacja → obliczenie → raport lub JSON | sekwencja operacji, przepływ danych, schemat plików | wersjonowanie wejścia, parametry i ochrona poprzednich wyników |
-| Aplikacja z relacyjną bazą | interfejs → logika i zapytania SQL → SQLite/PostgreSQL | sekwencja, ERD, granica transakcji | klucze, spójność zapisu, równoczesny dostęp |
-| Usługa z API | żądanie HTTP → walidacja → logika → magazyn lub odpowiedź | sekwencja, kontrakt endpointu, model danych | kody błędów, dostęp, ponowienie żądania i limity |
-| Dashboard analityczny / BI | zasilanie → agregacja → widoki i filtry | przepływ danych, model analityczny, sekwencja odświeżenia | częstotliwość odświeżania, definicje miar i dostępność danych |
+| Moduł analityczny / CLI wsadowe | pliki → walidacja → obliczenie → raport lub JSON | diagram sekwencji UML, przepływ danych, schemat plików | wersjonowanie wejścia, parametry i ochrona poprzednich wyników |
+| Aplikacja z relacyjną bazą | interfejs → logika i zapytania SQL → SQLite/PostgreSQL | diagram sekwencji UML, ERD, granica transakcji | klucze, spójność zapisu, równoczesny dostęp |
+| Usługa z API | żądanie HTTP → walidacja → logika → magazyn lub odpowiedź | diagram sekwencji UML, kontrakt endpointu, model danych | kody błędów, dostęp, ponowienie żądania i limity |
+| Dashboard analityczny / BI | zasilanie → agregacja → widoki i filtry | przepływ danych, model analityczny, diagram sekwencji UML dla odświeżenia danych | częstotliwość odświeżania, definicje miar i dostępność danych |
 
 DataGrip służy do pracy nad bazą, zapytaniami i diagnostyką; nie jest warstwą pośrednią, przez którą aplikacja musi wysyłać zapytania. Aplikacja łączy się z bazą przez odpowiedni sterownik lub bibliotekę.
 
@@ -49,7 +49,7 @@ DataGrip służy do pracy nad bazą, zapytaniami i diagnostyką; nie jest warstw
 
 Należy wybrać jeden główny przypadek użycia i nadać mu identyfikator, np. UC-01. **Przypadek użycia** opisuje cel użytkownika i reakcję systemu, a nie listę ekranów. Trzeba powiązać go z wymaganiem z Lab 2.
 
-Pracę należy podzielić na opis operacji i interfejsów, diagram zachowania, model danych oraz decyzję i przegląd spójności. Każda osoba powinna przygotować sprawdzalny rezultat; przy wspólnym pliku Markdown trzeba uzgodnić kolejność edycji.
+Pracę należy podzielić na opis operacji i interfejsów, diagram sekwencji UML, model danych oraz decyzję i przegląd spójności. Każda osoba powinna przygotować sprawdzalny rezultat; przy wspólnym pliku Markdown trzeba uzgodnić kolejność edycji.
 
 ### 2. Granice systemu i opis przypadku użycia — 10–25 min
 
@@ -91,7 +91,7 @@ Inna osoba powinna prześledzić UC-01 od wejścia do wyniku, korzystając tylko
 
 | Narzędzie | Kiedy wykorzystać? | Rezultat |
 |---|---|---|
-| Mermaid | diagram w Markdownie, zmiany przeglądane razem z kodem | tekst diagramu i podgląd |
+| Mermaid | diagram w pliku Markdown, zmiany przeglądane razem z kodem | tekst diagramu i podgląd |
 | diagrams.net | ręczne rozmieszczenie elementów, UML i schematy | plik `.drawio` i eksport |
 | DataGrip | kontrola rzeczywistych tabel, kluczy i relacji | DDL i diagram zgodny z bazą |
 | Markdown i GitHub Issues | opis kontraktów, decyzji i zadań implementacyjnych | dokumentacja powiązana z wymaganiem |
