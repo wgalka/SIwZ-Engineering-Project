@@ -25,7 +25,7 @@ Należy otworzyć `docs/problem.md`, słownik danych, `docs/processing.md` i `do
 |---|---|
 | `docs/architecture.md` | Przypadek użycia, odpowiedzialności, interfejsy i model danych |
 | `docs/diagrams/` | Edytowalne diagramy i eksport PNG/SVG, jeśli potrzebny |
-| `docs/decisions/001-storage.md` | Jedna istotna decyzja i rozważana alternatywa |
+| `docs/decisions/`, np. `001-storage.md` | Jedna istotna decyzja i rozważana alternatywa; nazwa pliku odpowiada tematowi decyzji |
 | `examples/lab5/` | Wyłącznie demonstracje, jeśli wykonywane |
 
 Diagramy Mermaid można umieścić bezpośrednio w `docs/architecture.md`. Dla diagramów graficznych należy zachować plik źródłowy, np. `.drawio`, oraz czytelny eksport. Sam obraz nie wystarcza do wygodnej aktualizacji projektu.
@@ -144,7 +144,9 @@ flowchart LR
 
 ### Ustalenie kontraktu API lub zapisu
 
-Poniższy kontrakt API jest przykładem obliczenia bez trwałego zapisu, a nie gotowym serwerem. Należy dostosować go do implementacji i zapisać w `docs/architecture.md`.
+Poniższy kontrakt API opisuje wyłącznie moduł obliczający średnią z ostatnich `window` obserwacji, bez trwałego zapisu. Jest to część UC-01, a nie cała operacja przygotowania i zapisania prognozy. Należy dostosować kontrakt do implementacji i zapisać go w `docs/architecture.md`.
+
+Moduł wywołujący API odpowiada za odczyt pliku, sprawdzenie ciągłości dni i uporządkowanie historii chronologicznie. Musi również sprawdzić, że ostatnia obserwacja dotyczy dnia poprzedzającego datę prognozy, oraz wybrać ten moduł dla metody `moving_average`. Po otrzymaniu odpowiedzi łączy wynik z datą prognozy, nazwą metody, zakresem i wersją danych, a następnie przekazuje go do zapisu i wyświetlenia. Samo API przyjmujące listę liczb nie może sprawdzić dat ani brakujących dni. W projekcie należy wskazać moduł odpowiedzialny za te czynności na diagramie i w opisie UC-01.
 
 | Element | Przykład |
 |---|---|
@@ -165,7 +167,7 @@ Dla bazy z poniższego DDL kontrakt zapisu może wyglądać następująco:
 | Operacja | utworzenie `run`, następnie `forecast` z otrzymanym identyfikatorem |
 | Transakcja | oba zapisy zatwierdzone razem; błąd drugiego wycofuje pierwszy |
 | Wynik | identyfikator uruchomienia i możliwość odczytu prognozy |
-| Ograniczenia | FK do `run`, unikalna para `run_id, target_date`, kontrola daty w aplikacji |
+| Ograniczenia | FK do `run`, unikalna para `run_id, target_date`; w aplikacji kontrola daty, dodatniego całkowitego okna oraz typu, skończoności i nieujemności prognozy |
 
 Nie należy traktować samego DDL jako pełnego kontraktu: nie opisuje on np. reakcji aplikacji na blokadę bazy. W `docs/architecture.md` trzeba wskazać, czy przy takim błędzie operacja kończy się komunikatem, czy jest bezpiecznie ponawiana.
 
@@ -217,9 +219,11 @@ Oczekiwany wynik to `moving_average | 2026-10-09 | 14.0`. Należy odświeżyć s
 
 **Ćwiczenie:** w tej samej sesji z włączonym `foreign_keys` należy spróbować wstawić prognozę dla `run_id = 999`, następnie duplikat pary `1, '2026-10-09'`. Obie operacje powinny zostać odrzucone. Trzeba wskazać, które ograniczenie chroni dane. Typ `TEXT` nie sprawdza poprawności daty kalendarzowej — tę kontrolę należy zaprojektować osobno.
 
+Warunek `CHECK (value >= 0)` nie gwarantuje skończoności liczby: dodatnia nieskończoność spełnia to porównanie. Przed rozpoczęciem zapisu aplikacja powinna sprawdzić typ liczbowy, skończoność (np. `math.isfinite(value)` w Pythonie) i nieujemność wyniku oraz odrzucić `NaN` i nieskończoności. Należy również sprawdzić, czy okno jest dodatnią liczbą całkowitą; deklaracja `INTEGER` w tej tabeli SQLite nie zastępuje walidacji typu. Dla błędnej daty lub wartości operacja powinna zakończyć się komunikatem bez utworzenia rekordów `run` i `forecast`.
+
 Dla analizy bez bazy należy zamiast DDL opisać np. `run.json` z wersją danych i parametrami oraz `forecast.csv` z datą, wartością i jednostką. Trzeba wyjaśnić, jak unikać nadpisania wyników różnych uruchomień.
 
-### Utworzenie i zachowanie diagramu (diagrams.net)
+### Przedstawienie granic systemu i modułów (diagrams.net)
 
 1. Otworzyć [app.diagrams.net](https://app.diagrams.net/), wybrać zapis lokalny i pusty diagram.
 2. Umieścić użytkownika poza prostokątem oznaczającym własny system; wewnątrz dodać główne moduły.
@@ -227,11 +231,11 @@ Dla analizy bez bazy należy zamiast DDL opisać np. `run.json` z wersją danych
 4. Zapisać edytowalny plik w `docs/diagrams/` oraz wyeksportować PNG lub SVG przez menu **File → Export as**.
 5. Otworzyć eksport niezależnie od edytora i sprawdzić czytelność podpisów.
 
-Diagram kontekstowy nie zastępuje diagramu sekwencji: pierwszy pokazuje otoczenie i granice, drugi kolejność działań. Nie należy przesyłać danych prywatnych do internetowego edytora; wystarczą nazwy i syntetyczne przykłady.
+Wynikiem jest schemat granic systemu i jego modułów. Diagram kontekstowy przedstawiałby własny system jako jeden element wraz z użytkownikami i systemami zewnętrznymi, bez rozrysowywania modułów wewnętrznych. Żaden z tych widoków nie zastępuje diagramu sekwencji pokazującego kolejność działań. Nie należy przesyłać danych prywatnych do internetowego edytora; wystarczą nazwy i syntetyczne przykłady.
 
 ### Uzasadnienie wyboru technologii (Markdown)
 
-**ADR** to krótki zapis decyzji architektonicznej: problemu, wyboru, alternatyw i konsekwencji. Należy zapisać `docs/decisions/001-storage.md`, korzystając ze struktury:
+**ADR** to krótki zapis decyzji architektonicznej: problemu, wyboru, alternatyw i konsekwencji. Należy zapisać go w `docs/decisions/`, dobierając nazwę do tematu, np. `001-storage.md` dla przechowywania wyników albo `001-api.md` dla wydzielenia usługi. Nazwa na diagramie katalogów jest przykładowa. Dla decyzji o zapisie wyników można wykorzystać strukturę:
 
 ```markdown
 # ADR-001: Zapis wyników analizy
