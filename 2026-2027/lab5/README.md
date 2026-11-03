@@ -51,7 +51,7 @@ Należy wybrać jeden główny przypadek użycia i nadać mu identyfikator, np. 
 
 Pracę należy podzielić na opis operacji i interfejsów, diagram zachowania, model danych oraz decyzję i przegląd spójności. Każda osoba powinna przygotować sprawdzalny rezultat; przy wspólnym pliku Markdown trzeba uzgodnić kolejność edycji.
 
-### 2. Granice rozwiązania i scenariusz — 10–25 min
+### 2. Granice systemu i opis przypadku użycia — 10–25 min
 
 W `docs/architecture.md` należy wskazać użytkownika, systemy zewnętrzne i zakres odpowiedzialności własnego rozwiązania. Następnie trzeba opisać operację według przykładu:
 
@@ -67,7 +67,7 @@ W `docs/architecture.md` należy wskazać użytkownika, systemy zewnętrzne i za
 
 Dla własnego projektu należy zastąpić wszystkie przykłady. Nie należy dodawać logowania, panelu administracyjnego ani bazy danych, jeżeli wymagania ich nie uzasadniają.
 
-### 3. Zachowanie i podział odpowiedzialności — 25–45 min
+### 3. Diagram sekwencji i kontrakt między modułami — 25–45 min
 
 Należy przygotować diagram sekwencji UML dla wybranego przypadku, z co najmniej jedną ścieżką błędną. **Diagram sekwencji** pokazuje kolejność komunikatów pomiędzy uczestnikami operacji. Trzeba odróżnić użytkownika, interfejs, przetwarzanie i zapis; nie muszą to być osobne serwery.
 
@@ -75,7 +75,7 @@ Do diagramu należy dopisać kontrakt jednej granicy między modułami: nazwy i 
 
 Należy również zaznaczyć przepływ danych według wzoru poniżej. Można umieścić go obok diagramu sekwencji w tym samym pliku. Kontrakt trzeba dobrać do rzeczywistej granicy: funkcji, API albo zapisu w bazie — nie trzeba przygotowywać wszystkich trzech.
 
-### 4. Model danych i decyzja — 45–70 min
+### 4. Model danych i decyzja architektoniczna — 45–70 min
 
 Należy przygotować model logiczny: jakie obiekty lub zbiory istnieją, co oznacza pojedynczy rekord i jak są powiązane. Następnie trzeba wskazać model fizyczny, czyli konkretny zapis: tabele z typami i kluczami albo pliki z formatem, ścieżką i schematem pól.
 
@@ -96,9 +96,9 @@ Inna osoba powinna prześledzić UC-01 od wejścia do wyniku, korzystając tylko
 | DataGrip | kontrola rzeczywistych tabel, kluczy i relacji | DDL i diagram zgodny z bazą |
 | Markdown i GitHub Issues | opis kontraktów, decyzji i zadań implementacyjnych | dokumentacja powiązana z wymaganiem |
 
-### Narysowanie przebiegu operacji (Mermaid)
+### Przygotowanie diagramu sekwencji UML (Mermaid)
 
-Należy otworzyć [Mermaid Live Editor](https://mermaid.live/), wkleić poniższy tekst bez znaczników ogrodzenia kodu i odczytać podgląd. Przykład można zapisać jako `examples/lab5/sequence.mmd`. We własnym Markdownie należy użyć bloku oznaczonego `mermaid`.
+Pod podglądem należy rozwinąć sekcję **Kod diagramu do skopiowania**, skopiować jej zawartość od wiersza `sequenceDiagram` i wkleić do pola kodu w [Mermaid Live Editor](https://mermaid.live/), zastępując domyślny przykład. Kod można zapisać jako `examples/lab5/sequence.mmd`. We własnym pliku Markdown należy umieścić go w bloku kodu oznaczonym jako `mermaid`.
 
 ```mermaid
 sequenceDiagram
@@ -120,13 +120,38 @@ sequenceDiagram
     end
 ```
 
+<details markdown="1">
+<summary>Kod diagramu do skopiowania</summary>
+
+```text
+sequenceDiagram
+    actor K as Kierownik
+    participant I as Interfejs
+    participant A as Modul analityczny
+    participant P as Pliki wynikowe
+    K->>I: Wskazanie historii i daty
+    I->>A: Sprawdzenie danych
+    alt Historia poprawna
+        A->>A: Obliczenie prognozy
+        A->>P: Zapis wyniku i parametrow
+        P-->>A: Potwierdzenie zapisu
+        A-->>I: Prognoza z jednostka
+        I-->>K: Wynik i zakres danych
+    else Brak wymaganej historii
+        A-->>I: Blad: za malo obserwacji
+        I-->>K: Komunikat bez nowej prognozy
+    end
+```
+
+</details>
+
 Strzałki oznaczają komunikaty, a `alt/else` rozdziela warunki. Nie należy interpretować odstępów między strzałkami jako pomiaru czasu. **Ćwiczenie:** należy dopisać reakcję na błąd zapisu pliku; system nie powinien potwierdzić utrwalenia wyniku, którego nie zapisano. Składnię można sprawdzić w [dokumentacji diagramów sekwencji](https://mermaid.js.org/syntax/sequenceDiagram.html).
 
 Jeżeli strona nie renderuje Mermaid, należy otworzyć kod w edytorze i wyeksportować obraz. Nie należy zakładać, że każda strona GitHub Pages obsługuje diagramy tak samo jak podgląd pliku na GitHubie.
 
-### Prześledzenie przepływu danych (Mermaid)
+### Przygotowanie schematu przepływu danych (Mermaid)
 
-Poniższy schemat pokazuje, jakie dane powstają na kolejnych etapach. Nie jest formalnym diagramem DFD ani diagramem sekwencji UML. Należy wkleić go do Mermaid Live Editor, a następnie zastąpić elementy nazwami ze swojego projektu.
+Poniższy schemat pokazuje, jakie dane powstają na kolejnych etapach. Nie jest formalnym diagramem DFD ani diagramem sekwencji UML. Pod podglądem należy rozwinąć sekcję **Kod diagramu do skopiowania**, skopiować tekst od wiersza `flowchart LR` do pola kodu w Mermaid Live Editor, a następnie zastąpić elementy nazwami ze swojego projektu.
 
 ```mermaid
 flowchart LR
@@ -140,9 +165,26 @@ flowchart LR
     M --> P[Raport lub dashboard]
 ```
 
+<details markdown="1">
+<summary>Kod diagramu do skopiowania</summary>
+
+```text
+flowchart LR
+    R[Surowe dane i wersja zrodla] --> V{Walidacja}
+    V -->|poprawne rekordy| T[Czyszczenie i transformacje]
+    V -->|blad| E[Raport bledow bez nowego wyniku]
+    T --> D[Dane przetworzone i slownik]
+    D --> A[Metoda i parametry]
+    A --> W[Wynik z jednostka i wersja danych]
+    W --> M[(Magazyn wynikow)]
+    M --> P[Raport lub dashboard]
+```
+
+</details>
+
 **Ćwiczenie:** należy opisać format danych przy co najmniej dwóch strzałkach i wskazać, skąd odbiorca pozna datę ostatniego odświeżenia. Dla projektu bez magazynu można połączyć wynik bezpośrednio z raportem, wyjaśniając konsekwencje braku historii.
 
-### Ustalenie kontraktu API lub zapisu
+### Określenie kontraktu API lub operacji zapisu w bazie
 
 Poniższy kontrakt API opisuje wyłącznie moduł obliczający średnią z ostatnich `window` obserwacji, bez trwałego zapisu. Jest to część UC-01, a nie cała operacja przygotowania i zapisania prognozy. Należy dostosować kontrakt do implementacji i zapisać go w `docs/architecture.md`.
 
@@ -171,9 +213,9 @@ Dla bazy z poniższego DDL kontrakt zapisu może wyglądać następująco:
 
 Nie należy traktować samego DDL jako pełnego kontraktu: nie opisuje on np. reakcji aplikacji na blokadę bazy. W `docs/architecture.md` trzeba wskazać, czy przy takim błędzie operacja kończy się komunikatem, czy jest bezpiecznie ponawiana.
 
-### Zapisanie modelu danych (Mermaid / DataGrip)
+### Przygotowanie diagramu ERD i definicji tabel SQL (Mermaid / DataGrip)
 
-W projekcie przechowującym wiele prognoz można zastosować następujący model. **PK** oznacza klucz główny identyfikujący rekord, a **FK** — klucz obcy wskazujący rekord innej tabeli.
+W projekcie przechowującym wiele prognoz można zastosować następujący model. **PK** oznacza klucz główny identyfikujący rekord, a **FK** — klucz obcy wskazujący rekord innej tabeli. Aby edytować przykład, należy rozwinąć sekcję **Kod diagramu do skopiowania** i wkleić jej zawartość od wiersza `erDiagram` do pola kodu w Mermaid Live Editor.
 
 ```mermaid
 erDiagram
@@ -190,6 +232,27 @@ erDiagram
         float value
     }
 ```
+
+<details markdown="1">
+<summary>Kod diagramu do skopiowania</summary>
+
+```text
+erDiagram
+    RUN ||--o{ FORECAST : zawiera
+    RUN {
+        int id PK
+        string data_version
+        string method
+        int window
+    }
+    FORECAST {
+        int run_id PK, FK
+        string target_date PK
+        float value
+    }
+```
+
+</details>
 
 Należy odczytać relację: jedno uruchomienie może mieć zero lub wiele prognoz, a każda prognoza należy do jednego uruchomienia. Parę `run_id, target_date` przyjęto jako złożony klucz prognozy; drugi wynik dla tego samego dnia wymaga osobnego uruchomienia. Zasady notacji opisano w [dokumentacji ERD](https://mermaid.js.org/syntax/entityRelationshipDiagram.html).
 
@@ -233,7 +296,7 @@ Dla analizy bez bazy należy zamiast DDL opisać np. `run.json` z wersją danych
 
 Wynikiem jest schemat granic systemu i jego modułów. Diagram kontekstowy przedstawiałby własny system jako jeden element wraz z użytkownikami i systemami zewnętrznymi, bez rozrysowywania modułów wewnętrznych. Żaden z tych widoków nie zastępuje diagramu sekwencji pokazującego kolejność działań. Nie należy przesyłać danych prywatnych do internetowego edytora; wystarczą nazwy i syntetyczne przykłady.
 
-### Uzasadnienie wyboru technologii (Markdown)
+### Zapisanie decyzji architektonicznej ADR (Markdown)
 
 **ADR** to krótki zapis decyzji architektonicznej: problemu, wyboru, alternatyw i konsekwencji. Należy zapisać go w `docs/decisions/`, dobierając nazwę do tematu, np. `001-storage.md` dla przechowywania wyników albo `001-api.md` dla wydzielenia usługi. Nazwa na diagramie katalogów jest przykładowa. Dla decyzji o zapisie wyników można wykorzystać strukturę:
 

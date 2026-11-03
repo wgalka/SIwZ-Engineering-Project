@@ -76,7 +76,7 @@ Należy wybrać UC-01 lub inny główny przypadek z Lab 5. Trzeba ustalić jeden
 
 Role trzeba dostosować do liczebności zespołu. Nie należy tworzyć zadania „robić backend”; trzeba wskazać konkretną funkcję lub zachowanie. Współpraca nad jednym zadaniem jest dopuszczalna, ale każda osoba powinna umieć wskazać własny rezultat.
 
-### 2. Uzgodnienie połączeń — 15–25 min
+### 2. Uzgodnienie kontraktów między modułami — 15–25 min
 
 Należy zapisać nazwy funkcji lub endpointów, format wejść i wyjść oraz sposób zgłaszania błędów. Trzeba uzgodnić małą wspólną próbkę i oczekiwany wynik. Przykład: moduł danych zwraca listę dziennych liczebności, analiza przyjmuje listę i okno, a interfejs zapisuje prognozę razem z jednostką.
 
@@ -214,7 +214,7 @@ git merge --continue
 
 Checklista nie zastępuje sprawdzenia kodu i nie oznacza obowiązku dopisywania testów niezwiązanych ze zmianą.
 
-### Połączenie obliczenia z interfejsem (Python)
+### Przygotowanie interfejsu wiersza poleceń do prognozowania (Python)
 
 Demonstracja rozwija średnią z Lab 4 do polecenia przyjmującego JSON. Należy zapisać kod jako `examples/lab6/forecast.py`. Wystarcza standardowa biblioteka Pythona.
 

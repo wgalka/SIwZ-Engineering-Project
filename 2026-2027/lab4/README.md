@@ -340,7 +340,7 @@ Zapytanie powinno zwrócić cztery dni, z błędami wariantu bazowego `1, 2, 1, 
 
 **Ćwiczenie:** należy zmienić `3 PRECEDING` na `5 PRECEDING`, bez zmiany ocenianych dni. Trzeba wyjaśnić, dlaczego okno kończy się na `1 PRECEDING`, a nie `CURRENT ROW`. Okno obejmuje wiersze, nie dni kalendarzowe: przed użyciem na własnych danych należy sprawdzić ciągłość dat, unikalność dni i brak pustych wartości. Funkcja `AVG` pomija wartości `NULL`, co bez kontroli zmieniłoby liczbę obserwacji w średniej.
 
-### Modelowanie zależności (statsmodels)
+### Porównanie regresji liniowej z prognozą stałą (statsmodels)
 
 Należy sprawdzić, czy liczba pozycji zamówienia pozwala oszacować koszt jego obsługi lepiej niż jednakowy koszt dla wszystkich zamówień. **Zmienna objaśniana** to przewidywany koszt, a **zmienna objaśniająca** to znana wcześniej liczba pozycji. Regresja liniowa dopasowuje zależność `koszt = stała + współczynnik × liczba pozycji`. **Reszta** to rzeczywisty koszt minus wartość dopasowana dla obserwacji uczącej; dla nowych zamówień należy oceniać błędy prognoz.
 
@@ -384,7 +384,7 @@ Należy otworzyć `diagnostics.csv` i porównać `reszta` z `pozycje` oraz `dopa
 
 **Ćwiczenie:** należy zmienić koszt wyłącznie pierwszego zamówienia uczącego z 12 na 22 PLN i ponowić obliczenia, zapisując wynik w innym katalogu. Trzeba sprawdzić zmianę MAE obu wariantów i wpływ pojedynczej obserwacji na współczynniki. Nie należy usuwać niewygodnej obserwacji tylko dlatego, że pogarsza dopasowanie.
 
-### Porównanie scenariuszy obsługi (SimPy)
+### Symulacja kolejki z jednym i dwoma stanowiskami (SimPy)
 
 Należy porównać czas oczekiwania czterech spraw przy jednym i dwóch stanowiskach. Przyjęto syntetyczne chwile przyjścia: 0, 2, 4 i 6 minut, obsługę każdej sprawy przez 5 minut oraz kolejkę według kolejności przyjścia. System początkowo jest pusty, a obliczenia kończą się po obsłużeniu wszystkich spraw. Nie występuje losowanie, więc ziarno nie jest potrzebne.
 

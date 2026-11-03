@@ -93,7 +93,7 @@ W planie należy dopisać wynik, dowód i status każdego wymagania: spełnione,
 
 Należy wybrać narzędzia pasujące do projektu, nie wykonywać wszystkich demonstracji.
 
-### Sprawdzenie funkcji i całego polecenia (pytest)
+### Testowanie funkcji prognozującej i interfejsu wiersza poleceń (pytest)
 
 Demonstracja wykorzystuje `examples/lab6/forecast.py` z [Lab 6](../lab6/). Jeśli wcześniej jej nie wykonywano, należy najpierw zapisać tamten kod. W aktywnym środowisku wirtualnym należy zainstalować `pytest` poleceniem `python -m pip install pytest` i zapisać wersję w zależnościach testowych projektu.
 
@@ -207,7 +207,7 @@ Polecenie `python -m pytest examples/lab6/test_dashboard.py -q` powinno dać `1 
 
 **Ćwiczenie:** należy rozszerzyć wybraną ścieżkę o puste wejście i brak obowiązkowego pola lub niepoprawny tekst. Testy logiki z poprzedniej sekcji należy zachować — test interfejsu nie zastępuje kontroli obliczeń.
 
-### Ocena pokrycia i kontrola statyczna (pytest-cov / Ruff — opcjonalnie)
+### Pomiar pokrycia kodu testami i analiza statyczna (pytest-cov / Ruff — opcjonalnie)
 
 W aktywnym środowisku należy wykonać `python -m pip install pytest-cov ruff`. Dla demonstracji można uruchomić:
 
@@ -286,7 +286,7 @@ Dla demonstracji z Lab 4 trzeba ocenić dni 9–12 października, każdorazowo p
 
 Dla symulacji należy zachować scenariusze i ziarna, a dla innych analiz — ich właściwą miarę. Jeżeli metoda lub dane zostały świadomie zmienione, trzeba zapisać nowy eksperyment, zamiast oczekiwać identycznej liczby. Pogorszenie po integracji należy wyjaśnić przed uznaniem wymagania za spełnione.
 
-### Uruchomienie kontroli po zmianie (GitHub Actions)
+### Automatyczne uruchamianie testów po push i w Pull Request (GitHub Actions)
 
 Dla demonstracji należy zapisać poniższy workflow jako `.github/workflows/check.yml`. Jeśli plik już istnieje, należy rozszerzyć go, a nie nadpisywać dotychczasowych zadań.
 
