@@ -147,8 +147,6 @@ sequenceDiagram
 
 Strzałki oznaczają komunikaty, a `alt/else` rozdziela warunki. Nie należy interpretować odstępów między strzałkami jako pomiaru czasu. **Ćwiczenie:** należy dopisać reakcję na błąd zapisu pliku; system nie powinien potwierdzić utrwalenia wyniku, którego nie zapisano. Składnię można sprawdzić w [dokumentacji diagramów sekwencji](https://mermaid.js.org/syntax/sequenceDiagram.html).
 
-Jeżeli strona nie renderuje Mermaid, należy otworzyć kod w edytorze i wyeksportować obraz. Nie należy zakładać, że każda strona GitHub Pages obsługuje diagramy tak samo jak podgląd pliku na GitHubie.
-
 ### Przygotowanie schematu przepływu danych (Mermaid)
 
 Poniższy schemat pokazuje, jakie dane powstają na kolejnych etapach. Nie jest formalnym diagramem DFD ani diagramem sekwencji UML. Pod podglądem należy rozwinąć sekcję **Kod diagramu do skopiowania**, skopiować tekst od wiersza `flowchart LR` do pola kodu w Mermaid Live Editor, a następnie zastąpić elementy nazwami ze swojego projektu.
