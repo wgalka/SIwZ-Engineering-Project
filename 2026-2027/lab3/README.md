@@ -153,7 +153,7 @@ W `docs/processing.md` należy zapisać krótkie podsumowanie:
 Należy:
 
 1. otworzyć `docs/data.md` z Lab 2;
-2. wybrać źródło podstawowe albo zatwierdzić plan własnego pomiaru;
+2. wybrać źródło podstawowe albo uzgodnić w zespole plan własnego pomiaru;
 3. jeśli próbka z Lab 2 znajduje się w `data/sample.csv`, utworzyć katalog `data/raw/` i przenieść ją bez zmiany zawartości poleceniem `git mv data/sample.csv data/raw/sample.csv`; dla innej nazwy lub formatu zachować nazwę pliku i zastosować analogiczne przeniesienie; zaktualizować odnośniki w `README.md` i `docs/data.md`;
 4. wskazać osobę odpowiedzialną za każdy etap pozyskania danych;
 5. ustalić zakres próbki, format i sposób zapisania danych surowych.
@@ -228,7 +228,7 @@ Zrzuty poniżej pochodzą z oficjalnej dokumentacji i przedstawiają rzeczywiste
 
 ### 0. Przykład demonstracyjny: zgłoszenia serwisowe
 
-Poniższa próbka jest całkowicie syntetyczna i służy do pokazania działania narzędzi. Nie trzeba jej tworzyć, jeśli zespół ma już dozwoloną próbkę własnych danych. W przykładzie jedna obserwacja oznacza jedno zgłoszenie, a `czas_min` — czas obsługi w minutach.
+Poniższa próbka jest całkowicie syntetyczna i służy do samodzielnego przećwiczenia pracy z narzędziami. Nie trzeba jej tworzyć, jeśli zespół ma już dozwoloną próbkę własnych danych. W przykładzie jedna obserwacja oznacza jedno zgłoszenie, a `czas_min` — czas obsługi w minutach. Podane dalej liczebności i statystyki dotyczą tej próbki; dla własnych danych należy wyznaczyć je osobno.
 
 W VS Code należy otworzyć katalog repozytorium i utworzyć plik `examples/lab3/data/raw/zgloszenia.csv` w kodowaniu UTF-8:
 
@@ -261,7 +261,7 @@ Przed rozpoczęciem należy przyjąć następujące reguły:
 
 ### 1. Profilowanie i czyszczenie plików CSV (Data Wrangler)
 
-**Kiedy wybrać:** gdy dane projektu są zapisane w pliku tabelarycznym, np. CSV, i trzeba sprawdzić jego strukturę lub przygotować reguły czyszczenia. Poniższy pokaz należy wykonać tylko po wybraniu tej ścieżki; w pozostałych przypadkach wystarczy zapoznać się z opisem i zrzutami.
+**Kiedy wybrać:** gdy dane projektu są zapisane w pliku tabelarycznym, np. CSV, i trzeba sprawdzić jego strukturę lub przygotować reguły czyszczenia. Poniższe ćwiczenie należy wykonać tylko po wybraniu tej ścieżki; w pozostałych przypadkach wystarczy zapoznać się z opisem i zrzutami.
 
 #### Otwarcie pliku w Data Wrangler
 
@@ -283,7 +283,7 @@ W trybie **Viewing** należy kolejno zaznaczyć `kategoria` i `czas_min`. W pods
 
 *Zrzut ekranu: Microsoft, [tryb podglądu](https://code.visualstudio.com/docs/datascience/data-wrangler#viewing-mode-interface). Należy zwrócić uwagę na Data Summary i Quick Insights.*
 
-Należy zapisać odpowiedzi:
+Odpowiedzi należy zapisać w `examples/lab3/docs/processing.md`, a przy pracy na własnych danych — w `docs/processing.md`:
 
 1. Ile wariantów nazw kategorii występuje przed czyszczeniem?
 2. Które identyfikatory wymagają sprawdzenia?
@@ -395,7 +395,7 @@ Aby sprawdzić odrzucenie błędnych danych, należy przygotować drugą kopię 
 
 **Kiedy wybrać:** gdy dane są przechowywane w bazie, zespół potrzebuje SQL albo musi zaimportować lub wyeksportować tabelę. Jeśli projekt pracuje wyłącznie na plikach i nie wymaga SQL, wystarczy przeczytać opis i obejrzeć zrzuty. Poniższe ćwiczenia są przykładami funkcji DataGrip — nie trzeba wykonywać ich wszystkich. Należy wybrać te, które odpowiadają zadaniu projektu.
 
-W pokazie lokalną bazą będzie SQLite. Jeżeli wybrano tę ścieżkę, należy zainstalować [DataGrip](https://www.jetbrains.com/datagrip/download/) i aktywować licencję odpowiednią dla swojego sposobu użycia. Aktualne warunki są dostępne na [stronie produktu](https://www.jetbrains.com/datagrip/).
+W ćwiczeniu należy użyć lokalnej bazy SQLite. Jeżeli wybrano tę ścieżkę, należy zainstalować [DataGrip](https://www.jetbrains.com/datagrip/download/) i aktywować licencję odpowiednią dla swojego sposobu użycia. Aktualne warunki są dostępne na [stronie produktu](https://www.jetbrains.com/datagrip/).
 
 #### Połączenie z lokalną bazą
 
@@ -627,7 +627,7 @@ JOIN demo_statusy s ON s.id = z.status_id
 ORDER BY z.id;
 ```
 
-W wyniku należy odczytać kolumnę `detail` i opisać jednym zdaniem, jak silnik odczytuje tabele. Plan przedstawia wybraną strategię wykonania, a nie rzeczywisty czas zapytania. Dla tej małej próbki nie należy wyciągać wniosków o wydajności bazy.
+W wyniku należy odczytać kolumnę `detail` i zapisać w `examples/lab3/docs/processing.md` jedno zdanie opisujące, jak silnik odczytuje tabele. Plan przedstawia wybraną strategię wykonania, a nie rzeczywisty czas zapytania. Dla tej małej próbki nie należy wyciągać wniosków o wydajności bazy.
 
 Dokumentacja: [uzupełnianie kodu](https://www.jetbrains.com/help/datagrip/auto-completing-code.html), [historia zapytań](https://www.jetbrains.com/help/datagrip/find-recent-queries-and-files.html), [diagramy](https://www.jetbrains.com/help/datagrip/creating-diagrams.html), [plan wykonania](https://www.jetbrains.com/help/datagrip/query-execution-plan.html), [`EXPLAIN QUERY PLAN` w SQLite](https://www.sqlite.org/eqp.html).
 

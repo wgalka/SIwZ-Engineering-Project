@@ -22,9 +22,9 @@ Należy przygotować:
 - działające narzędzie do obliczeń oraz możliwość odtworzenia przygotowania danych;
 - dwa potencjalnie przydatne źródła dotyczące metody lub podobnego problemu, do zweryfikowania podczas zajęć.
 
-Przed zajęciami należy wybrać jeden z poniższych przykładów: prognozowanie, regresję albo symulację kolejki, i sprawdzić jego uruchomienie. Podczas zajęć należy dostosować ten przykład lub istniejący kod projektu, a nie budować nową bibliotekę obliczeniową od podstaw. Pozostałe ścieżki służą do samodzielnego zapoznania się z możliwościami narzędzi.
+Przed zajęciami należy sprawdzić uruchomienie kodu, który posłuży do porównania metod. Można wykorzystać istniejący kod projektu albo jeden z poniższych przykładów: prognozowanie, regresję lub symulację kolejki. Pozostałe przykłady wystarczy przejrzeć; nie trzeba ich wykonywać.
 
-Pakiety `pandas`, `statsmodels` i `simpy` należy instalować w wirtualnym środowisku projektu, nie w systemowym Pythonie. Należy wykorzystać istniejące środowisko; jeśli go nie utworzono, trzeba w katalogu repozytorium wykonać `python -m venv .venv`. Środowisko o nazwie `.venv` należy aktywować w terminalu:
+Jeżeli wybrana ścieżka korzysta z Pythona, należy używać wirtualnego środowiska projektu. Trzeba zainstalować tylko pakiety wymagane przez wybrany kod, np. `pandas` i `statsmodels` dla przykładu regresji albo `simpy` dla symulacji kolejki. Należy wykorzystać istniejące środowisko; jeśli go nie utworzono, trzeba w katalogu repozytorium wykonać `python -m venv .venv`. Środowisko o nazwie `.venv` należy aktywować w terminalu:
 
 ```powershell
 # Windows — PowerShell
@@ -146,9 +146,9 @@ Każda osoba powinna mieć własny rezultat widoczny w repozytorium. Należy uzg
 
 Należy zweryfikować przygotowane źródła i uzupełnić tabelę warunków w `docs/experiment.md`. Przed obejrzeniem wyników trzeba ustalić parametry obu wariantów, miarę i kryterium praktyczne. Jeżeli próbka nie wystarcza do wiarygodnej oceny, należy zapisać to ograniczenie i wykonać próbę działania procedury.
 
-### 3. Uruchomienie przykładu — 25–35 min
+### 3. Sprawdzenie wybranego kodu — 25–35 min
 
-Należy uruchomić jeden przygotowany przykład: prognozowanie, regresję albo kolejkę. Trzeba odszukać dane wejściowe, obie reguły i wynik zbiorczy oraz sprawdzić jeden wynik ręcznie według wskazówek pod kodem. Nie należy wykonywać kolejno wszystkich demonstracji.
+Należy uruchomić przygotowany przykład albo kod projektu. Trzeba wskazać dane wejściowe, sposób obliczania wyniku w obu wariantach i wynik zbiorczy oraz sprawdzić jeden wynik ręcznie. Dla przykładów z instrukcji należy skorzystać ze wskazówek pod kodem, a dla własnego projektu — z reguły lub wzoru zapisanych w `docs/experiment.md`.
 
 ### 4. Porównanie na danych projektu — 35–65 min
 
@@ -172,7 +172,7 @@ Jeżeli po obejrzeniu wyników zmieniane są parametry modelu, oceniane dane sł
 
 ### 6. Odtworzenie i zapis — 80–90 min
 
-Inna osoba z zespołu powinna ponownie uruchomić porównanie według instrukcji w `README.md`. Należy porównać wyniki dla tej samej próbki, parametrów i ziaren losowania. W `docs/experiment.md` trzeba zapisać wniosek, ograniczenia i wynik odtworzenia, a następnie wykonać commity własnych rezultatów.
+Inna osoba z zespołu powinna ponownie uruchomić porównanie według instrukcji w `README.md`. Należy porównać wyniki dla tej samej próbki, parametrów i ziaren losowania. W `docs/experiment.md` trzeba zapisać polecenie lub kroki uruchomienia, wynik oczekiwany i otrzymany oraz ewentualne różnice. Następnie należy uzupełnić wniosek i ograniczenia oraz wykonać commity własnych rezultatów.
 
 ## Przydatne narzędzia
 
@@ -499,7 +499,7 @@ Należy odróżniać obserwowaną zależność od wpływu przyczynowego. Przykł
 1. Sformułować jedno pytanie powiązane z wymaganiem projektu i zweryfikować dwa źródła uzasadniające dobór metody.
 2. Zapisać wariant bazowy, wybraną metodę, parametry, miarę i warunki porównania w `docs/experiment.md`.
 3. Uruchomić oba warianty na wspólnych przypadkach lub w porównywalnych warunkach; zapisać procedurę oraz wyniki jednostkowe i zbiorcze.
-4. Sprawdzić ręcznie przynajmniej jeden wynik i obliczenie miary; przy powtórzeniach opisać także rozrzut wyników.
+4. Sprawdzić ręcznie przynajmniej jeden wynik i obliczenie miary; obliczenie oraz porównanie z wynikiem programu zapisać w `docs/experiment.md`. Przy powtórzeniach opisać także rozrzut wyników.
 5. Wykonać jedną próbę wrażliwości i zapisać wyniki w `results/lab4/sensitivity/`, bez nadpisywania wyników podstawowych; udokumentować zmieniony parametr.
 6. Uzasadnić wybór wariantu albo brak rozstrzygnięcia oraz zapisać ograniczenia.
 7. Odtworzyć porównanie według `README.md` i zapisać wynik sprawdzenia. Wykonać commit własnego rezultatu.

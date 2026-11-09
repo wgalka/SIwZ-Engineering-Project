@@ -26,6 +26,7 @@ Projekt zespołowy lub indywidualny obejmujący analizę problemu, dane, dobór 
 | [Lab 3](./2026-2027/lab3/README.md) | Akwizycja i przetwarzanie danych |
 | [Lab 4](./2026-2027/lab4/README.md) | Metody analityczne, symulacyjne i eksperymentalne |
 | [Lab 5](./2026-2027/lab5/README.md) | Projektowanie obiektów informatycznych |
+| [Lab 6](./2026-2027/lab6/README.md) | Realizacja projektu |
 
 ## Kryteria oceny
 

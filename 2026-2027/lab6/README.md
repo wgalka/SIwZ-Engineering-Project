@@ -29,11 +29,11 @@ Należy rozszerzać istniejącą strukturę, bez zmiany nazw katalogów tylko po
 |---|---|
 | `README.md` | instrukcja instalacji, uruchomienia głównego przepływu, wymaganych danych i oczekiwanego wyniku |
 | `src/` lub `scripts/` | zintegrowany kod głównego przepływu własnego projektu |
-| `tests/` | istniejące i nowe kontrole poprawności wejścia, obliczeń i wyjścia |
-| `docs/implementation.md` | opis stanu przepływu, wynik integracji i znane ograniczenia |
+| `tests/` | istniejące testy projektu, jeśli zostały przygotowane; sprawdzenie ręczne należy udokumentować w Pull Requeście |
+| `docs/implementation.md` | opis stanu przepływu, wynik integracji, ocena usprawnienia i znane ograniczenia |
 | `requirements.txt` | lista zależności dla Pythona (lub odpowiednik w innej technologii) |
 | `.env.example` | wzorzec zmiennych środowiskowych bez tajnych wartości (tylko gdy projekt z nich korzysta) |
-| `examples/lab6/` | opcjonalne ćwiczenia demonstracyjne, oddzielone od kodu własnego rozwiązania |
+| `examples/lab6/` | pliki z opcjonalnych ćwiczeń z przewodnika, oddzielone od kodu własnego rozwiązania |
 
 W `docs/implementation.md` należy zapisać polecenie uruchamiające główną operację projektu, sprawdzoną wersję kodu, wynik uruchomienia oraz znane ograniczenia. Istniejące opisy wymagań i danych należy linkować, nie kopiować.
 
@@ -45,7 +45,7 @@ Minimalny układ `docs/implementation.md`:
 ## 1. Zakres i powiązane artefakty
 - Przypadek użycia: [link do docs/architecture.md]
 - Dane wejściowe i słownik: [link do docs/data.md oraz docs/data-dictionary.md]
-- Wybrana metoda: [link do docs/methods.md]
+- Wybrana metoda: [link do docs/experiment.md]
 
 ## 2. Uruchomienie głównego przepływu
 - Polecenie uruchomienia:
@@ -58,7 +58,12 @@ Minimalny układ `docs/implementation.md`:
 
 ## 4. Znane ograniczenia i otwarte zadania
 - Czego obecna wersja jeszcze nie obsługuje:
-- Zadania do sprawdzenia w testach (Lab 7):
+- Przypadki wymagające dalszego sprawdzenia:
+
+## 5. Ocena usprawnienia implementacji
+- Sprawdzony fragment i powód jego wyboru:
+- Zmiana i porównanie przed/po albo uzasadnienie pozostawienia obecnej wersji:
+- Próbka, warunki sprawdzenia i potwierdzenie poprawności wyniku:
 ```
 
 ## Przebieg zajęć — 90 minut
@@ -84,9 +89,11 @@ Przed równoległą edycją należy rozdzielić pliki. Jeżeli istniejący skryp
 
 ### 3. Implementacja i sprawdzenie zmian — 25–60 min
 
-Każda osoba powinna wykonać ustalone zadanie na swojej gałęzi, sprawdzić poprawne wejście i co najmniej jeden błąd oraz otworzyć Pull Request. Należy połączyć istniejące moduły; niewielkie funkcje można przygotować na podstawie demonstracji poniżej.
+Każda osoba powinna wykonać ustalone zadanie na swojej gałęzi, sprawdzić poprawne wejście i co najmniej jeden błąd oraz otworzyć Pull Request. Należy połączyć istniejące moduły; niewielkie funkcje można przygotować na podstawie przykładów z przewodnika poniżej.
 
-Trzeba obsłużyć brak danych, niepoprawny format i niemożność zapisu wyniku. Nie należy zastępować błędu pustym raportem ani fikcyjną wartością. Komunikat powinien wskazywać przyczynę, bez ujawniania sekretów i danych osobowych.
+Trzeba obsłużyć brak danych i niepoprawny format wejścia. W projektach zapisujących wynik do pliku lub bazy należy dodatkowo sprawdzić błąd zapisu i ochronę przed nadpisaniem, natomiast dla API bez zapisu lub widoku Streamlit wystarczy sprawdzić, czy błędne dane wywołują komunikat i czy interfejs nie pokazuje poprzedniego wyniku jako nowego. Nie należy zastępować błędu pustym raportem ani fikcyjną wartością; komunikat powinien wskazywać przyczynę bez ujawniania sekretów i danych osobowych.
+
+Sprawdzenie można wykonać ręcznie. W opisie Pull Requestu należy zapisać dane wejściowe, polecenie lub wykonane czynności, wynik oczekiwany i wynik otrzymany.
 
 ### 4. Przegląd i integracja — 60–80 min
 
@@ -94,9 +101,13 @@ Inna osoba powinna sprawdzić różnicę w Pull Requeście i uruchomić opisany 
 
 Jeżeli pojawi się konflikt, trzeba wspólnie ustalić docelowe zachowanie. Nie należy automatycznie wybierać całej wersji „ours” albo „theirs”, ponieważ można w ten sposób zgubić poprawki innej osoby.
 
+Po uruchomieniu całości należy sprawdzić jeden fragment według [procedury oceny usprawnienia](#ocena-i-usprawnienie-implementacji). Większą zmianę trzeba zapisać jako zadanie do dokończenia w pracy własnej, wraz z obserwacją uzasadniającą jej wykonanie.
+
 ### 5. Odtworzenie i podsumowanie — 80–90 min
 
 Osoba nieodpowiedzialna za główną implementację powinna uruchomić projekt według `README.md`. Należy zapisać wynik, poprawić brakujące kroki i zaznaczyć w Issues rzeczywisty stan zadań. Niedziałające elementy trzeba pozostawić jako otwarte zadania z opisem blokady.
+
+W ramach końcowego sprawdzenia należy przeprowadzić dwuminutowy pokaz dla prowadzącego lub innego zespołu. Trzeba wskazać dane wejściowe, wykonać główną operację, pokazać wynik oraz podać najbliższe zadanie i osobę odpowiedzialną za jego realizację.
 
 Po zajęciach należy dokończyć uzgodniony zakres w pracy własnej. Na zajęciach należy doprowadzić do działania jedną operację, a nie próbować ukończyć całego rozbudowanego systemu.
 
@@ -109,9 +120,9 @@ Po zajęciach należy dokończyć uzgodniony zakres w pracy własnej. Na zajęci
 | Terminal i menedżer zależności | powtarzalne środowisko i polecenia | instalacja zgodna z README |
 | Bruno / Postman, jeśli projekt ma API | kontrola rzeczywistej odpowiedzi | kod odpowiedzi, pola i przypadek błędny |
 
-Nie trzeba przenosić projektu do Pythona ani dodawać API tylko dlatego, że pojawia się w przewodniku.
+Należy korzystać z technologii wybranej dla własnego projektu. Z poniższego przewodnika można wybrać ćwiczenia przydatne do realizowanego zadania. W wybranym ćwiczeniu należy uruchomić przykład i sprawdzić podany wynik, a przed wykorzystaniem rozwiązania w projekcie dostosować je do własnych danych i wymagań.
 
-Należy wybrać jeden interfejs: CLI do pracy wsadowej, FastAPI do komunikacji między systemami albo Streamlit do interakcji z użytkownikiem. Zapis SQLite jest niezależną opcją przechowywania danych. Nie trzeba łączyć wszystkich wariantów. Dodatkowe pakiety należy instalować w aktywnym środowisku wirtualnym i zapisać ich sprawdzone wersje w zależnościach projektu.
+Przykłady obejmują CLI do pracy wsadowej, FastAPI do komunikacji między systemami oraz Streamlit do interakcji z użytkownikiem. Można wykorzystać jeden z tych wariantów albo interfejs już istniejący w projekcie. Zapis SQLite jest niezależną opcją przechowywania danych. Nie trzeba wykonywać wszystkich ćwiczeń ani łączyć wszystkich wariantów. Dodatkowe pakiety należy instalować w aktywnym środowisku wirtualnym i zapisać ich sprawdzone wersje w zależnościach projektu.
 
 ### Przejście od zadania do scalonej zmiany (GitHub / Git)
 
@@ -346,7 +357,7 @@ Zmiana kontrolki powoduje ponowne wykonanie skryptu. Nie należy umieszczać w t
 
 ### Zapisanie tego samego wyniku w bazie (Python / SQLite)
 
-Ten wariant zastępuje zapis JSON dla zespołów pracujących z bazą; nie trzeba realizować obu ścieżek. Należy utworzyć w DataGrip demonstracyjną bazę `examples/lab6/results/forecast.db` i wykonać w niej `schema.sql` z Lab 5. Trzeba zachować tabele `run` i `forecast` bez zmian. Następnie należy zapisać poniższy kod jako `examples/lab6/save_forecast.py`, obok wcześniejszego `forecast.py`.
+Ten wariant zastępuje zapis JSON dla zespołów pracujących z bazą; nie trzeba realizować obu ścieżek. Skrypt korzysta z modułu `examples/lab6/forecast.py` oraz pliku `examples/lab6/history.json` z przykładu CLI powyżej — należy je wcześniej przygotować i utworzyć katalog `examples/lab6/results/`. Następnie należy w DataGrip utworzyć demonstracyjną bazę `examples/lab6/results/forecast.db` i wykonać w niej skrypt `examples/lab5/schema.sql` z [sekcji diagramu ERD i definicji tabel SQL w Lab 5](../lab5/#przygotowanie-diagramu-erd-i-definicji-tabel-sql-mermaid--datagrip). Trzeba zachować tabele `run` i `forecast` bez zmian, po czym zapisać poniższy kod jako `examples/lab6/save_forecast.py`, obok wcześniejszego `forecast.py`.
 
 ```python
 from contextlib import closing
@@ -437,22 +448,39 @@ Można zlecić agentowi małą zmianę z konkretnym kontraktem, np.:
 
 Należy obejrzeć diff, wykonać poprawny i błędny przypadek oraz opisać wynik przeglądu. Odpowiedzialność za zachowanie programu pozostaje po stronie zespołu.
 
+### Ocena i usprawnienie implementacji
+
+Należy wybrać jeden fragment działającego projektu i sprawdzić, czy można ograniczyć zbędne operacje lub uprościć utrzymanie kodu. Poniższe przykłady pomagają dobrać zakres do projektu.
+
+| Obszar | Co sprawdzić? | Możliwe usprawnienie | Co porównać? |
+|---|---|---|---|
+| Pliki | Czy jedna operacja kilka razy odczytuje ten sam plik? | Wczytanie danych raz i przekazanie ich do kolejnych funkcji | Liczbę odczytów i zgodność wyniku |
+| Baza danych | Czy aplikacja osobno pobiera dane dla każdego rekordu? | Pobranie potrzebnych danych jednym zapytaniem, np. ze złączeniem tabel | Liczbę zapytań oraz zgodność rekordów i wartości |
+| API | Czy jedna operacja wysyła powtarzające się żądania o te same dane? | Wykorzystanie jednej odpowiedzi w ramach tej operacji, jeśli pozwalają na to wymagania aktualności danych | Liczbę żądań i zgodność wyniku |
+| Kod i biblioteki | Czy moduły powielają obliczenia lub instalowane są nieużywane zależności? | Wspólna funkcja albo usunięcie zależności po sprawdzeniu jej użycia w kodzie i konfiguracji | Liczbę kopii kodu lub zależności oraz działanie aplikacji |
+
+1. Wskazać fragment kodu i zapisać obserwację uzasadniającą zmianę. Liczbę odczytów, zapytań lub żądań można sprawdzić za pomocą komunikatów diagnostycznych opisanych w sekcji `logging`.
+2. Zapisać wynik przed zmianą, próbkę, parametry oraz sprawdzany warunek, np. maksymalną liczbę żądań wynikającą z limitu API.
+3. Wprowadzić jedną uzasadnioną zmianę i wykonać tę samą operację na tej samej próbce. Dla API należy wykorzystać zapisaną odpowiedź lub kontrolowane źródło danych. Przy porównywaniu czasu trzeba wykonać kilka powtórzeń w tych samych warunkach i zapisać medianę.
+4. Porównać rezultat i obsługę błędnego wejścia, a następnie zapisać w `docs/implementation.md` wynik przed i po zmianie oraz wniosek. Przy usunięciu zależności trzeba również sprawdzić instalację i uruchomienie w nowym środowisku projektu.
+
+Jeżeli sprawdzony fragment już spełnia wymagania, należy zapisać wynik kontroli i uzasadnić pozostawienie obecnej wersji. Usunięcie kontroli danych lub pogorszenie poprawności wyniku dyskwalifikuje proponowane usprawnienie.
+
 ## Zadania samodzielne
 
 1. Wybrać jeden główny przepływ i utworzyć zadania z kryteriami odbioru oraz właścicielami.
 2. Połączyć wejście, obliczenie i wynik zgodnie z kontraktami z Lab 5.
-3. Obsłużyć brak wejścia, niepoprawne dane i błąd zapisu; sprawdzić każdy przypadek.
+3. Obsłużyć brak wejścia i niepoprawne dane, a w projektach zapisujących wynik — również błąd zapisu (dla API bez zapisu lub widoku Streamlit wystarczy sprawdzić komunikat błędu oraz to, że interfejs nie pokazuje poprzedniego wyniku jako nowego); na Lab 6 wystarcza sprawdzenie ręczne.
 4. Przeprowadzić zmiany przez gałęzie i Pull Requesty z przeglądem innej osoby.
 5. Uruchomić całość po scaleniu, nie tylko poszczególne moduły.
 6. Uzupełnić README i odtworzyć działanie na komputerze innego członka zespołu.
 7. Zapisać stan implementacji i pozostałe zadania; wskazać rezultat każdej osoby przez Issue/PR.
-
-Optymalizację należy podejmować po wskazaniu rzeczywistego problemu. Przed i po zmianie trzeba sprawdzić ten sam wynik na tej samej próbce. Nie należy wymieniać biblioteki lub wprowadzać cache tylko dla zwiększenia liczby wykorzystanych technologii.
+8. Ocenić jeden fragment implementacji według procedury powyżej i zapisać porównanie przed i po usprawnieniu albo uzasadnienie pozostawienia obecnej wersji.
 
 ## Rezultat do zapisania
 
 - działający główny przepływ własnego projektu z obsługą błędów;
 - README z zależnościami, konfiguracją, poleceniem i oczekiwanym wynikiem;
-- `docs/implementation.md` z wynikiem integracji oraz ograniczeniami;
+- `docs/implementation.md` z wynikiem integracji, oceną usprawnienia oraz ograniczeniami;
 - scalone i sprawdzone zmiany, powiązane z zadaniami;
 - mierzalny wkład każdej osoby w kodzie, testach, integracji lub dokumentacji.

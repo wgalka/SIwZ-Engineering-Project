@@ -26,7 +26,7 @@ Należy otworzyć `docs/problem.md`, słownik danych, `docs/processing.md` i `do
 | `docs/architecture.md` | Przypadek użycia, odpowiedzialności, interfejsy i model danych |
 | `docs/diagrams/` | Edytowalne diagramy i eksport PNG/SVG, jeśli potrzebny |
 | `docs/decisions/`, np. `001-storage.md` | Jedna istotna decyzja i rozważana alternatywa; nazwa pliku odpowiada tematowi decyzji |
-| `examples/lab5/` | Wyłącznie demonstracje, jeśli wykonywane |
+| `examples/lab5/` | Pliki opcjonalnych ćwiczeń z instrukcji, oddzielone od dokumentacji własnego projektu |
 
 Diagramy Mermaid można umieścić bezpośrednio w `docs/architecture.md`. Dla diagramów graficznych należy zachować plik źródłowy, np. `.drawio`, oraz czytelny eksport. Sam obraz nie wystarcza do wygodnej aktualizacji projektu.
 
@@ -85,7 +85,7 @@ Trzeba zapisać jedną decyzję architektoniczną z alternatywą według wzoru p
 
 ### 5. Przegląd projektu — 70–90 min
 
-Inna osoba powinna prześledzić UC-01 od wejścia do wyniku, korzystając tylko z dokumentacji. Należy sprawdzić zgodność nazw pól z Lab 3, metody z Lab 4 i elementów diagramu z planowaną implementacją. Trzeba wskazać właściciela każdej potrzebnej zmiany w zgłoszeniu GitHub Issue (zawierającym krótki cel, kryterium odbioru i przypisaną osobę odpowiedzialną — zob. [przewodnik po narzędziach](../narzedzia/#github-issue-branch-i-pull-request)) oraz poprawić znalezioną niespójność.
+Inna osoba powinna prześledzić UC-01 od wejścia do wyniku, korzystając tylko z dokumentacji. Należy sprawdzić zgodność nazw pól z Lab 3, metody z Lab 4 i elementów diagramu z planowaną implementacją. Wynik przeglądu trzeba zapisać w GitHub Issue: wskazać sprawdzony przypadek, znalezioną niespójność i sposób poprawy albo potwierdzić zgodność w sprawdzonym zakresie. Każdej potrzebnej zmianie należy przypisać wykonawcę i kryterium odbioru według [przewodnika po narzędziach](../narzedzia/#github-issue-branch-i-pull-request).
 
 ## Przydatne narzędzia
 
@@ -96,9 +96,11 @@ Inna osoba powinna prześledzić UC-01 od wejścia do wyniku, korzystając tylko
 | DataGrip | kontrola rzeczywistych tabel, kluczy i relacji | DDL i diagram zgodny z bazą |
 | Markdown i GitHub Issues | opis kontraktów, decyzji i zadań implementacyjnych | dokumentacja powiązana z wymaganiem |
 
+Diagramy można przygotować w Mermaid albo diagrams.net. Ćwiczenia dotyczące API i bazy należy wybrać zgodnie z architekturą projektu; nie trzeba wykonywać wszystkich przykładów.
+
 ### Przygotowanie diagramu sekwencji UML (Mermaid)
 
-Pod podglądem należy rozwinąć sekcję **Kod diagramu do skopiowania**, skopiować jej zawartość od wiersza `sequenceDiagram` i wkleić do pola kodu w [Mermaid Live Editor](https://mermaid.live/), zastępując domyślny przykład. Kod można zapisać jako `examples/lab5/sequence.mmd`. We własnym pliku Markdown należy umieścić go w bloku kodu oznaczonym jako `mermaid`.
+Pod podglądem należy rozwinąć sekcję **Kod diagramu do skopiowania**, skopiować jej zawartość od wiersza `sequenceDiagram` i wkleić do pola kodu w [Mermaid Live Editor](https://mermaid.live/), zastępując domyślny przykład. Kod ćwiczenia można zapisać jako `examples/lab5/sequence.mmd`. Diagram dostosowany do własnego przypadku użycia należy umieścić w `docs/architecture.md`, w bloku kodu oznaczonym jako `mermaid`.
 
 ```mermaid
 sequenceDiagram
@@ -254,7 +256,7 @@ erDiagram
 
 Należy odczytać relację: jedno uruchomienie może mieć zero lub wiele prognoz, a każda prognoza należy do jednego uruchomienia. Parę `run_id, target_date` przyjęto jako złożony klucz prognozy; drugi wynik dla tego samego dnia wymaga osobnego uruchomienia. Zasady notacji opisano w [dokumentacji ERD](https://mermaid.js.org/syntax/entityRelationshipDiagram.html).
 
-Dla ścieżki bazodanowej należy otworzyć w DataGrip osobną demonstracyjną bazę SQLite i wykonać poniższy kod z pliku `examples/lab5/schema.sql`. Kod zakłada nową bazę bez tych tabel.
+Dla ścieżki bazodanowej należy zapisać poniższy kod jako `examples/lab5/schema.sql`. Następnie trzeba utworzyć w DataGrip osobną bazę SQLite do ćwiczenia i wykonać w niej zapisany skrypt. Kod zakłada nową bazę bez tych tabel.
 
 ```sql
 PRAGMA foreign_keys = ON;
