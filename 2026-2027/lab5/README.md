@@ -9,7 +9,7 @@ permalink: /2026-2027/lab5/
 
 ## Cel zajęć
 
-Na tych zajęciach należy zaprojektować aplikację, bazę danych lub moduł analityczny na podstawie wymagań, przygotowanych danych i wyników porównania metod. Rezultatem ma być opis wystarczający do podziału implementacji: granice rozwiązania, przebieg jednej ważnej operacji, struktura danych i uzasadnienie wyboru technologii.
+Na tych zajęciach należy zaprojektować aplikację, bazę danych lub moduł analityczny na podstawie wymagań, przygotowanych danych i wyników porównania metod. Rezultatem ma być opis pozwalający podzielić prace programistyczne między członków zespołu: granice rozwiązania, przebieg jednej ważnej operacji, struktura danych i uzasadnienie wyboru technologii.
 
 Nie należy projektować systemu od początku, jeżeli część już działa. Trzeba wykorzystać kod i wyniki z Lab 3–4, wskazać potrzebne zmiany oraz odróżnić elementy istniejące od planowanych.
 
@@ -37,8 +37,8 @@ Należy wybrać wariant odpowiadający wymaganiom. Tabela przedstawia możliwoś
 | Wariant | Główny przepływ | Granice i diagramy | Co trzeba rozstrzygnąć? |
 |---|---|---|---|
 | Moduł analityczny / CLI wsadowe | pliki → walidacja → obliczenie → raport lub JSON | diagram sekwencji UML, przepływ danych, schemat plików | wersjonowanie wejścia, parametry i ochrona poprzednich wyników |
-| Aplikacja z relacyjną bazą | interfejs → logika i zapytania SQL → SQLite/PostgreSQL | diagram sekwencji UML, ERD, granica transakcji | klucze, spójność zapisu, równoczesny dostęp |
-| Usługa z API | żądanie HTTP → walidacja → logika → magazyn lub odpowiedź | diagram sekwencji UML, kontrakt endpointu, model danych | kody błędów, dostęp, ponowienie żądania i limity |
+| Aplikacja z relacyjną bazą | interfejs → logika i zapytania SQL → SQLite/PostgreSQL | diagram sekwencji UML, ERD, zakres transakcji | klucze, spójność zapisu, równoczesny dostęp |
+| Usługa z API | żądanie HTTP → walidacja → logika → magazyn lub odpowiedź | diagram sekwencji UML, specyfikacja endpointu, model danych | kody błędów, dostęp, ponowienie żądania i limity |
 | Dashboard analityczny / BI | zasilanie → agregacja → widoki i filtry | przepływ danych, model analityczny, diagram sekwencji UML dla odświeżenia danych | częstotliwość odświeżania, definicje miar i dostępność danych |
 
 DataGrip służy do pracy nad bazą, zapytaniami i diagnostyką; nie jest warstwą pośrednią, przez którą aplikacja musi wysyłać zapytania. Aplikacja łączy się z bazą przez odpowiedni sterownik lub bibliotekę.
@@ -67,13 +67,13 @@ W `docs/architecture.md` należy wskazać użytkownika, systemy zewnętrzne i za
 
 Dla własnego projektu należy zastąpić wszystkie przykłady. Nie należy dodawać logowania, panelu administracyjnego ani bazy danych, jeżeli wymagania ich nie uzasadniają.
 
-### 3. Diagram sekwencji i kontrakt między modułami — 25–45 min
+### 3. Diagram sekwencji i specyfikacja interfejsów — 25–45 min
 
 Należy przygotować diagram sekwencji UML dla wybranego przypadku, z co najmniej jedną ścieżką błędną. **Diagram sekwencji** (ang. *sequence diagram*) pokazuje kolejność komunikatów pomiędzy uczestnikami operacji. Trzeba odróżnić użytkownika, interfejs, przetwarzanie i zapis; nie muszą to być osobne serwery.
 
-Do diagramu należy dopisać zasady komunikacji między dwoma modułami: nazwy i typy wejść, jednostki, wynik i sposób sygnalizowania błędu. Zasady te tworzą **kontrakt interfejsu** (ang. *interface contract*). Przykład: `forecast(history: list[float], window: int) -> float`, wejście w zgłoszeniach na dzień, wynik na następny dzień, `ValueError` przy zbyt krótkiej historii. Nie należy przekazywać informacji o błędzie jako liczby 0, jeśli 0 jest poprawną prognozą.
+Do diagramu należy dopisać zasady komunikacji między dwoma modułami: nazwy i typy wejść, jednostki, wynik i sposób sygnalizowania błędu, czyli **specyfikację interfejsu** (ang. *interface specification*). Przykład: `forecast(history: list[float], window: int) -> float`, wejście w zgłoszeniach na dzień, wynik na następny dzień, `ValueError` przy zbyt krótkiej historii. Nie należy przekazywać informacji o błędzie jako liczby 0, jeśli 0 jest poprawną prognozą.
 
-Należy również zaznaczyć przepływ danych według wzoru poniżej. Można umieścić go obok diagramu sekwencji w tym samym pliku. Kontrakt trzeba dobrać do rzeczywistej granicy: funkcji, API albo zapisu w bazie — nie trzeba przygotowywać wszystkich trzech.
+Należy również zaznaczyć przepływ danych według wzoru poniżej. Można umieścić go obok diagramu sekwencji w tym samym pliku. Specyfikację interfejsu trzeba dobrać do rzeczywistego sposobu komunikacji: wywołania funkcji, żądania API albo zapisu w bazie — nie trzeba przygotowywać wszystkich trzech.
 
 ### 4. Model danych i decyzja architektoniczna — 45–70 min
 
@@ -94,7 +94,7 @@ Inna osoba powinna prześledzić UC-01 od wejścia do wyniku, korzystając tylko
 | Mermaid | diagram w pliku Markdown, zmiany przeglądane razem z kodem | tekst diagramu i podgląd |
 | diagrams.net | ręczne rozmieszczenie elementów, UML i schematy | plik `.drawio` i eksport |
 | DataGrip | kontrola rzeczywistych tabel, kluczy i relacji | DDL i diagram zgodny z bazą |
-| Markdown i GitHub Issues | opis kontraktów, decyzji i zadań implementacyjnych | dokumentacja powiązana z wymaganiem |
+| Markdown i GitHub Issues | opis interfejsów, decyzji i zadań implementacyjnych | dokumentacja powiązana z wymaganiem |
 
 Diagramy można przygotować w Mermaid albo diagrams.net. Ćwiczenia dotyczące API i bazy należy wybrać zgodnie z architekturą projektu; nie trzeba wykonywać wszystkich przykładów.
 
@@ -184,9 +184,9 @@ flowchart LR
 
 **Ćwiczenie:** należy opisać format danych przy co najmniej dwóch strzałkach i wskazać, skąd odbiorca pozna datę ostatniego odświeżenia. Dla projektu bez magazynu można połączyć wynik bezpośrednio z raportem, wyjaśniając konsekwencje braku historii.
 
-### Określenie kontraktu API lub operacji zapisu w bazie
+### Określenie specyfikacji API lub operacji zapisu w bazie
 
-Poniższy kontrakt API opisuje wyłącznie moduł obliczający średnią z ostatnich `window` obserwacji, bez trwałego zapisu. Jest to część UC-01, a nie cała operacja przygotowania i zapisania prognozy. Należy dostosować kontrakt do implementacji i zapisać go w `docs/architecture.md`.
+Poniższa specyfikacja API opisuje wyłącznie moduł obliczający średnią z ostatnich `window` obserwacji, bez trwałego zapisu. Jest to część UC-01, a nie cała operacja przygotowania i zapisania prognozy. Należy dostosować tę specyfikację do implementacji i zapisać ją w `docs/architecture.md`.
 
 Moduł wywołujący API odpowiada za odczyt pliku, sprawdzenie ciągłości dni i uporządkowanie historii chronologicznie. Musi również sprawdzić, że ostatnia obserwacja dotyczy dnia poprzedzającego datę prognozy, oraz wybrać ten moduł dla metody `moving_average`. Po otrzymaniu odpowiedzi łączy wynik z datą prognozy, nazwą metody, zakresem i wersją danych, a następnie przekazuje go do zapisu i wyświetlenia. Samo API przyjmujące listę liczb nie może sprawdzić dat ani brakujących dni. W projekcie należy wskazać moduł odpowiedzialny za te czynności na diagramie i w opisie UC-01.
 
@@ -197,11 +197,11 @@ Moduł wywołujący API odpowiada za odczyt pliku, sprawdzenie ciągłości dni 
 | Sukces | HTTP `200`, `{"forecast":14.0,"unit":"zgloszenia/dzien","window":3}` |
 | Błędna składnia | HTTP `400`, `{"error":"invalid_json"}` dla niepoprawnego JSON |
 | Niepoprawne dane | HTTP `422`, `{"error":"invalid_history"}` dla historii krótszej niż okno |
-| Efekt uboczny | Brak zapisu; ponowienie tego samego żądania nie tworzy kolejnych rekordów |
+| Zapis danych | Brak zapisu; ponowienie tego samego żądania nie tworzy kolejnych rekordów |
 
 To przyjęty podział błędów, nie zachowanie gwarantowane przez każdy framework. Należy sprawdzić implementację i testy; dla operacji tworzącej zasób trzeba dodatkowo określić identyfikator, kod sukcesu i regułę obsługi ponowień.
 
-Dla bazy z poniższego DDL kontrakt zapisu może wyglądać następująco:
+Dla bazy z poniższego DDL zasady zapisu mogą wyglądać następująco:
 
 | Element | Ustalenie |
 |---|---|
@@ -211,7 +211,7 @@ Dla bazy z poniższego DDL kontrakt zapisu może wyglądać następująco:
 | Wynik | identyfikator uruchomienia i możliwość odczytu prognozy |
 | Ograniczenia | FK do `run`, unikalna para `run_id, target_date`; w aplikacji kontrola daty, dodatniego całkowitego okna oraz typu, skończoności i nieujemności prognozy |
 
-Nie należy traktować samego DDL jako pełnego kontraktu: nie opisuje on np. reakcji aplikacji na blokadę bazy. W `docs/architecture.md` trzeba wskazać, czy przy takim błędzie operacja kończy się komunikatem, czy jest bezpiecznie ponawiana.
+Nie należy traktować samego DDL jako pełnej specyfikacji operacji: nie opisuje on np. reakcji aplikacji na blokadę bazy. W `docs/architecture.md` trzeba wskazać, czy przy takim błędzie operacja kończy się komunikatem, czy jest bezpiecznie ponawiana.
 
 ### Przygotowanie diagramu ERD i definicji tabel SQL (Mermaid / DataGrip)
 
@@ -320,7 +320,7 @@ Temat ADR należy wybrać spośród rzeczywistych dylematów, np.:
 | Przechowywanie | pliki / baza SQL | Czy potrzebne są relacje, wspólna historia lub równoczesny zapis? |
 | Moment obliczeń | na żądanie / wstępna agregacja | Jak świeży musi być wynik i jak długo użytkownik może czekać? |
 | Implementacja metody | biblioteka / własny algorytm | Czy biblioteka realizuje wymagania, ma odpowiednią licencję i daje się zweryfikować? |
-| Granica wdrożenia | lokalny moduł / osobna usługa API | Czy zdalny dostęp uzasadnia dodatkowe koszty, zabezpieczenia i utrzymanie? |
+| Sposób uruchomienia | lokalny moduł / osobna usługa API | Czy zdalny dostęp uzasadnia dodatkowe koszty, zabezpieczenia i utrzymanie? |
 
 Należy opracować jedną decyzję, nie cztery notatki bez związku z projektem.
 
@@ -328,7 +328,7 @@ Należy opracować jedną decyzję, nie cztery notatki bez związku z projektem.
 
 1. Powiązać główny przypadek użycia z istniejącym wymaganiem i opisać poprawny oraz błędny przebieg.
 2. Przygotować diagram sekwencji UML oraz przepływ danych; wskazać granice odpowiedzialności modułów.
-3. Zapisać kontrakt jednego interfejsu z jednostkami, wynikiem i reakcją na błąd.
+3. Zapisać specyfikację jednego interfejsu z jednostkami, wynikiem i reakcją na błąd.
 4. Przygotować ERD lub schemat danych plikowych oraz odpowiadający mu sposób zapisu fizycznego.
 5. Uzasadnić jedną decyzję w ADR, z alternatywą i kosztem wyboru.
 6. Przeprowadzić przegląd przez inną osobę i zapisać poprawkę lub wynik kontroli w Issue.
@@ -338,10 +338,10 @@ Agent AI może pomóc sprawdzić spójność nazw i znaleźć brakujący scenari
 
 ## Rezultat do zapisania
 
-- `docs/architecture.md`: granice, przypadek użycia, odpowiedzialności, kontrakt i model danych;
+- `docs/architecture.md`: granice, przypadek użycia, odpowiedzialności, specyfikacja interfejsu i model danych;
 - diagram UML oraz model danych w formacie umożliwiającym edycję;
 - `docs/decisions/001-storage.md` lub analogiczny ADR dotyczący istotnej decyzji;
-- Issue z wynikiem przeglądu i zadania implementacyjne z właścicielami;
+- Issue z wynikiem przeglądu i zadania implementacyjne z przypisanymi osobami odpowiedzialnymi;
 - widoczny w historii repozytorium wkład każdej osoby.
 
 Należy uznać projekt techniczny za gotowy do realizacji dopiero wtedy, gdy druga osoba potrafi wskazać wejście, wynik, odpowiedzialny moduł i zachowanie w przypadku błędu.

@@ -87,7 +87,7 @@ W planie należy dopisać wynik, dowód i status każdego wymagania: spełnione,
 |---|---|---|
 | pytest albo odpowiednik technologii projektu | testy logiki i integracji | testy oraz wynik ich uruchomienia |
 | GitHub Actions | automatyczne uruchomienie po zmianie | log zadania przypisany do commita |
-| Bruno / Postman | kontrola kontraktu API | żądanie, asercje, wynik; bez sekretów |
+| Bruno / Postman | kontrola odpowiedzi API | żądanie, asercje, wynik; bez sekretów |
 | DataGrip | kontrole relacji i reguł danych | zapytania kontrolne i liczebności naruszeń |
 | Terminal / profiler IDE | pomiar działania | surowe wyniki powtórzeń i warunki |
 
@@ -148,7 +148,7 @@ Oczekiwany rezultat to `9 passed`. Parametryzacja uruchamia sześć wariantów n
 
 **Ćwiczenie:** należy dopisać test całego polecenia dla historii krótszej od okna: kod wyjścia ma być niezerowy, a plik wyniku nie może powstać. Następnie na lokalnej gałęzi należy zmienić warunek `len(history) < window` na `len(history) <= window`. Test minimalnej historii powinien wykryć błąd. Po przywróceniu prawidłowego warunku wszystkie testy powinny przejść.
 
-Dla własnego projektu należy umieścić testy w `tests/`, zmienić importy i dobrać przypadki do własnego kontraktu. Dla API należy dodatkowo sprawdzić kod odpowiedzi i strukturę danych, a dla bazy — działanie ograniczeń. Nie należy traktować testów demonstracji jako testów własnego systemu.
+Dla własnego projektu należy umieścić testy w `tests/`, zmienić importy i dobrać przypadki do własnej specyfikacji interfejsu. Dla API należy dodatkowo sprawdzić kod odpowiedzi i strukturę danych, a dla bazy — działanie ograniczeń. Nie należy traktować testów demonstracji jako testów własnego systemu.
 
 ### Sprawdzenie wybranego interfejsu (FastAPI / Streamlit — opcjonalnie)
 
@@ -242,9 +242,9 @@ Zero naruszeń nie dowodzi kompletności — pusta baza również zwróci zera. 
 
 **Ćwiczenie:** na kopii bazy należy sprawdzić odrzucenie ujemnej prognozy, duplikatu klucza i odwołania do nieistniejącego uruchomienia. Trzeba włączyć `PRAGMA foreign_keys = ON` w używanym połączeniu SQLite. Po próbie nieudanego zapisu należy potwierdzić, że stan bazy się nie zmienił. Jeśli baza odrzuca błędny rekord, jest to oczekiwany sukces testu ograniczenia, nie awaria testu.
 
-### Sprawdzenie kontraktu odpowiedzi (Postman)
+### Sprawdzenie odpowiedzi API (Postman)
 
-Ścieżka dotyczy zespołów mających API; nie trzeba budować serwera wyłącznie dla tego ćwiczenia. Poniższe żądania odnoszą się do przykładowego kontraktu z Lab 5. Należy najpierw uruchomić własną usługę i ustawić jej lokalny adres jako zmienną `base_url`, np. `http://127.0.0.1:8000`, jeśli używa tego portu.
+Ścieżka dotyczy zespołów mających API; nie trzeba budować serwera wyłącznie dla tego ćwiczenia. Poniższe żądania odnoszą się do przykładowej specyfikacji z Lab 5. Należy najpierw uruchomić własną usługę i ustawić jej lokalny adres jako zmienną `base_url`, np. `http://127.0.0.1:8000`, jeśli używa tego portu.
 
 1. Utworzyć żądanie `POST {{base_url}}/api/forecast`.
 2. W **Body → raw → JSON** wpisać `{"history":[12,14,13,15],"window":3}`.
@@ -253,7 +253,7 @@ Zero naruszeń nie dowodzi kompletności — pusta baza również zwróci zera. 
 
 ```javascript
 pm.test("HTTP 200", () => pm.response.to.have.status(200));
-pm.test("Wynik i jednostka zgodne z kontraktem", () => {
+pm.test("Wynik i jednostka zgodne ze specyfikacją", () => {
     const body = pm.response.json();
     pm.expect(body.forecast).to.be.a("number");
     pm.expect(body.forecast).to.be.closeTo(14.0, 1e-9);
@@ -264,14 +264,14 @@ pm.test("Wynik i jednostka zgodne z kontraktem", () => {
 
 Należy utworzyć osobne żądania dla błędów i nadać im własne asercje:
 
-| Przypadek | Body | Oczekiwanie według kontraktu z Lab 5 |
+| Przypadek | Body | Oczekiwanie według specyfikacji z Lab 5 |
 |---|---|---|
 | Zbyt krótka historia | `{"history":[12,14],"window":3}` | HTTP 422, `error` równe `invalid_history` |
 | Błędny JSON | `{"history":` | HTTP 400, `error` równe `invalid_json` |
 
-Dla drugiego przypadku należy zachować `Content-Type: application/json`, mimo że treść jest niepoprawna. Nie należy zmieniać oczekiwanego kodu tylko dlatego, że serwer zwraca inny — najpierw trzeba rozstrzygnąć niezgodność implementacji z kontraktem.
+Dla drugiego przypadku należy zachować `Content-Type: application/json`, mimo że treść jest niepoprawna. Nie należy zmieniać oczekiwanego kodu tylko dlatego, że serwer zwraca inny — najpierw trzeba rozstrzygnąć niezgodność implementacji z opisem w dokumentacji.
 
-**Ćwiczenie:** należy zapisać trzy żądania wraz z testami w kolekcji, uruchomić ją ponownie i wyeksportować bez sekretów do `api/`. Te same sprawdzenia można wykonać w Bruno według przewodnika w Lab 3. Mechanizm asercji opisano w [dokumentacji Postmana](https://learning.postman.com/docs/tests-and-scripts/write-scripts/test-scripts/). Dla operacji zapisującej dane trzeba również sprawdzić skutki uboczne: brak zapisu po błędzie i zgodność rekordów po sukcesie.
+**Ćwiczenie:** należy zapisać trzy żądania wraz z testami w kolekcji, uruchomić ją ponownie i wyeksportować bez sekretów do `api/`. Te same sprawdzenia można wykonać w Bruno według przewodnika w Lab 3. Mechanizm asercji opisano w [dokumentacji Postmana](https://learning.postman.com/docs/tests-and-scripts/write-scripts/test-scripts/). Dla operacji zapisującej dane trzeba również sprawdzić stan bazy lub plików: brak zapisu po błędzie i zgodność rekordów po sukcesie.
 
 ### Porównanie jakości wyniku po integracji
 

@@ -22,7 +22,7 @@ Po zajęciach repozytorium powinno zawierać:
 | `README.md` | Wymagana instrukcja przygotowania środowiska i uruchomienia przetwarzania |
 | `requirements.txt` | Zależności, gdy używane są dodatkowe pakiety Pythona |
 | `api/` | Opcjonalna kolekcja żądań do API |
-| `data/raw/sample-source.ext` | Surowa próbka wyjściowa; rozszerzenie zgodne z formatem danych |
+| `data/raw/sample-source.ext` | Surowa próbka danych wejściowych; rozszerzenie zgodne z formatem danych |
 | `data/processed/sample-clean.ext` | Wynik przetwarzania |
 | `data/test/` | Opcjonalne kopie do testów |
 | `docs/data.md`, `docs/data-dictionary.md`, `docs/processing.md` | Opis danych, słownik i procedura przetwarzania |
@@ -220,7 +220,7 @@ Przewodnik służy do przygotowania przed zajęciami i jako pomoc podczas pracy.
 | Dane w relacyjnej bazie lub praca w SQL | DataGrip | gdy potrzebne jest przeglądanie tabel, import, zapytania albo eksport | zapisane zapytania i wynik kontroli lub eksportu |
 | Źródło udostępnia API | Postman albo Bruno | gdy trzeba wysłać żądanie i obejrzeć lub sprawdzić odpowiedź | zapisana kolekcja żądań i próbka odpowiedzi |
 | Powtarzalne przetwarzanie danych | Python z pandas albo Jupyter | gdy operacje mają być zapisane jako skrypt lub notebook i uruchamiane ponownie | skrypt lub notebook oraz wynik przetwarzania |
-| Szybkie porównanie rozkładów bez pisania kodu | Orange (opcjonalnie) | gdy wizualny przepływ pomaga obejrzeć dane | przepływ i wykres |
+| Szybkie porównanie rozkładów bez pisania kodu | Orange (opcjonalnie) | gdy schemat analizy z połączonych bloków pomaga obejrzeć dane | schemat analizy i wykres |
 
 Data Wrangler i DataGrip służą do przeglądania i wstępnej analizy danych, ale pracują głównie z różnymi źródłami: pierwszy z plikami tabelarycznymi, drugi z bazami i SQL. Orange jest dodatkowym sposobem wizualnej eksploracji. Klient API pomaga sprawdzić endpoint, ale sama zapisana kolekcja żądań nie zastępuje próbki ani procedury przetwarzania.
 
@@ -770,7 +770,7 @@ W publicznym repozytorium należy zachować kod, dozwoloną próbkę i opis anal
 
 **Kiedy rozważyć:** gdy zespół chce uzyskać pomoc w profilowaniu lub interpretacji danych. Wtyczka i skille są dodatkiem — nie trzeba ich instalować ani używać, aby zrealizować Lab 3. Wyniki agenta należy sprawdzić samodzielnie.
 
-W katalogu wtyczek Codexa należy wyszukać **Data** — tak nazywa się wtyczka dostępna dla użytkownika. Pomaga analizować pytania biznesowe i produktowe, wyjaśniać zmiany wskaźników, definiować KPI, oceniać wiarygodność danych oraz przygotowywać raporty, wykresy, dashboardy i notebooki. Może korzystać z podłączonych baz i narzędzi BI, a także z dokumentów, arkuszy, plików i danych wklejonych do rozmowy. Dostępne źródła zależą od konfiguracji i uprawnień. Wtyczka pozwala również tworzyć wielokrotnego użytku kontekst analityczny na podstawie definicji miar, przykładów dashboardów i raportów, materiałów projektowych oraz preferencji zespołu. Szczegóły: [używanie wtyczki Data w Codexie](https://help.openai.com/en/articles/20001518-using-the-data-plugin-in-chatgpt-work-and-codex).
+W katalogu wtyczek Codexa należy wyszukać **Data** — tak nazywa się wtyczka dostępna dla użytkownika. Pomaga analizować pytania biznesowe i produktowe, wyjaśniać zmiany wskaźników, definiować KPI, oceniać wiarygodność danych oraz przygotowywać raporty, wykresy, dashboardy i notebooki. Może korzystać z podłączonych baz i narzędzi BI, a także z dokumentów, arkuszy, plików i danych wklejonych do rozmowy. Dostępne źródła zależą od konfiguracji i uprawnień. Wtyczka pozwala również zapisywać definicje miar i ustalenia zespołu do wykorzystania w kolejnych analizach, na podstawie przykładów dashboardów i raportów oraz materiałów projektowych. Szczegóły: [używanie wtyczki Data w Codexie](https://help.openai.com/en/articles/20001518-using-the-data-plugin-in-chatgpt-work-and-codex).
 
 W Codexie należy zainstalować **Data** z katalogu wtyczek. Następnie w zadaniu należy otworzyć **Sources → Use plugins** i wybrać zainstalowaną wtyczkę. Przykładowe polecenie: „Sprawdź jakość pliku `data/raw/próbka.csv`: oceń braki, duplikaty, typy i wartości odstające. Nie poprawiaj danych bez uzasadnienia; pokaż, jak zweryfikować wyniki”. Wtyczka może też poprosić o podłączenie źródła danych, jeśli analiza wymaga niedostępnego jeszcze narzędzia.
 

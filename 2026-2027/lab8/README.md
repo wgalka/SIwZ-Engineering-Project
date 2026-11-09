@@ -85,7 +85,7 @@ Przed oznaczeniem wersji należy sprawdzić poniższe elementy i zapisać w `doc
 | Lab 1 — karta | Czy końcowy zakres odpowiada problemowi i czy wyjaśniono zmiany? | karta przekazana prywatnie; bez jej kopii i prywatnego linku w repo |
 | Lab 2–3 — dane | Pochodzenie, prawo użycia, słownik, kontrola jakości i odtworzenie przetwarzania | `docs/data.md`, `docs/processing.md`, dozwolona próbka i skrypt |
 | Lab 4 — metoda | Wariant bazowy, parametry, wspólne warunki oceny i ograniczenia | `docs/experiment.md`, wyniki porównania |
-| Lab 5 — projekt | Zgodność diagramów i kontraktów z implementacją | `docs/architecture.md`, diagramy i ADR |
+| Lab 5 — projekt | Zgodność diagramów i specyfikacji interfejsów z implementacją | `docs/architecture.md`, diagramy i ADR |
 | Lab 6 — realizacja | Działający główny przepływ i zintegrowane zmiany | kod, README, PR i `docs/implementation.md` |
 | Lab 7 — ocena | Wykonane testy, miara całego przepływu, otwarte błędy | `docs/tests.md`, wyniki, CI lub udokumentowane polecenie lokalne |
 | Wydanie | Czy oznaczono dokładnie sprawdzoną wersję? | tag/commit i wynik odtworzenia |

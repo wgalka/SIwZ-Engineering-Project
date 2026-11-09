@@ -9,7 +9,7 @@ permalink: /2026-2027/lab6/
 
 ## Cel zajęć
 
-Na tych zajęciach należy połączyć przygotowane dane, wybraną metodę i interfejs w jeden działający przepływ projektu. Należy wykorzystać kod z Lab 3–4 i projekt techniczny z Lab 5. Rezultatem ma być uruchamialna wersja, a nie wyłącznie tablica zadań ani niezintegrowane fragmenty kodu.
+Na tych zajęciach należy połączyć przygotowane dane, wybraną metodę i interfejs w działające rozwiązanie realizujące jedną operację od danych wejściowych do wyniku. Należy wykorzystać kod z Lab 3–4 i projekt techniczny z Lab 5. Rezultatem ma być uruchamialna wersja, a nie wyłącznie tablica zadań ani niezintegrowane fragmenty kodu.
 
 > 💡 **MVP** oznacza w tym przedmiocie pierwszą minimalną, ale działającą wersję projektu, która realizuje jeden najważniejszy przepływ użytkownika od wejścia do wyniku. Interfejsem może być także polecenie terminala lub notebook, jeżeli odpowiada potrzebom użytkownika.
 
@@ -42,7 +42,7 @@ Minimalny układ `docs/implementation.md`:
 ```markdown
 # Realizacja głównego przepływu (MVP)
 
-## 1. Zakres i powiązane artefakty
+## 1. Zakres i powiązana dokumentacja
 - Przypadek użycia: [link do docs/architecture.md]
 - Dane wejściowe i słownik: [link do docs/data.md oraz docs/data-dictionary.md]
 - Wybrana metoda: [link do docs/experiment.md]
@@ -70,18 +70,18 @@ Minimalny układ `docs/implementation.md`:
 
 ### 1. Zakres i zadania — 0–15 min
 
-Należy wybrać UC-01 lub inny główny przypadek z Lab 5. Trzeba ustalić jeden widoczny wynik oraz podzielić pracę na zadania z właścicielem i kryterium odbioru (ang. *acceptance criterion*), czyli warunkiem uznania zadania za wykonane. Przykład: dla historii `[12, 14, 13, 15]` i okna 3 funkcja zwraca prognozę 14.
+Należy wybrać UC-01 lub inny główny przypadek z Lab 5. Trzeba ustalić jeden widoczny wynik oraz podzielić pracę na zadania z przypisaną osobą odpowiedzialną i kryterium odbioru (ang. *acceptance criterion*), czyli warunkiem uznania zadania za wykonane. Przykład: dla historii `[12, 14, 13, 15]` i okna 3 funkcja zwraca prognozę 14.
 
 | Zadanie | Mierzalny rezultat | Sposób sprawdzenia |
 |---|---|---|
-| Wczytanie i kontrola danych | Funkcja zgodna z ustalonym kontraktem | Poprawna próbka przyjęta, brak kolumny odrzucony |
-| Podłączenie metody | Wynik obliczony z rzeczywistych danych wejściowych | Zgodność z ręcznym wynikiem z Lab 4 |
+| Wczytanie i kontrola danych | Funkcja zgodna z ustalonym formatem wejścia i wyjścia | Poprawna próbka przyjęta, brak kolumny odrzucony |
+| Wykorzystanie wybranej metody w programie | Wynik obliczony z rzeczywistych danych wejściowych | Zgodność z ręcznym wynikiem z Lab 4 |
 | Interfejs i eksport | Jedno polecenie lub działająca operacja w aplikacji | Wynik z jednostką i parametrami zapisany w uzgodnionym miejscu |
 | Integracja i dokumentacja | Instrukcja oraz sprawdzenie pełnego przepływu | Uruchomienie przez osobę inną niż autor integracji |
 
 Role trzeba dostosować do liczebności zespołu. Nie należy tworzyć zadania „robić backend”; trzeba wskazać konkretną funkcję lub zachowanie. Współpraca nad jednym zadaniem jest dopuszczalna, ale każda osoba powinna umieć wskazać własny rezultat.
 
-### 2. Uzgodnienie kontraktów między modułami — 15–25 min
+### 2. Uzgodnienie interfejsów między modułami — 15–25 min
 
 Należy zapisać nazwy funkcji lub endpointów, format wejść i wyjść oraz sposób zgłaszania błędów. Trzeba uzgodnić małą wspólną próbkę i oczekiwany wynik. Przykład: moduł danych zwraca listę dziennych liczebności, analiza przyjmuje listę i okno, a interfejs zapisuje prognozę razem z jednostką.
 
@@ -116,7 +116,7 @@ Po zajęciach należy dokończyć uzgodniony zakres w pracy własnej. Na zajęci
 | Narzędzie | Do czego użyć? | Co sprawdzić? |
 |---|---|---|
 | GitHub Issues i Pull Requests | podział pracy, przegląd i scalanie | kryteria odbioru oraz działanie zmiany |
-| VS Code lub IDE projektu | uruchomienie, debugowanie, odczyt błędu | wartości na granicy modułów |
+| VS Code lub IDE projektu | uruchomienie, debugowanie, odczyt błędu | wartości przekazywane między modułami |
 | Terminal i menedżer zależności | powtarzalne środowisko i polecenia | instalacja zgodna z README |
 | Bruno / Postman, jeśli projekt ma API | kontrola rzeczywistej odpowiedzi | kod odpowiedzi, pola i przypadek błędny |
 
@@ -186,7 +186,7 @@ git fetch origin
 git merge origin/main
 ```
 
-Jeśli repozytorium używa `master`, trzeba zmienić nazwę gałęzi. Przy konflikcie należy ponownie wykonać `git status` i otworzyć wskazany plik w VS Code. Przykładowy konflikt opisu kontraktu może wyglądać tak:
+Jeśli repozytorium używa `master`, trzeba zmienić nazwę gałęzi. Przy konflikcie należy ponownie wykonać `git status` i otworzyć wskazany plik w VS Code. Przykładowy konflikt opisu interfejsu może wyglądać tak:
 
 ```text
     <<<<<<< HEAD
@@ -218,7 +218,7 @@ git merge --continue
 |---|---|
 | Zadanie i zakres | powiązane Issue, wskazane kryteria odbioru |
 | Poprawne i błędne wejście | polecenie/test i oczekiwany wynik |
-| Integracja | zgodność z kontraktem, kontrola głównego przepływu |
+| Integracja | zgodność wejścia i wyjścia między modułami, kontrola głównego przepływu |
 | Brak danych poufnych i zbędnych plików w zmianach | brak kluczy, prywatnych danych, `.venv`, `__pycache__` i przypadkowych plików |
 | Odtwarzalność | aktualne zależności, konfiguracja i README |
 | Przegląd | osoba przeglądająca i opis ograniczeń; przed scaleniem rozwiązane uwagi |
@@ -353,7 +353,7 @@ else:
 
 Należy wykonać `python -m streamlit run examples/lab6/dashboard.py --server.address 127.0.0.1` i otworzyć adres podany w terminalu, zwykle `http://127.0.0.1:8501`. Dla okna 3 oczekiwana wartość to 14,0; po zmianie na 1 — 15,0. Okno 5 powinno wyświetlić komunikat błędu bez prognozy. Oś pozioma przykładowego wykresu to indeks obserwacji, nie data — w projekcie trzeba użyć rzeczywistych dat i oznaczyć jednostki.
 
-Zmiana kontrolki powoduje ponowne wykonanie skryptu. Nie należy umieszczać w takim przepływie bezwarunkowego zapisu do bazy lub wywołania sterującego urządzeniem. Dla operacji z efektem ubocznym trzeba zaprojektować jawne zatwierdzenie i ochronę przed powtórzeniem. **Ćwiczenie:** należy sprawdzić pustą listę i tekst zamiast liczby, a następnie dostosować wejście do danych projektu. Wyniki na ekranie należy porównać z CLI dla tych samych danych i parametrów.
+Zmiana kontrolki powoduje ponowne wykonanie skryptu. Nie należy umieszczać w takim przepływie bezwarunkowego zapisu do bazy lub wywołania sterującego urządzeniem. Dla operacji zapisujących dane lub zmieniających stan trzeba zaprojektować jawne zatwierdzenie i ochronę przed powtórzeniem. **Ćwiczenie:** należy sprawdzić pustą listę i tekst zamiast liczby, a następnie dostosować wejście do danych projektu. Wyniki na ekranie należy porównać z CLI dla tych samych danych i parametrów.
 
 ### Zapisanie tego samego wyniku w bazie (Python / SQLite)
 
@@ -426,11 +426,11 @@ logger.warning("Użyto lokalnej kopii danych; źródło jest niedostępne")
 
 `INFO` opisuje przebieg, `WARNING` sytuację wymagającą uwagi, a `ERROR` nieudaną operację. Ostrzeżenie należy emitować tylko wtedy, gdy opisana sytuacja rzeczywiście wystąpiła. Nie należy logować tokenów, pełnych żądań z danymi osobowymi ani zawartości prywatnych plików. Log błędu nie zastępuje niezerowego kodu wyjścia programu lub właściwej odpowiedzi HTTP.
 
-### Znalezienie błędu na granicy modułów (IDE)
+### Znalezienie błędu przy przekazywaniu danych między modułami (IDE)
 
 Należy ustawić punkt przerwania przed wywołaniem funkcji obliczeniowej i uruchomić program w debuggerze z tymi samymi argumentami co w terminalu. Trzeba odczytać typ danych, liczbę obserwacji i parametr metody, a następnie przejść do funkcji. Dla powyższej próbki lista ma 4 elementy, a okno wynosi 3.
 
-**Ćwiczenie:** na kopii wejścia należy zmienić jedną liczbę na tekst `"brak"`. Trzeba odszukać walidację odrzucającą rekord, zamiast usuwać ją w celu „uruchomienia” programu. Jeżeli aplikacja korzysta z API, analogicznie należy sprawdzić ciało odpowiedzi w Bruno/Postmanie przed przekazaniem go do obliczeń.
+**Ćwiczenie:** na kopii pliku wejściowego należy zmienić jedną liczbę na tekst `"brak"`. Trzeba odszukać walidację odrzucającą rekord, zamiast usuwać ją w celu „uruchomienia” programu. Jeżeli aplikacja korzysta z API, analogicznie należy sprawdzić treść odpowiedzi HTTP (ang. *response body*) w Bruno/Postmanie przed przekazaniem jej do obliczeń.
 
 ### Oddzielenie konfiguracji od kodu
 
@@ -442,9 +442,9 @@ Administrator repozytorium powinien sprawdzić w **Settings → Code security** 
 
 ### Kontrolowane wykorzystanie agenta AI
 
-Można zlecić agentowi małą zmianę z konkretnym kontraktem, np.:
+Można zlecić agentowi małą zmianę o ściśle określonym wejściu i wyjściu, np.:
 
-> Dostosuj funkcję do kontraktu z docs/architecture.md. Zachowaj metodę z docs/experiment.md. Obsłuż pustą i zbyt krótką historię, bez zwracania fikcyjnego zera. Nie dodawaj nowych usług ani zależności bez uzasadnienia. Wskaż sposób sprawdzenia zmiany.
+> Dostosuj funkcję do specyfikacji interfejsu z docs/architecture.md. Zachowaj metodę z docs/experiment.md. Obsłuż pustą i zbyt krótką historię, bez zwracania fikcyjnego zera. Nie dodawaj nowych usług ani zależności bez uzasadnienia. Wskaż sposób sprawdzenia zmiany.
 
 Należy obejrzeć diff, wykonać poprawny i błędny przypadek oraz opisać wynik przeglądu. Odpowiedzialność za zachowanie programu pozostaje po stronie zespołu.
 
@@ -468,8 +468,8 @@ Jeżeli sprawdzony fragment już spełnia wymagania, należy zapisać wynik kont
 
 ## Zadania samodzielne
 
-1. Wybrać jeden główny przepływ i utworzyć zadania z kryteriami odbioru oraz właścicielami.
-2. Połączyć wejście, obliczenie i wynik zgodnie z kontraktami z Lab 5.
+1. Wybrać jeden główny przepływ i utworzyć zadania z kryteriami odbioru oraz przypisanymi osobami odpowiedzialnymi.
+2. Połączyć wejście, obliczenie i wynik zgodnie ze specyfikacją z Lab 5.
 3. Obsłużyć brak wejścia i niepoprawne dane, a w projektach zapisujących wynik — również błąd zapisu (dla API bez zapisu lub widoku Streamlit wystarczy sprawdzić komunikat błędu oraz to, że interfejs nie pokazuje poprzedniego wyniku jako nowego); na Lab 6 wystarcza sprawdzenie ręczne.
 4. Przeprowadzić zmiany przez gałęzie i Pull Requesty z przeglądem innej osoby.
 5. Uruchomić całość po scaleniu, nie tylko poszczególne moduły.

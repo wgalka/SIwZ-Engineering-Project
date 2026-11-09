@@ -14,7 +14,7 @@ W projekcie należy używać narzędzi, które ułatwiają planowanie pracy, zap
 | Narzędzie | Do czego służy | Dowód zapisany w repozytorium lub GitHubie |
 |---|---|---|
 | GitHub Repository | przechowywanie kodu, dokumentacji i historii zmian | pliki, commity, branche |
-| GitHub Issues | opisywanie wymagań, zadań i błędów | Issue z opisem, właścicielem i kryteriami odbioru |
+| GitHub Issues | opisywanie wymagań, zadań i błędów | Issue z opisem, przypisaną osobą odpowiedzialną i kryteriami odbioru |
 | GitHub Projects | planowanie pracy zespołu | tablica, statusy, przypisane zadania i milestone |
 | Branch i Pull Request | praca nad zmianą oraz jej przegląd | branch, PR, review i merge |
 | GitHub Actions | automatyczne sprawdzanie projektu | workflow zakończony statusem `success` |
