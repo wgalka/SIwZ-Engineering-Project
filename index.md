@@ -16,6 +16,8 @@ Materiały do przedmiotu **Projekt informatyczny** dla kierunku Informatyka i ek
 | [Lab 4]({{ '/2026-2027/lab4/' | relative_url }}) | Metody analityczne, symulacyjne i eksperymentalne |
 | [Lab 5]({{ '/2026-2027/lab5/' | relative_url }}) | Projektowanie obiektów informatycznych |
 | [Lab 6]({{ '/2026-2027/lab6/' | relative_url }}) | Realizacja projektu |
+| [Lab 7]({{ '/2026-2027/lab7/' | relative_url }}) | Testowanie i ocena rezultatów |
+| [Lab 8]({{ '/2026-2027/lab8/' | relative_url }}) | Prezentacja rezultatów projektu |
 
 ## Informacje o przedmiocie
 
@@ -26,8 +28,6 @@ Materiały do przedmiotu **Projekt informatyczny** dla kierunku Informatyka i ek
 | Zajęcia | 20 godzin projektowych |
 | Punkty ECTS | 4 |
 | Forma zaliczenia | Zaliczenie z oceną |
-
-Kolejne laboratoria zostaną udostępnione po ich przygotowaniu.
 
 ## Przydatne narzędzia
 

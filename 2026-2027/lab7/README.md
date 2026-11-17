@@ -13,11 +13,13 @@ Na tych zajęciach należy sprawdzić, czy zintegrowane rozwiązanie spełnia wy
 
 **Test funkcjonalny** sprawdza zachowanie, np. odrzucenie niepoprawnego pliku. **Test niefunkcjonalny** sprawdza właściwość działania, np. czas przetwarzania ustalonej liczby rekordów. **Test regresyjny** chroni przed ponownym wystąpieniem wcześniej naprawionego błędu; nie oznacza testowania modelu regresji statystycznej.
 
-Nie należy od nowa wykonywać całego doboru metod z Lab 4. Trzeba wykorzystać zapisane tam miary i ograniczenia oraz sprawdzić je na aktualnej implementacji.
+Należy wykorzystać miary i ograniczenia zapisane w `docs/experiment.md` z Lab 4 oraz sprawdzić je na aktualnej implementacji. Poprawne wykonanie obliczeń i przydatność wyniku dla użytkownika wymagają osobnej oceny: program może bezbłędnie obliczać prognozę, która jest zbyt niedokładna do planowania obsady.
 
 ## Przygotowanie przed zajęciami
 
 Należy przygotować działającą wersję z Lab 6, instrukcję uruchomienia i dozwolone dane testowe. Trzeba wybrać wymaganie oraz wcześniej ustalone kryterium jakości lub czasu. Jeśli kryterium nie jest jeszcze określone, należy ustalić je przed pomiarem i uzasadnić potrzebą użytkownika.
+
+Przed zajęciami należy przejrzeć przewodnik poniżej i sprawdzić uruchomienie wybranego narzędzia testowego. Dodatkowe pakiety trzeba instalować w środowisku wirtualnym projektu. Wymagania, kryteria i oczekiwane wyniki należy odczytać z `docs/problem.md`, `docs/architecture.md`, `docs/experiment.md` oraz `docs/implementation.md`. Podczas 90 minut należy pracować nad własnym projektem; przykłady służą przygotowaniu i rozwiązaniu konkretnych trudności.
 
 Testy należy wykonywać na kopiach danych lub w katalogach tymczasowych, nie na `data/raw/` ani na bazie produkcyjnej. Nie należy wykonywać testów obciążeniowych (ang. *load tests*) cudzych API; do tego służy lokalna aplikacja lub usługa, do której testowania zespół ma uprawnienia.
 
@@ -33,14 +35,51 @@ Testy należy wykonywać na kopiach danych lub w katalogach tymczasowych, nie na
 | `docs/user-guide.md` | instrukcja użycia głównego przepływu, interpretacja wyniku i opis komunikatów błędów |
 | `results/lab7/` | dozwolone wyniki pomiarów niefunkcjonalnych i raporty testów |
 | `.github/workflows/check.yml` | konfiguracja automatycznego sprawdzenia (jeśli w projekcie używany jest GitHub Actions) |
+| `examples/lab6/` lub `examples/lab7/` | pliki z opcjonalnych ćwiczeń z instrukcji, oddzielone od testów i wyników własnego projektu |
+
+Należy także zaktualizować plik zależności, jeśli dodano narzędzia testowe. W Pythonie można zapisać je w osobnym `requirements-dev.txt` i podać w README polecenia instalacji zależności aplikacji oraz testów. Należy zachować rozwiązanie przyjęte już w projekcie.
 
 Nie należy publikować logów z kluczami, danymi osobowymi ani prywatnymi ścieżkami. W raporcie trzeba wskazać commit sprawdzanej implementacji i wersję próbki.
+
+Minimalny układ `docs/tests.md`:
+
+```markdown
+# Plan i wyniki testów
+
+## 1. Zakres oraz wersja kodu i danych
+- Sprawdzany commit i gałąź:
+- Próbka testowa i jej wersja:
+- Środowisko uruchomieniowe (system, wersja języka i zależności):
+
+## 2. Plan przypadków testowych i dziennik uruchomień
+- Tabela przypadków testowych (ID, wymaganie, wejście, oczekiwany wynik, sposób wyznaczenia oczekiwania):
+- Tabela wyników wykonania (data, commit, środowisko, ID testu, wynik PASS/FAIL/NOT RUN, czas, dowód):
+
+## 3. Pomiar niefunkcjonalny
+- Mierzona właściwość, ustalone kryterium i warunki pomiaru:
+- Wyniki powtórzeń, podsumowanie i ocena kryterium:
+
+## 4. Ocena danych, wyników i kodu
+- Wynik kontroli jakości danych i ograniczenia próbki:
+- Miara z Lab 4, wynik obecnej wersji, warunki porównania i wyjaśnienie różnic:
+- Sprawdzony fragment kodu, wynik przeglądu i poprawki:
+
+## 5. Statusy wymagań
+- Wymaganie z Lab 2 — status (spełnione / niespełnione / niesprawdzone) — dowód (test / pomiar):
+
+## 6. Sprawdzenie dokumentacji
+- Osoba sprawdzająca, wersja projektu, wykonane kroki i uzyskany wynik:
+- Brakujące instrukcje oraz wprowadzone poprawki:
+
+## 7. Znane błędy i ograniczenia
+- Otwarte problemy (linki do Issues), ich wpływ na wynik i ewentualny sposób obejścia:
+```
 
 ## Przebieg zajęć — 90 minut
 
 ### 1. Plan i kryteria — 0–15 min
 
-Należy przygotować w `docs/tests.md` co najmniej pięć przypadków własnego projektu, obejmujących poprawne, błędne, puste i graniczne wejście. Przed wykonaniem trzeba zapisać oczekiwany wynik; rzeczywistego wyniku nie wolno dopasowywać do oczekiwania po fakcie.
+Należy przygotować w `docs/tests.md` co najmniej pięć przypadków własnego projektu, obejmujących poprawne, błędne, puste i graniczne wejście. Przed wykonaniem trzeba zapisać oczekiwany wynik i jego podstawę: wymaganie, ręczny rachunek albo niezależny wynik referencyjny. Nie należy zmieniać oczekiwania tylko po to, aby test zaakceptował zachowanie programu. Błąd w oczekiwaniu należy uzasadnić i poprawić na podstawie specyfikacji.
 
 | ID | Wymaganie / przypadek | Wejście | Oczekiwany wynik |
 |---|---|---|---|
@@ -51,35 +90,47 @@ Należy przygotować w `docs/tests.md` co najmniej pięć przypadków własnego 
 | T-05 | Niepoprawna wartość | Liczba ujemna lub tekst | Odrzucenie wejścia, nie wynik 0 |
 | T-06 | Ochrona wyniku | Istniejący plik wyjściowy | Odmowa nadpisania, stara zawartość bez zmian |
 
-Trzeba podzielić odpowiedzialność za testy logiki, test całego przepływu, pomiar i sprawdzenie dokumentacji. Każda osoba powinna dostarczyć wynik możliwy do odtworzenia.
+Przykłady należy zastąpić przypadkami własnego projektu i przypisać im identyfikatory wymagań z Lab 2. T-06 dotyczy zapisu pliku; dla API bez zapisu należy sprawdzić kod i treść odpowiedzi, a dla widoku — komunikat oraz brak poprzedniego wyniku wyświetlanego jako nowy. **Przypadek graniczny** sprawdza wartość na granicy dopuszczalnego zakresu, np. dokładnie trzy obserwacje dla okna 3; sama pusta lista nie zastępuje takiej kontroli.
+
+Trzeba podzielić odpowiedzialność za testy logiki, test całej operacji, pomiar i sprawdzenie dokumentacji. Testy można przygotowywać w osobnych plikach, np. `tests/test_calculation.py` i `tests/test_import.py`; edycję wspólnego `docs/tests.md` należy uzgodnić. Każda osoba powinna dostarczyć wynik możliwy do odtworzenia.
 
 W tym samym pliku należy zapisywać wyniki wykonania, osobno od planu. Poniższy wiersz jest szablonem do uzupełnienia, a nie wynikiem przeprowadzonego testu:
 
-| Data i czas uruchomienia | Wersja (commit) | Środowisko / OS | ID testu | Wynik | Czas [s] | Uwagi / dowód |
+| Data i czas uruchomienia | Wersja (commit) | Środowisko / system | ID testu | Wynik | Czas [s] | Uwagi / dowód |
 |---|---|---|---|---|---:|---|
 | do uzupełnienia | identyfikator | system, runtime i zależności | T-01 | NOT RUN | — | polecenie i ścieżka do raportu |
 
-Po wykonaniu należy wpisać `PASS` albo `FAIL`, zmierzony czas i dowód. Dla niewykonanej kontroli trzeba zachować `NOT RUN` i podać powód. Należy zaznaczyć, czy czas obejmuje pojedynczy przypadek, czy cały zestaw; nie wpisywać czasu całego zestawu jako czasu każdego testu. Po poprawce kodu należy dodać nowy wynik z nowym commitem zamiast usuwać poprzedni nieudany test.
+Po wykonaniu należy wpisać `PASS` (wynik zgodny z oczekiwaniem) albo `FAIL` (niezgodność), czas, jeśli był mierzony, i dowód. Dla niewykonanej kontroli trzeba zachować `NOT RUN` i podać powód. Należy zaznaczyć, czy czas obejmuje pojedynczy przypadek, czy cały zestaw; nie wpisywać czasu całego zestawu jako czasu każdego testu. Po poprawce kodu należy dodać nowy wynik z nowym commitem zamiast usuwać poprzedni nieudany test.
 
 ### 2. Automatyczne sprawdzenia — 15–40 min
 
 Należy dodać co najmniej trzy testy automatyczne własnej logiki, w tym poprawny wynik i błąd, oraz jeden test integracyjny głównego przepływu. **Test integracyjny** sprawdza połączone elementy, np. odczyt pliku, analizę i zapis wyniku.
 
-Testów nie należy ograniczać do sprawdzenia, czy plik istnieje. Trzeba kontrolować także zawartość, jednostki, liczbę przypadków lub oczekiwany komunikat. Należy zachować istniejące kontrole jakości danych z Lab 3.
+Testów nie należy ograniczać do sprawdzenia, czy plik istnieje. Trzeba kontrolować także zawartość, jednostki, liczbę przypadków lub oczekiwany komunikat. Należy uruchomić istniejące kontrole jakości danych z Lab 3 na próbce użytej do oceny. Testy automatyczne mogą realizować przypadki z planu — nie trzeba tworzyć drugiej, niezależnej listy.
 
 ### 3. Wykrycie problemu i pomiar — 40–65 min
 
 Należy uruchomić testy i opisać znaleziony problem w Issue: wejście, kroki odtworzenia, oczekiwanie i rzeczywisty wynik. Po poprawce trzeba ponowić testy. Jeśli nie wykryto błędu, nie należy go wymyślać; można na lokalnej gałęzi celowo zmienić warunek brzegowy i sprawdzić, czy test to wykryje, a następnie cofnąć tylko własną zmianę.
 
-Trzeba przeprowadzić jeden pomiar niefunkcjonalny: np. czas pełnej analizy dla określonej liczby rekordów, zużycie pamięci albo odtworzenie instalacji w nowym środowisku. Warunki, powtórzenia i kryterium należy zapisać razem z wynikiem.
+Trzeba przeprowadzić jeden pomiar niefunkcjonalny według procedury poniżej, np. czas pełnej analizy dla określonej liczby rekordów. Równolegle inna osoba powinna porównać wynik aktualnej aplikacji z miarą z Lab 4. Warunki, kryterium, wyniki i ograniczenia należy zapisać w `docs/tests.md`.
 
 ### 4. Automatyzacja i przegląd dokumentacji — 65–80 min
 
 Należy uruchomić te same testy w automatycznej kontroli repozytorium lub przygotować jedno udokumentowane polecenie lokalne, jeśli automatyzacja jest niedostępna. Osoba niebędąca autorem głównego modułu powinna sprawdzić instalację, uruchomienie i opis błędu w instrukcji użytkowej.
 
+Trzeba również przejrzeć jeden zmieniany fragment kodu: sprawdzić podział funkcji, nazwy, obsługę wyjątków oraz zgodność implementacji z opisaną metodą. Wynik przeglądu należy zapisać w Pull Requeście i podać jego link w `docs/tests.md`.
+
 ### 5. Ocena wymagań — 80–90 min
 
-W planie należy dopisać wynik, dowód i status każdego wymagania: spełnione, niespełnione albo niesprawdzone. Trzeba wskazać otwarte błędy, ich wpływ i sposób obejścia, jeżeli istnieje. Nie należy utożsamiać wszystkich zielonych testów z potwierdzeniem pełnej użyteczności systemu.
+W `docs/tests.md` należy dopisać wynik, dowód i status każdego wymagania: spełnione, niespełnione albo niesprawdzone. Trzeba wskazać otwarte błędy, ich wpływ i sposób obejścia, jeżeli istnieje. Przejście wszystkich testów automatycznych nie oznacza jeszcze pełnej użyteczności systemu w warunkach rzeczywistych.
+
+| Wymaganie | Kryterium | Test lub pomiar | Status i zakres oceny |
+|---|---|---|---|
+| R1 — poprawna prognoza | Zgodność z ręcznym rachunkiem | T-01, T-02 i raport uruchomienia | Spełnione dla sprawdzonej wersji i przypadków |
+| R2 — czas raportu | Poniżej ustalonego limitu | Pomiar na wskazanej próbce i sprzęcie | Spełnione albo niespełnione na podstawie pomiaru |
+| R3 — skuteczność w organizacji | Ustalona jakość na rzeczywistych danych | Brak reprezentatywnej próbki | Niesprawdzone; dane syntetyczne nie wystarczają |
+
+Tabela jest wzorem interpretacji, nie wynikiem testów zespołu. Status „niesprawdzone” oznacza brak dowodu, a „niespełnione” — uzyskaną niezgodność. Wymagania nie należy usuwać dlatego, że test nie przeszedł.
 
 ## Przydatne narzędzia
 
@@ -91,7 +142,17 @@ W planie należy dopisać wynik, dowód i status każdego wymagania: spełnione,
 | DataGrip | kontrole relacji i reguł danych | zapytania kontrolne i liczebności naruszeń |
 | Terminal / profiler IDE | pomiar działania | surowe wyniki powtórzeń i warunki |
 
-Należy wybrać narzędzia pasujące do projektu, nie wykonywać wszystkich demonstracji.
+Należy wybrać narzędzia pasujące do projektu. Poniższe przykłady można wykonać osobno i dostosować do własnych danych oraz sposobu uruchamiania.
+
+| Rozwiązanie projektu | Co objąć testem integracyjnym? |
+|---|---|
+| Skrypt lub notebook | Odczyt dozwolonej próbki, wykonanie obliczeń od początku i kontrolę zapisanego wyniku; notebook w nowej sesji |
+| API | Żądanie, walidację, obliczenie i odpowiedź; gdy występuje zapis — także jego wynik |
+| Baza danych | Import lub zapis przez kod projektu, reguły danych i odczyt; wycofanie nieudanej operacji |
+| Dashboard | Zmianę parametrów, wynik obliczeń i komunikat błędu; czytelność widoku dodatkowo ręcznie |
+| Symulacja | Utworzenie scenariusza, wykonanie modelu i raport; dla losowania ustalone ziarna i uzasadnioną tolerancję |
+
+Można użyć narzędzia właściwego dla technologii zespołu. Sprawdzenie musi automatycznie porównywać wynik z oczekiwaniem i sygnalizować niepowodzenie. W teście obliczeń należy korzystać ze stałej próbki; aktualizowane zewnętrzne API można sprawdzać osobno, aby zmiana danych dostawcy nie udawała błędu algorytmu.
 
 ### Testowanie funkcji prognozującej i interfejsu wiersza poleceń (pytest)
 
@@ -127,13 +188,13 @@ def test_command_and_overwrite(tmp_path):
     source.write_text("[12, 14, 13, 15]", encoding="utf-8")
     script = Path(__file__).with_name("forecast.py")
     command = [sys.executable, str(script), str(source), str(target), "--window", "3"]
-    first = subprocess.run(command, capture_output=True)
+    first = subprocess.run(command, capture_output=True, timeout=30)
     assert first.returncode == 0, first.stderr
     result = json.loads(target.read_text(encoding="utf-8"))
     assert result["forecast"] == pytest.approx(14.0)
     assert result["unit"] == "zgloszenia/dzien"
     saved = target.read_bytes()
-    second = subprocess.run(command, capture_output=True)
+    second = subprocess.run(command, capture_output=True, timeout=30)
     assert second.returncode != 0
     assert target.read_bytes() == saved
 ```
@@ -146,6 +207,14 @@ python -m pytest examples/lab6/test_forecast.py -q
 
 Oczekiwany rezultat to `9 passed`. Parametryzacja uruchamia sześć wariantów niepoprawnego wejścia. `tmp_path` dostarcza osobny katalog testowy, a `pytest.approx` pozwala porównywać liczby zmiennoprzecinkowe z tolerancją. Zasady uruchamiania opisano w [dokumentacji pytest](https://docs.pytest.org/en/stable/getting-started.html).
 
+Aby odczytać niepowodzenie, należy uruchomić testy z `-v` i znaleźć nazwę testu, linię asercji oraz wartości oczekiwaną i otrzymaną. Dla tego przykładu raport można zachować poleceniem:
+
+```powershell
+python -m pytest examples/lab6/test_forecast.py -v --junitxml=examples/lab7/results/pytest-01.xml
+```
+
+**JUnit XML** jest formatem raportu testów, obsługiwanym także przez pytest. Dla projektu należy użyć `python -m pytest tests -v --junitxml=results/lab7/pytest-01.xml`; przy kolejnym sprawdzeniu trzeba wybrać nową nazwę i wskazać raport w `docs/tests.md`. Wiersze `SKIPPED` oznaczają pominięte testy, a komunikat `no tests ran` — brak wykonanych testów. Żaden z nich nie potwierdza spełnienia wymagania. Opis raportu znajduje się w [dokumentacji wyjścia pytest](https://docs.pytest.org/en/stable/how-to/output.html#creating-junitxml-format-files).
+
 **Ćwiczenie:** należy dopisać test całego polecenia dla historii krótszej od okna: kod wyjścia ma być niezerowy, a plik wyniku nie może powstać. Następnie na lokalnej gałęzi należy zmienić warunek `len(history) < window` na `len(history) <= window`. Test minimalnej historii powinien wykryć błąd. Po przywróceniu prawidłowego warunku wszystkie testy powinny przejść.
 
 Dla własnego projektu należy umieścić testy w `tests/`, zmienić importy i dobrać przypadki do własnej specyfikacji interfejsu. Dla API należy dodatkowo sprawdzić kod odpowiedzi i strukturę danych, a dla bazy — działanie ograniczeń. Nie należy traktować testów demonstracji jako testów własnego systemu.
@@ -154,7 +223,7 @@ Dla własnego projektu należy umieścić testy w `tests/`, zmienić importy i d
 
 Należy wykonać tylko wariant interfejsu wybrany w Lab 6. Przykłady zakładają uruchamianie z katalogu głównego repozytorium. Nie trzeba uruchamiać serwera ani przeglądarki, aby wykonać poniższe testy.
 
-**FastAPI:** w środowisku z `fastapi` i `pytest` należy zainstalować `httpx`, a kod zapisać jako `examples/lab6/test_api.py`:
+**FastAPI:** w środowisku z `fastapi` i `pytest` należy zainstalować `httpx` poleceniem `python -m pip install httpx`, a kod zapisać jako `examples/lab6/test_api.py`:
 
 ```python
 import pytest
@@ -218,9 +287,9 @@ python -m ruff check examples/lab6
 
 W projekcie trzeba zastąpić ścieżki własnym pakietem i testami. **Pokrycie kodu testami** (ang. *code coverage*) wskazuje wykonane przez testy linie i gałęzie programu. W kolumnie brakujących fragmentów należy wybrać jeden ważny, niepokryty przypadek i dopisać test sprawdzający jego zachowanie. Kod uruchamiany w osobnym procesie wymaga dodatkowej konfiguracji pomiaru; samo wykonanie testu CLI nie oznacza, że jego wnętrze uwzględniono w tym raporcie. Opcje raportowania opisuje [dokumentacja pytest-cov](https://pytest-cov.readthedocs.io/en/latest/reporting.html).
 
-Ruff wykonuje analizę statyczną (ang. *static analysis*), czyli sprawdza kod bez uruchamiania badanego programu. Wykrywa m.in. nieużywane importy, niezdefiniowane nazwy i problemy składniowe. Należy przeczytać wskazaną regułę i poprawić przyczynę; nie wyłączać kontroli tylko dla uzyskania zielonego wyniku. Na początek trzeba używać `check` bez automatycznego `--fix` i przejrzeć każdą zmianę. Zakres reguł opisuje [samouczek Ruff](https://docs.astral.sh/ruff/tutorial/).
+Ruff wykonuje analizę statyczną (ang. *static analysis*), czyli sprawdza kod bez uruchamiania badanego programu. Wykrywa m.in. nieużywane importy, niezdefiniowane nazwy i problemy składniowe. Należy przeczytać wskazaną regułę i poprawić przyczynę; nie wyłączać kontroli tylko po to, aby ukryć ostrzeżenia. Na początek trzeba używać `check` bez automatycznego `--fix` i przejrzeć każdą zmianę. Zakres reguł opisuje [samouczek Ruff](https://docs.astral.sh/ruff/tutorial/).
 
-Wysokie pokrycie i brak uwag lintera nie dowodzą poprawności biznesowej ani skuteczności modelu. Nie trzeba dążyć do arbitralnego 100% kosztem sensownych asercji. Po lokalnym sprawdzeniu można dodać te polecenia do istniejącego workflow wraz z instalacją potrzebnych pakietów.
+Wysokie pokrycie i brak uwag narzędzia analizy statycznej nie dowodzą poprawności biznesowej ani skuteczności modelu. Nie trzeba dążyć do arbitralnego 100% kosztem sensownych asercji. Po lokalnym sprawdzeniu można dodać te polecenia do konfiguracji GitHub Actions wraz z instalacją potrzebnych pakietów.
 
 ### Sprawdzenie reguł danych (SQL / DataGrip)
 
@@ -238,9 +307,53 @@ SELECT 'invalid_window', COUNT(*)
 FROM run WHERE window IS NULL OR window <= 0;
 ```
 
-Zero naruszeń nie dowodzi kompletności — pusta baza również zwróci zera. Należy dodatkowo sprawdzić oczekiwaną liczbę wyników dla wybranego `run_id` oraz obecność wymaganych dat. W demonstracji każde zapisane uruchomienie powinno mieć jedną prognozę. Samo wykonanie `SELECT` nie spowoduje niepowodzenia CI: skrypt automatyczny musi odczytać wynik i zakończyć się błędem, gdy `violations > 0` lub liczebność jest niezgodna z oczekiwaniem.
+Zero naruszeń nie dowodzi kompletności — pusta baza również zwróci zera. Należy dodatkowo sprawdzić oczekiwaną liczbę wyników dla wybranego `run_id` oraz obecność wymaganych dat. W demonstracji każde zapisane uruchomienie powinno mieć jedną prognozę. Samo wykonanie zapytania `SELECT` nie zatrzyma automatycznego sprawdzenia w GitHub Actions: skrypt testowy musi odczytać wynik i zakończyć się błędem, gdy `violations > 0` lub liczebność jest niezgodna z oczekiwaniem.
 
 **Ćwiczenie:** na kopii bazy należy sprawdzić odrzucenie ujemnej prognozy, duplikatu klucza i odwołania do nieistniejącego uruchomienia. Trzeba włączyć `PRAGMA foreign_keys = ON` w używanym połączeniu SQLite. Po próbie nieudanego zapisu należy potwierdzić, że stan bazy się nie zmienił. Jeśli baza odrzuca błędny rekord, jest to oczekiwany sukces testu ograniczenia, nie awaria testu.
+
+#### Automatyczne sprawdzenie zapisu i wycofania transakcji (pytest / SQLite)
+
+Jeżeli wykorzystywany jest przykład `save_forecast.py` z Lab 6, należy przygotować również `examples/lab5/schema.sql` z Lab 5. Poniższy kod trzeba zapisać jako `examples/lab6/test_storage.py`. Każdy test tworzy własną bazę tymczasową, więc nie wymaga uruchomienia DataGrip.
+
+```python
+from contextlib import closing
+from pathlib import Path
+import sqlite3
+import pytest
+from examples.lab6.save_forecast import save_forecast
+
+@pytest.fixture
+def database(tmp_path):
+    path = tmp_path / "forecast.db"
+    schema = Path(__file__).resolve().parents[1] / "lab5" / "schema.sql"
+    with closing(sqlite3.connect(path)) as db:
+        db.executescript(schema.read_text(encoding="utf-8"))
+    return path
+
+def test_saved_result(database):
+    run_id = save_forecast(database, [12, 14, 13, 15], 3,
+                           "2026-10-10", "test-v1")
+    with closing(sqlite3.connect(database)) as db:
+        row = db.execute(
+            "SELECT target_date, value FROM forecast WHERE run_id = ?",
+            (run_id,),
+        ).fetchone()
+    assert row == ("2026-10-10", 14.0)
+
+def test_rollback_when_second_write_fails(database):
+    with closing(sqlite3.connect(database)) as db:
+        before = db.execute("SELECT COUNT(*) FROM run").fetchone()[0]
+        db.execute("""CREATE TRIGGER fail_forecast BEFORE INSERT ON forecast
+                      BEGIN SELECT RAISE(ABORT, 'test failure'); END""")
+        db.commit()
+    with pytest.raises(sqlite3.IntegrityError, match="test failure"):
+        save_forecast(database, [12, 14, 13, 15], 3, "2026-10-10", "test-v1")
+    with closing(sqlite3.connect(database)) as db:
+        after = db.execute("SELECT COUNT(*) FROM run").fetchone()[0]
+    assert after == before
+```
+
+Polecenie `python -m pytest examples/lab6/test_storage.py -q` powinno zwrócić `2 passed`. Wyzwalacz SQL (ang. *trigger*) celowo odrzuca drugi zapis, aby sprawdzić, czy pierwszy zostaje wycofany. Jest tworzony wyłącznie w bazie testowej. Własny test należy dostosować do rzeczywistej operacji zapisu i jej oczekiwanych zmian. Samo odrzucenie błędnego wejścia przed zapisem nie sprawdza wycofania rozpoczętej transakcji.
 
 ### Sprawdzenie odpowiedzi API (Postman)
 
@@ -264,14 +377,14 @@ pm.test("Wynik i jednostka zgodne ze specyfikacją", () => {
 
 Należy utworzyć osobne żądania dla błędów i nadać im własne asercje:
 
-| Przypadek | Body | Oczekiwanie według specyfikacji z Lab 5 |
+| Przypadek | Treść żądania (Body) | Oczekiwana odpowiedź według specyfikacji z Lab 5 |
 |---|---|---|
 | Zbyt krótka historia | `{"history":[12,14],"window":3}` | HTTP 422, `error` równe `invalid_history` |
 | Błędny JSON | `{"history":` | HTTP 400, `error` równe `invalid_json` |
 
 Dla drugiego przypadku należy zachować `Content-Type: application/json`, mimo że treść jest niepoprawna. Nie należy zmieniać oczekiwanego kodu tylko dlatego, że serwer zwraca inny — najpierw trzeba rozstrzygnąć niezgodność implementacji z opisem w dokumentacji.
 
-**Ćwiczenie:** należy zapisać trzy żądania wraz z testami w kolekcji, uruchomić ją ponownie i wyeksportować bez sekretów do `api/`. Te same sprawdzenia można wykonać w Bruno według przewodnika w Lab 3. Mechanizm asercji opisano w [dokumentacji Postmana](https://learning.postman.com/docs/tests-and-scripts/write-scripts/test-scripts/). Dla operacji zapisującej dane trzeba również sprawdzić stan bazy lub plików: brak zapisu po błędzie i zgodność rekordów po sukcesie.
+**Ćwiczenie:** należy zapisać trzy żądania wraz z testami w kolekcji, uruchomić ją ponownie i wyeksportować bez sekretów do `examples/lab7/api/`. Kolekcję dostosowaną do własnego projektu należy umieścić w `api/`. Te same sprawdzenia można wykonać w Bruno według [przewodnika w Lab 3](../lab3/#4-pobieranie-i-testowanie-danych-przez-api-postman--bruno). Mechanizm asercji opisano w [dokumentacji Postmana](https://learning.postman.com/docs/tests-and-scripts/write-scripts/test-scripts/). Dla operacji zapisującej dane trzeba również sprawdzić stan bazy lub plików: brak zapisu po błędzie i zgodność rekordów po sukcesie.
 
 ### Porównanie jakości wyniku po integracji
 
@@ -284,11 +397,26 @@ Należy sprawdzić nie tylko funkcję analityczną, lecz wynik uzyskany przez rz
 
 Dla demonstracji z Lab 4 trzeba ocenić dni 9–12 października, każdorazowo podając wyłącznie dostępną historię. Przy oknie 3 oczekiwane MAE wynosi 1,0 zgłoszenia, a dla ostatniej znanej wartości 1,5. Różnica ponad uzgodnioną tolerancję, np. `1e-9` dla tej demonstracji, wymaga sprawdzenia filtrów, jednostek, zaokrągleń i parametrów. Nie należy zastępować tego sprawdzenia pojedynczą prognozą 14,0 z Lab 6.
 
+**Ćwiczenie na CLI z Lab 6:** należy wykorzystać `popyt.csv` z Lab 4 i przygotować cztery pliki JSON w `examples/lab7/data/`. Każdy ma zawierać listę wszystkich obserwacji wcześniejszych niż oceniany dzień. Dla 9 października lista wynosi `[10,12,11,13,12,14,13,15]`; dla następnego dnia trzeba dołączyć rzeczywistą wartość 14, potem 16 i 15. Należy nazwać pliki `history-09.json` do `history-12.json` i wykonać cztery wywołania, odpowiednio zmieniając nazwy wejścia i wyniku:
+
+```powershell
+python examples/lab6/forecast.py examples/lab7/data/history-09.json examples/lab7/results/forecast-09.json --window 3
+```
+
+| Dzień oceny | Wartość rzeczywista | Ostatnia znana wartość | Wynik CLI, okno 3 | Błąd bezwzględny CLI |
+|---|---:|---:|---:|---:|
+| 2026-10-09 | 14 | 15 | 14 | 0 |
+| 2026-10-10 | 16 | 14 | 14 | 2 |
+| 2026-10-11 | 15 | 16 | 15 | 0 |
+| 2026-10-12 | 17 | 15 | 15 | 2 |
+
+Należy porównać wartości odczytane z JSON z tabelą i obliczyć MAE: `(0 + 2 + 0 + 2) / 4 = 1`. Wyniki ćwiczenia trzeba zapisać w `examples/lab7/results/analytical-observations.csv`. Powtórzenie wymaga nowych nazw plików wynikowych, ponieważ CLI chroni istniejące wyniki. Własny projekt należy ocenić analogicznie, zapisując jego wyniki w `results/lab7/`.
+
 Dla symulacji należy zachować scenariusze i ziarna, a dla innych analiz — ich właściwą miarę. Jeżeli metoda lub dane zostały świadomie zmienione, trzeba zapisać nowy eksperyment, zamiast oczekiwać identycznej liczby. Pogorszenie po integracji należy wyjaśnić przed uznaniem wymagania za spełnione.
 
 ### Automatyczne uruchamianie testów po push i w Pull Request (GitHub Actions)
 
-Dla demonstracji należy zapisać poniższy workflow jako `.github/workflows/check.yml`. Jeśli plik już istnieje, należy rozszerzyć go, a nie nadpisywać dotychczasowych zadań.
+Dla demonstracji należy zapisać poniższą konfigurację przepływu pracy (ang. *workflow*) jako `.github/workflows/check.yml`. Jeśli plik już istnieje, należy rozszerzyć go, a nie nadpisywać dotychczasowych zadań.
 
 ```yaml
 name: Check
@@ -299,17 +427,26 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - run: python -m pip install pytest
-      - run: python -m pytest examples/lab6/test_forecast.py -q
+      - run: python -m pytest examples/lab6/test_forecast.py -q --junitxml=examples/lab7/results/pytest.xml
+      - name: Zapis raportu testow
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: test-report
+          path: examples/lab7/results/pytest.xml
+          if-no-files-found: warn
 ```
 
-Dla własnego rozwiązania należy zastąpić instalację zależności odpowiednim plikiem projektu i uruchamiać `python -m pytest tests -q` lub odpowiednik innej technologii. Należy zapisać wersje używanych zależności; powyższy minimalny przykład nie przypina wersji pytest.
+Dla własnego rozwiązania należy zastąpić instalację zależności odpowiednim plikiem projektu i uruchamiać `python -m pytest tests -q --junitxml=results/lab7/pytest.xml` lub odpowiednik innej technologii. Tę samą ścieżkę raportu trzeba ustawić w kroku `upload-artifact`. Należy zapisać wersje używanych zależności; powyższy minimalny przykład nie przypina wersji pytest.
 
 Po pushu trzeba otworzyć **Actions → Check → konkretne uruchomienie → tests** i rozwinąć krok testów. Należy sprawdzić liczbę wykonanych testów, a nie tylko kolor ikony. Po celowym błędzie kontrola powinna zakończyć się niepowodzeniem; po poprawce należy ponowić ją dla nowego commita. Szczegóły zawiera [dokumentacja workflow dla Pythona](https://docs.github.com/en/actions/tutorials/build-and-test-code/python).
+
+W podsumowaniu uruchomienia należy odszukać **Artifacts → test-report**, pobrać raport i sprawdzić wyniki. Warunek `always()` pozwala zachować raport także po nieudanym teście; nie zmienia jego wyniku na sukces. Jeżeli testy nie wystartowały, raport może nie powstać — przyczynę trzeba odczytać z logu. Dla własnego projektu należy zmienić także ścieżkę raportu na `results/lab7/pytest.xml`. W `docs/tests.md` trzeba zapisać adres uruchomienia i identyfikator commita wskazany przez Actions; dla PR może to być sprawdzany commit scalenia. Raport do końcowej oceny należy zachować w repozytorium, ponieważ pliki przechowywane przez Actions mają ograniczony czas dostępności. Opis przechowywania raportów: [upload-artifact](https://github.com/actions/upload-artifact).
 
 Nieudana kontrola nie zawsze automatycznie blokuje scalenie PR. Takie wymuszenie zależy od reguł ochrony gałęzi i wymaganych kontroli. Nie należy scalać znanej błędnej zmiany tylko dlatego, że interfejs na to pozwala. W logach nie wolno wypisywać sekretów.
 
@@ -318,6 +455,16 @@ Administrator repozytorium może wymusić tę zasadę: po pierwszym wykonaniu wo
 **Ćwiczenie:** na gałęzi testowej należy doprowadzić do niepowodzenia znanej asercji, otworzyć PR i sprawdzić blokadę scalenia dla zwykłego członka zespołu. Następnie trzeba przywrócić poprawny kod i sprawdzić nowy wynik kontroli. Uprawnienia administratora lub wyjątki od reguł mogą pozwalać na obejście blokady; nie należy z nich korzystać do scalania błędnej wersji.
 
 ### Pomiar czasu na ustalonej próbce (Python)
+
+Przed pomiarem należy wybrać właściwość odpowiadającą wymaganiu projektu:
+
+| Właściwość | Jak sprawdzić? | Co zapisać? |
+|---|---|---|
+| Czas działania | Ustalić próbkę, zakres pomiaru i limit; wykonać co najmniej pięć powtórzeń | Każdy czas, medianę, minimum, maksimum oraz sprzęt |
+| Zużycie pamięci | Uruchomić tę samą operację na ustalonej próbce z pomiarem pamięci procesu | Narzędzie, szczytowe zużycie i limit; rozróżnić pamięć procesu od rozmiaru pliku |
+| Możliwość instalacji | W nowym katalogu i środowisku wykonać wyłącznie kroki z README | Środowisko, kroki, powodzenie lub brakujący element oraz czas, jeśli stanowi kryterium |
+
+Wystarczy jedna właściwość; poniższy skrypt realizuje wariant czasowy. Dla kontroli instalacji mediana i pięć powtórzeń nie są wymagane. Należy uzasadnić, dlaczego wybrana kontrola jest istotna dla użytkownika projektu.
 
 Należy mierzyć konkretnie określony zakres, np. samo obliczenie albo cały proces z odczytem i zapisem. Poniższy przykład mierzy wyłącznie funkcję `forecast`; nie mierzy czasu API ani zapisu na dysk.
 
@@ -347,7 +494,8 @@ with out.open("w", encoding="utf-8", newline="") as stream:
     writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
     writer.writeheader()
     writer.writerows(rows)
-print("Mediana [s]:", median(row["seconds"] for row in rows))
+times = [row["seconds"] for row in rows]
+print("Czas [s] — mediana, minimum, maksimum:", median(times), min(times), max(times))
 ```
 
 Nie ma jednej oczekiwanej liczby sekund: wynik zależy od sprzętu i środowiska. Należy podać medianę, minimum i maksimum, zapisać sprzęt, system, obciążenie i wersję kodu. **Mediana** to środkowy wynik po uporządkowaniu pomiarów; pomaga ograniczyć wpływ pojedynczego wolnego uruchomienia.
@@ -357,6 +505,14 @@ Nie ma jednej oczekiwanej liczby sekund: wynik zależy od sprzętu i środowiska
 W projekcie należy zapisać wyniki w `results/lab7/` i odnieść je do kryterium użytkownika, np. „raport dla 10 000 rekordów w mniej niż 2 sekundy na wskazanym stanowisku”. Taki próg jest przykładem, nie uniwersalnym wymaganiem.
 
 ### Sprawdzenie dokumentacji i jakości rozwiązania
+
+W `docs/tests.md` należy oddzielnie ocenić trzy obszary. Dowody można wskazać odnośnikami do istniejących plików.
+
+| Obszar | Co wykonać? | Przykład ograniczenia |
+|---|---|---|
+| Dane | Uruchomić kontrole z Lab 3; sprawdzić jednostki, braki, daty, identyfikatory i zakres próbki | Poprawna struktura CSV nie potwierdza reprezentatywności czterech dni |
+| Wyniki | Porównać obliczenie ręczne, wynik aplikacji i miarę z Lab 4 na tych samych przypadkach | Wynik syntetyczny potwierdza działanie procedury, ale nie korzyść dla organizacji |
+| Kod | Przejrzeć jedną zmianę innej osoby: nazwy, podział funkcji, obsługę błędów i brak danych poufnych; uruchomić testy | Brak uwag Ruff nie dowodzi poprawności obliczeń |
 
 Należy oddzielić dwa opisy:
 
@@ -385,7 +541,28 @@ Minimalny układ `docs/user-guide.md`:
 - Najczęstsze błędy wejścia lub wykonania i zalecana reakcja użytkownika:
 ```
 
-Inna osoba powinna wykonać opisane kroki bez ustnych podpowiedzi autora i zanotować pierwszy brakujący krok. Trzeba także sprawdzić: jednostki, pochodzenie próbki, brak sekretów, powtarzalność, czytelność funkcji i zgodność dokumentacji z implementacją. Wynik analityczny należy porównać z miarą z Lab 4; testy kodu nie zastępują oceny reprezentatywności danych.
+Inna osoba powinna pobrać projekt do nowego katalogu, przygotować środowisko według README i wykonać instrukcję użytkową bez ustnych podpowiedzi autora. Należy sprawdzić jeden poprawny przypadek oraz reakcję na błąd. W `docs/tests.md` trzeba zapisać wersję, wykonane polecenie lub kroki, otrzymany wynik i pierwszy brakujący element instrukcji. Po poprawce dokumentacji należy powtórzyć problematyczny krok; jeśli nie wykryto braku, trzeba to zapisać. Konto, bazę lub dane spoza repozytorium należy uzyskać sposobem opisanym w instrukcji, bez kopiowania nieudokumentowanej konfiguracji autora.
+
+### Rozpoznanie najczęstszych problemów
+
+| Objaw | Co sprawdzić? |
+|---|---|
+| `ModuleNotFoundError` | Katalog uruchomienia, aktywne środowisko, instalację pakietu i nazwy importów |
+| `no tests ran` | Ścieżkę, nazwy `test_*.py` i funkcje `test_*`; brak testów nie oznacza sukcesu |
+| Lokalnie działa, w Actions nie | Zapisane zależności, wielkość liter w ścieżkach, brak plików lub konfiguracji w repozytorium |
+| Test raz przechodzi, raz nie | Zmienne dane API, losowanie, wspólne pliki i zależność od kolejności testów |
+| SQL zwraca same zera | Czy istnieją wymagane rekordy; pusty zbiór też może nie zawierać naruszeń |
+| Błąd jest oczekiwany, ale test nie przechodzi | Czy test sprawdza właściwy wyjątek, kod HTTP lub kod wyjścia; czy stan po błędzie pozostał poprawny |
+
+### Kontrolowane wykorzystanie agenta AI w testowaniu
+
+Agent AI może pomóc wskazać brakujące przypadki brzegowe i przygotować szkielet testów w `pytest`, np.:
+
+> Na podstawie specyfikacji interfejsu w `docs/architecture.md` i wymagań w `docs/problem.md` zaproponuj przypadki testowe dla funkcji `forecast` obejmujące poprawne, puste, błędne i graniczne dane wejściowe. Oczekiwane wyniki wyznacz ze specyfikacji, a nie z aktualnego działania kodu.
+
+Należy samodzielnie zweryfikować każdą asercję: agent potrafi przepisać do `assert` błędny wynik zwracany obecnie przez funkcję, co utrwala usterkę zamiast ją wykryć. Nie należy przekazywać agentowi tajnych kluczy ani prywatnych danych.
+
+Agentowi należy wskazać osobny plik testów i zabronić zmiany wymagań lub kodu aplikacji wyłącznie w celu uzyskania pozytywnego wyniku. Sposób wykorzystania agenta i weryfikacji jego propozycji trzeba zapisać w opisie Pull Requestu.
 
 ## Zadania samodzielne
 

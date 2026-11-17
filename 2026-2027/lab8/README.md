@@ -66,9 +66,39 @@ W `docs/report.md` należy zastosować poniższe rozdziały. Długość powinna 
 | Dane | Pochodzenie, jednostka obserwacji, dostęp, jakość i ograniczenia | `docs/data.md`, `docs/processing.md` |
 | Metoda i architektura | Powód wyboru, wariant bazowy, kompromisy | `docs/experiment.md`, `docs/architecture.md`, ADR |
 | Wyniki i ocena | Miary, dane, wersja, statusy wymagań | `docs/tests.md`, wyniki Lab 4 i Lab 7 |
-| Użycie i odtworzenie | Jak uruchomić dokładnie prezentowaną wersję? | README, instrukcja użytkowa, tag |
+| Użycie i odtworzenie | Jak uruchomić dokładnie prezentowaną wersję? | `README.md`, `docs/user-guide.md`, tag |
 | Ograniczenia i rozwój | Czego wynik nie potwierdza? Jaki jest najważniejszy dalszy krok? | niezweryfikowane założenia i błędy |
 | Wkład zespołu i źródła | Rezultaty poszczególnych osób, wykorzystane materiały i wsparcie AI | Issue, PR, commity, literatura |
+
+Minimalny układ `docs/report.md`:
+
+```markdown
+# Raport końcowy projektu
+
+## 1. Problem i użytkownik
+- Wspierana decyzja użytkownika i sprawdzane wymagania (link do docs/problem.md):
+
+## 2. Zakres wykonany
+- Działający główny przepływ oraz elementy niezrealizowane (link do docs/implementation.md i otwartych Issues):
+
+## 3. Dane
+- Źródło, jednostka obserwacji, jakość i ograniczenia (link do docs/data.md, docs/data-dictionary.md i docs/processing.md):
+
+## 4. Metoda i architektura
+- Wybrana metoda, wariant bazowy i najważniejsze decyzje techniczne (link do docs/experiment.md, docs/architecture.md i ADR):
+
+## 5. Wyniki i ocena
+- Uzyskane miary, wyniki testów i statusy wymagań (link do docs/tests.md oraz wyników z Lab 4 i Lab 7):
+
+## 6. Użycie i odtworzenie
+- Prezentowana wersja (tag / commit) i odnośnik do instrukcji uruchomienia (README.md, docs/user-guide.md):
+
+## 7. Ograniczenia i kierunki rozwoju
+- Czego uzyskany wynik nie potwierdza i jaki jest uzasadniony kolejny krok:
+
+## 8. Wkład zespołu i źródła
+- Indywidualne rezultaty członków zespołu (PR / commity / pliki) oraz wykorzystana literatura i narzędzia AI:
+```
 
 **Przykład poprawnego wniosku:** „Na czterech syntetycznych dniach średnia z trzech dni uzyskała MAE 1,0 zamiast 1,5 zgłoszenia. Potwierdza to działanie procedury porównawczej, ale nie skuteczność planowania obsady w rzeczywistej organizacji”.
 
@@ -78,16 +108,16 @@ Wkład należy opisać przez rezultat, nie przez liczbę commitów. Przykładowy
 
 ## Audyt gotowości projektu
 
-Przed oznaczeniem wersji należy sprawdzić poniższe elementy i zapisać w `docs/report.md` brakujące dowody lub ograniczenia. Nie trzeba tworzyć kopii istniejących plików; wystarczą odnośniki. „Nie dotyczy” wymaga uzasadnienia, np. brak CI z opisanym lokalnym sprawdzeniem.
+Przed oznaczeniem wersji należy sprawdzić poniższe elementy i zapisać w `docs/report.md` brakujące dowody lub ograniczenia. Nie trzeba tworzyć kopii istniejących plików; wystarczą odnośniki. „Nie dotyczy” wymaga uzasadnienia, np. brak automatycznego sprawdzania w GitHub Actions wraz z opisanym lokalnym poleceniem testowym.
 
 | Etap | Co sprawdzić? | Dowód / miejsce |
 |---|---|---|
-| Lab 1 — karta | Czy końcowy zakres odpowiada problemowi i czy wyjaśniono zmiany? | karta przekazana prywatnie; bez jej kopii i prywatnego linku w repo |
+| Lab 1 — karta | Czy końcowy zakres odpowiada problemowi i czy wyjaśniono zmiany? | karta przekazana prywatnie; bez jej kopii i prywatnego linku w repozytorium |
 | Lab 2–3 — dane | Pochodzenie, prawo użycia, słownik, kontrola jakości i odtworzenie przetwarzania | `docs/data.md`, `docs/processing.md`, dozwolona próbka i skrypt |
 | Lab 4 — metoda | Wariant bazowy, parametry, wspólne warunki oceny i ograniczenia | `docs/experiment.md`, wyniki porównania |
 | Lab 5 — projekt | Zgodność diagramów i specyfikacji interfejsów z implementacją | `docs/architecture.md`, diagramy i ADR |
 | Lab 6 — realizacja | Działający główny przepływ i zintegrowane zmiany | kod, README, PR i `docs/implementation.md` |
-| Lab 7 — ocena | Wykonane testy, miara całego przepływu, otwarte błędy | `docs/tests.md`, wyniki, CI lub udokumentowane polecenie lokalne |
+| Lab 7 — ocena | Wykonane testy, miara całego przepływu, otwarte błędy | `docs/tests.md`, `docs/user-guide.md`, wyniki, GitHub Actions lub udokumentowane polecenie lokalne |
 | Wydanie | Czy oznaczono dokładnie sprawdzoną wersję? | tag/commit i wynik odtworzenia |
 | Lab 8 — przekazanie | Spójny raport, prezentacja, demonstracja i wkład | `docs/report.md`, `docs/presentation.md`, materiały oraz PR |
 
@@ -139,7 +169,7 @@ git log --all --author="Nazwisko" --stat
 
 Filtr `Nazwisko` należy zastąpić rzeczywistą nazwą autora zapisaną w commitach; nie musi być ona taka sama jak login GitHub. Pierwsze polecenie grupuje liczbę commitów według autorów, drugie pokazuje ich zmiany plików. `--all` obejmuje lokalnie dostępne referencje, również gałęzie niescalone — nie jest dowodem, że zmiana znalazła się w wydaniu.
 
-Aby sprawdzić historię osiągalną z prezentowanej wersji, należy użyć jej taga zamiast `--all`, np. `git log v1.0.0 --author="Nazwisko" --stat`. Do obejrzenia konkretnej zmiany służy `git show IDENTYFIKATOR`, po zastąpieniu identyfikatora skrótem commita. W przypadku squash merge, pracy w parze lub różnych nazw autora należy dodatkowo sprawdzić PR, przeglądy i opis współautorstwa.
+Aby sprawdzić historię osiągalną z prezentowanej wersji, należy użyć jej taga zamiast `--all`, np. `git log v1.0.0 --author="Nazwisko" --stat`. Do obejrzenia konkretnej zmiany służy `git show IDENTYFIKATOR`, po zastąpieniu identyfikatora skrótem commita. W przypadku scalenia spłaszczającego commity (ang. *squash merge*), pracy w parze lub różnych nazw autora należy dodatkowo sprawdzić PR, przeglądy i opis współautorstwa.
 
 **Ćwiczenie:** każda osoba powinna wskazać jeden własny rezultat, powiązany PR/commit i dowód działania w wersji prezentowanej. Liczba commitów i zmienionych linii nie jest oceną jakości ani wielkości wkładu. Nie należy publikować surowego eksportu historii z adresami e-mail tylko na potrzeby tej kontroli.
 
@@ -177,6 +207,8 @@ W edytorze prezentacji należy wyeksportować PDF, otworzyć go poza edytorem i 
 W `docs/presentation.md` należy zapisać scenariusz demonstracji:
 
 ```markdown
+# Scenariusz prezentacji i wynik próby
+
 ## Demonstracja
 Wersja: tag i identyfikator commita.
 Wejście: dozwolona próbka i parametry.
@@ -184,6 +216,7 @@ Uruchomienie: dokładne polecenie lub kolejne działania w interfejsie.
 Oczekiwany wynik: wartość/plik/ekran z jednostką i znaczeniem.
 Przypadek błędny: bezpieczna kopia wejścia i oczekiwany komunikat.
 Wariant awaryjny: zapisany wynik tej samej wersji, jawnie oznaczony jako nagranie lub zrzut.
+
 ## Próba
 Zmierzony czas:
 Niezrozumiały fragment:
@@ -252,7 +285,7 @@ Nie należy deklarować związku przyczynowego na podstawie samej korelacji ani 
 - `docs/report.md`: raport końcowy;
 - `docs/presentation.md`: scenariusz, wynik próby i pytania;
 - materiały prezentacyjne w formacie możliwym do odczytu przez odbiorcę;
-- tag lub release wskazujący sprawdzoną wersję oraz instrukcja odtworzenia;
+- tag lub wydanie (ang. *release*) wskazujące sprawdzoną wersję oraz instrukcja odtworzenia;
 - dowody indywidualnego wkładu, ograniczenia i uzgodnione dalsze zadania.
 
 Należy przekazać prowadzącemu link do repozytorium oraz dokładny tag lub identyfikator wersji użytej w prezentacji, zgodnie z ustalonym sposobem oddania.

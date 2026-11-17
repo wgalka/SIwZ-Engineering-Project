@@ -27,6 +27,8 @@ Projekt zespołowy lub indywidualny obejmujący analizę problemu, dane, dobór 
 | [Lab 4](./2026-2027/lab4/README.md) | Metody analityczne, symulacyjne i eksperymentalne |
 | [Lab 5](./2026-2027/lab5/README.md) | Projektowanie obiektów informatycznych |
 | [Lab 6](./2026-2027/lab6/README.md) | Realizacja projektu |
+| [Lab 7](./2026-2027/lab7/README.md) | Testowanie i ocena rezultatów |
+| [Lab 8](./2026-2027/lab8/README.md) | Prezentacja rezultatów projektu |
 
 ## Kryteria oceny
 
