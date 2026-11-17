@@ -313,7 +313,7 @@ Zero naruszeń nie dowodzi kompletności — pusta baza również zwróci zera. 
 
 #### Automatyczne sprawdzenie zapisu i wycofania transakcji (pytest / SQLite)
 
-Jeżeli wykorzystywany jest przykład `save_forecast.py` z Lab 6, należy przygotować również `examples/lab5/schema.sql` z Lab 5. Poniższy kod trzeba zapisać jako `examples/lab6/test_storage.py`. Każdy test tworzy własną bazę tymczasową, więc nie wymaga uruchomienia DataGrip.
+Jeżeli wykorzystywany jest przykład `save_forecast.py` z Lab 6, należy przygotować również `examples/lab5/schema.sql` z [sekcji diagramu ERD i definicji tabel SQL w Lab 5](../lab5/#przygotowanie-diagramu-erd-i-definicji-tabel-sql-mermaid--datagrip). Poniższy kod trzeba zapisać jako `examples/lab6/test_storage.py`. Każdy test tworzy własną bazę tymczasową, więc nie wymaga uruchomienia DataGrip.
 
 ```python
 from contextlib import closing

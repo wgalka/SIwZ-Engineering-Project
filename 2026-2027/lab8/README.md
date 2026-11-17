@@ -15,6 +15,8 @@ Na tym etapie należy przygotować raport końcowy i przedstawić działanie pro
 
 Należy przygotować zintegrowaną wersję z Lab 6, wyniki testów z Lab 7, dokumentację i dozwoloną próbkę demonstracyjną. Przed wystąpieniem trzeba sprawdzić pełny scenariusz na komputerze używanym do pokazu oraz przygotować lokalny wariant awaryjny.
 
+Należy wcześniej zebrać pliki z wynikami i przejrzeć poniższe przykłady. Podczas zajęć trzeba opracować własne rezultaty; nie ma obowiązku wykonywania wszystkich demonstracji narzędziowych. W razie braku działającej wersji należy wskazać wykonany zakres i przeszkodę zamiast zastępować wynik planem przyszłej pracy.
+
 Należy uzgodnić z prowadzącym limit wystąpienia i sposób przekazania materiałów. Poniższy podział 90 minut dotyczy przygotowania i prób; kolejność oraz czas prezentacji końcowych zależą od harmonogramu grupy.
 
 ## Rezultat pracy
@@ -28,6 +30,7 @@ Należy uzgodnić z prowadzącym limit wystąpienia i sposób przekazania materi
 | `presentation/slides.pdf` | Czytelny eksport prezentacji, jeśli używane są slajdy |
 | `presentation/slides.pptx` | Źródło slajdów; dopuszczalny inny edytowalny format, np. `slides.md` |
 | `README.md` | Punkt wejścia do uruchomienia i dokumentacji |
+| `examples/lab8/` | Opcjonalne wyniki ćwiczenia demonstracyjnego; oddzielone od rezultatów własnego projektu |
 
 Należy zachować format odpowiedni do narzędzia. Jeśli prezentacja jest przygotowana w usłudze internetowej, trzeba sprawdzić uprawnienia odbiorcy i zapisać eksport, który można otworzyć bez konta autora. Nie należy publikować karty projektu, prywatnych danych ani sekretów. Do raportu wystarczą bezpieczne przykłady i odnośniki do publicznych rezultatów pracy.
 
@@ -38,6 +41,8 @@ Należy zachować format odpowiedni do narzędzia. Jeśli prezentacja jest przyg
 Należy sprawdzić stan repozytorium, uruchomić testy i główny przepływ. Trzeba ustalić, który commit będzie prezentowany, oraz spisać błędy wpływające na demonstrację. Jeśli błąd uniemożliwia główną operację, należy go naprawić lub jawnie ograniczyć zakres pokazu; nie wolno przedstawiać zrzutu ekranu jako działającej aplikacji.
 
 Każda osoba powinna odpowiadać za konkretny rezultat przygotowania: raport, weryfikację wydania, scenariusz, materiały wizualne lub kontrolę dowodów. Każda powinna również umieć wyjaśnić własny wkład w projekt.
+
+Należy uzgodnić edycję wspólnych plików: jedna osoba składa raport, druga scenariusz, kolejna materiały wizualne, a pozostałe sprawdzają wyniki i odtworzenie. Uwagi trzeba przekazywać w przeglądzie Pull Requestu; nie należy jednocześnie nadpisywać tego samego pliku prezentacji.
 
 ### 2. Raport końcowy — 15–35 min
 
@@ -89,6 +94,7 @@ Minimalny układ `docs/report.md`:
 
 ## 5. Wyniki i ocena
 - Uzyskane miary, wyniki testów i statusy wymagań (link do docs/tests.md oraz wyników z Lab 4 i Lab 7):
+- Najważniejszy wniosek, warunki porównania i ograniczenie jego zakresu:
 
 ## 6. Użycie i odtworzenie
 - Prezentowana wersja (tag / commit) i odnośnik do instrukcji uruchomienia (README.md, docs/user-guide.md):
@@ -100,11 +106,35 @@ Minimalny układ `docs/report.md`:
 - Indywidualne rezultaty członków zespołu (PR / commity / pliki) oraz wykorzystana literatura i narzędzia AI:
 ```
 
+### Powiązanie wniosków z wynikami
+
+Należy wybrać trzy najważniejsze stwierdzenia o projekcie i dla każdego wskazać dowód oraz granicę wnioskowania. Poniższe przykłady odnoszą się do demonstracji z Lab 4–7; do raportu należy wpisać własne wyniki.
+
+| Stwierdzenie | Co je potwierdza? | Czego nie można z niego wywnioskować? |
+|---|---|---|
+| Prognoza dla historii 12, 14, 13, 15 i okna 3 wynosi 14 | Ręczny rachunek `(14 + 13 + 15) / 3` i zgodny wynik testu CLI | Że prognoza będzie dokładna na rzeczywistych danych |
+| Średnia z 3 dni ma mniejsze MAE niż ostatnia wartość na próbce demonstracyjnej | Cztery wyniki jednostkowe i MAE 1,0 wobec 1,5 zgłoszenia | Że zmniejszono koszty obsługi lub potwierdzono skuteczność wdrożenia |
+| Nieudany zapis prognozy nie pozostawia nowego uruchomienia w bazie | Test wycofania transakcji i porównanie stanu bazy przed błędem i po nim | Że sprawdzono wszystkie możliwe awarie bazy |
+
+Przy miarze należy podać jednostkę, liczebność próby, okres, parametry i wersję danych. Wyniki porównywanych metod muszą dotyczyć tych samych przypadków. Wymagania z Lab 7 trzeba zachować ze statusami „spełnione”, „niespełnione” lub „niesprawdzone”; ograniczenie opisane w raporcie nie zmienia niesprawdzonego wymagania w spełnione.
+
+Linki trzeba zapisywać względem pliku, w którym są umieszczone. Przykładowo w `docs/report.md` poprawne odnośniki do istniejących dokumentów mają postać:
+
+```markdown
+[Plan i wyniki testów](./tests.md)
+[Instrukcja uruchomienia](../README.md)
+[Instrukcja użytkownika](./user-guide.md)
+```
+
+W przypadku pliku z wynikiem należy wskazać konkretny raport lub CSV, a nie tylko katalog. Link do dokumentacji biblioteki potwierdza sposób jej użycia, ale nie zastępuje wyniku uruchomienia projektu. Trzeba otworzyć odnośniki w podglądzie repozytorium, ponieważ ścieżka działająca tylko na komputerze autora nie wystarcza.
+
 **Przykład poprawnego wniosku:** „Na czterech syntetycznych dniach średnia z trzech dni uzyskała MAE 1,0 zamiast 1,5 zgłoszenia. Potwierdza to działanie procedury porównawczej, ale nie skuteczność planowania obsady w rzeczywistej organizacji”.
 
 **Przykład wymagający poprawy:** „System zmniejsza koszty obsługi o 30%”, jeśli nie zmierzono kosztów ani skutków wdrożenia. Należy zastąpić go wynikiem, który rzeczywiście uzyskano, i opisać brakujące sprawdzenie.
 
 Wkład należy opisać przez rezultat, nie przez liczbę commitów. Przykładowy zapis: „Walidacja braków w imporcie — PR #18; test odrzucenia pustej próbki — plik testu; sprawdzenie integracji — wynik uruchomienia”. Nie należy tworzyć dodatkowej publicznej listy danych osobowych; sposób identyfikacji osób na potrzeby oceny należy uzgodnić z prowadzącym.
+
+W wykazie źródeł należy podać autora lub instytucję, tytuł, adres i datę dostępu do źródła internetowego. Trzeba wskazać także źródła danych, wykorzystane fragmenty kodu i licencje, korzystając z ustaleń z Lab 2–4. Dla wsparcia AI wystarczy opisać narzędzie, zakres pomocy i sposób samodzielnego sprawdzenia wyniku. Odpowiedź czatu nie zastępuje publikacji ani dokumentacji źródłowej.
 
 ## Audyt gotowości projektu
 
@@ -137,7 +167,7 @@ Nie trzeba używać wszystkich narzędzi. Wykres powinien pochodzić z zapisanyc
 
 ### Oznaczenie sprawdzonej wersji (Git / GitHub Releases)
 
-**Tag** nadaje nazwę konkretnemu stanowi repozytorium. **Release** pozwala dodatkowo dołączyć opis wydania i pliki. Przed oznaczeniem należy zakończyć integrację i sprawdzić, czy wszystkie zmiany przeznaczone do wydania zapisano w commitach:
+**Tag** nadaje nazwę konkretnemu stanowi repozytorium. **Release** pozwala dodatkowo dołączyć opis wydania i pliki. Przed oznaczeniem należy zakończyć integrację kodu, raportu i materiałów, a następnie sprawdzić stan repozytorium:
 
 ```bash
 git status
@@ -145,18 +175,44 @@ git rev-parse HEAD
 git log -1 --oneline
 ```
 
-Należy porównać identyfikator commita z wersją wskazaną w wynikach kontroli. Po sprawdzeniu można utworzyć nowy tag; poniższa nazwa jest przykładowa i musi być wolna:
+Należy przejrzeć ewentualne niezapisane zmiany. Kod, konfiguracja i dozwolone dane potrzebne do odtworzenia muszą być zapisane w commitach; lokalne środowisko wirtualne i pliki poufne pozostają poza repozytorium. Na tej wersji trzeba wykonać polecenie testowe i scenariusz demonstracji. Raport z Lab 7 zachowuje identyfikator faktycznie sprawdzanego commita. Jeżeli od tego czasu zmieniono jedynie dokumentację, należy wskazać tę różnicę; po zmianie kodu, zależności lub danych potrzebne jest nowe sprawdzenie.
+
+W `docs/report.md` i `docs/presentation.md` można z wyprzedzeniem wpisać planowaną nazwę taga, a jego identyfikator commita odczytać po utworzeniu. Nie należy próbować zapisywać w pliku identyfikatora commita, który dopiero powstanie wskutek zapisania tego pliku.
+
+Po sprawdzeniu można utworzyć nowy tag; poniższa nazwa jest przykładowa i musi być wolna:
 
 ```bash
 git tag -a v1.0.0 -m "Wersja do prezentacji projektu"
+git rev-parse "v1.0.0^{commit}"
 git push origin v1.0.0
 ```
 
 Nie należy przesuwać już udostępnionego taga na poprawioną wersję. Dla zmiany wymagającej ponownej oceny trzeba utworzyć kolejny tag i powtórzyć sprawdzenia. Przed wysłaniem taga należy upewnić się, że jego commit jest też dostępny w zdalnym repozytorium zespołu.
 
-Na GitHubie należy otworzyć **Releases → Draft a new release**, wskazać istniejący tag i dodać: zakres działający, polecenie uruchomienia, odnośnik do raportu oraz znane ograniczenia. Następnie trzeba sprawdzić załączniki i opublikować wydanie. Szczegóły opisano w [dokumentacji GitHub Releases](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
+Opcjonalnie można przygotować wydanie na GitHubie. Należy otworzyć **Releases → Draft a new release**, wskazać istniejący tag i dodać: zakres działający, polecenie uruchomienia, odnośnik do raportu oraz znane ograniczenia. Następnie trzeba sprawdzić załączniki i opublikować wydanie. Szczegóły opisano w [dokumentacji GitHub Releases](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
 
-**Ćwiczenie:** inna osoba powinna pobrać wydanie do nowego katalogu, wykonać README i sprawdzić główny wynik. Nie należy używać lokalnych plików autora, których nie ma w wydaniu i nie opisano sposobu ich uzyskania. Baza danych lub zewnętrzne API nie są automatycznie dołączane do taga.
+#### Pobranie i sprawdzenie oznaczonej wersji
+
+Inna osoba powinna pobrać oznaczoną wersję do nowego katalogu. W poniższym poleceniu należy zastąpić `ORGANIZACJA/REPO` adresem własnego repozytorium, a tag — wybraną nazwą. Katalog `projekt-odbior` nie może zawierać wcześniejszej kopii:
+
+```bash
+git clone --branch v1.0.0 --single-branch https://github.com/ORGANIZACJA/REPO.git projekt-odbior
+cd projekt-odbior
+git rev-parse HEAD
+git status --short
+```
+
+Należy porównać identyfikator `HEAD` z wynikiem `git rev-parse "v1.0.0^{commit}"` w repozytorium autora. Komunikat `detached HEAD` jest tutaj oczekiwany: pobrano konkretny tag, a nie gałąź przeznaczoną do dalszej pracy. Sposób klonowania taga opisuje [dokumentacja Git](https://git-scm.com/docs/git-clone).
+
+Następnie należy:
+
+1. Utworzyć środowisko i zainstalować zależności wyłącznie według README, np. w nowym `.venv` dla projektu Python.
+2. Uzyskać dozwolone dane i przygotować bazę sposobem opisanym w dokumentacji. Tag nie zawiera automatycznie stanu bazy ani zewnętrznego API.
+3. Uruchomić testy, a następnie poprawny i błędny przypadek ze scenariusza demonstracji. Porównać wynik, jednostkę oraz zachowanie po błędzie z opisem.
+4. Otworzyć raport, diagram i eksport prezentacji; sprawdzić odnośniki bez dostępu do prywatnych plików autora.
+5. Zapisać tag, commit, środowisko, polecenia, uzyskany wynik i ewentualny brak w opisie wydania lub w Issue dotyczącym odbioru. Nie dopisywać tych danych do już oznaczonej wersji przez przesuwanie taga.
+
+Nie należy kopiować nieudokumentowanego `.venv`, konfiguracji ani plików autora. Jeśli brakuje zależności, danych lub instrukcji, trzeba zgłosić brak, poprawić projekt i sprawdzić kolejną wersję. Sama obecność taga nie dowodzi, że projekt da się uruchomić.
 
 ### Sprawdzenie historii wkładu (Git)
 
@@ -204,27 +260,59 @@ W wersji sześcioslajdowej można połączyć wkład z wnioskami, jeśli pozosta
 
 W edytorze prezentacji należy wyeksportować PDF, otworzyć go poza edytorem i obejrzeć każdą stronę w rozmiarze zbliżonym do pokazu. Trzeba sprawdzić, czy diagramy, liczby i etykiety są czytelne. W trybie prezentera należy oddzielić notatki od widoku publicznego; przed udostępnieniem ekranu trzeba zamknąć prywatne dokumenty i wyłączyć powiadomienia.
 
+W PowerPoint dla Windows należy wybrać **Plik → Eksportuj → Utwórz dokument PDF/XPS**, zapisać `presentation/slides.pdf` i sprawdzić w opcjach, czy eksport obejmuje wszystkie slajdy przeznaczone do pokazu. Źródło należy zachować jako `slides.pptx`. Szczegóły opisuje [instrukcja eksportu Microsoft](https://support.microsoft.com/en-us/powerpoint/training/save-powerpoint-presentations-as-pdf-files). PDF nie zastępuje demonstracji interaktywnej ani edytowalnego pliku źródłowego.
+
 W `docs/presentation.md` należy zapisać scenariusz demonstracji:
 
 ```markdown
 # Scenariusz prezentacji i wynik próby
 
 ## Demonstracja
-Wersja: tag i identyfikator commita.
+Wersja: nazwa taga; commit i wynik odtworzenia zapisane w opisie wydania lub Issue.
 Wejście: dozwolona próbka i parametry.
 Uruchomienie: dokładne polecenie lub kolejne działania w interfejsie.
 Oczekiwany wynik: wartość/plik/ekran z jednostką i znaczeniem.
-Przypadek błędny: bezpieczna kopia wejścia i oczekiwany komunikat.
+Przypadek błędny: kopia pliku wejściowego lub zmieniony parametr i oczekiwany komunikat.
 Wariant awaryjny: zapisany wynik tej samej wersji, jawnie oznaczony jako nagranie lub zrzut.
 
 ## Próba
+Sprawdzana wersja i środowisko:
 Zmierzony czas:
 Niezrozumiały fragment:
 Pytanie wymagające lepszego dowodu:
 Wprowadzona poprawka:
+Wynik ponownego sprawdzenia:
+
+## Pytania po prezentacji
+Pytanie, odpowiedź lub brakujący dowód, zadanie i osoba odpowiedzialna:
 ```
 
 Nie należy wykonywać operacji mogących zmienić rzeczywiste urządzenia, dane lub konta użytkowników tylko na potrzeby pokazu. Dla sterowania sprzętem można zademonstrować symulację albo tryb bez wykonania polecenia i wyraźnie to zaznaczyć.
+
+#### Przećwiczenie demonstracji na przykładzie CLI
+
+Przykład wykorzystuje `examples/lab6/forecast.py` oraz `examples/lab6/history.json` o zawartości `[12, 14, 13, 15]` z [Lab 6](../lab6/). Należy przygotować te pliki, jeśli wcześniej wybrano inną ścieżkę. Ćwiczenie jest opcjonalne; własny projekt trzeba pokazać przez jego rzeczywisty interfejs.
+
+1. Otworzyć plik wejściowy i wyjaśnić, że zawiera dzienne liczby zgłoszeń, a okno 3 oznacza wykorzystanie trzech ostatnich obserwacji.
+2. Z katalogu głównego repozytorium uruchomić poprawny przypadek:
+
+   ```powershell
+   python examples/lab6/forecast.py examples/lab6/history.json examples/lab8/results/demo-01.json --window 3
+   ```
+
+3. Otworzyć `examples/lab8/results/demo-01.json`. Sprawdzić `forecast` równe 14, jednostkę `zgloszenia/dzien` i okno 3. Należy wyjaśnić, że jest to wynik obliczenia na sztucznej historii, a nie dowód poprawy planowania obsady.
+4. Uruchomić przypadek błędny z inną nazwą wyniku:
+
+   ```powershell
+   python examples/lab6/forecast.py examples/lab6/history.json examples/lab8/results/demo-bad-01.json --window 5
+   ```
+
+5. Sprawdzić komunikat o zbyt krótkiej historii oraz brak `demo-bad-01.json`. Wyjaśnić, że wymagane jest co najmniej pięć obserwacji; błąd nie oznacza prognozy równej zero.
+6. Wskazać test z Lab 7 sprawdzający to zachowanie oraz tabelę czterech prognoz, jeśli omawiana jest jakość metody. Pojedynczy poprawny wynik nie zastępuje oceny MAE.
+
+Przed kolejną próbą należy wybrać nowe nazwy wyników, np. `demo-02.json` i `demo-bad-02.json`. Istniejący plik wyniku powoduje odmowę nadpisania i może zasłonić błąd, który miał być pokazany. Plików wejściowych nie należy zmieniać tylko po to, aby odtworzyć pokaz.
+
+W wariancie awaryjnym można otworzyć wynik lub nagranie z wcześniejszego wykonania tej samej wersji. Trzeba podać wersję, próbkę i przyczynę przejścia do tego wariantu. Zapisany wynik należy wyraźnie nazwać wynikiem wcześniejszej próby.
 
 ### Przygotowanie slajdów z Markdownu (Marp — opcjonalnie)
 
@@ -269,12 +357,32 @@ W parze należy przećwiczyć odpowiedzi, każdorazowo wskazując plik, wynik lu
 
 Nie należy deklarować związku przyczynowego na podstawie samej korelacji ani skuteczności produkcyjnej na podstawie próbki syntetycznej. Jeżeli czegoś nie sprawdzono, trzeba wskazać brakującą weryfikację zamiast zgadywać.
 
+**Przykładowa odpowiedź na pytanie „Czy rozwiązanie zmniejsza koszty?”:** „Nie mierzono jeszcze kosztów. Sprawdzono błąd prognozy na czterech syntetycznych dniach; wynik zapisano w tabeli porównania. Do oceny oszczędności potrzebne są rzeczywiste liczby zgłoszeń, koszty obsady i porównanie przy tej samej jakości obsługi”.
+
+Po próbie należy zapisać w `docs/presentation.md` co najmniej jedną konkretną uwagę, wprowadzoną poprawkę i wynik ponownego sprawdzenia. Zapis „prezentacja poprawiona” nie określa, czy rozwiązano problem. Można wykorzystać poniższy wzór:
+
+| Obserwacja z próby | Poprawka | Jak potwierdzić efekt? |
+|---|---|---|
+| Pokaz przekroczył uzgodniony limit | Skrócenie listy technologii i powtórzeń, zachowanie wyniku i ograniczeń | Ponowny pomiar całego wystąpienia z demonstracją |
+| Nie wiadomo, co oznacza MAE 1,0 | Dodanie jednostki, liczby dni i porównania z wariantem bazowym | Osoba słuchająca potrafi wyjaśnić znaczenie i ograniczenie wyniku |
+| Po błędzie na ekranie pozostał wcześniejszy wynik | Poprawa obsługi błędu i testu aplikacji | Ponowne testy, próba błędnego wejścia i nowa wersja do pokazu |
+
+Po prezentacji trzeba oddzielić pytania, na które udzielono odpowiedzi z dowodem, od tych wymagających dalszego sprawdzenia. Dla uzgodnionej poprawki należy utworzyć Issue z osobą odpowiedzialną i warunkiem zakończenia, np. „odtworzyć pomiar na nowej próbce i dołączyć porównanie”. Nie każda sugestia z dyskusji musi stać się nowym wymaganiem projektu.
+
+### Sprawdzenie raportu z pomocą agenta AI (opcjonalnie)
+
+Agent może pomóc znaleźć sprzeczność między raportem, testami i prezentacją. Należy wskazać konkretne pliki i zlecić najpierw przegląd, np.:
+
+> Porównaj docs/report.md, docs/tests.md i docs/experiment.md. Wskaż stwierdzenia bez dowodu, różne wartości tej samej miary oraz wnioski szersze niż pozwalają dane. Dla każdej uwagi podaj plik i fragment. Nie zmieniaj plików, nie dopisuj wyników ani bibliografii. Jeśli brakuje danych do oceny, wskaż, jakiego sprawdzenia potrzeba.
+
+Każdą uwagę trzeba sprawdzić w pliku z wynikiem lub w źródle. Należy samodzielnie zdecydować o poprawce i zapisać zakres pomocy w raporcie. Wygenerowany opis pomiaru, którego nie wykonano, nie jest dowodem.
+
 ## Zadania samodzielne
 
-1. Przygotować raport końcowy z dowodami wyników i odnośnikami do istniejącej dokumentacji.
+1. Przygotować raport końcowy; dla co najmniej trzech najważniejszych stwierdzeń wskazać dowód, warunki i ograniczenie wnioskowania.
 2. Zweryfikować zgodność kodu, danych, diagramów, wyników testów i instrukcji.
-3. Oznaczyć sprawdzoną wersję tagiem lub wydaniem i potwierdzić jej odtworzenie.
-4. Przygotować demonstrację oraz jawnie opisany wariant awaryjny.
+3. Oznaczyć sprawdzoną wersję tagiem, opcjonalnie przygotować wydanie; potwierdzić jej odtworzenie w nowym katalogu i zapisać wynik w opisie wydania lub Issue.
+4. Przygotować demonstrację poprawnego wyniku i reakcji na błąd oraz jawnie opisany wariant awaryjny.
 5. Przygotować materiały wizualne i sprawdzić ich eksport.
 6. Przeprowadzić próbę z pomiarem czasu, zebrać uwagi i poprawić co najmniej jeden fragment.
 7. Przedstawić projekt, odpowiedzieć na pytania oraz wskazać indywidualne rezultaty.
@@ -282,10 +390,12 @@ Nie należy deklarować związku przyczynowego na podstawie samej korelacji ani 
 
 ## Rezultat do zapisania
 
-- `docs/report.md`: raport końcowy;
-- `docs/presentation.md`: scenariusz, wynik próby i pytania;
+- `docs/report.md`: raport końcowy z dowodami, statusami wymagań, źródłami i ograniczeniami;
+- `docs/presentation.md`: scenariusz, czas próby, uwaga, poprawka, wynik ponownej próby i pytania;
 - materiały prezentacyjne w formacie możliwym do odczytu przez odbiorcę;
-- tag lub wydanie (ang. *release*) wskazujące sprawdzoną wersję oraz instrukcja odtworzenia;
+- tag, ewentualne wydanie (ang. *release*) oraz zapis sprawdzenia odtworzenia tej wersji;
 - dowody indywidualnego wkładu, ograniczenia i uzgodnione dalsze zadania.
 
 Należy przekazać prowadzącemu link do repozytorium oraz dokładny tag lub identyfikator wersji użytej w prezentacji, zgodnie z ustalonym sposobem oddania.
+
+Przed przekazaniem należy otworzyć publiczne repozytorium i pliki prezentacji bez zalogowania na konto autora. Trzeba sprawdzić, czy README prowadzi do raportu, instrukcji użytkowej i prezentowanej wersji, a odbiorca może odczytać materiały bez proszenia o dodatkowe uprawnienia. Ukończenie raportu i slajdów nie zastępuje działającej demonstracji oraz udokumentowanych wyników.
